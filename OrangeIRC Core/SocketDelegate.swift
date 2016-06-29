@@ -10,9 +10,10 @@ import Foundation
 
 public protocol SocketDelegate {
     
-    func couldnotConnect(socket: Socket)
+    func couldNotConnect(socket: Socket)
     func connectionSucceeded(socket: Socket)
     func connectionFailed(socket: Socket)
+    func connectionEnded(socket: Socket)
     
     func read(bytes: Data, on socket: Socket)
     

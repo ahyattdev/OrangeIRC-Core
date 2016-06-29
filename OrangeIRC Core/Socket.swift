@@ -54,7 +54,7 @@ public class Socket: NSObject, StreamDelegate {
     
     public func checkTimeout() {
         if !isOpen {
-            delegate.couldnotConnect(socket: self)
+            delegate.couldNotConnect(socket: self)
         }
     }
     
@@ -62,14 +62,20 @@ public class Socket: NSObject, StreamDelegate {
         
         switch eventCode {
         case Stream.Event.openCompleted:
+            print("Open completed")
             timeoutTimer?.invalidate()
             self.isOpen = true
             delegate.connectionSucceeded(socket: self)
         case Stream.Event.hasBytesAvailable:
+            print("Has bytes available")
             if aStream == self.inputStream {
-                
+                var buff = [UInt8]()
+                // The maximum message length is 512, according to RFC 2812
+                self.inputStream.read(&buff, maxLength: 512)
+                delegate.read(bytes: Data(bytes: buff), on: self)
             }
         case Stream.Event.hasSpaceAvailable:
+            print("has space available")
             if aStream == self.outputStream {
                 while self.outputStream.hasSpaceAvailable && dataToWrite.count > 0 {
                     let data: NSData = dataToWrite.first!
@@ -78,10 +84,13 @@ public class Socket: NSObject, StreamDelegate {
                 }
             }
         case Stream.Event.errorOccurred:
+            print("error occurred")
             timeoutTimer?.invalidate()
-            delegate.connectionFailed(socket: self)
+            delegate.connectionEnded(socket: self)
         case Stream.Event.endEncountered:
+            print("end encountered")
             aStream.remove(from: .main(), forMode: .defaultRunLoopMode)
+            isOpen = false
         default:
             print("Could not handle stream event")
         }
