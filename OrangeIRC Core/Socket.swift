@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Dispatch
 
 public class Socket: NSObject, StreamDelegate {
     
@@ -34,22 +35,23 @@ public class Socket: NSObject, StreamDelegate {
         
         super.init()
         
-        timeoutTimer = Timer(timeInterval: 30, target: self, selector: #selector(checkTimeout), userInfo: nil, repeats: false)
+        
         
         inputStream.delegate = self
         outputStream.delegate = self
-        
+    }
+    
+    public func start() {
         inputStream.schedule(in: .main(), forMode: .defaultRunLoopMode)
         outputStream.schedule(in: .main(), forMode: .defaultRunLoopMode)
         
         inputStream.open()
         outputStream.open()
         
-        // Start the timeout timer
+        timeoutTimer = Timer(timeInterval: 30, target: self, selector: #selector(checkTimeout), userInfo: nil, repeats: false)
         
-        self.perform(#selector(checkTimeout), with: self, afterDelay: 30, inModes: [.defaultRunLoopMode])
+        //self.performSelector(inBackground: #selector(RunLoop.run as (RunLoop) -> () -> Void), with: RunLoop.main())
         
-        RunLoop.main().run()
     }
     
     public func checkTimeout() {

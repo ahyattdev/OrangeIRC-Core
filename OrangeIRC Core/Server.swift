@@ -33,6 +33,7 @@ public class Server: AnyObject, SocketDelegate {
     
     public func connect() {
         self.socket = Socket(host: self.host, port: self.port, delegate: self)
+        socket?.start()
     }
     
     public func disconnect() {
