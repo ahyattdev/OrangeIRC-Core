@@ -36,6 +36,7 @@ public class Server: NSObject, SocketDelegate {
     }
     
     public func connect() {
+        
         DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosBackground).async(execute: {
             self.socket = Socket(host: self.host, port: self.port, delegate: self)
             self.socket?.connect()

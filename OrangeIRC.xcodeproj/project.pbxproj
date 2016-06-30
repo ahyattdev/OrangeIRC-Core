@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66837D941D25E19000F85410 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 66837D921D25E19000F85410 /* GCDAsyncSocket.h */; };
+		66837D951D25E19000F85410 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 66837D921D25E19000F85410 /* GCDAsyncSocket.h */; };
+		66837D961D25E19000F85410 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 66837D931D25E19000F85410 /* GCDAsyncSocket.m */; };
+		66837D971D25E19000F85410 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 66837D931D25E19000F85410 /* GCDAsyncSocket.m */; };
+		66837D991D25E4A900F85410 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
+		66837D9A1D25E4A900F85410 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		66837D9C1D25E4CB00F85410 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
+		66837DA01D25E51100F85410 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D9F1D25E51100F85410 /* CocoaAsyncSocket.framework */; };
 		66A75AFF1D234694001161A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75AFE1D234694001161A3 /* AppDelegate.swift */; };
 		66A75B011D234694001161A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B001D234694001161A3 /* ViewController.swift */; };
 		66A75B041D234694001161A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A75B021D234694001161A3 /* Main.storyboard */; };
@@ -20,10 +28,6 @@
 		66A75B341D23486F001161A3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B2E1D23483C001161A3 /* Event.swift */; };
 		66A75B361D234885001161A3 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B351D234885001161A3 /* Server.swift */; };
 		66A75B371D234885001161A3 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B351D234885001161A3 /* Server.swift */; };
-		66A75B391D23488B001161A3 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B381D23488B001161A3 /* Socket.swift */; };
-		66A75B3A1D23488B001161A3 /* Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B381D23488B001161A3 /* Socket.swift */; };
-		66A75B3C1D234964001161A3 /* SocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3B1D234964001161A3 /* SocketDelegate.swift */; };
-		66A75B3D1D234964001161A3 /* SocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3B1D234964001161A3 /* SocketDelegate.swift */; };
 		66A75B3F1D23496C001161A3 /* ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3E1D23496C001161A3 /* ServerDelegate.swift */; };
 		66A75B401D23496C001161A3 /* ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3E1D23496C001161A3 /* ServerDelegate.swift */; };
 		6A82A07E1D24332A00F81A1B /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A07D1D24332A00F81A1B /* Commands.swift */; };
@@ -48,6 +52,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				66837D9A1D25E4A900F85410 /* CocoaAsyncSocket.framework in Embed Frameworks */,
 				66A75B1B1D2346ED001161A3 /* OrangeIRCCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -56,6 +61,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		66837D921D25E19000F85410 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = ../../../Downloads/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
+		66837D931D25E19000F85410 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = ../../../Downloads/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
+		66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
+		66837D9F1D25E51100F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/Mac/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
+		66837DA11D25E59900F85410 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		66A75AFB1D234694001161A3 /* OrangeIRC iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OrangeIRC iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A75AFE1D234694001161A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66A75B001D234694001161A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -69,8 +79,6 @@
 		66A75B251D234737001161A3 /* OrangeIRCCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OrangeIRCCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A75B2E1D23483C001161A3 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		66A75B351D234885001161A3 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
-		66A75B381D23488B001161A3 /* Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Socket.swift; sourceTree = "<group>"; };
-		66A75B3B1D234964001161A3 /* SocketDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketDelegate.swift; sourceTree = "<group>"; };
 		66A75B3E1D23496C001161A3 /* ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDelegate.swift; sourceTree = "<group>"; };
 		6A82A07D1D24332A00F81A1B /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		6ADE14651D25C8E800BCC158 /* BlankSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlankSocket.swift; sourceTree = "<group>"; };
@@ -81,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66837D991D25E4A900F85410 /* CocoaAsyncSocket.framework in Frameworks */,
 				66A75B1A1D2346ED001161A3 /* OrangeIRCCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66837D9C1D25E4CB00F85410 /* CocoaAsyncSocket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,15 +106,43 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66837DA01D25E51100F85410 /* CocoaAsyncSocket.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66837D9B1D25E4B800F85410 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66837D9D1D25E4F600F85410 /* iOS */,
+				66837D9E1D25E4FC00F85410 /* macOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		66837D9D1D25E4F600F85410 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		66837D9E1D25E4FC00F85410 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				66837D9F1D25E51100F85410 /* CocoaAsyncSocket.framework */,
+			);
+			name = macOS;
+			sourceTree = "<group>";
+		};
 		66A75AF01D234628001161A3 = {
 			isa = PBXGroup;
 			children = (
+				66837DA11D25E59900F85410 /* .gitignore */,
+				66837D9B1D25E4B800F85410 /* Frameworks */,
 				66A75AFD1D234694001161A3 /* OrangeIRC iOS */,
 				66A75B141D2346ED001161A3 /* OrangeIRC Core */,
 				66A75AFC1D234694001161A3 /* Products */,
@@ -138,13 +176,13 @@
 		66A75B141D2346ED001161A3 /* OrangeIRC Core */ = {
 			isa = PBXGroup;
 			children = (
+				66837D921D25E19000F85410 /* GCDAsyncSocket.h */,
+				66837D931D25E19000F85410 /* GCDAsyncSocket.m */,
 				66A75B151D2346ED001161A3 /* OrangeIRCCore.h */,
 				66A75B171D2346ED001161A3 /* Info.plist */,
 				66A75B2E1D23483C001161A3 /* Event.swift */,
 				66A75B351D234885001161A3 /* Server.swift */,
 				66A75B3E1D23496C001161A3 /* ServerDelegate.swift */,
-				66A75B381D23488B001161A3 /* Socket.swift */,
-				66A75B3B1D234964001161A3 /* SocketDelegate.swift */,
 				6A82A07D1D24332A00F81A1B /* Commands.swift */,
 			);
 			path = "OrangeIRC Core";
@@ -158,6 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A75B161D2346ED001161A3 /* OrangeIRCCore.h in Headers */,
+				66837D941D25E19000F85410 /* GCDAsyncSocket.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A75B2D1D23475C001161A3 /* OrangeIRCCore.h in Headers */,
+				66837D951D25E19000F85410 /* GCDAsyncSocket.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,10 +362,9 @@
 			files = (
 				66A75B3F1D23496C001161A3 /* ServerDelegate.swift in Sources */,
 				6A82A07E1D24332A00F81A1B /* Commands.swift in Sources */,
-				66A75B391D23488B001161A3 /* Socket.swift in Sources */,
 				66A75B331D23486E001161A3 /* Event.swift in Sources */,
 				66A75B361D234885001161A3 /* Server.swift in Sources */,
-				66A75B3C1D234964001161A3 /* SocketDelegate.swift in Sources */,
+				66837D961D25E19000F85410 /* GCDAsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,10 +374,9 @@
 			files = (
 				66A75B401D23496C001161A3 /* ServerDelegate.swift in Sources */,
 				6A82A07F1D24332A00F81A1B /* Commands.swift in Sources */,
-				66A75B3A1D23488B001161A3 /* Socket.swift in Sources */,
 				66A75B341D23486F001161A3 /* Event.swift in Sources */,
 				66A75B371D234885001161A3 /* Server.swift in Sources */,
-				66A75B3D1D234964001161A3 /* SocketDelegate.swift in Sources */,
+				66837D971D25E19000F85410 /* GCDAsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +448,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -465,6 +507,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -516,6 +562,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -578,6 +628,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -634,6 +688,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -697,6 +755,10 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
