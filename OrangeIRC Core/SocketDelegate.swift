@@ -15,6 +15,8 @@ public protocol SocketDelegate {
     func connectionFailed(socket: Socket)
     func connectionEnded(socket: Socket)
     
+    func canWriteBytes(socket: Socket)
+    
     func read(bytes: Data, on socket: Socket)
     
 }

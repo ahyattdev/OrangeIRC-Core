@@ -38,11 +38,13 @@ public class Server: NSObject, SocketDelegate {
     public func connect() {
         DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosBackground).async(execute: {
             self.socket = Socket(host: self.host, port: self.port, delegate: self)
+            self.socket?.connect()
         })
     }
     
     public func disconnect() {
         write(string: Commands.QUIT)
+        self.socket?.stop()
     }
     
     func write(string: String) {
@@ -56,7 +58,14 @@ public class Server: NSObject, SocketDelegate {
     }
     
     public func connectionSucceeded(socket: Socket) {
-        
+
+    }
+    
+    public func canWriteBytes(socket: Socket) {
+        // Send the NICK message
+        if socket == self.socket {
+            self.write(string: "\(Commands.NICK) \(self.nickname)")
+        }
     }
     
     public func connectionFailed(socket: Socket) {
@@ -68,19 +77,16 @@ public class Server: NSObject, SocketDelegate {
     }
     
     public func read(bytes: Data, on socket: Socket) {
-        guard let string = String(bytes: bytes, encoding: self.encoding) else {
-            print("String decoding error")
-            return
-        }
+        let string = String(bytes: bytes, encoding: self.encoding)
         print(string)
     }
     
-    public func isConnected() -> Bool {
-        if (self.socket != nil) {
-            return (self.socket?.isOpen)!
-        } else {
-            return false
-        }
-    }
+//    public func isConnected() -> Bool {
+//        if (self.socket != nil) {
+//            return (self.socket?.isOpen)!
+//        } else {
+//            return false
+//        }
+//    }
     
 }

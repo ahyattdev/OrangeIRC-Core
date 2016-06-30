@@ -10,5 +10,6 @@ import Foundation
 
 public struct Commands {
     
+    static let NICK = "NICK"
     static let QUIT = "QUIT"
 }

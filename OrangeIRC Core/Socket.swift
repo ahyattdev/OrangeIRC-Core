@@ -17,6 +17,7 @@ public class Socket: NSObject, StreamDelegate {
     var delegate: SocketDelegate
     
     var isOpen = false
+    var firstWrite = false
     
     var timeoutTimer: Timer?
     
@@ -36,7 +37,9 @@ public class Socket: NSObject, StreamDelegate {
         
         inputStream.delegate = self
         outputStream.delegate = self
-        
+    }
+    
+    public func connect() {
         inputStream.schedule(in: .current(), forMode: .defaultRunLoopMode)
         outputStream.schedule(in: .current(), forMode: .defaultRunLoopMode)
         inputStream.open()
@@ -60,6 +63,8 @@ public class Socket: NSObject, StreamDelegate {
             }
         }
         isOpen = false
+        
+        CFRunLoopStop(RunLoop.current().getCFRunLoop())
     }
     
     public func checkTimeout() {
@@ -67,9 +72,8 @@ public class Socket: NSObject, StreamDelegate {
             delegate.couldNotConnect(socket: self)
         }
     }
-    
+
     public func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
-        print("\n\n\n\n\nJUST\n\n\n\n\n\n")
         switch eventCode {
         case Stream.Event.openCompleted:
             print("Open completed")
@@ -77,35 +81,44 @@ public class Socket: NSObject, StreamDelegate {
             self.isOpen = true
             delegate.connectionSucceeded(socket: self)
         case Stream.Event.hasBytesAvailable:
-            print("Has bytes available")
+            //print("Has bytes available")
             if aStream == self.inputStream {
                 var buff = [UInt8]()
                 self.inputStream.read(&buff, maxLength: 1024)
-                delegate.read(bytes: Data(bytes: buff), on: self)
-            }
-        case Stream.Event.hasSpaceAvailable:
-            print("has space available")
-            if aStream == self.outputStream {
-                while self.outputStream.hasSpaceAvailable && dataToWrite.count > 0 {
-                    let data: NSData = dataToWrite.first!
-                    self.outputStream.write(UnsafePointer<UInt8>(data.bytes), maxLength: data.length)
-                    dataToWrite.removeFirst()
+                if buff.count > 0 {
+                    delegate.read(bytes: Data(bytes: buff), on: self)
                 }
             }
+        case Stream.Event.hasSpaceAvailable:
+            if aStream == self.outputStream && !self.firstWrite {
+                delegate.canWriteBytes(socket: self)
+                self.firstWrite = true
+            }
+            
+            //print("has space available")
+//            if aStream == self.outputStream {
+//                while self.outputStream.hasSpaceAvailable && dataToWrite.count > 0 {
+//                    let data: NSData = dataToWrite.first!
+//                    self.outputStream.write(UnsafePointer<UInt8>(data.bytes), maxLength: data.length)
+//                    dataToWrite.removeFirst()
+//                }
+//            }
         case Stream.Event.errorOccurred:
-            print("error occurred")
+           // print("error occurred")
             stop()
             delegate.connectionFailed(socket: self)
         case Stream.Event.endEncountered:
-            print("end encountered")
+            //print("end encountered")
             stop()
             delegate.connectionEnded(socket: self)
-        default:
-            print("Could not handle stream event")
+        default: break
         }
     }
     
     public func write(bytes: Data) {
-        dataToWrite.append(bytes)
+        //dataToWrite.append(bytes)
+        let nsData: NSData = bytes
+        self.outputStream.write(UnsafePointer<UInt8>(nsData.bytes), maxLength: nsData.length)
     }
+    
 }
