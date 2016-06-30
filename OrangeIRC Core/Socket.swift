@@ -25,33 +25,41 @@ public class Socket: NSObject, StreamDelegate {
     public init(host: String, port: Int, delegate: SocketDelegate) {
         self.delegate = delegate
         
-        var readStream: Unmanaged<CFReadStream>?
-        var writeStream: Unmanaged<CFWriteStream>?
+        var input: InputStream?
+        var output: NSOutputStream?
+        Stream.getStreamsToHost(withName: host, port: port, inputStream: &input, outputStream: &output)
         
-        CFStreamCreatePairWithSocketToHost(kCFAllocatorDefault, host, UInt32(port), &readStream, &writeStream)
-        
-        inputStream = readStream!.takeUnretainedValue()
-        outputStream = writeStream!.takeUnretainedValue()
+        inputStream = input!
+        outputStream = output!
         
         super.init()
         
-        
-        
         inputStream.delegate = self
         outputStream.delegate = self
-    }
-    
-    public func start() {
-        inputStream.schedule(in: .main(), forMode: .defaultRunLoopMode)
-        outputStream.schedule(in: .main(), forMode: .defaultRunLoopMode)
         
+        inputStream.schedule(in: .current(), forMode: .defaultRunLoopMode)
+        outputStream.schedule(in: .current(), forMode: .defaultRunLoopMode)
         inputStream.open()
         outputStream.open()
-        
         timeoutTimer = Timer(timeInterval: 30, target: self, selector: #selector(checkTimeout), userInfo: nil, repeats: false)
+        RunLoop.current().add(timeoutTimer!, forMode: .defaultRunLoopMode)
         
-        //self.performSelector(inBackground: #selector(RunLoop.run as (RunLoop) -> () -> Void), with: RunLoop.main())
-        
+        RunLoop.current().run()
+    }
+    
+    public func stop() {
+        inputStream.close()
+        outputStream.close()
+        inputStream.remove(from: .current(), forMode: .defaultRunLoopMode)
+        outputStream.remove(from: .current(), forMode: .defaultRunLoopMode)
+        inputStream.delegate = nil
+        outputStream.delegate = nil
+        if self.timeoutTimer != nil {
+            if self.timeoutTimer!.isValid {
+                self.timeoutTimer!.invalidate()
+            }
+        }
+        isOpen = false
     }
     
     public func checkTimeout() {
@@ -60,8 +68,8 @@ public class Socket: NSObject, StreamDelegate {
         }
     }
     
-    public func stream(aStream: Stream, eventCode: Stream.Event) {
-        
+    public func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        print("\n\n\n\n\nJUST\n\n\n\n\n\n")
         switch eventCode {
         case Stream.Event.openCompleted:
             print("Open completed")
@@ -72,8 +80,7 @@ public class Socket: NSObject, StreamDelegate {
             print("Has bytes available")
             if aStream == self.inputStream {
                 var buff = [UInt8]()
-                // The maximum message length is 512, according to RFC 2812
-                self.inputStream.read(&buff, maxLength: 512)
+                self.inputStream.read(&buff, maxLength: 1024)
                 delegate.read(bytes: Data(bytes: buff), on: self)
             }
         case Stream.Event.hasSpaceAvailable:
@@ -87,12 +94,12 @@ public class Socket: NSObject, StreamDelegate {
             }
         case Stream.Event.errorOccurred:
             print("error occurred")
-            timeoutTimer?.invalidate()
-            delegate.connectionEnded(socket: self)
+            stop()
+            delegate.connectionFailed(socket: self)
         case Stream.Event.endEncountered:
             print("end encountered")
-            aStream.remove(from: .main(), forMode: .defaultRunLoopMode)
-            isOpen = false
+            stop()
+            delegate.connectionEnded(socket: self)
         default:
             print("Could not handle stream event")
         }

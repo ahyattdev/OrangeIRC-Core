@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Server: AnyObject, SocketDelegate {
+public class Server: NSObject, SocketDelegate {
     
     var socket: Socket?
     
@@ -32,8 +32,9 @@ public class Server: AnyObject, SocketDelegate {
     }
     
     public func connect() {
-        self.socket = Socket(host: self.host, port: self.port, delegate: self)
-        socket?.start()
+        DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosBackground).async(execute: {
+            self.socket = Socket(host: self.host, port: self.port, delegate: self)
+        })
     }
     
     public func disconnect() {
