@@ -23,7 +23,25 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func connectedSucessfully(server: Server) {
+        
+    }
+    
+    func identifiedSucessfully(server: Server) {
+       
+    }
+    
+    func authenticatedSucessfully(server: Server) {
+        
+    }
+    
+    func didNotRespond(server: Server) {
+        
+    }
+    
+    func stoppedResponding(server: Server) {
+        
+    }
 
 }
-

@@ -10,6 +10,8 @@ import Foundation
 
 public class Server: NSObject, SocketDelegate {
     
+    var delegate: ServerDelegate?
+    
     var socket: Socket?
     
     var host: String
@@ -21,6 +23,8 @@ public class Server: NSObject, SocketDelegate {
     var realname: String
     
     var encoding: String.Encoding
+    
+    var partialMessage: String?
     
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
         self.host = host
@@ -48,7 +52,7 @@ public class Server: NSObject, SocketDelegate {
     }
     
     public func couldNotConnect(socket: Socket) {
-        
+        self.delegate?.didNotRespond(server: self)
     }
     
     public func connectionSucceeded(socket: Socket) {
@@ -56,7 +60,7 @@ public class Server: NSObject, SocketDelegate {
     }
     
     public func connectionFailed(socket: Socket) {
-        
+        self.delegate?.stoppedResponding(server: self)
     }
     
     public func connectionEnded(socket: Socket) {
@@ -64,7 +68,10 @@ public class Server: NSObject, SocketDelegate {
     }
     
     public func read(bytes: Data, on socket: Socket) {
-        let string = String(bytes: bytes, encoding: self.encoding)
+        guard let string = String(bytes: bytes, encoding: self.encoding) else {
+            print("String decoding error")
+            return
+        }
         print(string)
     }
     
