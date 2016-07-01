@@ -15,10 +15,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //let server = Server(host: "irc.freenode.net", port: 6667, nickname: "kahsdfasfyfd", username: "kahsdfasfyfd", realname: "kahsdfasfyfd", encoding: String.Encoding.utf8)
-        //server.connect()
-        
-        _ = BlankSocket(host: "irc.freenode.net", port: 6667)
+        let server = Server(host: "irc.freenode.net", port: 6667, nickname: "kahsdfasfyfd", username: "kahsdfasfyfd", realname: "kahsdfasfyfd", encoding: String.Encoding.utf8)
+        server.connect()
     }
 
     override func didReceiveMemoryWarning() {
