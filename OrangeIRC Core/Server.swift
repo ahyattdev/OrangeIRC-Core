@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import CocoaAsyncSocket
 
-public class Server: NSObject, SocketDelegate {
+let TIMEOUT = TimeInterval(30)
+
+public class Server: AnyObject, GCDAsyncSocketDelegate {
     
     var delegate: ServerDelegate?
     
-    var socket: Socket?
+    var socket: GCDAsyncSocket?
     
     var host: String
     
@@ -36,22 +39,19 @@ public class Server: NSObject, SocketDelegate {
     }
     
     public func connect() {
-        
-        DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosBackground).async(execute: {
-            self.socket = Socket(host: self.host, port: self.port, delegate: self)
-            self.socket?.connect()
-        })
+        self.socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
     }
     
     public func disconnect() {
         write(string: Commands.QUIT)
-        self.socket?.stop()
+        self.socket?.delegate = nil
+        self.socket = nil
     }
     
     func write(string: String) {
         var appendedString = "\(string)\n\r"
         let bytes = [UInt8](appendedString.utf8)
-        self.socket?.write(bytes: Data(bytes: bytes))
+        self .socket?.write(Data(bytes: bytes), withTimeout: TIMEOUT, tag: 0)
     }
     
     public func couldNotConnect(socket: Socket) {

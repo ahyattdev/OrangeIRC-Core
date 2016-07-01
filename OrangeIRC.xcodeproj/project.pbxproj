@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		66837D941D25E19000F85410 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 66837D921D25E19000F85410 /* GCDAsyncSocket.h */; };
-		66837D951D25E19000F85410 /* GCDAsyncSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = 66837D921D25E19000F85410 /* GCDAsyncSocket.h */; };
-		66837D961D25E19000F85410 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 66837D931D25E19000F85410 /* GCDAsyncSocket.m */; };
-		66837D971D25E19000F85410 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 66837D931D25E19000F85410 /* GCDAsyncSocket.m */; };
 		66837D991D25E4A900F85410 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
 		66837D9A1D25E4A900F85410 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		66837D9C1D25E4CB00F85410 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
@@ -61,8 +57,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		66837D921D25E19000F85410 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GCDAsyncSocket.h; path = ../../../Downloads/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.h; sourceTree = "<group>"; };
-		66837D931D25E19000F85410 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GCDAsyncSocket.m; path = ../../../Downloads/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.m; sourceTree = "<group>"; };
 		66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		66837D9F1D25E51100F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/Mac/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		66837DA11D25E59900F85410 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -176,8 +170,6 @@
 		66A75B141D2346ED001161A3 /* OrangeIRC Core */ = {
 			isa = PBXGroup;
 			children = (
-				66837D921D25E19000F85410 /* GCDAsyncSocket.h */,
-				66837D931D25E19000F85410 /* GCDAsyncSocket.m */,
 				66A75B151D2346ED001161A3 /* OrangeIRCCore.h */,
 				66A75B171D2346ED001161A3 /* Info.plist */,
 				66A75B2E1D23483C001161A3 /* Event.swift */,
@@ -196,7 +188,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A75B161D2346ED001161A3 /* OrangeIRCCore.h in Headers */,
-				66837D941D25E19000F85410 /* GCDAsyncSocket.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +196,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A75B2D1D23475C001161A3 /* OrangeIRCCore.h in Headers */,
-				66837D951D25E19000F85410 /* GCDAsyncSocket.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +354,6 @@
 				6A82A07E1D24332A00F81A1B /* Commands.swift in Sources */,
 				66A75B331D23486E001161A3 /* Event.swift in Sources */,
 				66A75B361D234885001161A3 /* Server.swift in Sources */,
-				66837D961D25E19000F85410 /* GCDAsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +365,6 @@
 				6A82A07F1D24332A00F81A1B /* Commands.swift in Sources */,
 				66A75B341D23486F001161A3 /* Event.swift in Sources */,
 				66A75B371D234885001161A3 /* Server.swift in Sources */,
-				66837D971D25E19000F85410 /* GCDAsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
