@@ -12,11 +12,11 @@ import CocoaAsyncSocket
 let TIMEOUT_CONNECT = TimeInterval(30)
 let TIMEOUT_NONE = TimeInterval(-1)
 
-public class Server: AnyObject, GCDAsyncSocketDelegate {
+public class Server: AnyObject, AsyncSocketDelegate {
     
     var delegate: ServerDelegate?
     
-    var socket: GCDAsyncSocket?
+    var socket: AsyncSocket?
     
     var host: String
     
@@ -48,7 +48,7 @@ public class Server: AnyObject, GCDAsyncSocketDelegate {
     }
     
     public func connect() {
-        self.socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
+        self.socket = AsyncSocket(delegate: self)
         do {
             try self.socket?.connect(toHost: self.host, onPort: UInt16(self.port), withTimeout: TIMEOUT_CONNECT)
         } catch {
@@ -56,7 +56,7 @@ public class Server: AnyObject, GCDAsyncSocketDelegate {
         }
     }
     
-    public func socket(_ sock: GCDAsyncSocket!, didConnectToHost host: String!, port: UInt16) {
+    public func onSocket(_ sock: AsyncSocket!, didConnectToHost host: String!, port: UInt16) {
         // Send the NICK message
         if sock == self.socket {
             if self.password.isEmpty {
@@ -67,7 +67,7 @@ public class Server: AnyObject, GCDAsyncSocketDelegate {
         }
     }
     
-    public func socket(_ sock: GCDAsyncSocket!, didWriteDataWithTag tag: Int) {
+    public func onSocket(_ sock: AsyncSocket!, didWriteDataWithTag tag: Int) {
         switch tag {
         case Tag.Pass:
             self.sendNickMessage()
@@ -78,7 +78,7 @@ public class Server: AnyObject, GCDAsyncSocketDelegate {
         }
     }
     
-    public func socket(_ sock: GCDAsyncSocket!, didRead data: Data!, withTag tag: Int) {
+    public func onSocket(_ sock: AsyncSocket!, didRead data: Data!, withTag tag: Int) {
         let string = String(bytes: data, encoding: self.encoding)
         print(string)
     }
@@ -97,7 +97,6 @@ public class Server: AnyObject, GCDAsyncSocketDelegate {
     
     public func disconnect() {
         write(string: Commands.QUIT)
-        self.socket?.delegate = nil
         self.socket = nil
     }
     
