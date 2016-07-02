@@ -11,6 +11,7 @@ import CocoaAsyncSocket
 
 let TIMEOUT_CONNECT = TimeInterval(30)
 let TIMEOUT_NONE = TimeInterval(-1)
+let CRLF = "\r\n"
 
 public class Server: AnyObject, AsyncSocketDelegate {
     
@@ -57,6 +58,8 @@ public class Server: AnyObject, AsyncSocketDelegate {
     }
     
     public func onSocket(_ sock: AsyncSocket!, didConnectToHost host: String!, port: UInt16) {
+        socket?.readData(to: AsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
+        print("Connected to host: \(host)")
         // Send the NICK message
         if sock == self.socket {
             if self.password.isEmpty {
@@ -69,6 +72,8 @@ public class Server: AnyObject, AsyncSocketDelegate {
     
     public func onSocket(_ sock: AsyncSocket!, didWriteDataWithTag tag: Int) {
         switch tag {
+        case Tag.Normal:
+            break
         case Tag.Pass:
             self.sendNickMessage()
         case Tag.Nick:
@@ -79,19 +84,26 @@ public class Server: AnyObject, AsyncSocketDelegate {
     }
     
     public func onSocket(_ sock: AsyncSocket!, didRead data: Data!, withTag tag: Int) {
-        let string = String(bytes: data, encoding: self.encoding)
-        print(string)
+        let strData = data.subdata(in: (0 ..< data.count))
+        guard let string = String(bytes: strData, encoding: self.encoding) where string.isEmpty == false else {
+            return
+        }
+        print("Read data: \(string)")
+        socket?.readData(to: AsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
     }
     
     func sendPassMessage() {
+        print("Sent PASS message: \(self.host)")
         self.write(string: "\(Commands.PASS) \(self.password)", with: Tag.Pass)
     }
     
     func sendNickMessage() {
+        print("Sent NICK message: \(self.host)")
         self.write(string: "\(Commands.NICK) \(self.nickname)", with: Tag.Nick)
     }
     
     func sendUserMessage() {
+        print("Sent USER message: \(self.host)")
         self.write(string: "\(Commands.USER) \(self.username) \(self.userBitmask) * :\(self.realname)", with: Tag.User)
     }
     
@@ -101,15 +113,15 @@ public class Server: AnyObject, AsyncSocketDelegate {
     }
     
     func write(string: String, with tag: Int) {
-        var appendedString = "\(string)\n\r"
+        var appendedString = "\(string)\(CRLF)"
         let bytes = [UInt8](appendedString.utf8)
         self.socket?.write(Data(bytes: bytes), withTimeout: TIMEOUT_NONE, tag: tag)
     }
     
     func write(string: String) {
-        var appendedString = "\(string)\n\r"
+        var appendedString = "\(string)\(CRLF)"
         let bytes = [UInt8](appendedString.utf8)
-        self.socket?.write(Data(bytes: bytes), withTimeout: TIMEOUT_NONE, tag: Tag.None)
+        self.socket?.write(Data(bytes: bytes), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
     }
     
 }
