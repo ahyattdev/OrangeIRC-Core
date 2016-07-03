@@ -43,12 +43,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		66EDD2FC1D2966AA0013E7CC /* PBXContainerItemProxy */ = {
+		6A7A69F91D29CBE30012D037 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 66A75AF11D234628001161A3 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 66A75B241D234737001161A3;
-			remoteInfo = "OrangeIRC Core (macOS)";
+			remoteGlobalIDString = 66EDD2E01D29621B0013E7CC;
+			remoteInfo = "OrangeIRC Core (iOS)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -235,7 +235,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				66EDD2FD1D2966AA0013E7CC /* PBXTargetDependency */,
+				6A7A69FA1D29CBE30012D037 /* PBXTargetDependency */,
 			);
 			name = "OrangeIRC (iOS)";
 			productName = "OrangeIRC iOS";
@@ -402,10 +402,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		66EDD2FD1D2966AA0013E7CC /* PBXTargetDependency */ = {
+		6A7A69FA1D29CBE30012D037 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 66A75B241D234737001161A3 /* OrangeIRC Core (macOS) */;
-			targetProxy = 66EDD2FC1D2966AA0013E7CC /* PBXContainerItemProxy */;
+			target = 66EDD2E01D29621B0013E7CC /* OrangeIRC Core (iOS) */;
+			targetProxy = 6A7A69F91D29CBE30012D037 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
