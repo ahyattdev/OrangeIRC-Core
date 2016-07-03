@@ -15,7 +15,9 @@ let CRLF = "\r\n"
 
 public class Server: AnyObject, AsyncSocketDelegate {
     
-    var logs = [String : [LogEvent]]()
+    public var log = [String]()
+    
+    public var rooms = [Room]()
     
     public var delegate: ServerDelegate?
     
@@ -94,6 +96,7 @@ public class Server: AnyObject, AsyncSocketDelegate {
         }
         
         do {
+            self.log += string
             let message = try Message(string)
             handle(message: message)
         } catch {

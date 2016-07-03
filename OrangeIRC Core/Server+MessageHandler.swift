@@ -20,8 +20,8 @@ extension Server {
             self.isRegistered = true
         case Command.NOTICE:
             self.delegate?.recieved(notice: message.parameters!, server: self)
-        case Command.PONG:
-            self.write(string: "\(Command.PING) :\(message.parameters!)")
+        case Command.PING:
+            self.write(string: "\(Command.PONG) :\(message.parameters!)")
         default:
             print("Unimplemented command handle: \(message.command)")
         }

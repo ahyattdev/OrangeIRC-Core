@@ -19,4 +19,9 @@ public protocol ServerDelegate {
     
     func recieved(notice: String, server: Server)
     
+    func finishedReadingUserList(room: Room)
+    func recievedTopic(room: Room)
+    
+    func joined(room: Room)
+    
 }

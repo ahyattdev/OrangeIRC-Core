@@ -38,7 +38,7 @@ class ViewController: UIViewController, ServerDelegate {
     }
     
     func didRegister(server: Server) {
-        server.join(channel: "#swift-lang")
+        server.join(channel: "#minecraft")
     }
     
     func recieved(notice: String, server: Server) {
