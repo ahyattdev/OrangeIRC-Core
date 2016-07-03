@@ -9,13 +9,14 @@
 import UIKit
 import OrangeIRCCore
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ServerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         let server = Server(host: "irc.freenode.net", port: 6667, nickname: "kahsdfasfyfd", username: "kahsdfasfyfd", realname: "kahsdfasfyfd", encoding: String.Encoding.utf8)
+        server.delegate = self
         server.connect()
     }
 
@@ -24,23 +25,23 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func connectedSucessfully(server: Server) {
-        
-    }
-    
-    func identifiedSucessfully(server: Server) {
-       
-    }
-    
-    func authenticatedSucessfully(server: Server) {
-        
-    }
-    
     func didNotRespond(server: Server) {
         
     }
     
     func stoppedResponding(server: Server) {
+        
+    }
+    
+    func connectedSucessfully(server: Server) {
+        
+    }
+    
+    func didRegister(server: Server) {
+        server.join(channel: "#swift-lang")
+    }
+    
+    func recieved(notice: String, server: Server) {
         
     }
 

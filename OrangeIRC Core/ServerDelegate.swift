@@ -14,8 +14,6 @@ public protocol ServerDelegate {
     func stoppedResponding(server: Server)
     
     func connectedSucessfully(server: Server)
-    func identifiedSucessfully(server: Server)
-    func authenticatedSucessfully(server: Server)
     
     func didRegister(server: Server)
     

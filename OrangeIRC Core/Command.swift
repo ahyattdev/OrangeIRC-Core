@@ -10,9 +10,12 @@ import Foundation
 
 public struct Command {
     
+    static let JOIN = "JOIN"
     static let NICK = "NICK"
+    static let PART = "PART"
     static let PASS = "PASS"
     static let PING = "PING"
+    static let PONG = "PONG"
     static let QUIT = "QUIT"
     static let USER = "USER"
     
