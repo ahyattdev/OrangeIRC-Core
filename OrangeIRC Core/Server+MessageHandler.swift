@@ -15,8 +15,13 @@ extension Server {
         print(message.message)
         
         switch message.command {
+        case Command.Reply.WELCOME:
+            self.delegate?.didRegister(server: self)
+            self.isRegistered = true
         case Command.NOTICE:
-            self.delegate?.recieved(notice: message.parameters, server: self)
+            self.delegate?.recieved(notice: message.parameters!, server: self)
+        case Command.PING:
+            self.write(string: "\(Command.PING) :\(message.parameters!)")
         default:
             print("Unimplemented command handle: \(message.command)")
         }

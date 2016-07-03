@@ -13,6 +13,8 @@ let SLASH = "/"
 let COLON = ":"
 let EXCLAMATION_MARK = "!"
 let AT_SYMBOL = "@"
+let CARRIAGE_RETURN = "\r\n"
+let EMPTY = ""
 
 struct Message {
     
@@ -30,28 +32,9 @@ struct Message {
         var host: String?
         
         init(_ string: String) throws {
-            prefix = string
-            if prefix[prefix.startIndex] == Character(COLON) {
-                prefix.remove(at: prefix.startIndex)
-            } else {
-                throw MessageParseError.InvalidPrefix
-            }
-            if prefix.contains(EXCLAMATION_MARK) && prefix.contains(AT_SYMBOL) {
-                // Full version of the prefix
-                
-                // TODO: Parse the full prefix
-            } else {
-                // Server name version only
-                servername = prefix
-            }
-//            let slashComponents = string.components(separatedBy: SLASH)
-//            let colonComponents = slashComponents[1].components(separatedBy: COLON)
-//            let exclamComponents = colonComponents[1].components(separatedBy: EXCLAMATION_MARK)
-//            let atComponents = exclamComponents[1].components(separatedBy: AT_SYMBOL)
-//            servername = slashComponents[0]
-//            nickname = colonComponents[0]
-//            user = exclamComponents[0]
-//            host = atComponents[1]
+            self.prefix = string
+            
+            // TODO: Finish parsing the prefix
         }
         
     }
@@ -59,46 +42,41 @@ struct Message {
     var message: String
     var prefix: Prefix?
     var command: String
-    var target: String?
-    var parameters: String
+    var target: [String]
+    var parameters: String?
     
     init(_ string: String) throws {
-        message = string.replacingOccurrences(of: "\r\n", with: "")
-        let components = message.components(separatedBy: SPACE)
-        if components.count < 2 {
-            throw MessageParseError.InvalidMessage
+        
+        var trimmedString = string.replacingOccurrences(of: CARRIAGE_RETURN, with: EMPTY)
+        
+        self.message = trimmedString
+        
+        if trimmedString[trimmedString.startIndex] == Character(COLON) {
+            // There is a prefix, and we must handle and trim it
+            let indexAfterColon = trimmedString.index(after: trimmedString.startIndex)
+            let indexOfSpace = trimmedString.range(of: SPACE)!.lowerBound
+            let prefixString = trimmedString[indexAfterColon ..< indexOfSpace]
+            self.prefix = try Prefix(prefixString)
+            // Trim off the prefix
+            trimmedString = trimmedString.substring(from: trimmedString.index(after: indexOfSpace))
         }
         
-        try prefix = Prefix(components[0])
-        command = components[1]
-        
-        var cutString = message
-        cutString.remove(at: string.startIndex)
-        
-        //if cutString.contains(COLON) {
+        if let colonSpaceRange = trimmedString.range(of: " :") {
             // There are parameters
-        //} else {
-            // There are no parameters
-        //}
-        
-        let colonComponents = cutString.components(separatedBy: COLON)
-        let prefixAndCommand = colonComponents[0].components(separatedBy: " ")
-        if prefixAndCommand.count == 3 {
-            // Just prefix and command
-            command = prefixAndCommand[1]
-        } else if prefixAndCommand.count == 4 {
-            // Prefix, command, and target
-            command = prefixAndCommand[1]
-            target = prefixAndCommand[2]
+            let commandAndTargetString = trimmedString[trimmedString.startIndex ..< colonSpaceRange.lowerBound]
+            // Space seperated array
+            var commandAndTargetComponents = commandAndTargetString.components(separatedBy: " ")
+            self.command = commandAndTargetComponents.remove(at: 0)
+            self.target = commandAndTargetComponents
+            
+            let parametersStart = trimmedString.index(after: colonSpaceRange.upperBound)
+            self.parameters = trimmedString[parametersStart ..< trimmedString.endIndex]
         } else {
-            throw MessageParseError.InvalidMessage
+            // There are no parameters
+            var spaceSeperatedArray = trimmedString.components(separatedBy: " ")
+            self.command = spaceSeperatedArray.remove(at: 0)
+            self.target = spaceSeperatedArray
         }
-        
-        let parameterStartIndex = message.range(of: colonComponents[0])?.upperBound
-        parameters = string.substring(from: parameterStartIndex!)
-        
-        // Remove the colon
-        parameters.remove(at: parameters.startIndex)
     }
     
 }

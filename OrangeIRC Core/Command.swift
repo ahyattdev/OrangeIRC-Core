@@ -12,9 +12,18 @@ public struct Command {
     
     static let NICK = "NICK"
     static let PASS = "PASS"
+    static let PING = "PING"
     static let QUIT = "QUIT"
     static let USER = "USER"
     
     static let NOTICE = "NOTICE"
+    
+    struct Reply {
+        
+        static let WELCOME = "001"
+        static let YOURHOST = "002"
+        static let CREATED = "003"
+        static let MYINFO = "004"
+    }
     
 }

@@ -34,6 +34,8 @@ public class Server: AnyObject, AsyncSocketDelegate {
     
     var partialMessage: String?
     
+    var isRegistered = false
+    
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
         self.host = host
         self.port = port
