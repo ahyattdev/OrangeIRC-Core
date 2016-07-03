@@ -17,4 +17,8 @@ public protocol ServerDelegate {
     func identifiedSucessfully(server: Server)
     func authenticatedSucessfully(server: Server)
     
+    func didRegister(server: Server)
+    
+    func recieved(notice: String, server: Server)
+    
 }

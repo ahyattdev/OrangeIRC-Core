@@ -8,6 +8,6 @@
 
 import Foundation
 
-public class Event {
+public class LogEvent {
     
 }

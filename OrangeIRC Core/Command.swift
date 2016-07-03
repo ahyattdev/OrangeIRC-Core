@@ -8,11 +8,13 @@
 
 import Foundation
 
-public struct Commands {
+public struct Command {
     
     static let NICK = "NICK"
     static let PASS = "PASS"
     static let QUIT = "QUIT"
     static let USER = "USER"
+    
+    static let NOTICE = "NOTICE"
     
 }

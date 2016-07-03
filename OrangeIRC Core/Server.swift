@@ -88,27 +88,33 @@ public class Server: AnyObject, AsyncSocketDelegate {
         guard let string = String(bytes: strData, encoding: self.encoding) where string.isEmpty == false else {
             return
         }
-        print("Read data: \(string)")
-        socket?.readData(to: AsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
+        
+        do {
+            let message = try Message(string)
+            handle(message: message)
+        } catch {
+            print("Failed to parse message: \(string)")
+            socket?.readData(to: AsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
+        }
     }
     
     func sendPassMessage() {
         print("Sent PASS message: \(self.host)")
-        self.write(string: "\(Commands.PASS) \(self.password)", with: Tag.Pass)
+        self.write(string: "\(Command.PASS) \(self.password)", with: Tag.Pass)
     }
     
     func sendNickMessage() {
         print("Sent NICK message: \(self.host)")
-        self.write(string: "\(Commands.NICK) \(self.nickname)", with: Tag.Nick)
+        self.write(string: "\(Command.NICK) \(self.nickname)", with: Tag.Nick)
     }
     
     func sendUserMessage() {
         print("Sent USER message: \(self.host)")
-        self.write(string: "\(Commands.USER) \(self.username) \(self.userBitmask) * :\(self.realname)", with: Tag.User)
+        self.write(string: "\(Command.USER) \(self.username) \(self.userBitmask) * :\(self.realname)", with: Tag.User)
     }
     
     public func disconnect() {
-        write(string: Commands.QUIT)
+        write(string: Command.QUIT)
         self.socket = nil
     }
     
