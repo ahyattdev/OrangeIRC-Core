@@ -130,6 +130,7 @@
                         <segue destination="h9Y-T9-39m" kind="popoverPresentation" identifier="ShowServers" popoverAnchorBarButtonItem="tV9-zA-Zp7" id="N0c-Fd-LBV">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
+                        <segue destination="lSf-D0-cuT" kind="showDetail" identifier="ShowDetail" id="AV0-CG-Trw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5G-4n-562" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -184,4 +185,7 @@
             <point key="canvasLocation" x="469" y="-1117"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="3GH-94-qka"/>
+    </inferredMetricsTieBreakers>
 </document>
