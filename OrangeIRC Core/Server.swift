@@ -96,7 +96,7 @@ public class Server: AnyObject, AsyncSocketDelegate {
         }
         
         do {
-            self.log += string
+            self.log.append(string)
             let message = try Message(string)
             handle(message: message)
         } catch {
