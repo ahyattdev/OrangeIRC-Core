@@ -7,8 +7,11 @@
 //
 
 import UIKit
+@IBDesignable
 
 class TextFieldCell : UITableViewCell {
     
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var textField: UITextField!
     
 }
