@@ -10,10 +10,14 @@ import UIKit
 
 class ServersViewController : UITableViewController {
     
+    let ADD_SERVER_SEGUE_IDENTIFIER = "AddServer"
+    
     let servers = (UIApplication.shared().delegate as! AppDelegate).servers
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default().addObserver(self.tableView, selector: #selector(self.tableView.beginUpdates), name: Notifications.ServerDataDidChange, object: nil)
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -25,11 +29,12 @@ class ServersViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         return super.tableView(tableView, cellForRowAt: indexPath)
     }
     
     @IBAction func addServerButton(_ sender: AnyObject) {
-        print("jej")
+        self.performSegue(withIdentifier: ADD_SERVER_SEGUE_IDENTIFIER, sender: nil)
     }
     
     @IBAction func cancelButton(_ sender: AnyObject) {

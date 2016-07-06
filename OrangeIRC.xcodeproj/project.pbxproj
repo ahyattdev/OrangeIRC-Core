@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		661AF5021D2C809E00CFC190 /* AddServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5011D2C809E00CFC190 /* AddServerViewController.swift */; };
+		661AF5041D2C833700CFC190 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5031D2C833700CFC190 /* Notifications.swift */; };
+		661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5051D2C89E900CFC190 /* TextFieldCell.swift */; };
+		661AF5081D2C89FA00CFC190 /* TextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661AF5071D2C89FA00CFC190 /* TextFieldCell.xib */; };
 		667BB2E91D29C1990029AB2D /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
 		667BB2EA1D29C1990029AB2D /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
 		667BB2EC1D29C2F60029AB2D /* Server+Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Channel.swift */; };
@@ -74,6 +78,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		661AF5011D2C809E00CFC190 /* AddServerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddServerViewController.swift; sourceTree = "<group>"; };
+		661AF5031D2C833700CFC190 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		661AF5051D2C89E900CFC190 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		661AF5071D2C89FA00CFC190 /* TextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextFieldCell.xib; sourceTree = "<group>"; };
 		667BB2E81D29C1990029AB2D /* Server+Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Log.swift"; sourceTree = "<group>"; };
 		667BB2EB1D29C2F60029AB2D /* Server+Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Channel.swift"; sourceTree = "<group>"; };
 		66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
@@ -186,10 +194,14 @@
 				6ADD58DE1D29DB330051DB28 /* RoomsViewController.swift */,
 				6ADD58E21D29E4890051DB28 /* RoomViewController.swift */,
 				6ADD58E01D29DD220051DB28 /* ServersViewController.swift */,
+				661AF5011D2C809E00CFC190 /* AddServerViewController.swift */,
 				66A75B021D234694001161A3 /* Main.storyboard */,
+				661AF5051D2C89E900CFC190 /* TextFieldCell.swift */,
+				661AF5071D2C89FA00CFC190 /* TextFieldCell.xib */,
 				66A75B051D234694001161A3 /* Assets.xcassets */,
 				66A75B071D234694001161A3 /* LaunchScreen.storyboard */,
 				66A75B0A1D234694001161A3 /* Info.plist */,
+				661AF5031D2C833700CFC190 /* Notifications.swift */,
 			);
 			path = "OrangeIRC iOS";
 			sourceTree = "<group>";
@@ -350,6 +362,7 @@
 				66A75B091D234694001161A3 /* LaunchScreen.storyboard in Resources */,
 				66A75B061D234694001161A3 /* Assets.xcassets in Resources */,
 				66A75B041D234694001161A3 /* Main.storyboard in Resources */,
+				661AF5081D2C89FA00CFC190 /* TextFieldCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,9 +387,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				661AF5041D2C833700CFC190 /* Notifications.swift in Sources */,
 				6ADD58DF1D29DB330051DB28 /* RoomsViewController.swift in Sources */,
+				661AF5021D2C809E00CFC190 /* AddServerViewController.swift in Sources */,
 				66A75AFF1D234694001161A3 /* AppDelegate.swift in Sources */,
 				6ADD58E11D29DD220051DB28 /* ServersViewController.swift in Sources */,
+				661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */,
 				6ADD58E31D29E4890051DB28 /* RoomViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

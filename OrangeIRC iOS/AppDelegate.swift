@@ -10,7 +10,7 @@ import UIKit
 import OrangeIRCCore
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
 
     var window: UIWindow?
 
@@ -42,6 +42,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     var servers = [Server]()
+    
+    func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) {
+        let server = Server(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: String.Encoding.utf8)
+        servers.append(server)
+        server.delegate = self
+        server.connect()
+    }
+    
+    func didNotRespond(server: Server) {
+        
+    }
+    
+    func stoppedResponding(server: Server) {
+        
+    }
+    
+    func connectedSucessfully(server: Server) {
+        
+    }
+    
+    func didRegister(server: Server) {
+        
+    }
+    
+    func recieved(notice: String, server: Server) {
+        
+    }
+    
+    func finishedReadingUserList(room: Room) {
+        
+    }
+    
+    func recievedTopic(room: Room) {
+        
+    }
+    
+    func joined(room: Room) {
+        
+    }
     
 }
 
