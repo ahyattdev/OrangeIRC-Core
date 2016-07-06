@@ -50,6 +50,7 @@
 		6ADD58DF1D29DB330051DB28 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58DE1D29DB330051DB28 /* RoomsViewController.swift */; };
 		6ADD58E11D29DD220051DB28 /* ServersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58E01D29DD220051DB28 /* ServersViewController.swift */; };
 		6ADD58E31D29E4890051DB28 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58E21D29E4890051DB28 /* RoomViewController.swift */; };
+		6AF4264C1D2CAD060029250A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6AF4264E1D2CAD060029250A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,14 +103,20 @@
 		66A75B3E1D23496C001161A3 /* ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDelegate.swift; sourceTree = "<group>"; };
 		66EDD2E11D29621B0013E7CC /* OrangeIRCCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OrangeIRCCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EDD2F61D29664E0013E7CC /* OrangeIRCCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrangeIRCCore.h; sourceTree = "<group>"; };
+		6A268E7D1D2CAF14004E017E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6A4BB74D1D25F1500032B5D0 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		6A7A6A011D29CDC60012D037 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6A7A6A041D29D0850012D037 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		6A82A07D1D24332A00F81A1B /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AppDelegate.swift"; sourceTree = "<group>"; };
+		6A8B031D1D2CA8B70002A2C6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		6AA193241D2CAF6E00A66DDE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		6AA193271D2CB08E00A66DDE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		6ADD58DE1D29DB330051DB28 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		6ADD58E01D29DD220051DB28 /* ServersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServersViewController.swift; sourceTree = "<group>"; };
 		6ADD58E21D29E4890051DB28 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
+		6AF4264D1D2CAD060029250A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6AF4264F1D2CAD070029250A /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +176,7 @@
 		66A75AF01D234628001161A3 = {
 			isa = PBXGroup;
 			children = (
+				6AF4264E1D2CAD060029250A /* Localizable.strings */,
 				66837DA11D25E59900F85410 /* .gitignore */,
 				66837D9B1D25E4B800F85410 /* Frameworks */,
 				66A75AFD1D234694001161A3 /* OrangeIRC iOS */,
@@ -341,6 +349,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 66A75AF01D234628001161A3;
 			productRefGroup = 66A75AFC1D234694001161A3 /* Products */;
@@ -360,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66A75B091D234694001161A3 /* LaunchScreen.storyboard in Resources */,
+				6AF4264C1D2CAD060029250A /* Localizable.strings in Resources */,
 				66A75B061D234694001161A3 /* Assets.xcassets in Resources */,
 				66A75B041D234694001161A3 /* Main.storyboard in Resources */,
 			);
@@ -450,6 +460,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				66A75B031D234694001161A3 /* Base */,
+				6A8B031D1D2CA8B70002A2C6 /* es */,
+				6AA193271D2CB08E00A66DDE /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -458,8 +470,20 @@
 			isa = PBXVariantGroup;
 			children = (
 				66A75B081D234694001161A3 /* Base */,
+				6A268E7D1D2CAF14004E017E /* en */,
+				6AA193241D2CAF6E00A66DDE /* es */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6AF4264E1D2CAD060029250A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6AF4264D1D2CAD060029250A /* en */,
+				6AF4264F1D2CAD070029250A /* es */,
+			);
+			name = Localizable.strings;
+			path = Localizations;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -468,12 +492,14 @@
 		66A75AF51D234628001161A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 			};
 			name = Debug;
 		};
 		66A75AF61D234628001161A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 			};
 			name = Release;
 		};

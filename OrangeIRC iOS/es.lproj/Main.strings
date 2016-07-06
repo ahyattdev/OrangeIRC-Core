@@ -1,0 +1,18 @@
+
+/* Class = "UINavigationItem"; title = "ROOM"; ObjectID = "FzZ-UO-VGx"; */
+"FzZ-UO-VGx.title" = "Sala";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "UYe-R4-NGg"; */
+"UYe-R4-NGg.title" = "Cancelar";
+
+/* Class = "UINavigationItem"; title = "ROOMS"; ObjectID = "byI-nt-REB"; */
+"byI-nt-REB.title" = "Salas";
+
+/* Class = "UINavigationItem"; title = "SERVERS"; ObjectID = "dR4-Xq-iZT"; */
+"dR4-Xq-iZT.title" = "Servidores";
+
+/* Class = "UINavigationItem"; title = "ADD_SERVER"; ObjectID = "ieH-o9-Vsd"; */
+"ieH-o9-Vsd.title" = "Añadir un Servidor";
+
+/* Class = "UIBarButtonItem"; title = "SERVERS"; ObjectID = "tV9-zA-Zp7"; */
+"tV9-zA-Zp7.title" = "Servidores";

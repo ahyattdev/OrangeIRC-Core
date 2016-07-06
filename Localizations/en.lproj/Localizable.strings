@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  OrangeIRC
+
+  Created by Andrew Hyatt on 7/5/16.
+
+*/
+
+"HOSTNAME" = "Hostname";
+
+"PORT" = "Port";
+
+"NICKNAME" = "Nickname";
+
+"USERNAME" = "Username";
+
+"REAL_NAME" = "Real Name";
+
+"PASSWORD" = "Password";
+
+"REQUIRED" = "Required";
+
+"OPTIONAL" = "Optional";
+
+"IRC_DOT_EXAMPLE_DOT_COM" = "irc.example.com";
