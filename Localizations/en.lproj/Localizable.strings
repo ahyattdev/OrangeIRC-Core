@@ -23,3 +23,7 @@
 "OPTIONAL" = "Optional";
 
 "IRC_DOT_EXAMPLE_DOT_COM" = "irc.example.com";
+
+CONNECTED = "Connected";
+
+NOT_CONNECTED = "Not Connected";

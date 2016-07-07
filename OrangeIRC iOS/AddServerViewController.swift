@@ -49,6 +49,9 @@ class AddServerViewController : UITableViewController {
         }
         
         let cell = tempCell as! TextFieldCell
+        cell.textField.autocorrectionType = .no
+        cell.textField.autocapitalizationType = .none
+        
         switch indexPath.section {
         case 0:
             switch indexPath.row {
@@ -77,6 +80,7 @@ class AddServerViewController : UITableViewController {
             case 2:
                 cell.label.text = NSLocalizedString("REAL_NAME", comment: "Real Name")
                 cell.textField.placeholder = REQUIRED
+                cell.textField.autocapitalizationType = .words
                 self.realnameCell = cell
             case 3:
                 cell.label.text = NSLocalizedString("PASSWORD", comment: "Password")
@@ -93,7 +97,9 @@ class AddServerViewController : UITableViewController {
     }
     
     @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
+        // TODO: Implement sanity checks
         self.appDelegate.addServer(host: (self.hostCell?.textField.text)!, port: Int((self.portCell?.textField.text)!)!, nickname: (self.nicknameCell?.textField.text)!, username: (self.usernameCell?.textField.text)!, realname: (self.realnameCell?.textField.text)!, password: (self.passwordCell?.textField.text)!)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func cancelBarButton(_ sender: UIBarButtonItem) {

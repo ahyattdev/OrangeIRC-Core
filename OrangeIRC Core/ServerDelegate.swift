@@ -24,4 +24,8 @@ public protocol ServerDelegate {
     
     func joined(room: Room)
     
+    func startedConnecting(server: Server)
+    
+    func finishedReadingMOTD(server: Server)
+    
 }

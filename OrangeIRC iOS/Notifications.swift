@@ -11,5 +11,6 @@ import Foundation
 struct Notifications {
     
     static let ServerDataDidChange = "ServerDataDidChange"
+    static let ServerStateDidChange = "ServerStateDidChange"
     
 }

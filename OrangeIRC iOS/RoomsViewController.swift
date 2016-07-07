@@ -9,7 +9,7 @@
 import UIKit
 import OrangeIRCCore
 
-class RoomsViewController : UITableViewController {
+class RoomsViewController : UITableViewController, UISplitViewControllerDelegate {
     
     let SHOW_SERVERS_SEGUE = "ShowServers"
     

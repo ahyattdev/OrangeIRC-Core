@@ -15,30 +15,36 @@ let CRLF = "\r\n"
 
 public class Server: AnyObject, AsyncSocketDelegate {
     
+    // MOTD support
+    public var motd = ""
+    public var finishedReadingMOTD = false
+    
     public var log = [String]()
     
     public var rooms = [Room]()
     
     public var delegate: ServerDelegate?
     
+    public var isConnectingOrRegistering = false
+    
     var socket: AsyncSocket?
     
-    var host: String
+    public var host: String
     
-    var port: Int
+    public var port: Int
     
-    var userBitmask = 0
+    public var userBitmask = 0
     
-    var nickname: String
-    var username: String
-    var realname: String
-    var password = ""
+    public var nickname: String
+    public var username: String
+    public var realname: String
+    public var password = ""
     
-    var encoding: String.Encoding
+    public var encoding: String.Encoding
     
-    var partialMessage: String?
+    public var partialMessage: String?
     
-    var isRegistered = false
+    public var isRegistered = false
     
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
         self.host = host
@@ -58,12 +64,15 @@ public class Server: AnyObject, AsyncSocketDelegate {
         self.socket = AsyncSocket(delegate: self)
         do {
             try self.socket?.connect(toHost: self.host, onPort: UInt16(self.port), withTimeout: TIMEOUT_CONNECT)
+            self.isConnectingOrRegistering = true
+            self.delegate?.startedConnecting(server: self)
         } catch {
             self.delegate?.didNotRespond(server: self)
         }
     }
     
     public func onSocket(_ sock: AsyncSocket!, didConnectToHost host: String!, port: UInt16) {
+        self.delegate?.connectedSucessfully(server: self)
         socket?.readData(to: AsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
         print("Connected to host: \(host)")
         // Send the NICK message

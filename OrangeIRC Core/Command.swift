@@ -27,6 +27,10 @@ public struct Command {
         static let YOURHOST = "002"
         static let CREATED = "003"
         static let MYINFO = "004"
+        
+        static let MOTD = "372"
+        static let ENDOFMOTD = "376"
+        
     }
     
 }
