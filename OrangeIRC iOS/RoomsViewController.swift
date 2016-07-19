@@ -9,9 +9,10 @@
 import UIKit
 import OrangeIRCCore
 
-class RoomsViewController : UITableViewController, UISplitViewControllerDelegate {
+class RoomsViewController : UITableViewController {
     
     let SHOW_SERVERS_SEGUE = "ShowServers"
+    let ADD_ROOM_SEGUE = "AddRoom"
     
     let CELL_IDENTIFIER = "Cell"
     
@@ -35,6 +36,19 @@ class RoomsViewController : UITableViewController, UISplitViewControllerDelegate
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return super.tableView(tableView, cellForRowAt: indexPath)
+    }
+    
+    @IBAction func addRoom(_ sender: UIBarButtonItem) {
+        let roomType = NSLocalizedString("ROOM_TYPE", comment: "Room Type")
+        let roomTypeDescription = NSLocalizedString("CHOOSE_ROOM_TYPE", comment: "Choose a room type")
+        let roomTypeActionSheet = UIAlertController(title: roomType, message: roomTypeDescription, preferredStyle: .actionSheet)
+        
+        let actions: [RoomType] = [.Channel, .PrivateMessage]
+        for action in actions {
+            let act = UIAlertAction(title: action.localizedName(), style: UIAlertActionStyle.default, handler: <#T##((UIAlertAction) -> Void)?##((UIAlertAction) -> Void)?##(UIAlertAction) -> Void#>)
+        }
+        self.present(roomTypeActionSheet, animated: true, completion: nil)
+        //self.performSegue(withIdentifier: ADD_ROOM_SEGUE, sender: nil)
     }
     
     @IBAction func serversButton(_ sender: AnyObject) {

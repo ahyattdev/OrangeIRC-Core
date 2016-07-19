@@ -100,7 +100,7 @@ public class Server: AnyObject, AsyncSocketDelegate {
     
     public func onSocket(_ sock: AsyncSocket!, didRead data: Data!, withTag tag: Int) {
         let strData = data.subdata(in: (0 ..< data.count))
-        guard let string = String(bytes: strData, encoding: self.encoding) where string.isEmpty == false else {
+        guard let string = String(bytes: strData, encoding: self.encoding), string.isEmpty == false else {
             return
         }
         

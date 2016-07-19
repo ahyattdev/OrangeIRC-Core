@@ -16,7 +16,7 @@ class ServersViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default().addObserver(self, selector: #selector(self.updateServerDisplay), name: Notifications.ServerStateDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateServerDisplay), name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
     }
     
     func updateServerDisplay() {

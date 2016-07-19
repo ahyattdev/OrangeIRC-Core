@@ -30,7 +30,7 @@ extension Server {
             self.write(string: "\(Command.PONG) :\(message.parameters!)")
             
         case Command.Reply.MOTD:
-            self.motd = "\(self.motd)\(!message.parameters)\n"
+            self.motd = "\(self.motd)\(message.parameters!)\n"
         case Command.Reply.ENDOFMOTD:
             self.finishedReadingMOTD = true
             self.delegate?.finishedReadingMOTD(server: self)

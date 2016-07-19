@@ -121,11 +121,11 @@
                                 <frame key="frameInset" minY="136" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZLg-Rq-wOj" id="EE3-sL-FHT">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dP0-QW-YEQ">
-                                            <frame key="frameInset" minX="15" width="345" height="43"/>
+                                            <frame key="frameInset" minX="15" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -206,9 +206,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ROOMS" id="byI-nt-REB">
-                        <barButtonItem key="rightBarButtonItem" title="SERVERS" id="tV9-zA-Zp7">
+                        <barButtonItem key="leftBarButtonItem" title="SERVERS" id="tV9-zA-Zp7">
                             <connections>
                                 <action selector="serversButton:" destination="Td4-ng-YdF" id="0ND-Pp-7gl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="EA7-vt-Onf">
+                            <connections>
+                                <action selector="addRoom:" destination="Td4-ng-YdF" id="801-kY-oWb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -308,6 +313,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3GH-94-qka"/>
+        <segue reference="AV0-CG-Trw"/>
     </inferredMetricsTieBreakers>
 </document>

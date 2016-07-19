@@ -51,19 +51,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     }
     
     func didNotRespond(server: Server) {
-        NotificationCenter.default().post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
     }
     
     func stoppedResponding(server: Server) {
-        NotificationCenter.default().post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
     }
     
     func connectedSucessfully(server: Server) {
-        NotificationCenter.default().post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
     }
     
     func didRegister(server: Server) {
-        NotificationCenter.default().post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
     }
     
     func recieved(notice: String, server: Server) {
@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     }
     
     func startedConnecting(server: Server) {
-        NotificationCenter.default().post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
     }
     
     func finishedReadingMOTD(server: Server) {
