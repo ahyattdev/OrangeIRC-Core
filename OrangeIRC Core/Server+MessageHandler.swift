@@ -26,6 +26,14 @@ extension Server {
             // Not useful
             break
             
+        case Command.Reply.MYINFO:
+            // Not useful
+            break
+            
+        case Command.Reply.BOUNCE:
+            // According to RFC 2812, this is a bounce message
+            // But Freenode sends various server variables
+            break
         case Command.JOIN:
             // A channel was sucessfully joined
             let channelName = message.target[0]
@@ -47,12 +55,29 @@ extension Server {
         case Command.PING:
             self.write(string: "\(Command.PONG) :\(message.parameters!)")
             
+        case Command.Reply.MOTDSTART:
+            // Not useful
+            break
         case Command.Reply.MOTD:
             self.motd = "\(self.motd)\(message.parameters!)\n"
             
         case Command.Reply.ENDOFMOTD:
             self.finishedReadingMOTD = true
             self.delegate?.finishedReadingMOTD(server: self)
+            
+        case Command.Reply.NOTOPIC:
+            let channelName = message.target[0]
+            guard let channel = roomFrom(name: channelName) else {
+                return
+            }
+            channel.hasTopic = false
+            
+        case Command.Reply.TOPIC:
+            let channelName = message.target[0]
+            guard let channel = roomFrom(name: channelName) else {
+                return
+            }
+            channel.topic = message.parameters
             
         default:
             print(message.message)

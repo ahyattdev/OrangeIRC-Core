@@ -20,6 +20,8 @@ public class Room {
     
     public var topic: String?
     
+    public var hasTopic = true
+    
     public var isJoined = false
     
     public var type: RoomType
