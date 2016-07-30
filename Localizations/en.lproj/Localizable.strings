@@ -41,3 +41,7 @@ CHOOSE_ROOM_TYPE = "Choose a room type";
 SELECT_SERVER = "Select a Server";
 
 JOIN_DESCRIPTION = "A [ROOMTYPE] room will be joined";
+
+ROOM_ENTRY_TITLE = "[ROOMTYPE] Room Name";
+
+NAME = "Name";

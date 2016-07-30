@@ -66,7 +66,8 @@ class AddRoomServerSelection : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: Implement this stub
+        let server = self.registeredServers![indexPath.row]
+        self.performSegue(withIdentifier: Segues.RoomNameEntrySegue.rawValue, sender: server)
     }
     
     @IBAction func cancelBarButton(_ sender: UIBarButtonItem) {
@@ -76,7 +77,9 @@ class AddRoomServerSelection : UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
         case Segues.RoomNameEntrySegue.rawValue:
-            break
+            let roomEntry = segue.destinationViewController as! RoomNameEntryTableViewController
+            roomEntry.roomType = self.roomType
+            roomEntry.server = sender as? Server
         default:
             break
         }

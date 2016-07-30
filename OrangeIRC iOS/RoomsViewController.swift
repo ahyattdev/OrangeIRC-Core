@@ -52,18 +52,27 @@ class RoomsViewController : UITableViewController {
         
         let channelAct = UIAlertAction(title: RoomType.Channel.localizedName(), style: .default, handler: { (action) in
             self.performSegue(withIdentifier: Segues.ShowAddChannel.rawValue, sender: RoomType.Channel.rawValue)
+            self.navigationItem.leftBarButtonItem!.isEnabled = true
         })
         roomTypeActionSheet.addAction(channelAct)
         
         let privateAct = UIAlertAction(title: RoomType.PrivateMessage.localizedName(), style: .default, handler: { (action) in
             self.performSegue(withIdentifier: Segues.ShowAddPrivate.rawValue, sender: RoomType.PrivateMessage.rawValue)
+            self.navigationItem.leftBarButtonItem!.isEnabled = true
         })
         roomTypeActionSheet.addAction(privateAct)
         
         let cancelAct = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "Cancel"), style: .cancel, handler: { (action) in
             roomTypeActionSheet.dismiss(animated: true, completion: nil)
+            self.navigationItem.leftBarButtonItem!.isEnabled = true
         })
         roomTypeActionSheet.addAction(cancelAct)
+        
+        // To get the action sheet to be centered on the button that triggers it
+        roomTypeActionSheet.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+        
+        // Make the left bar button disabled while the action sheet is presented
+        self.navigationItem.leftBarButtonItem!.isEnabled = false
         
         self.present(roomTypeActionSheet, animated: true, completion: nil)
     }
