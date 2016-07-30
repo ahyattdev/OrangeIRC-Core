@@ -23,7 +23,7 @@ class AddServerViewController : UITableViewController {
     var realnameCell: TextFieldCell?
     var passwordCell: TextFieldCell?
     
-    override  func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
     }
     

@@ -10,10 +10,10 @@ import Foundation
 
 public enum RoomType : String {
     
-    case Channel
-    case PrivateMessage
+    case Channel = "Channel"
+    case PrivateMessage = "PrivateMessage"
     
-    func localizedName() -> String {
+    public func localizedName() -> String {
         switch self {
         case .Channel:
             return NSLocalizedString("CHANNEL", comment: "Channel")

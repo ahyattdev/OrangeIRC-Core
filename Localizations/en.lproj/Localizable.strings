@@ -6,24 +6,38 @@
 
 */
 
-"HOSTNAME" = "Hostname";
+HOSTNAME = "Hostname";
 
-"PORT" = "Port";
+PORT = "Port";
 
-"NICKNAME" = "Nickname";
+NICKNAME = "Nickname";
 
-"USERNAME" = "Username";
+USERNAME = "Username";
 
-"REAL_NAME" = "Real Name";
+REAL_NAME = "Real Name";
 
-"PASSWORD" = "Password";
+PASSWORD = "Password";
 
-"REQUIRED" = "Required";
+REQUIRED = "Required";
 
-"OPTIONAL" = "Optional";
+OPTIONAL = "Optional";
 
-"IRC_DOT_EXAMPLE_DOT_COM" = "irc.example.com";
+IRC_DOT_EXAMPLE_DOT_COM = "irc.example.com";
 
 CONNECTED = "Connected";
 
 NOT_CONNECTED = "Not Connected";
+
+CANCEL = "Cancel";
+
+ROOM_TYPE = "Room Type";
+
+CHANNEL = "Channel";
+
+PRIVATE_MESSAGE = "Private Message";
+
+CHOOSE_ROOM_TYPE = "Choose a room type";
+
+SELECT_SERVER = "Select a Server";
+
+JOIN_DESCRIPTION = "A [ROOMTYPE] room will be joined";

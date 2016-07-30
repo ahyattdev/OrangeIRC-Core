@@ -43,6 +43,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     
     var servers = [Server]()
     
+    var registeredServers: [Server] {
+        get {
+            var regServers = [Server]()
+            for server in self.servers {
+                if server.isRegistered {
+                    regServers.append(server)
+                }
+            }
+            return regServers
+        }
+    }
+    
     func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) {
         let server = Server(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: String.Encoding.utf8)
         servers.append(server)
