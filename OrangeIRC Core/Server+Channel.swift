@@ -17,4 +17,23 @@ public extension Server {
     public func leave(channel: String) {
         self.write(string: "\(Command.PART) \(channel)")
     }
+    
+    public func alreadyExists(room: String) -> Bool {
+        for existingRoom in self.rooms {
+            if room == existingRoom.name {
+                return true
+            }
+        }
+        return false
+    }
+    
+    public func roomFrom(name: String) -> Room? {
+        for room in self.rooms {
+            if room.name == name {
+                return room
+            }
+        }
+        return nil
+    }
+    
 }

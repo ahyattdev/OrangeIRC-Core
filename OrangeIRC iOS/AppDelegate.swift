@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     }
     
     func joined(room: Room) {
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
     }
     
     func startedConnecting(server: Server) {

@@ -22,11 +22,11 @@ public class Room {
     
     public var isJoined = false
     
-    // Type not decided yet
-    public var mode = "Placeholder"
+    public var type: RoomType
     
-    public init(name: String, server: Server) {
+    public init(name: String, type: RoomType, server: Server) {
         self.name = name
+        self.type = type
         self.server = server
     }
     

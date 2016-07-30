@@ -12,5 +12,6 @@ struct Notifications {
     
     static let ServerDataDidChange = "ServerDataDidChange"
     static let ServerStateDidChange = "ServerStateDidChange"
+    static let RoomDataDidChange = "RoomDataDidChange"
     
 }

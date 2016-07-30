@@ -221,12 +221,12 @@
 				6A3919A31D4C2D3B00BA6466 /* AddRoomServerSelectionNavigation.swift */,
 				661AF5011D2C809E00CFC190 /* AddServerViewController.swift */,
 				6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */,
+				661AF5031D2C833700CFC190 /* Notifications.swift */,
 				66A75B021D234694001161A3 /* Main.storyboard */,
 				661AF5051D2C89E900CFC190 /* TextFieldCell.swift */,
 				66A75B051D234694001161A3 /* Assets.xcassets */,
 				66A75B071D234694001161A3 /* LaunchScreen.storyboard */,
 				66A75B0A1D234694001161A3 /* Info.plist */,
-				661AF5031D2C833700CFC190 /* Notifications.swift */,
 			);
 			path = "OrangeIRC iOS";
 			sourceTree = "<group>";

@@ -21,28 +21,45 @@ class RoomsViewController : UITableViewController {
         case Cell = "Cell"
     }
     
-    let servers = (UIApplication.shared().delegate as! AppDelegate).servers
+    var allRooms = [Room]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Reload the tableview when the room data changes
+        NotificationCenter.default.addObserver(self.tableView, selector: #selector(self.tableView.reloadData), name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
+        self.allRooms = [Room]()
+        
+        for server in self.appDelegate.servers {
+            for room in server.rooms {
+                self.allRooms.append(room)
+            }
+        }
+        
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = 0
-        // Tally up the rooms of every server
-        for server in self.servers {
-            count += server.rooms.count
-        }
-        return count
+        return self.allRooms.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: Implement this stub
-        return super.tableView(tableView, cellForRowAt: indexPath)
+        var tempCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.Cell.rawValue)
+        if tempCell == nil {
+            tempCell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: CellIdentifiers.Cell.rawValue)
+        }
+        let cell = tempCell!
+        
+        let room = self.allRooms[indexPath.row]
+        
+        cell.textLabel?.text = room.name
+        
+        cell.detailTextLabel?.text = room.server.host
+        
+        return cell
     }
     
     @IBAction func addRoom(_ sender: UIBarButtonItem) {
