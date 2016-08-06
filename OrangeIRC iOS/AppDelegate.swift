@@ -11,9 +11,18 @@ import OrangeIRCCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
-
+    
+    let dataFolder: NSString = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
+    var dataPaths: (servers: String, options: String)
+    
     var window: UIWindow?
-
+    
+    override init() {
+        dataPaths.servers = dataFolder.strings(byAppendingPaths: ["servers.plist"])[0]
+        dataPaths.options = ""
+        super.init()
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         return true
@@ -60,6 +69,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
         servers.append(server)
         server.delegate = self
         server.connect()
+    }
+    
+    func loadData() {
+        guard let data = NSArray(contentsOfFile: self.dataPaths.servers) else {
+            // The data file does not exist, we must create it
+            self.saveData()
+            return
+        }
+        self.servers = data as! [Server]
+        
+    }
+    
+    func saveData() {
+        
     }
     
     func didNotRespond(server: Server) {

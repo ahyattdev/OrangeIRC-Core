@@ -18,7 +18,7 @@ let EMPTY = ""
 
 struct Message {
     
-    enum MessageParseError: ErrorProtocol {
+    enum MessageParseError: Error {
         case InvalidPrefix
         case InvalidMessage
     }

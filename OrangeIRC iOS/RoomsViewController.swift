@@ -101,10 +101,10 @@ class RoomsViewController : UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
         switch segue.identifier! {
         case Segues.ShowAddChannel.rawValue:
-            let nav = segue.destinationViewController as! AddRoomServerSelectionNavigation
+            let nav = segue.destination as! AddRoomServerSelectionNavigation
             nav.roomType = RoomType.Channel
         case Segues.ShowAddPrivate.rawValue:
-            let nav = segue.destinationViewController as! AddRoomServerSelectionNavigation
+            let nav = segue.destination as! AddRoomServerSelectionNavigation
             nav.roomType = RoomType.PrivateMessage
         default:
             break

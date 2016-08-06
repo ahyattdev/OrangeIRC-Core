@@ -13,7 +13,7 @@ extension UIViewController {
     // For convinience
     var appDelegate: AppDelegate {
         get {
-            return UIApplication.shared().delegate as! AppDelegate
+            return UIApplication.shared.delegate as! AppDelegate
         }
     }
     
