@@ -69,7 +69,9 @@ struct Message {
             self.command = commandAndTargetComponents.remove(at: 0)
             self.target = commandAndTargetComponents
             
-            let parametersStart = trimmedString.index(after: colonSpaceRange.upperBound)
+            var parametersStart = trimmedString.index(after: colonSpaceRange.upperBound)
+            // Fixes a bug where the first character of the parameters is cut off
+            parametersStart = trimmedString.index(before: parametersStart)
             self.parameters = trimmedString[parametersStart ..< trimmedString.endIndex]
         } else {
             // There are no parameters
