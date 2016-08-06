@@ -9,7 +9,10 @@
 import UIKit
 import OrangeIRCCore
 
-public class RoomViewController : UITableViewController, UISplitViewControllerDelegate {
+class RoomViewController : UITableViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
 }
