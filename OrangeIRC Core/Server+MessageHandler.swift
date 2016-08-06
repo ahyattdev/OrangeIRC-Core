@@ -50,7 +50,11 @@ extension Server {
             self.delegate?.joined(room: room!)
             
         case Command.NOTICE:
-            self.delegate?.recieved(notice: message.parameters!, server: self)
+            if message.target[0] == self.nickname {
+                // This NOTICE is specifically sent to this nickname
+                
+            }
+            self.delegate?.recieved(notice: message.parameters!, sender: message.target[0], server: self)
             
         case Command.PING:
             self.write(string: "\(Command.PONG) :\(message.parameters!)")

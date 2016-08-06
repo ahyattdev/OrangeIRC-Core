@@ -60,7 +60,41 @@ class ServersViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let server = self.appDelegate.servers[indexPath.row]
+        let message = NSLocalizedString("SERVER_OPTIONS", comment: "Server options")
+        let serverOptions = UIAlertController(title: server.host, message: message, preferredStyle: .actionSheet)
         
+        serverOptions.popoverPresentationController?.sourceView = self.view
+        
+        if server.isConnectingOrRegistering || server.isRegistered {
+            // Add a disconnect button
+            let disconnect = NSLocalizedString("DISCONNECT", comment: "Disconnect")
+            let disconnectAction = UIAlertAction(title: disconnect, style: .default, handler: { (action) in
+                server.disconnect()
+            })
+            serverOptions.addAction(disconnectAction)
+        } else {
+            // Add a connect button
+            let connect = NSLocalizedString("CONNECT", comment: "Connect")
+            let connectAction = UIAlertAction(title: connect, style: .default, handler: { (action) in
+                server.connect()
+            })
+            serverOptions.addAction(connectAction)
+        }
+        
+        if server.finishedReadingMOTD && server.isRegistered {
+            // Add a show MOTD button
+            let motd = NSLocalizedString("MOTD", comment: "MOTD")
+            let motdAction = UIAlertAction(title: motd, style: .default, handler: { (action) in
+                // TODO: Implement displaying the MOTD
+            })
+            serverOptions.addAction(motdAction)
+        }
+        
+        
+        self.present(serverOptions, animated: true, completion: {
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        })
     }
     
     @IBAction func addServerButton(_ sender: AnyObject) {

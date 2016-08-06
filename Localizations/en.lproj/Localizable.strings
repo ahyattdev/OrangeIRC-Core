@@ -49,3 +49,11 @@ NAME = "Name";
 NO_REGISTERED_SERVERS = "No Registered Servers";
 
 NO_REGISTERED_SERVERS_DESCRIPTION = "You are not registered on any servers";
+
+SERVER_OPTIONS = "Server Options";
+
+CONNECT = "Connect";
+
+DISCONNECT = "Disconnect";
+
+MOTD = "Message of the Day";

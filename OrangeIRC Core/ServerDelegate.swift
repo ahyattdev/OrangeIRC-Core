@@ -17,7 +17,7 @@ public protocol ServerDelegate {
     
     func didRegister(server: Server)
     
-    func recieved(notice: String, server: Server)
+    func recieved(notice: String, sender: String, server: Server)
     
     func finishedReadingUserList(room: Room)
     func recievedTopic(room: Room)
@@ -27,5 +27,7 @@ public protocol ServerDelegate {
     func startedConnecting(server: Server)
     
     func finishedReadingMOTD(server: Server)
+    
+    func didDisconnect(server: Server)
     
 }

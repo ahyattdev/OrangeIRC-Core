@@ -106,8 +106,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
     }
     
-    func recieved(notice: String, server: Server) {
-        
+    func recieved(notice: String, sender: String, server: Server) {
+        switch sender {
+        case "NickServ":
+            break
+        default:
+            break
+        }
     }
     
     func finishedReadingUserList(room: Room) {
@@ -128,6 +133,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     
     func finishedReadingMOTD(server: Server) {
         
+    }
+    
+    func didDisconnect(server: Server) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
     }
     
 }

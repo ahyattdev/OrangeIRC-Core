@@ -53,8 +53,6 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
     
     public var encoding: String.Encoding
     
-    public var partialMessage: String?
-    
     public var isRegistered = false
     
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
@@ -126,6 +124,18 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
         }
     }
     
+    public func onSocketDidDisconnect(_ sock: AsyncSocket!) {
+        // We need to wait after QUIT is sent, as things are sent asyncronously
+        self.isConnectingOrRegistering = false
+        self.isRegistered = false
+        self.finishedReadingMOTD = false
+        self.motd = ""
+        self.socket?.setDelegate(nil)
+        self.socket = nil
+        
+        self.delegate?.didDisconnect(server: self)
+    }
+    
     public func onSocket(_ sock: AsyncSocket!, didWriteDataWithTag tag: Int) {
         switch tag {
         case Tag.Normal:
@@ -172,7 +182,6 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
     
     public func disconnect() {
         write(string: Command.QUIT)
-        self.socket = nil
     }
     
     func write(string: String, with tag: Int) {
