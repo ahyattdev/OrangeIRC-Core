@@ -63,6 +63,17 @@ class RoomsViewController : UITableViewController {
     }
     
     @IBAction func addRoom(_ sender: UIBarButtonItem) {
+        // There is no point in showing this if there are not any connected servers
+        guard self.appDelegate.registeredServers.count > 0 else {
+            let title = NSLocalizedString("NO_REGISTERED_SERVERS", comment: "Not connected to any registered servers")
+            let message = NSLocalizedString("NO_REGISTERED_SERVERS_DESCRIPTION", comment: "No registered servers description")
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         let roomType = NSLocalizedString("ROOM_TYPE", comment: "Room Type")
         let roomTypeDescription = NSLocalizedString("CHOOSE_ROOM_TYPE", comment: "Choose a room type")
         let roomTypeActionSheet = UIAlertController(title: roomType, message: roomTypeDescription, preferredStyle: .actionSheet)

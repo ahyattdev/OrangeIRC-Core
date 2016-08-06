@@ -45,3 +45,7 @@ JOIN_DESCRIPTION = "A [ROOMTYPE] room will be joined";
 ROOM_ENTRY_TITLE = "[ROOMTYPE] Room Name";
 
 NAME = "Name";
+
+NO_REGISTERED_SERVERS = "No Registered Servers";
+
+NO_REGISTERED_SERVERS_DESCRIPTION = "You are not registered on any servers";

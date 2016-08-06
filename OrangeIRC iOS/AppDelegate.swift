@@ -12,7 +12,7 @@ import OrangeIRCCore
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     
-    let dataFolder: NSString = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)[0]
+    let dataFolder: NSString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
     var dataPaths: (servers: String, options: String)
     
     var window: UIWindow?
@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        self.loadData()
         return true
     }
 
@@ -36,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        self.saveData()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -48,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        self.saveData()
     }
     
     var servers = [Server]()
@@ -73,13 +76,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     }
     
     func loadData() {
-        guard let data = NSArray(contentsOfFile: self.dataPaths.servers) else {
-            // The data file does not exist, we must create it
+        guard let servers = NSKeyedUnarchiver.unarchiveObject(withFile: self.dataPaths.servers) else {
             self.saveData()
             return
         }
-        self.servers = data as! [Server]
-        
+        self.servers = servers as! [Server]
+        for server in self.servers {
+            server.delegate = self
+        }
     }
     
     func saveData() {
