@@ -24,6 +24,7 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
         static let Username = "Username"
         static let Realname = "Realname"
         static let Rooms = "Rooms"
+        static let NickServPassword = "NickServPassword"
     }
     
     // MOTD support
@@ -50,6 +51,7 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
     public var username: String
     public var realname: String
     public var password = ""
+    public var nickservPassword = ""
     
     public var encoding: String.Encoding
     
@@ -74,6 +76,7 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
             let nickname = coder.decodeObject(forKey: Coding.Nickname) as? String,
             let username = coder.decodeObject(forKey: Coding.Username) as? String,
             let realname = coder.decodeObject(forKey: Coding.Realname) as? String,
+            let nickservPassword = coder.decodeObject(forKey: Coding.NickServPassword) as? String,
             let rooms = coder.decodeObject(forKey: Coding.Rooms) as? [Room] else {
                 return nil
         }
@@ -88,6 +91,8 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
         for room in self.rooms {
             room.server = self
         }
+        
+        self.nickservPassword = nickservPassword
     }
     
     public func encode(with aCoder: NSCoder) {
@@ -97,6 +102,7 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
         aCoder.encode(self.username, forKey: Coding.Username)
         aCoder.encode(self.realname, forKey: Coding.Realname)
         aCoder.encode(self.rooms, forKey: Coding.Rooms)
+        aCoder.encode(self.nickservPassword, forKey: Coding.NickServPassword)
     }
     
     public func connect() {
@@ -144,6 +150,10 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
             self.sendNickMessage()
         case Tag.Nick:
             self.sendUserMessage()
+        case Tag.User:
+            if !self.nickservPassword.isEmpty {
+                self.sendNickServPassword()
+            }
         default:
             break
         }
@@ -178,6 +188,12 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
     func sendUserMessage() {
         print("Sent USER message: \(self.host)")
         self.write(string: "\(Command.USER) \(self.username) \(self.userBitmask) * :\(self.realname)", with: Tag.User)
+    }
+    
+    public func sendNickServPassword() {
+        if !self.nickservPassword.isEmpty {
+            self.write(string: "\(Command.MSG) NickServ identify \(self.nickservPassword)", with: Tag.NickServPassword)
+        }
     }
     
     public func disconnect() {

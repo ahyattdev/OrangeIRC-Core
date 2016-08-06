@@ -34,7 +34,17 @@ struct Message {
         init(_ string: String) throws {
             self.prefix = string
             
-            // TODO: Finish parsing the prefix
+            if string.contains(EXCLAMATION_MARK) && string.contains(AT_SYMBOL) {
+                // One of the msgto formats
+                let exclamationMark = string.range(of: EXCLAMATION_MARK)!
+                let atSymbol = string.range(of: AT_SYMBOL)!
+                self.nickname = string.substring(to: exclamationMark.lowerBound)
+                self.user = string.substring(with: exclamationMark.upperBound ..< atSymbol.lowerBound)
+                self.host = string.substring(from: atSymbol.upperBound)
+            } else {
+                // Unhandled prefix format
+                print("UNHANDLED PREFIX FORMAT: \(prefix)")
+            }
         }
         
     }

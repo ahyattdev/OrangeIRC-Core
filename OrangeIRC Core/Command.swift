@@ -19,6 +19,8 @@ public struct Command {
     static let QUIT = "QUIT"
     static let USER = "USER"
     
+    static let MSG = "MSG"
+    
     static let NOTICE = "NOTICE"
     
     struct Reply {

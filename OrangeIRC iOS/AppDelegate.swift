@@ -12,6 +12,12 @@ import OrangeIRCCore
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     
+    struct NickServ {
+        
+        static let ALREADY_REGISTERED = "This nickname is registered."
+        
+    }
+    
     let dataFolder: NSString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
     var dataPaths: (servers: String, options: String)
     
@@ -109,8 +115,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     func recieved(notice: String, sender: String, server: Server) {
         switch sender {
         case "NickServ":
-            break
+            if notice.contains(NickServ.ALREADY_REGISTERED) {
+                // TODO: Display a dialog prompting for the password
+            } else {
+                print("Unknown NickServ message: \(notice)")
+            }
         default:
+            // TODO: Present a dialog with the information from the NOTICE
             break
         }
     }

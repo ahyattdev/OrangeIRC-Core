@@ -15,5 +15,6 @@ struct Tag {
     static let Pass = 0
     static let Nick = 1
     static let User = 2
+    static let NickServPassword = 3
     
 }
