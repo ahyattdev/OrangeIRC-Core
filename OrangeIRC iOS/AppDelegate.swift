@@ -10,7 +10,7 @@ import UIKit
 import OrangeIRCCore
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFieldDelegate {
     
     struct NickServ {
         
@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     var dataPaths: (servers: String, options: String)
     
     var window: UIWindow?
+    
+    var nickservPasswordField: UITextField?
+    var doneAction: UIAlertAction?
     
     override init() {
         dataPaths.servers = dataFolder.strings(byAppendingPaths: ["servers.plist"])[0]
@@ -112,11 +115,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == self.nickservPasswordField {
+            guard let text: NSString = textField.text else {
+                return true
+            }
+            let finalString = text.replacingCharacters(in: range, with: string)
+            
+            // Disable the done button if no password is given
+            self.doneAction!.isEnabled = !finalString.isEmpty
+        }
+        
+        return true
+    }
+    
     func recieved(notice: String, sender: String, server: Server) {
         switch sender {
         case "NickServ":
             if notice.contains(NickServ.ALREADY_REGISTERED) {
-                // TODO: Display a dialog prompting for the password
+                if server.nickservPassword.isEmpty {
+                    let nicknameRegistered = NSLocalizedString("NICKNAME_REGISTERED", comment: "Nickname registered")
+                    let nicknameRegisteredDescription = NSLocalizedString("NICKNAME_REGISTERED_DESCRIPTION", comment: "Provide a password")
+                    
+                    let nicknamePasswordAlert = UIAlertController(title: nicknameRegistered, message: nicknameRegisteredDescription, preferredStyle: .alert)
+                    
+                    nicknamePasswordAlert.addTextField(configurationHandler: { (textField) in
+                        textField.placeholder = NSLocalizedString("NICKNAME_PASSWORD", comment: "Nickname Password")
+                        textField.isSecureTextEntry = true
+                        self.nickservPasswordField = textField
+                        textField.delegate = self
+                    })
+                    
+                    let done = NSLocalizedString("DONE", comment: "Done")
+                    let doneAction = UIAlertAction(title: done, style: .default, handler: { (action) in
+                        server.nickservPassword = self.nickservPasswordField!.text!
+                        self.saveData()
+                        server.sendNickServPassword()
+                        
+                        self.nickservPasswordField?.delegate = nil
+                        self.nickservPasswordField = nil
+                        self.doneAction = nil
+                    })
+                    doneAction.isEnabled = false
+                    self.doneAction = doneAction
+                    
+                    nicknamePasswordAlert.addAction(doneAction)
+                    
+                    let disconnect = NSLocalizedString("DISCONNECT", comment: "Disconnect")
+                    let disconnectAction = UIAlertAction(title: disconnect, style: .destructive, handler: { (action) in
+                        server.disconnect()
+                    })
+                    nicknamePasswordAlert.addAction(disconnectAction)
+                    
+                    self.window!.rootViewController!.present(nicknamePasswordAlert, animated: true, completion: nil)
+                } else {
+                    // This normally happens after each connection
+                    server.sendNickServPassword()
+                }
             } else {
                 print("Unknown NickServ message: \(notice)")
             }

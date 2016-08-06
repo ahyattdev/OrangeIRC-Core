@@ -192,7 +192,7 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
     
     public func sendNickServPassword() {
         if !self.nickservPassword.isEmpty {
-            self.write(string: "\(Command.MSG) NickServ identify \(self.nickservPassword)", with: Tag.NickServPassword)
+            self.write(string: "\(Command.PRIVMSG) \(Command.Services.NickServ) :\(Command.IDENTIFY) \(self.nickservPassword)", with: Tag.NickServPassword)
         }
     }
     

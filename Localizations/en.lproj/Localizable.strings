@@ -57,3 +57,11 @@ CONNECT = "Connect";
 DISCONNECT = "Disconnect";
 
 MOTD = "Message of the Day";
+
+NICKNAME_REGISTERED = "Nickname Already Registered";
+
+NICKNAME_REGISTERED_DESCRIPTION = "You must provide a password to use this nickname. It will automatically be saved for the next time you connect to this server.";
+
+NICKNAME_PASSWORD = "Nickname Password";
+
+DONE = "Done";

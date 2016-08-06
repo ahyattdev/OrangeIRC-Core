@@ -42,8 +42,7 @@ struct Message {
                 self.user = string.substring(with: exclamationMark.upperBound ..< atSymbol.lowerBound)
                 self.host = string.substring(from: atSymbol.upperBound)
             } else {
-                // Unhandled prefix format
-                print("UNHANDLED PREFIX FORMAT: \(prefix)")
+                self.servername = prefix
             }
         }
         

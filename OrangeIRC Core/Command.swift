@@ -19,9 +19,11 @@ public struct Command {
     static let QUIT = "QUIT"
     static let USER = "USER"
     
-    static let MSG = "MSG"
+    //static let MSG = "MSG"
     
     static let NOTICE = "NOTICE"
+    static let PRIVMSG = "PRIVMSG"
+    static let IDENTIFY = "IDENTIFY"
     
     struct Reply {
         
@@ -79,6 +81,11 @@ public struct Command {
         static let MOTD = "372"
         static let ENDOFMOTD = "376"
         
+    }
+    
+    struct Services {
+        
+        static let NickServ = "NickServ"
     }
     
 }
