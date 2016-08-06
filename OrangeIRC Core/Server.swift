@@ -13,7 +13,18 @@ let TIMEOUT_CONNECT = TimeInterval(30)
 let TIMEOUT_NONE = TimeInterval(-1)
 let CRLF = "\r\n"
 
-public class Server: AnyObject, AsyncSocketDelegate {
+public class Server: NSObject, AsyncSocketDelegate, NSCoding {
+    
+    // NSCoding keys extracted to here so to avoid typos causing bugs
+    struct Coding {
+        
+        static let Host = "Host"
+        static let Port = "Port"
+        static let Nickname = "Nickname"
+        static let Username = "Username"
+        static let Realname = "Realname"
+        static let Rooms = "Rooms"
+    }
     
     // MOTD support
     public var motd = ""
@@ -58,6 +69,36 @@ public class Server: AnyObject, AsyncSocketDelegate {
     public convenience init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding, password: String) {
         self.init(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: encoding)
         self.password = password
+    }
+    
+    public required convenience init?(coder: NSCoder) {
+        guard let host = coder.decodeObject(forKey: Coding.Host) as? String,
+            let nickname = coder.decodeObject(forKey: Coding.Nickname) as? String,
+            let username = coder.decodeObject(forKey: Coding.Username) as? String,
+            let realname = coder.decodeObject(forKey: Coding.Realname) as? String,
+            let rooms = coder.decodeObject(forKey: Coding.Rooms) as? [Room] else {
+                return nil
+        }
+        // According to the compiler, this will always succeed
+        let port = coder.decodeInteger(forKey: Coding.Port)
+        
+        self.init(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: String.Encoding.utf8)
+        
+        self.rooms = rooms
+        
+        // This property is not restored by NSCoding
+        for room in self.rooms {
+            room.server = self
+        }
+    }
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.host, forKey: Coding.Host)
+        aCoder.encode(self.port, forKey: Coding.Port)
+        aCoder.encode(self.nickname, forKey: Coding.Nickname)
+        aCoder.encode(self.username, forKey: Coding.Username)
+        aCoder.encode(self.realname, forKey: Coding.Realname)
+        aCoder.encode(self.rooms, forKey: Coding.Rooms)
     }
     
     public func connect() {

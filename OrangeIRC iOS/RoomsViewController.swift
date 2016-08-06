@@ -57,7 +57,7 @@ class RoomsViewController : UITableViewController {
         
         cell.textLabel?.text = room.name
         
-        cell.detailTextLabel?.text = room.server.host
+        cell.detailTextLabel?.text = room.server!.host
         
         return cell
     }

@@ -22,4 +22,15 @@ public enum RoomType : String {
         }
     }
     
+    public func from(string: String) -> RoomType? {
+        switch string {
+        case RoomType.Channel.rawValue:
+            return RoomType.Channel
+        case RoomType.PrivateMessage.rawValue:
+            return RoomType.PrivateMessage
+        default:
+            return nil
+        }
+    }
+    
 }

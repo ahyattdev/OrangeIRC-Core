@@ -69,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
         servers.append(server)
         server.delegate = self
         server.connect()
+        self.saveData()
     }
     
     func loadData() {
@@ -82,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate {
     }
     
     func saveData() {
-        
+        NSKeyedArchiver.archiveRootObject(self.servers, toFile: self.dataPaths.servers)
     }
     
     func didNotRespond(server: Server) {
