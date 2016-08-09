@@ -97,6 +97,23 @@ class ServersViewController : UITableViewController {
         })
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let server = self.appDelegate.servers[indexPath.row]
+        
+        switch editingStyle {
+        case .delete:
+            self.appDelegate.delete(server: server)
+        case .insert:
+            break
+        case .none:
+            break
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     @IBAction func addServerButton(_ sender: AnyObject) {
         self.performSegue(withIdentifier: ADD_SERVER_SEGUE_IDENTIFIER, sender: nil)
     }

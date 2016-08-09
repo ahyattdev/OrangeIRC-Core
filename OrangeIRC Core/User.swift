@@ -12,6 +12,8 @@ public class User {
     
     public var name: String
     
+    public var isSelf = false
+    
     public init(name: String) {
         self.name = name
     }

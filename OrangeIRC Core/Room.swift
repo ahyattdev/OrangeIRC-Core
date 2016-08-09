@@ -22,7 +22,7 @@ public class Room : NSObject, NSCoding {
     
     public var log = [LogEvent]()
     
-    public var otherUsers = [User]()
+    public var users = [User]()
     
     public var name: String
     

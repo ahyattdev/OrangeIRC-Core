@@ -65,3 +65,9 @@ NICKNAME_REGISTERED_DESCRIPTION = "You must provide a password to use this nickn
 NICKNAME_PASSWORD = "Nickname Password";
 
 DONE = "Done";
+
+DELETE_SERVER = "Delete \"[SERVER]\"?";
+
+DELETE_SERVER_DESCRIPTION = "Deleting this server will also delete the rooms associated with it.";
+
+DELETE = "Delete";

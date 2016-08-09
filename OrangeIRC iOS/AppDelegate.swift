@@ -181,6 +181,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         }
     }
     
+    func delete(server: Server) {
+        let title = NSLocalizedString("DELETE_SERVER", comment: "Delete server").replacingOccurrences(of: "[SERVER]", with: server.host)
+        let message = NSLocalizedString("DELETE_SERVER_DESCRIPTION", comment: "Delete server description")
+        let confirmation = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "Cancel"), style: .cancel, handler: nil)
+        confirmation.addAction(cancelAction)
+        
+        let deleteAction = UIAlertAction(title: NSLocalizedString("DELETE", comment: "Delete"), style: .destructive, handler: { (action) in
+            server.disconnect()
+            server.delegate = nil
+            for i in 0 ..< self.servers.count {
+                if self.servers[i] == server {
+                    self.servers.remove(at: i)
+                    break
+                }
+            }
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        })
+        confirmation.addAction(deleteAction)
+        
+        self.window!.rootViewController!.present(confirmation, animated: true, completion: nil)
+    }
+    
     func finishedReadingUserList(room: Room) {
         
     }
