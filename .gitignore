@@ -1,4 +1,5 @@
 Cartfile.resolved
-Carthage/*
+Carthage
 xcshareddata
 xcuserdata
+Build
