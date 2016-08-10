@@ -22,9 +22,12 @@ class AddServerViewController : UITableViewController {
     var usernameCell: TextFieldCell?
     var realnameCell: TextFieldCell?
     var passwordCell: TextFieldCell?
+    //var autoJoinCell: SwitchCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //self.navigationItem.title! = NSLocalizedString("ADD_SERVER", comment: "Add Server")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,9 +37,9 @@ class AddServerViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 2
-        case 1:
             return 4
+        case 1:
+            return 3
         default:
             return 0
         }
@@ -48,57 +51,65 @@ class AddServerViewController : UITableViewController {
             tempCell = TextFieldCell(style: UITableViewCellStyle.default, reuseIdentifier: CELL_IDENTIFIER)
         }
         
-        let cell = tempCell as! TextFieldCell
-        cell.textField.autocorrectionType = .no
-        cell.textField.autocapitalizationType = .none
+        let textFieldCell = tempCell as? TextFieldCell
+        textFieldCell?.textField.autocorrectionType = .no
+        textFieldCell?.textField.autocapitalizationType = .none
+        
+        //let switchCell = tempCell as? SwitchCell
         
         switch indexPath.section {
         case 0:
             switch indexPath.row {
             case 0:
-                cell.label.text = NSLocalizedString("HOSTNAME", comment: "Hostname")
-                cell.textField.placeholder = NSLocalizedString("IRC_DOT_EXAMPLE_DOT_COM", comment: "irc.example.com")
-                self.hostCell = cell
+                textFieldCell!.label.text = NSLocalizedString("HOSTNAME", comment: "Hostname")
+                textFieldCell!.textField.placeholder = NSLocalizedString("IRC_DOT_EXAMPLE_DOT_COM", comment: "irc.example.com")
+                self.hostCell = textFieldCell!
             case 1:
-                cell.label.text = NSLocalizedString("PORT", comment: "Port")
-                cell.textField.placeholder = "6667"
-                cell.textField.keyboardType = .numberPad
-                self.portCell = cell
+                textFieldCell!.label.text = NSLocalizedString("PORT", comment: "Port")
+                textFieldCell!.textField.placeholder = "6667"
+                textFieldCell!.textField.keyboardType = .numberPad
+                self.portCell = textFieldCell!
+            case 2:
+                textFieldCell!.label.text = NSLocalizedString("PASSWORD", comment: "Password")
+                textFieldCell!.textField.placeholder = OPTIONAL
+                textFieldCell!.textField.isSecureTextEntry = true
+                self.passwordCell = textFieldCell!
+            case 3:
+                break
+                //self.autoJoinCell = switchCell!
+                //switchCell!.label.text = NSLocalizedString("AUTOMATICALLY_JOIN", comment: "Automatically Join")
             default:
                 break
             }
         case 1:
             switch  indexPath.row {
             case 0:
-                cell.label.text = NSLocalizedString("NICKNAME", comment: "Nickname")
-                cell.textField.placeholder = REQUIRED
-                self.nicknameCell = cell
+                textFieldCell?.label.text = NSLocalizedString("NICKNAME", comment: "Nickname")
+                textFieldCell?.textField.placeholder = REQUIRED
+                self.nicknameCell = textFieldCell
             case 1:
-                cell.label.text = NSLocalizedString("USERNAME", comment: "Username")
-                cell.textField.placeholder = REQUIRED
-                self.usernameCell = cell
+                textFieldCell?.label.text = NSLocalizedString("USERNAME", comment: "Username")
+                textFieldCell?.textField.placeholder = REQUIRED
+                self.usernameCell = textFieldCell
             case 2:
-                cell.label.text = NSLocalizedString("REAL_NAME", comment: "Real Name")
-                cell.textField.placeholder = REQUIRED
-                cell.textField.autocapitalizationType = .words
-                self.realnameCell = cell
-            case 3:
-                cell.label.text = NSLocalizedString("PASSWORD", comment: "Password")
-                cell.textField.placeholder = OPTIONAL
-                cell.textField.isSecureTextEntry = true
-                self.passwordCell = cell
+                textFieldCell?.label.text = NSLocalizedString("REAL_NAME", comment: "Real Name")
+                textFieldCell?.textField.placeholder = REQUIRED
+                textFieldCell?.textField.autocapitalizationType = .words
+                self.realnameCell = textFieldCell
             default:
                 break
             }
         default:
             break
         }
-        return cell
+        return tempCell!
     }
     
     @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
         // TODO: Implement sanity checks
-        self.appDelegate.addServer(host: (self.hostCell?.textField.text)!, port: Int((self.portCell?.textField.text)!)!, nickname: (self.nicknameCell?.textField.text)!, username: (self.usernameCell?.textField.text)!, realname: (self.realnameCell?.textField.text)!, password: (self.passwordCell?.textField.text)!)
+        _ = self.appDelegate.addServer(host: (self.hostCell?.textField.text)!, port: Int((self.portCell?.textField.text)!)!, nickname: (self.nicknameCell?.textField.text)!, username: (self.usernameCell?.textField.text)!, realname: (self.realnameCell?.textField.text)!, password: (self.passwordCell?.textField.text)!)
+        //server.autoJoin = self.autoJoinCell!.switch.isOn
+        
         self.dismiss(animated: true, completion: nil)
     }
     

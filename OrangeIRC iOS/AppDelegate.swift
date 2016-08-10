@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     struct NickServ {
         
         static let ALREADY_REGISTERED = "This nickname is registered."
+        static let AUTH_SUCCESS = "You are now identified for"
         
     }
     
@@ -76,12 +77,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         }
     }
     
-    func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) {
+    func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) -> Server {
         let server = Server(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: String.Encoding.utf8)
         servers.append(server)
         server.delegate = self
         server.connect()
         self.saveData()
+        
+        // Returned so additional configuration can be done
+        return server
     }
     
     func loadData() {
@@ -92,6 +96,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         self.servers = servers as! [Server]
         for server in self.servers {
             server.delegate = self
+            if server.autoJoin {
+                server.connect()
+            }
         }
     }
     
@@ -172,6 +179,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
                     // This normally happens after each connection
                     server.sendNickServPassword()
                 }
+            } else if notice.contains(NickServ.AUTH_SUCCESS) {
+                // TODO: Do something here
             } else {
                 print("Unknown NickServ message: \(notice)")
             }
@@ -216,6 +225,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func joined(room: Room) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
+    }
+    
+    func left(room: Room) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
     }
     

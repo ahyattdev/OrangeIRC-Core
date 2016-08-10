@@ -28,6 +28,9 @@ class RoomsViewController : UITableViewController {
         
         // Reload the tableview when the room data changes
         NotificationCenter.default.addObserver(self.tableView, selector: #selector(self.tableView.reloadData), name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
+        
+        self.navigationItem.title = NSLocalizedString("ROOMS", comment: "Rooms")
+        self.navigationItem.leftBarButtonItem?.title = NSLocalizedString("SERVERS", comment: "Servers")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -55,9 +58,14 @@ class RoomsViewController : UITableViewController {
         
         let room = self.allRooms[indexPath.row]
         
-        cell.textLabel?.text = room.name
+        cell.textLabel!.text = "\(room.name) @ \(room.server!.host)"
         
-        cell.detailTextLabel?.text = room.server!.host
+        if room.isJoined {
+            cell.detailTextLabel!.text = NSLocalizedString("JOINED", comment: "Not Joined")
+        } else {
+            cell.detailTextLabel!.text = NSLocalizedString("NOT_JOINED", comment: "Not Joined")
+            cell.textLabel!.textColor = UIColor.lightGray
+        }
         
         return cell
     }
@@ -120,6 +128,10 @@ class RoomsViewController : UITableViewController {
         default:
             break
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

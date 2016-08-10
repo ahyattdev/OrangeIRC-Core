@@ -71,3 +71,15 @@ DELETE_SERVER = "Delete \"[SERVER]\"?";
 DELETE_SERVER_DESCRIPTION = "Deleting this server will also delete the rooms associated with it.";
 
 DELETE = "Delete";
+
+ROOMS = "Rooms";
+
+SERVERS = "Servers";
+
+NOT_JOINED = "Left";
+
+JOINED = "Joined";
+
+ADD_SERVER = "Add Server";
+
+AUTOMATICALLY_JOIN = "Automatically Join";

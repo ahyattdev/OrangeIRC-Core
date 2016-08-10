@@ -42,12 +42,20 @@ extension Server {
                 // Create a new room with log
                 let channel = Room(name: channelName, type: .Channel, server: self)
                 self.rooms.append(channel)
+                channel.isJoined = true
                 room = channel
             } else {
                 room = roomFrom(name: channelName)
             }
             // Send a channel join message
             self.delegate?.joined(room: room!)
+        
+        case Command.PART:
+            let channelName = message.target[0]
+            let room = roomFrom(name: channelName)
+            room?.isJoined = false
+            
+            self.delegate?.left(room: room!)
             
         case Command.NOTICE:
             if message.target[0] == self.nickname {
@@ -62,7 +70,7 @@ extension Server {
             // Not useful
             break
         case Command.Reply.MOTD:
-            self.motd = "\(self.motd)\(message.parameters!)\n"
+            self.motd = "\(self.motd)\n\(message.parameters!)"
             
         case Command.Reply.ENDOFMOTD:
             self.finishedReadingMOTD = true

@@ -40,6 +40,8 @@
 		66EDD2F91D29669D0013E7CC /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
 		66EDD2FA1D2966AA0013E7CC /* OrangeIRCCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A75B251D234737001161A3 /* OrangeIRCCore.framework */; };
 		66EDD2FB1D2966AA0013E7CC /* OrangeIRCCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66A75B251D234737001161A3 /* OrangeIRCCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6A2503601D59511900C18750 /* MessageLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A25035F1D59511900C18750 /* MessageLogEvent.swift */; };
+		6A2503611D59511900C18750 /* MessageLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A25035F1D59511900C18750 /* MessageLogEvent.swift */; };
 		6A39199F1D4C284900BA6466 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6AF4264E1D2CAD060029250A /* Localizable.strings */; };
 		6A3919A01D4C284A00BA6466 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6AF4264E1D2CAD060029250A /* Localizable.strings */; };
 		6A3919A21D4C28E400BA6466 /* AddRoomServerSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3919A11D4C28E400BA6466 /* AddRoomServerSelection.swift */; };
@@ -111,6 +113,7 @@
 		66A75B3E1D23496C001161A3 /* ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDelegate.swift; sourceTree = "<group>"; };
 		66EDD2E11D29621B0013E7CC /* OrangeIRCCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OrangeIRCCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EDD2F61D29664E0013E7CC /* OrangeIRCCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrangeIRCCore.h; sourceTree = "<group>"; };
+		6A25035F1D59511900C18750 /* MessageLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLogEvent.swift; sourceTree = "<group>"; };
 		6A268E7D1D2CAF14004E017E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		6A3919A11D4C28E400BA6466 /* AddRoomServerSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomServerSelection.swift; sourceTree = "<group>"; };
 		6A3919A31D4C2D3B00BA6466 /* AddRoomServerSelectionNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomServerSelectionNavigation.swift; sourceTree = "<group>"; };
@@ -120,9 +123,7 @@
 		6A7A6A041D29D0850012D037 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		6A82A07D1D24332A00F81A1B /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AppDelegate.swift"; sourceTree = "<group>"; };
-		6A8B031D1D2CA8B70002A2C6 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		6AA193241D2CAF6E00A66DDE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		6AA193271D2CB08E00A66DDE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		6AA193281D2CB2B700A66DDE /* BetterSplitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetterSplitView.swift; sourceTree = "<group>"; };
 		6ADD58DE1D29DB330051DB28 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		6ADD58E01D29DD220051DB28 /* ServersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServersViewController.swift; sourceTree = "<group>"; };
@@ -211,19 +212,17 @@
 		66A75AFD1D234694001161A3 /* OrangeIRC iOS */ = {
 			isa = PBXGroup;
 			children = (
+				6A25035C1D59508F00C18750 /* Adding Rooms */,
 				66A75AFE1D234694001161A3 /* AppDelegate.swift */,
 				6AA193281D2CB2B700A66DDE /* BetterSplitView.swift */,
 				6ADD58DE1D29DB330051DB28 /* RoomsViewController.swift */,
 				6ADD58E21D29E4890051DB28 /* RoomViewController.swift */,
 				6ADD58E01D29DD220051DB28 /* ServersViewController.swift */,
-				6A3919A11D4C28E400BA6466 /* AddRoomServerSelection.swift */,
-				6AF3901A1D4C520800A46F1C /* RoomNameEntryTableViewController.swift */,
-				6A3919A31D4C2D3B00BA6466 /* AddRoomServerSelectionNavigation.swift */,
 				661AF5011D2C809E00CFC190 /* AddServerViewController.swift */,
 				6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */,
 				661AF5031D2C833700CFC190 /* Notifications.swift */,
 				66A75B021D234694001161A3 /* Main.storyboard */,
-				661AF5051D2C89E900CFC190 /* TextFieldCell.swift */,
+				6A2081C21D5999C4006CD605 /* Cells */,
 				66A75B051D234694001161A3 /* Assets.xcassets */,
 				66A75B071D234694001161A3 /* LaunchScreen.storyboard */,
 				66A75B0A1D234694001161A3 /* Info.plist */,
@@ -236,21 +235,56 @@
 			children = (
 				66A75B171D2346ED001161A3 /* Info.plist */,
 				66EDD2F61D29664E0013E7CC /* OrangeIRCCore.h */,
-				66A75B2E1D23483C001161A3 /* LogEvent.swift */,
-				66A75B351D234885001161A3 /* Server.swift */,
+				6A25035D1D5950E300C18750 /* Server */,
+				6A25035E1D5950FB00C18750 /* Log */,
 				6A7A6A041D29D0850012D037 /* Room.swift */,
 				6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */,
 				6A7A6A011D29CDC60012D037 /* User.swift */,
-				667BB2EB1D29C2F60029AB2D /* Server+Channel.swift */,
-				667BB2E81D29C1990029AB2D /* Server+Log.swift */,
-				669FCF201D289A96000117C5 /* Server+MessageHandler.swift */,
 				669FCF1D1D2891B6000117C5 /* Message.swift */,
 				669FCF1A1D289094000117C5 /* Reply.swift */,
 				6A4BB74D1D25F1500032B5D0 /* Tag.swift */,
-				66A75B3E1D23496C001161A3 /* ServerDelegate.swift */,
 				6A82A07D1D24332A00F81A1B /* Command.swift */,
 			);
 			path = "OrangeIRC Core";
+			sourceTree = "<group>";
+		};
+		6A2081C21D5999C4006CD605 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				661AF5051D2C89E900CFC190 /* TextFieldCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		6A25035C1D59508F00C18750 /* Adding Rooms */ = {
+			isa = PBXGroup;
+			children = (
+				6AF3901A1D4C520800A46F1C /* RoomNameEntryTableViewController.swift */,
+				6A3919A11D4C28E400BA6466 /* AddRoomServerSelection.swift */,
+				6A3919A31D4C2D3B00BA6466 /* AddRoomServerSelectionNavigation.swift */,
+			);
+			name = "Adding Rooms";
+			sourceTree = "<group>";
+		};
+		6A25035D1D5950E300C18750 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				66A75B351D234885001161A3 /* Server.swift */,
+				667BB2EB1D29C2F60029AB2D /* Server+Channel.swift */,
+				667BB2E81D29C1990029AB2D /* Server+Log.swift */,
+				669FCF201D289A96000117C5 /* Server+MessageHandler.swift */,
+				66A75B3E1D23496C001161A3 /* ServerDelegate.swift */,
+			);
+			name = Server;
+			sourceTree = "<group>";
+		};
+		6A25035E1D5950FB00C18750 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				66A75B2E1D23483C001161A3 /* LogEvent.swift */,
+				6A25035F1D59511900C18750 /* MessageLogEvent.swift */,
+			);
+			name = Log;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				669FCF1C1D289094000117C5 /* Reply.swift in Sources */,
+				6A2503611D59511900C18750 /* MessageLogEvent.swift in Sources */,
 				66A75B401D23496C001161A3 /* ServerDelegate.swift in Sources */,
 				6A82A07F1D24332A00F81A1B /* Command.swift in Sources */,
 				669FCF221D289A96000117C5 /* Server+MessageHandler.swift in Sources */,
@@ -456,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66EDD2F31D2963E60013E7CC /* Tag.swift in Sources */,
+				6A2503601D59511900C18750 /* MessageLogEvent.swift in Sources */,
 				66EDD2EF1D2963E60013E7CC /* Server.swift in Sources */,
 				66EDD2F21D2963E60013E7CC /* Reply.swift in Sources */,
 				66EDD2F11D2963E60013E7CC /* Message.swift in Sources */,
@@ -486,8 +522,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				66A75B031D234694001161A3 /* Base */,
-				6A8B031D1D2CA8B70002A2C6 /* es */,
-				6AA193271D2CB08E00A66DDE /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

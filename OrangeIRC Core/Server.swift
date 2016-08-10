@@ -25,6 +25,8 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
         static let Realname = "Realname"
         static let Rooms = "Rooms"
         static let NickServPassword = "NickServPassword"
+        static let AutoJoin = "AutoJoin"
+        
     }
     
     // MOTD support
@@ -33,25 +35,25 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
     
     public var log = [String]()
     
-    public var rooms = [Room]()
-    
     public var delegate: ServerDelegate?
     
     public var isConnectingOrRegistering = false
     
-    var socket: AsyncSocket?
-    
-    public var host: String
-    
-    public var port: Int
-    
     public var userBitmask = 0
     
+    var socket: AsyncSocket?
+    
+    // Saved data
+    public var host: String
+    public var port: Int
     public var nickname: String
     public var username: String
     public var realname: String
     public var password = ""
     public var nickservPassword = ""
+    public var rooms = [Room]()
+    public var autoJoin = false
+    // End saved data
     
     public var encoding: String.Encoding
     
@@ -93,6 +95,7 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
         }
         
         self.nickservPassword = nickservPassword
+        self.autoJoin = coder.decodeBool(forKey: Coding.AutoJoin)
     }
     
     public func encode(with aCoder: NSCoder) {
@@ -103,6 +106,7 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
         aCoder.encode(self.realname, forKey: Coding.Realname)
         aCoder.encode(self.rooms, forKey: Coding.Rooms)
         aCoder.encode(self.nickservPassword, forKey: Coding.NickServPassword)
+        aCoder.encode(self.autoJoin, forKey: Coding.AutoJoin)
     }
     
     public func connect() {
