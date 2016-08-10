@@ -107,8 +107,9 @@ class AddServerViewController : UITableViewController {
     
     @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
         // TODO: Implement sanity checks
-        _ = self.appDelegate.addServer(host: (self.hostCell?.textField.text)!, port: Int((self.portCell?.textField.text)!)!, nickname: (self.nicknameCell?.textField.text)!, username: (self.usernameCell?.textField.text)!, realname: (self.realnameCell?.textField.text)!, password: (self.passwordCell?.textField.text)!)
+        let server = self.appDelegate.addServer(host: (self.hostCell?.textField.text)!, port: Int((self.portCell?.textField.text)!)!, nickname: (self.nicknameCell?.textField.text)!, username: (self.usernameCell?.textField.text)!, realname: (self.realnameCell?.textField.text)!, password: (self.passwordCell?.textField.text)!)
         //server.autoJoin = self.autoJoinCell!.switch.isOn
+        server.autoJoin = false // temp
         
         self.dismiss(animated: true, completion: nil)
     }
