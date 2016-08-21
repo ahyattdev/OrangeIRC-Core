@@ -82,4 +82,4 @@ JOINED = "Joined";
 
 ADD_SERVER = "Add Server";
 
-AUTOMATICALLY_JOIN = "Automatically Join";
+AUTOMATICALLY_JOIN = "Auto Join";

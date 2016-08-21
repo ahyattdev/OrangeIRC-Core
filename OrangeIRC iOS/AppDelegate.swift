@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         
     }
     
-    let dataFolder: NSString = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+    let dataFolder = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
     var dataPaths: (servers: String, options: String)
     
     var window: UIWindow?
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         super.init()
     }
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         self.loadData()
         return true
@@ -124,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == self.nickservPasswordField {
-            guard let text: NSString = textField.text else {
+            guard let text = textField.text as NSString? else {
                 return true
             }
             let finalString = text.replacingCharacters(in: range, with: string)

@@ -74,7 +74,7 @@ class AddRoomServerSelection : UITableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case Segues.RoomNameEntrySegue.rawValue:
             let roomEntry = segue.destination as! RoomNameEntryTableViewController

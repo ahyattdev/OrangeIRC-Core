@@ -117,7 +117,7 @@ class RoomsViewController : UITableViewController {
         self.performSegue(withIdentifier: Segues.ShowServers.rawValue, sender: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case Segues.ShowAddChannel.rawValue:
             let nav = segue.destination as! AddRoomServerSelectionNavigation
