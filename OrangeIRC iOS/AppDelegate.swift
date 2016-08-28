@@ -30,10 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     override init() {
         dataPaths.servers = dataFolder.strings(byAppendingPaths: ["servers.plist"])[0]
         dataPaths.options = ""
+        print(dataPaths.servers)
         super.init()
     }
     
-    private func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         // Override point for customization after application launch.
         self.loadData()
         return true
@@ -210,6 +211,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+            
+            self.saveData()
         })
         confirmation.addAction(deleteAction)
         
@@ -217,23 +220,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func finishedReadingUserList(room: Room) {
-        
+        self.roomDataChanged()
     }
     
     func recievedTopic(room: Room) {
-        
+        self.roomDataChanged()
     }
     
     func joined(room: Room) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
+        self.roomDataChanged()
     }
     
     func left(room: Room) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
+        self.roomDataChanged()
     }
     
     func startedConnecting(server: Server) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        self.serverStateChanged()
     }
     
     func finishedReadingMOTD(server: Server) {
@@ -241,7 +244,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func didDisconnect(server: Server) {
+        self.serverStateChanged()
+    }
+    
+    func roomDataChanged() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
+        self.saveData()
+    }
+    
+    func serverStateChanged() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        self.saveData()
     }
     
 }
