@@ -11,6 +11,8 @@ import OrangeIRCCore
 
 class RoomViewController : UITableViewController {
     
+    var room: Room?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

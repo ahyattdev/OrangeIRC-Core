@@ -12,6 +12,7 @@ import CocoaAsyncSocket
 extension Server {
     
     func handle(message: Message) {
+        print(message.message)
         switch message.command {
         case Command.Reply.WELCOME:
             self.isConnectingOrRegistering = false

@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ROOM-->
+        <!--Room View Controller-->
         <scene sceneID="bIy-si-kg1">
             <objects>
-                <viewController id="lSf-D0-cuT" sceneMemberID="viewController">
+                <viewController id="lSf-D0-cuT" customClass="RoomViewController" customModule="OrangeIRC" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bdz-Za-WVm"/>
                         <viewControllerLayoutGuide type="bottom" id="5VB-yR-Cls"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="ROOM" id="FzZ-UO-VGx"/>
+                    <navigationItem key="navigationItem" id="FzZ-UO-VGx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9m-b3-Jri" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,31 +41,32 @@
                                     <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mov-G1-H1x">
-                                            <frame key="frameInset" minX="8" minY="11" width="120" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gx-L8-tHW">
+                                            <frame key="frameInset" minX="15" minY="14" width="91" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5r7-wQ-cNo">
-                                            <frame key="frameInset" minX="136" minY="6" width="231" height="30"/>
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cq7-pe-H0g">
+                                            <frame key="frameInset" minX="112" minY="6" width="255" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="label" destination="mov-G1-H1x" id="k0s-Pp-7aX"/>
-                                    <outlet property="textField" destination="5r7-wQ-cNo" id="ZPq-3j-u9o"/>
+                                    <outlet property="label" destination="9Gx-L8-tHW" id="kBW-uN-xH0"/>
+                                    <outlet property="textField" destination="Cq7-pe-H0g" id="Pik-If-qhG"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" id="a07-xh-T3Y" customClass="SwitchCell" customModule="OrangeIRC" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="164" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="a07-xh-T3Y" id="gLt-LJ-LaP">
-                                    <frame key="frameInset" width="375" height="44"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DgJ-UI-JhP">
@@ -253,6 +254,7 @@
                         <segue destination="dag-mB-gC5" kind="popoverPresentation" identifier="ShowAddPrivate" popoverAnchorBarButtonItem="EA7-vt-Onf" id="cTz-EW-9tb">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
+                        <segue destination="lSf-D0-cuT" kind="show" identifier="ShowRoom" id="nXL-Tb-v7h"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n5G-4n-562" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -463,7 +465,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cTz-EW-9tb"/>
         <segue reference="AV0-CG-Trw"/>
+        <segue reference="nXL-Tb-v7h"/>
+        <segue reference="cTz-EW-9tb"/>
     </inferredMetricsTieBreakers>
 </document>

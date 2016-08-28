@@ -94,6 +94,9 @@ class ServersViewController : UITableViewController {
             serverOptions.addAction(motdAction)
         }
         
+        let cancel = NSLocalizedString("CANCEL", comment: "Cancel")
+        let cancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil)
+        serverOptions.addAction(cancelAction)
         
         self.present(serverOptions, animated: true, completion: {
             self.tableView.deselectRow(at: indexPath, animated: true)

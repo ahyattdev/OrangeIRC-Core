@@ -12,9 +12,12 @@ import OrangeIRCCore
 class RoomsViewController : UITableViewController {
     
     enum Segues : String {
+        
         case ShowServers = "ShowServers"
         case ShowAddChannel = "ShowAddChannel"
         case ShowAddPrivate = "ShowAddPrivate"
+        case ShowRoom = "ShowRoom"
+        
     }
     
     enum CellIdentifiers : String {
@@ -125,6 +128,10 @@ class RoomsViewController : UITableViewController {
         case Segues.ShowAddPrivate.rawValue:
             let nav = segue.destination as! AddRoomServerSelectionNavigation
             nav.roomType = RoomType.PrivateMessage
+        case Segues.ShowRoom.rawValue:
+            let roomvc = segue.destination as! RoomViewController
+            roomvc.room = sender as? Room
+            roomvc.navigationItem.title = roomvc.room!.name
         default:
             break
         }
@@ -132,6 +139,8 @@ class RoomsViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let room = self.allRooms[indexPath.row]
+        performSegue(withIdentifier: Segues.ShowRoom.rawValue, sender: room)
     }
     
 }
