@@ -47,8 +47,12 @@ public class Room : NSObject, NSCoding {
     
     public required convenience init?(coder: NSCoder) {
         guard let name = coder.decodeObject(forKey: Coding.Name) as? String,
-            let type = coder.decodeObject(forKey: Coding.RoomType) as? RoomType else {
-                return nil
+            let rawType = coder.decodeObject(forKey: Coding.RoomType) as? String else {
+            return nil
+        }
+        
+        guard let type = RoomType(rawValue: rawType) else {
+            return nil
         }
         
         self.init(name: name, type: type)

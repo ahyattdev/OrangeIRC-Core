@@ -51,7 +51,7 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
     public var realname: String
     public var password = ""
     public var nickservPassword = ""
-    public var rooms = [Room]()
+    public var rooms: [Room] = [Room]()
     public var autoJoin = false
     // End saved data
     
