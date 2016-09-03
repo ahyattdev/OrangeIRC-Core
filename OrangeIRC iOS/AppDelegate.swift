@@ -262,6 +262,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         serverStateChanged()
     }
     
+    func recieved(logEvent: LogEvent, for room: Room) {
+        NotificationCenter.default.post(name: Notifications.RoomLogDidChange, object: room)
+    }
+    
     func dataChanged(room: Room?) {
         NotificationCenter.default.post(name: Notifications.RoomDataDidChange, object: room)
         self.saveData()

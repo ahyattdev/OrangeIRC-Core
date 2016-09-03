@@ -10,8 +10,8 @@ import Foundation
 
 public class MessageLogEvent : LogEvent {
     
-    var contents: String
-    var sender: User
+    public var contents: String
+    public var sender: User
     
     public init(contents: String, sender: User) {
         self.contents = contents

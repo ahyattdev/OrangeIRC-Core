@@ -36,7 +36,10 @@ extension Server {
             // But Freenode sends various server variables
             break
         case Command.JOIN:
-            // A channel was sucessfully joined
+            guard let nick = message.prefix?.nickname else {
+                break
+            }
+            
             let channelName = message.target[0]
             var room: Room?
             if !alreadyExists(room: channelName) {
@@ -46,19 +49,37 @@ extension Server {
             } else {
                 room = roomFrom(name: channelName)
             }
-            // Send a channel join message
-            if room != nil {
+            
+            if nick == self.nickname {
+                // We joined a room
                 room!.isJoined = true
                 self.delegate?.joined(room: room!)
             }
+            
+            let logEvent = UserJoinLogEvent(sender: nick)
+            room!.log.append(logEvent)
+            delegate?.recieved(logEvent: logEvent, for: room!)
         
         case Command.PART:
-            let roomName = message.target[0]
-            let room = roomFrom(name: roomName)
-            if room != nil {
-                room!.isJoined = false
-                delegate?.left(room: room!)
+            guard let nick = message.prefix?.nickname else {
+                break
             }
+            
+            let roomName = message.target[0]
+            
+            guard let room = roomFrom(name: roomName) else {
+                break
+            }
+            
+            if nick == self.nickname {
+                // We left
+                room.isJoined = false
+                delegate?.left(room: room)
+            }
+            
+            let logEvent = UserPartLogEvent(sender: nick)
+            room.log.append(logEvent)
+            delegate?.recieved(logEvent: logEvent, for: room)
             
         case Command.NOTICE:
             if message.target[0] == self.nickname {
@@ -82,17 +103,21 @@ extension Server {
         case Command.Reply.NOTOPIC:
             let channelName = message.target[0]
             guard let channel = roomFrom(name: channelName) else {
-                return
+                break
             }
             channel.hasTopic = false
             
         case Command.Reply.TOPIC:
-            let channelName = message.target[0]
+            let channelName = message.target[1]
             guard let channel = roomFrom(name: channelName) else {
-                return
+                break
             }
             channel.topic = message.parameters
-            
+        
+        case Command.QUIT:
+            reset()
+            // No point reading any more data
+            return
         default:
             print(message.message)
             print("Unimplemented command handle: \(message.command)")

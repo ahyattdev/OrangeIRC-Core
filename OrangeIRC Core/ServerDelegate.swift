@@ -32,4 +32,6 @@ public protocol ServerDelegate {
     
     func didDisconnect(server: Server)
     
+    func recieved(logEvent: LogEvent, for room: Room)
+    
 }

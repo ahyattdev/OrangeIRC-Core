@@ -13,12 +13,17 @@ class RoomViewController : UITableViewController {
     
     struct Segues {
         
-        private init() {
-            
-        }
+        private init() { }
         
         static let ShowInfo = "ShowInfo"
         
+    }
+    
+    struct CellIdentifiers {
+        
+        private init() { }
+        
+        static let Cell = "Cell"
     }
     
     var room: Room?
@@ -36,10 +41,16 @@ class RoomViewController : UITableViewController {
         default: break
         }
     }
+    
     func updateWith(room: Any?) {
         // Only run this on iPad
         if !appDelegate.splitView!.isCollapsed && navigationController!.visibleViewController != self{
             navigationController!.popToViewController(self, animated: true)
+        }
+        
+        if self.room != nil {
+            // Stop observing the old room
+            NotificationCenter.default.removeObserver(tableView, name: Notifications.RoomLogDidChange, object: room!)
         }
         
         guard let newRoom = room as? Room else {
@@ -57,6 +68,8 @@ class RoomViewController : UITableViewController {
         tableView.reloadData()
         
         self.room = newRoom
+        
+        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.RoomLogDidChange, object: room!)
     }
     
     func optionsButtonTapped() {
@@ -71,6 +84,37 @@ class RoomViewController : UITableViewController {
         default:
             break
         }
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if room != nil {
+            return 1
+        } else {
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return room!.log.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: CellIdentifiers.Cell)
+        
+        let logEvent = room!.log[indexPath.row]
+        let userLogEvent = logEvent as? UserLogEvent
+        switch logEvent.self {
+            
+        case is UserJoinLogEvent:
+            cell.textLabel!.text = "\(userLogEvent!.sender) \(NSLocalizedString("JOINED_THE_ROOM", comment: "When someone joins the room"))"
+            
+        case is UserPartLogEvent:
+            cell.textLabel!.text = "\(userLogEvent!.sender) \(NSLocalizedString("LEFT_THE_ROOM", comment: "When someone joins the room"))"
+        default:
+            break
+        }
+        
+        return cell
     }
     
 }

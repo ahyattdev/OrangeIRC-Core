@@ -140,6 +140,10 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
     
     public func onSocketDidDisconnect(_ sock: AsyncSocket!) {
         // We need to wait after QUIT is sent, as things are sent asyncronously
+        reset()
+    }
+    
+    public func reset() {
         self.isConnectingOrRegistering = false
         self.isRegistered = false
         self.finishedReadingMOTD = false

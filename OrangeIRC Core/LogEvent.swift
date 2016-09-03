@@ -11,4 +11,6 @@ import Foundation
 // Sort of like a Java abstract class for now
 public class LogEvent {
     
+    public var date: Date = Date()
+    
 }
