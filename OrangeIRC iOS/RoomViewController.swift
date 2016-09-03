@@ -65,11 +65,11 @@ class RoomViewController : UITableViewController {
         
         navigationItem.title = newRoom.name
         
-        tableView.reloadData()
-        
         self.room = newRoom
         
         NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.RoomLogDidChange, object: room!)
+        
+        tableView.reloadData()
     }
     
     func optionsButtonTapped() {
