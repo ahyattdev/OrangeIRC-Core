@@ -75,30 +75,7 @@ class RoomInfo : UITableViewController {
             let user = room!.users[indexPath.row]
             cell.textLabel!.text = user.name
             
-            switch user.mode {
-            case .Operator:
-                cell.textLabel!.textColor = UIColor.red
-            case .Voice:
-                cell.textLabel!.textColor = UIColor.blue
-            case .Invisible:
-                cell.textLabel!.textColor = UIColor.gray
-            case .Deaf:
-                cell.textLabel!.textColor = UIColor.lightGray
-            case .Zombie:
-                cell.textLabel!.textColor = UIColor.gray
-            case .None:
-                // Default text color
-                break
-            }
-            
-            if !room!.isJoined {
-                cell.textLabel!.textColor = UIColor.lightGray
-            }
-            
-            if user.isSelf {
-                cell.textLabel!.textColor = UIColor.orange
-            }
-            
+            cell.textLabel!.textColor = appDelegate.color(for: user, in: room!)
             
         default: break
             

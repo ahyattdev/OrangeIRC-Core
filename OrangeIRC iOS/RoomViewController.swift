@@ -103,6 +103,7 @@ class RoomViewController : UITableViewController {
         
         let logEvent = room!.log[indexPath.row]
         let userLogEvent = logEvent as? UserLogEvent
+        let messageLogEvent = logEvent as? MessageLogEvent
         switch logEvent.self {
             
         case is UserJoinLogEvent:
@@ -110,6 +111,12 @@ class RoomViewController : UITableViewController {
             
         case is UserPartLogEvent:
             cell.textLabel!.text = "\(userLogEvent!.sender) \(NSLocalizedString("LEFT_THE_ROOM", comment: "When someone joins the room"))"
+            
+        case is MessageLogEvent:
+            cell.textLabel!.text = messageLogEvent!.contents
+            cell.detailTextLabel!.text = messageLogEvent!.sender.name
+            cell.detailTextLabel!.textColor = appDelegate.color(for: messageLogEvent!.sender, in: room!)
+        
         default:
             break
         }

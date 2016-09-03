@@ -69,14 +69,12 @@ public class Room : NSObject, NSCoding {
     func addUser(nick: String) {
         // Because they got rid of parameters being vars
         var vnick = nick
-        let prefix = String(describing: nick.characters.first)
+        let prefix = nick.substring(to: nick.index(after: nick.startIndex))
         
         var mode = User.Mode(rawValue: prefix)
-        
         if mode == nil {
             mode = User.Mode.None
         } else {
-            // We need to chop off the prefix
             vnick.remove(at: nick.startIndex)
         }
         
