@@ -30,6 +30,10 @@ class RoomViewController : UITableViewController {
     }
     
     func updateRoomWith(_ notification: NSNotification) {
+        if navigationController!.visibleViewController != self {
+            navigationController!.popToViewController(self, animated: true)
+        }
+        
         guard let newRoom = notification.object as? Room else {
             // Remove the details button and title
             navigationItem.title = nil

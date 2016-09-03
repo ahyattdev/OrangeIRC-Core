@@ -322,7 +322,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="6od-k0-3tS"/>
                     <connections>
-                        <segue destination="cEC-9J-uqh" kind="show" identifier="ShowInfo" action="showDetailViewController:sender:" id="vBP-Wr-fad"/>
+                        <segue destination="cEC-9J-uqh" kind="show" identifier="ShowInfo" id="wYD-oT-NXV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FvA-j4-ntt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -342,6 +342,7 @@
                             <outlet property="delegate" destination="cEC-9J-uqh" id="yFf-Qk-Ue6"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="Rpl-iW-EnO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xS4-nC-WRY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -487,7 +488,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="3GH-94-qka"/>
-        <segue reference="HpC-DY-6kj"/>
         <segue reference="cTz-EW-9tb"/>
+        <segue reference="0fx-DJ-9xT"/>
     </inferredMetricsTieBreakers>
 </document>

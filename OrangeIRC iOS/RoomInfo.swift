@@ -43,7 +43,7 @@ class RoomInfo : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value2, reuseIdentifier: CellIdentifiers.Cell)
+        let cell = UITableViewCell(style: .default, reuseIdentifier: CellIdentifiers.Cell)
         
         switch indexPath.section {
             

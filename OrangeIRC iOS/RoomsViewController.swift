@@ -30,10 +30,14 @@ class RoomsViewController : UITableViewController {
         super.viewDidLoad()
         
         // Reload the tableview when the room data changes
-        NotificationCenter.default.addObserver(self.tableView, selector: #selector(self.tableView.reloadData), name: Notifications.RoomDataDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(notification:)), name: Notifications.RoomDataDidChange, object: nil)
         
         self.navigationItem.title = NSLocalizedString("ROOMS", comment: "Rooms")
         self.navigationItem.leftBarButtonItem?.title = NSLocalizedString("SERVERS", comment: "Servers")
+    }
+    
+    func reloadTableView(notification: NSNotification) {
+        tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -65,6 +69,7 @@ class RoomsViewController : UITableViewController {
         
         if room.isJoined {
             cell.detailTextLabel!.text = NSLocalizedString("JOINED", comment: "Not Joined")
+            cell.textLabel!.textColor = UIColor.darkText
         } else {
             cell.detailTextLabel!.text = NSLocalizedString("NOT_JOINED", comment: "Not Joined")
             cell.textLabel!.textColor = UIColor.lightGray

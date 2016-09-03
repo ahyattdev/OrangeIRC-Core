@@ -120,6 +120,10 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
         }
     }
     
+    public func onSocket(_ sock: AsyncSocket!, willDisconnectWithError err: Error!) {
+        
+    }
+    
     public func onSocket(_ sock: AsyncSocket!, didConnectToHost host: String!, port: UInt16) {
         self.delegate?.connectedSucessfully(server: self)
         socket?.readData(to: AsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
@@ -142,6 +146,10 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
         self.motd = ""
         self.socket?.setDelegate(nil)
         self.socket = nil
+        
+        for room in rooms {
+            room.isJoined = false
+        }
         
         self.delegate?.didDisconnect(server: self)
     }

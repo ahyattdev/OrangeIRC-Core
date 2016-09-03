@@ -41,22 +41,24 @@ extension Server {
             var room: Room?
             if !alreadyExists(room: channelName) {
                 // Create a new room with log
-                let channel = Room(name: channelName, type: .Channel, server: self)
-                self.rooms.append(channel)
-                channel.isJoined = true
-                room = channel
+                room = Room(name: channelName, type: .Channel, server: self)
+                self.rooms.append(room!)
             } else {
                 room = roomFrom(name: channelName)
             }
             // Send a channel join message
-            self.delegate?.joined(room: room!)
+            if room != nil {
+                room!.isJoined = true
+                self.delegate?.joined(room: room!)
+            }
         
         case Command.PART:
-            let channelName = message.target[0]
-            let room = roomFrom(name: channelName)
-            room?.isJoined = false
-            
-            self.delegate?.left(room: room!)
+            let roomName = message.target[0]
+            let room = roomFrom(name: roomName)
+            if room != nil {
+                room!.isJoined = false
+                delegate?.left(room: room!)
+            }
             
         case Command.NOTICE:
             if message.target[0] == self.nickname {

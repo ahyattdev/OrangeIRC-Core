@@ -208,13 +208,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
             server.delegate = nil
             for i in 0 ..< self.servers.count {
                 if self.servers[i] == server {
-                    for room in self.servers[i].rooms {
-                        NotificationCenter.default.post(name: Notifications.RoomDataDidChange, object: room)
-                    }
                     self.servers.remove(at: i)
                     break
                 }
             }
+            
+            NotificationCenter.default.post(name: Notifications.RoomDataDidChange, object: nil)
             
             NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
             
@@ -250,10 +249,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func didDisconnect(server: Server) {
-        self.serverStateChanged()
+        dataChanged(room: nil)
+        serverStateChanged()
     }
     
-    func dataChanged(room: Room) {
+    func dataChanged(room: Room?) {
         NotificationCenter.default.post(name: Notifications.RoomDataDidChange, object: room)
         self.saveData()
     }
