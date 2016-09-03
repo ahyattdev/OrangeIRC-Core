@@ -114,6 +114,72 @@ extension Server {
             }
             channel.topic = message.parameters
         
+        case Command.PRIVMSG:
+            guard message.target.count > 0 else {
+                print("Could not get the room for a PRIVMSG")
+                break
+            }
+            
+            guard let contents = message.parameters else {
+                print("Got a PRIVMSG without a message")
+                break
+            }
+            
+            let roomName = message.target[0]
+            
+            guard let room = roomFrom(name: roomName) else {
+                print("Recieved a PRIVMSG for an unknown room")
+                break
+            }
+            
+            guard let senderNick = message.prefix?.nickname else {
+                break
+            }
+            
+            guard let sender = room.user(name: senderNick) else {
+                print("Could not identify the sender of a PRIVMSG")
+                break
+            }
+            
+            let logEvent = MessageLogEvent(contents: contents, sender: sender)
+            room.log.append(logEvent)
+            delegate?.recieved(logEvent: logEvent, for: room)
+        
+        case Command.Reply.NAMREPLY:
+            if message.target.count != 3 {
+                print("Error parsing NAMREPLY")
+                break
+            }
+            
+            let channelName = message.target[2]
+            
+            guard let room = roomFrom(name: channelName) else {
+                print("Got a list of users in a room, but did not have data on the room!")
+                break
+            }
+            
+            guard let nicknames = message.parameters?.components(separatedBy: " ") else {
+                print("Did not recieve a list of users during NAMREPLY")
+                break
+            }
+            
+            for nick in nicknames {
+                room.addUser(nick: nick)
+            }
+            
+        case Command.Reply.ENDOFNAMES:
+            if message.target.count < 1 {
+                break
+            }
+            
+            let roomName = message.target[1]
+            guard let room = roomFrom(name: roomName) else {
+                break
+            }
+            
+            room.hasCompleteUsersList = true
+            delegate?.finishedReadingUserList(room: room)
+            
         case Command.QUIT:
             reset()
             // No point reading any more data

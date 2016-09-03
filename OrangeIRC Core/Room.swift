@@ -34,6 +34,9 @@ public class Room : NSObject, NSCoding {
     
     public var type: RoomType
     
+    // Don't display the users list while it is still being populated
+    public var hasCompleteUsersList = false
+    
     public init(name: String, type: RoomType) {
         self.name = name
         self.type = type
@@ -61,6 +64,42 @@ public class Room : NSObject, NSCoding {
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(self.name, forKey: Coding.Name)
         aCoder.encode(self.type.rawValue, forKey: Coding.RoomType)
+    }
+    
+    func addUser(nick: String) {
+        // Because they got rid of parameters being vars
+        var vnick = nick
+        let prefix = String(describing: nick.characters.first)
+        
+        var mode = User.Mode(rawValue: prefix)
+        
+        if mode == nil {
+            mode = User.Mode.None
+        } else {
+            // We need to chop off the prefix
+            vnick.remove(at: nick.startIndex)
+        }
+        
+        let user = User(name: vnick, mode: mode!)
+        
+        if user.name == server!.nickname {
+            user.isSelf = true
+        }
+        
+        let otherUser = self.user(name: user.name)
+        if otherUser == nil {
+            // So there are no duplicates added
+            users.append(user)
+        }
+    }
+    
+    func user(name: String) -> User? {
+        for user in users {
+            if user.name == name {
+                return user
+            }
+        }
+        return nil
     }
     
 }

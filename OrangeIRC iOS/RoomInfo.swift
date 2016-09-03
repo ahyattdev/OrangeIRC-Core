@@ -30,13 +30,19 @@ class RoomInfo : UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if room != nil && room!.hasCompleteUsersList {
+            return 2
+        } else {
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 1
+        case 1:
+            return room!.users.count
         default:
             return super.tableView(tableView, numberOfRowsInSection: section)
         }
@@ -56,13 +62,43 @@ class RoomInfo : UITableViewController {
                     cell.textLabel!.textColor = UIColor.red
                     cell.textLabel!.text = NSLocalizedString("LEAVE", comment: "Leave")
                 } else {
-                    cell.textLabel!.textColor = UIColor.blue
+                    cell.textLabel!.textColor = UIColor.orange
                     cell.textLabel!.text = NSLocalizedString("JOIN", comment: "Join")
                 }
                 
             default: break
                 
             }
+        
+        case 1:
+            // The users list
+            let user = room!.users[indexPath.row]
+            cell.textLabel!.text = user.name
+            
+            switch user.mode {
+            case .Operator:
+                cell.textLabel!.textColor = UIColor.red
+            case .Voice:
+                cell.textLabel!.textColor = UIColor.blue
+            case .Invisible:
+                cell.textLabel!.textColor = UIColor.gray
+            case .Deaf:
+                cell.textLabel!.textColor = UIColor.lightGray
+            case .Zombie:
+                cell.textLabel!.textColor = UIColor.gray
+            case .None:
+                // Default text color
+                break
+            }
+            
+            if !room!.isJoined {
+                cell.textLabel!.textColor = UIColor.lightGray
+            }
+            
+            if user.isSelf {
+                cell.textLabel!.textColor = UIColor.orange
+            }
+            
             
         default: break
             
