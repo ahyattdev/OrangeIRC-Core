@@ -10,8 +10,8 @@ import Foundation
 
 struct Notifications {
     
-    static let ServerDataDidChange = "ServerDataDidChange"
-    static let ServerStateDidChange = "ServerStateDidChange"
-    static let RoomDataDidChange = "RoomDataDidChange"
+    static let ServerStateDidChange = NSNotification.Name(rawValue: "ServerStateDidChange")
+    static let RoomDataDidChange = NSNotification.Name(rawValue: "RoomDataDidChange")
+    static let DisplayedRoomDidChange = NSNotification.Name(rawValue: "DisplayedRoomDidChange")
     
 }

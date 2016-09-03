@@ -30,7 +30,7 @@ class RoomsViewController : UITableViewController {
         super.viewDidLoad()
         
         // Reload the tableview when the room data changes
-        NotificationCenter.default.addObserver(self.tableView, selector: #selector(self.tableView.reloadData), name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
+        NotificationCenter.default.addObserver(self.tableView, selector: #selector(self.tableView.reloadData), name: Notifications.RoomDataDidChange, object: nil)
         
         self.navigationItem.title = NSLocalizedString("ROOMS", comment: "Rooms")
         self.navigationItem.leftBarButtonItem?.title = NSLocalizedString("SERVERS", comment: "Servers")
@@ -128,10 +128,6 @@ class RoomsViewController : UITableViewController {
         case Segues.ShowAddPrivate.rawValue:
             let nav = segue.destination as! AddRoomServerSelectionNavigation
             nav.roomType = RoomType.PrivateMessage
-        case Segues.ShowRoom.rawValue:
-            let roomvc = segue.destination as! RoomViewController
-            roomvc.room = sender as? Room
-            roomvc.navigationItem.title = roomvc.room!.name
         default:
             break
         }
@@ -140,7 +136,7 @@ class RoomsViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let room = self.allRooms[indexPath.row]
-        performSegue(withIdentifier: Segues.ShowRoom.rawValue, sender: room)
+        appDelegate.show(room: room)
     }
     
 }

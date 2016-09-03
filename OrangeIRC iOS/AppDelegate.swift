@@ -78,6 +78,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         }
     }
     
+    func show(room: Room) {
+        NotificationCenter.default.post(name: Notifications.DisplayedRoomDidChange, object: room)
+    }
+    
     func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) -> Server {
         let server = Server(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: String.Encoding.utf8)
         servers.append(server)
@@ -108,19 +112,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func didNotRespond(server: Server) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
     }
     
     func stoppedResponding(server: Server) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
     }
     
     func connectedSucessfully(server: Server) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
     }
     
     func didRegister(server: Server) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -204,13 +208,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
             server.delegate = nil
             for i in 0 ..< self.servers.count {
                 if self.servers[i] == server {
+                    for room in self.servers[i].rooms {
+                        NotificationCenter.default.post(name: Notifications.RoomDataDidChange, object: room)
+                    }
                     self.servers.remove(at: i)
                     break
                 }
             }
             
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+            NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
             
             self.saveData()
         })
@@ -220,19 +226,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func finishedReadingUserList(room: Room) {
-        self.roomDataChanged()
+        dataChanged(room: room)
     }
     
     func recievedTopic(room: Room) {
-        self.roomDataChanged()
+        dataChanged(room: room)
     }
     
     func joined(room: Room) {
-        self.roomDataChanged()
+        dataChanged(room: room)
     }
     
     func left(room: Room) {
-        self.roomDataChanged()
+        dataChanged(room: room)
     }
     
     func startedConnecting(server: Server) {
@@ -247,13 +253,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         self.serverStateChanged()
     }
     
-    func roomDataChanged() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.RoomDataDidChange), object: nil)
+    func dataChanged(room: Room) {
+        NotificationCenter.default.post(name: Notifications.RoomDataDidChange, object: room)
         self.saveData()
     }
     
     func serverStateChanged() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notifications.ServerStateDidChange), object: nil)
+        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
         self.saveData()
     }
     

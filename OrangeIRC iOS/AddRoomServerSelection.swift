@@ -30,7 +30,7 @@ class AddRoomServerSelection : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // A server could potentially disconnect or connect while this dialog is shown
-        NotificationCenter.default.addObserver(self.tableView, selector: #selector(self.tableView.reloadData), name: NSNotification.Name(rawValue: Notifications.ServerDataDidChange), object: nil)
+        NotificationCenter.default.addObserver(self.tableView, selector: #selector(self.tableView.reloadData), name: Notifications.ServerStateDidChange, object: nil)
         
         let nav = self.navigationController as! AddRoomServerSelectionNavigation
         self.roomType = nav.roomType!

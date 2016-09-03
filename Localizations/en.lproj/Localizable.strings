@@ -83,3 +83,11 @@ JOINED = "Joined";
 ADD_SERVER = "Add Server";
 
 AUTOMATICALLY_JOIN = "Auto Join";
+
+INFO = "Info";
+
+DETAILS = "Details";
+
+JOIN = "Join";
+
+LEAVE = "Leave";
