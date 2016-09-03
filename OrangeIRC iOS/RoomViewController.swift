@@ -26,15 +26,23 @@ class RoomViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateRoomWith(_:)), name: Notifications.DisplayedRoomDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handle(_:)), name: Notifications.DisplayedRoomDidChange, object: nil)
     }
     
-    func updateRoomWith(_ notification: NSNotification) {
-        if navigationController!.visibleViewController != self {
+    func handle(_ notification: NSNotification) {
+        switch notification.name {
+        case Notifications.DisplayedRoomDidChange:
+            updateWith(room: notification.object)
+        default: break
+        }
+    }
+    func updateWith(room: Any?) {
+        // Only run this on iPad
+        if !appDelegate.splitView!.isCollapsed && navigationController!.visibleViewController != self{
             navigationController!.popToViewController(self, animated: true)
         }
         
-        guard let newRoom = notification.object as? Room else {
+        guard let newRoom = room as? Room else {
             // Remove the details button and title
             navigationItem.title = nil
             navigationItem.rightBarButtonItem = nil
@@ -48,7 +56,7 @@ class RoomViewController : UITableViewController {
         
         tableView.reloadData()
         
-        room = newRoom
+        self.room = newRoom
     }
     
     func optionsButtonTapped() {

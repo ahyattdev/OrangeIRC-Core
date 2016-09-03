@@ -14,6 +14,8 @@ class BetterSplitView: UISplitViewController, UISplitViewControllerDelegate {
         super.viewDidLoad()
         
         self.delegate = self
+        
+        appDelegate.splitView = self
     }
     
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {

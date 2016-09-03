@@ -27,6 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     var nickservPasswordField: UITextField?
     var doneAction: UIAlertAction?
     
+    var splitView: BetterSplitView?
+    var roomsView: RoomsViewController?
+    
     override init() {
         dataPaths.servers = dataFolder.strings(byAppendingPaths: ["servers.plist"])[0]
         dataPaths.options = ""
@@ -79,7 +82,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func show(room: Room) {
-        NotificationCenter.default.post(name: Notifications.DisplayedRoomDidChange, object: room)
+        if splitView!.isCollapsed {
+            // Done on iPhone
+            roomsView?.performSegue(withIdentifier: "ShowRoom", sender: room)
+        } else {
+            // We can only use the notification if the view controller will exist
+            NotificationCenter.default.post(name: Notifications.DisplayedRoomDidChange, object: room)
+        }
     }
     
     func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) -> Server {

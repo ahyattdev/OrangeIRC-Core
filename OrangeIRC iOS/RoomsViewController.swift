@@ -34,6 +34,8 @@ class RoomsViewController : UITableViewController {
         
         self.navigationItem.title = NSLocalizedString("ROOMS", comment: "Rooms")
         self.navigationItem.leftBarButtonItem?.title = NSLocalizedString("SERVERS", comment: "Servers")
+        
+        appDelegate.roomsView = self
     }
     
     func reloadTableView(notification: NSNotification) {
@@ -133,6 +135,10 @@ class RoomsViewController : UITableViewController {
         case Segues.ShowAddPrivate.rawValue:
             let nav = segue.destination as! AddRoomServerSelectionNavigation
             nav.roomType = RoomType.PrivateMessage
+        case Segues.ShowRoom.rawValue:
+            let room = sender as? Room
+            let roomViewController = segue.destination as! RoomViewController
+            roomViewController.updateWith(room: room)
         default:
             break
         }
