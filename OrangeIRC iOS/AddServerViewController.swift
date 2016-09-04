@@ -72,6 +72,7 @@ class AddServerViewController : UITableViewController {
             case 0:
                 textFieldCell.label.text = NSLocalizedString("HOSTNAME", comment: "Hostname")
                 textFieldCell.textField.placeholder = NSLocalizedString("IRC_DOT_EXAMPLE_DOT_COM", comment: "irc.example.com")
+                textFieldCell.textField.keyboardType = .URL
                 self.hostCell = textFieldCell
             case 1:
                 textFieldCell.label.text = NSLocalizedString("PORT", comment: "Port")

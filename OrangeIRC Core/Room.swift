@@ -28,7 +28,7 @@ public class Room : NSObject, NSCoding {
     
     public var topic: String?
     
-    public var hasTopic = true
+    public var hasTopic = false
     
     public var isJoined = false
     

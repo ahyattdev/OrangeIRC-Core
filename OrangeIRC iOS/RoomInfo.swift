@@ -84,6 +84,22 @@ class RoomInfo : UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            // Topic
+            if room != nil {
+                if room!.hasTopic {
+                    return room!.topic!
+                }
+            }
+        default:
+            break
+        }
+        
+        return nil
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         

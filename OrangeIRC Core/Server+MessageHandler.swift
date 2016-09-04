@@ -113,6 +113,7 @@ extension Server {
                 break
             }
             channel.topic = message.parameters
+            channel.hasTopic = true
         
         case Command.PRIVMSG:
             guard message.target.count > 0 else {

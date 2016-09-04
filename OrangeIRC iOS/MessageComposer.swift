@@ -26,6 +26,11 @@ class MessageComposer : UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
         navigationItem.title = "\(room!.name) @ \(room!.server!.host)"
+        
+        // Show the keyboard
+        textView.becomeFirstResponder()
+        
+        addKeyCommand(UIKeyCommand(input: "\n", modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(done), discoverabilityTitle: NSLocalizedString("SEND_MESSAGE", comment: "Send message")))
     }
     
     func cancel() {

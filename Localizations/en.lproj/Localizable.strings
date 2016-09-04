@@ -95,3 +95,7 @@ LEAVE = "Leave";
 JOINED_THE_ROOM = "joined the room";
 
 LEFT_THE_ROOM = "left the room";
+
+AUTHENTICATE = "Authenticate";
+
+SEND_MESSAGE = "Send Message";

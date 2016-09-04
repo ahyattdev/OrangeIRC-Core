@@ -167,7 +167,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
                         textField.delegate = self
                     })
                     
-                    let done = NSLocalizedString("DONE", comment: "Done")
+                    let disconnect = NSLocalizedString("DISCONNECT", comment: "Disconnect")
+                    let disconnectAction = UIAlertAction(title: disconnect, style: .destructive, handler: { (action) in
+                        server.disconnect()
+                    })
+                    nicknamePasswordAlert.addAction(disconnectAction)
+                    
+                    let done = NSLocalizedString("AUTHENTICATE", comment: "Done")
                     let doneAction = UIAlertAction(title: done, style: .default, handler: { (action) in
                         server.nickservPassword = self.nickservPasswordField!.text!
                         self.saveData()
@@ -181,12 +187,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
                     self.doneAction = doneAction
                     
                     nicknamePasswordAlert.addAction(doneAction)
-                    
-                    let disconnect = NSLocalizedString("DISCONNECT", comment: "Disconnect")
-                    let disconnectAction = UIAlertAction(title: disconnect, style: .destructive, handler: { (action) in
-                        server.disconnect()
-                    })
-                    nicknamePasswordAlert.addAction(disconnectAction)
                     
                     self.window!.rootViewController!.present(nicknamePasswordAlert, animated: true, completion: nil)
                 } else {
