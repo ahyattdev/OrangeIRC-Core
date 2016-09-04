@@ -11,13 +11,9 @@ import CocoaAsyncSocket
 
 extension Server {
     
-    public func onSocket(_ sock: AsyncSocket!, willDisconnectWithError err: Error!) {
-        
-    }
-    
-    public func onSocket(_ sock: AsyncSocket!, didConnectToHost host: String!, port: UInt16) {
-        self.delegate?.connectedSucessfully(server: self)
-        socket?.readData(to: AsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
+    public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+        delegate?.connectedSucessfully(server: self)
+        socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
         print("Connected to host: \(host)")
         // Send the NICK message
         if sock == self.socket {
@@ -29,12 +25,28 @@ extension Server {
         }
     }
     
-    public func onSocketDidDisconnect(_ sock: AsyncSocket!) {
+    public func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
         // We need to wait after QUIT is sent, as things are sent asyncronously
         reset()
     }
     
-    public func onSocket(_ sock: AsyncSocket!, didWriteDataWithTag tag: Int) {
+    @objc(socket:didReadData:withTag:) public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
+        let strData = data.subdata(in: (0 ..< data.count))
+        guard let string = String(bytes: strData, encoding: self.encoding), string.isEmpty == false else {
+            return
+        }
+        
+        do {
+            self.log.append(string)
+            let message = try Message(string)
+            handle(message: message)
+        } catch {
+            print("Failed to parse message: \(string)")
+            socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
+        }
+    }
+    
+    public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         switch tag {
         case Tag.Normal:
             break
@@ -48,22 +60,6 @@ extension Server {
             }
         default:
             break
-        }
-    }
-    
-    @objc(onSocket:didReadData:withTag:) public func onSocket(_ sock: AsyncSocket!, didRead data: Data!, withTag tag: Int) {
-        let strData = data.subdata(in: (0 ..< data.count))
-        guard let string = String(bytes: strData, encoding: self.encoding), string.isEmpty == false else {
-            return
-        }
-        
-        do {
-            self.log.append(string)
-            let message = try Message(string)
-            handle(message: message)
-        } catch {
-            print("Failed to parse message: \(string)")
-            socket?.readData(to: AsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
         }
     }
     

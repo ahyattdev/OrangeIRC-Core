@@ -13,7 +13,7 @@ let TIMEOUT_CONNECT = TimeInterval(30)
 let TIMEOUT_NONE = TimeInterval(-1)
 let CRLF = "\r\n"
 
-public class Server: NSObject, AsyncSocketDelegate, NSCoding {
+public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     // NSCoding keys extracted to here so to avoid typos causing bugs
     struct Coding {
@@ -41,7 +41,7 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
     
     public var userBitmask = 0
     
-    var socket: AsyncSocket?
+    var socket: GCDAsyncSocket?
     
     // Saved data
     public var host: String
@@ -110,7 +110,8 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
     }
     
     public func connect() {
-        self.socket = AsyncSocket(delegate: self)
+        socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
+        
         do {
             try self.socket?.connect(toHost: self.host, onPort: UInt16(self.port), withTimeout: TIMEOUT_CONNECT)
             self.isConnectingOrRegistering = true
@@ -125,7 +126,7 @@ public class Server: NSObject, AsyncSocketDelegate, NSCoding {
         self.isRegistered = false
         self.finishedReadingMOTD = false
         self.motd = ""
-        self.socket?.setDelegate(nil)
+        self.socket?.setDelegate(nil, delegateQueue: nil)
         self.socket = nil
         
         for room in rooms {
