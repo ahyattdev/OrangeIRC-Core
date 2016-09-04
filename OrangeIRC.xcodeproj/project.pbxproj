@@ -22,7 +22,8 @@
 		66837D991D25E4A900F85410 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
 		66837D9A1D25E4A900F85410 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		66837DA01D25E51100F85410 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D9F1D25E51100F85410 /* CocoaAsyncSocket.framework */; };
-		669FCF1C1D289094000117C5 /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF1A1D289094000117C5 /* Reply.swift */; };
+		669DF6FF1D7CDCD0007F82DB /* Server+Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */; };
+		669DF7001D7CDCD0007F82DB /* Server+Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */; };
 		669FCF1F1D2891B6000117C5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF1D1D2891B6000117C5 /* Message.swift */; };
 		669FCF221D289A96000117C5 /* Server+MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF201D289A96000117C5 /* Server+MessageHandler.swift */; };
 		66A75AFF1D234694001161A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75AFE1D234694001161A3 /* AppDelegate.swift */; };
@@ -41,7 +42,6 @@
 		66EDD2EF1D2963E60013E7CC /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B351D234885001161A3 /* Server.swift */; };
 		66EDD2F01D2963E60013E7CC /* Server+MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF201D289A96000117C5 /* Server+MessageHandler.swift */; };
 		66EDD2F11D2963E60013E7CC /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF1D1D2891B6000117C5 /* Message.swift */; };
-		66EDD2F21D2963E60013E7CC /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF1A1D289094000117C5 /* Reply.swift */; };
 		66EDD2F31D2963E60013E7CC /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BB74D1D25F1500032B5D0 /* Tag.swift */; };
 		66EDD2F41D2963E60013E7CC /* ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3E1D23496C001161A3 /* ServerDelegate.swift */; };
 		66EDD2F51D2963E60013E7CC /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A07D1D24332A00F81A1B /* Command.swift */; };
@@ -111,7 +111,7 @@
 		66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		66837D9F1D25E51100F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/Mac/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		66837DA11D25E59900F85410 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		669FCF1A1D289094000117C5 /* Reply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
+		669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Socket.swift"; sourceTree = "<group>"; };
 		669FCF1D1D2891B6000117C5 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		669FCF201D289A96000117C5 /* Server+MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+MessageHandler.swift"; sourceTree = "<group>"; };
 		66A75AFB1D234694001161A3 /* OrangeIRC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrangeIRC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,7 +267,6 @@
 				6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */,
 				6A7A6A011D29CDC60012D037 /* User.swift */,
 				669FCF1D1D2891B6000117C5 /* Message.swift */,
-				669FCF1A1D289094000117C5 /* Reply.swift */,
 				6A4BB74D1D25F1500032B5D0 /* Tag.swift */,
 				6A82A07D1D24332A00F81A1B /* Command.swift */,
 			);
@@ -301,6 +300,7 @@
 				667BB2E81D29C1990029AB2D /* Server+Log.swift */,
 				669FCF201D289A96000117C5 /* Server+MessageHandler.swift */,
 				66A75B3E1D23496C001161A3 /* ServerDelegate.swift */,
+				669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -500,7 +500,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				669FCF1C1D289094000117C5 /* Reply.swift in Sources */,
 				6A2503611D59511900C18750 /* MessageLogEvent.swift in Sources */,
 				66A75B401D23496C001161A3 /* ServerDelegate.swift in Sources */,
 				6A82A07F1D24332A00F81A1B /* Command.swift in Sources */,
@@ -517,6 +516,7 @@
 				66C8580C1D7B1781009E486F /* UserLogEvent.swift in Sources */,
 				66A75B371D234885001161A3 /* Server.swift in Sources */,
 				669FCF1F1D2891B6000117C5 /* Message.swift in Sources */,
+				669DF7001D7CDCD0007F82DB /* Server+Socket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,7 +527,6 @@
 				66EDD2F31D2963E60013E7CC /* Tag.swift in Sources */,
 				6A2503601D59511900C18750 /* MessageLogEvent.swift in Sources */,
 				66EDD2EF1D2963E60013E7CC /* Server.swift in Sources */,
-				66EDD2F21D2963E60013E7CC /* Reply.swift in Sources */,
 				66C8580E1D7B17F1009E486F /* UserJoinLogEvent.swift in Sources */,
 				66C858111D7B17FA009E486F /* UserPartLogEvent.swift in Sources */,
 				66EDD2F11D2963E60013E7CC /* Message.swift in Sources */,
@@ -541,6 +540,7 @@
 				66C8580B1D7B1781009E486F /* UserLogEvent.swift in Sources */,
 				66EDD2F01D2963E60013E7CC /* Server+MessageHandler.swift in Sources */,
 				66EDD2F51D2963E60013E7CC /* Command.swift in Sources */,
+				669DF6FF1D7CDCD0007F82DB /* Server+Socket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
