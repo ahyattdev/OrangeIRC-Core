@@ -16,6 +16,7 @@ class RoomViewController : UITableViewController {
         private init() { }
         
         static let ShowInfo = "ShowInfo"
+        static let ShowComposer = "ShowComposer"
         
     }
     
@@ -28,10 +29,31 @@ class RoomViewController : UITableViewController {
     
     var room: Room?
     
+    var composerButton: UIBarButtonItem {
+        get {
+            return UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(composerButtonTapped))
+        }
+        
+    }
+    
+    var optionsButton: UIBarButtonItem {
+        get {
+            return UIBarButtonItem(title: NSLocalizedString("DETAILS", comment: "Details"), style: .plain, target: self, action: #selector(optionsButtonTapped))
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(handle(_:)), name: Notifications.DisplayedRoomDidChange, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if room != nil {
+            navigationItem.rightBarButtonItems = room!.isJoined ? [optionsButton, composerButton] : [optionsButton]
+        }
     }
     
     func handle(_ notification: NSNotification) {
@@ -56,12 +78,12 @@ class RoomViewController : UITableViewController {
         guard let newRoom = room as? Room else {
             // Remove the details button and title
             navigationItem.title = nil
-            navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItems = nil
             return
         }
         
-        let optionsButton = UIBarButtonItem(title: NSLocalizedString("DETAILS", comment: "Details"), style: .plain, target: self, action: #selector(optionsButtonTapped))
-        navigationItem.rightBarButtonItem = optionsButton
+        // Don't show the option to compose a message if we are not in the room
+        navigationItem.rightBarButtonItems = newRoom.isJoined ? [optionsButton, composerButton] : [optionsButton]
         
         navigationItem.title = newRoom.name
         
@@ -76,11 +98,18 @@ class RoomViewController : UITableViewController {
         self.performSegue(withIdentifier: Segues.ShowInfo, sender: self.room!)
     }
     
+    func composerButtonTapped() {
+        self.performSegue(withIdentifier: Segues.ShowComposer, sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case Segues.ShowInfo:
             let info = segue.destination as! RoomInfo
             info.room = room
+        case Segues.ShowComposer:
+            let nav = segue.destination as! ComposerNavigationController
+            nav.room = room
         default:
             break
         }

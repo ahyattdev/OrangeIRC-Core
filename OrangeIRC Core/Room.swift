@@ -66,6 +66,43 @@ public class Room : NSObject, NSCoding {
         aCoder.encode(self.type.rawValue, forKey: Coding.RoomType)
     }
     
+    public func send(message: String) {
+        // Splits the message up into 512 byte chunks
+        var message = message
+        var messageParts = [String]()
+        let commandPrefix = "\(Command.PRIVMSG) \(self.name) :"
+        let MAX = 510 - commandPrefix.utf8.count
+        
+        while !message.isEmpty {
+            if message.utf8.count > MAX {
+                let range = message.utf8.startIndex ..< message.utf8.index(message.utf8.startIndex, offsetBy: MAX)
+                let part = message.utf8[range]
+                messageParts.append(String(describing: part))
+                
+                // For some reason, we cant remove range in the UTF8View
+                for _ in 0 ..< MAX {
+                    _ = message.utf8.popFirst()
+                }
+            } else {
+                let range = message.utf8.startIndex ..< message.utf8.endIndex
+                let part = String(message.utf8[range])
+                messageParts.append(part!)
+                message = ""
+            }
+            
+            for part in messageParts {
+                server!.write(string: "\(commandPrefix)\(part)")
+                guard let myUser = user(name: server!.nickname) else {
+                    print("Failed to add a message we sent to the log")
+                    continue
+                }
+                let logEvent = MessageLogEvent(contents: part, sender: myUser)
+                log.append(logEvent)
+                server!.delegate?.recieved(logEvent: logEvent, for: self)
+            }
+        }
+    }
+    
     func addUser(nick: String) {
         // Because they got rid of parameters being vars
         var vnick = nick
