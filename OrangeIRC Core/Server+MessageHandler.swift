@@ -18,6 +18,12 @@ extension Server {
             self.isConnectingOrRegistering = false
             self.delegate?.didRegister(server: self)
             self.isRegistered = true
+            for room in rooms {
+                if room.joinOnConnect {
+                    join(channel: room.name)
+                    room.joinOnConnect = false
+                }
+            }
             
         case Command.Reply.YOURHOST:
             // Not useful
@@ -94,7 +100,13 @@ extension Server {
             // Not useful
             break
         case Command.Reply.MOTD:
-            self.motd = "\(self.motd)\n\(message.parameters!)"
+            guard let parameters = message.parameters else {
+                print("Recieved a MOTD message without the MOTD part")
+                break
+            }
+            
+            // This prevents a preceding newline at the start of the MOTD
+            motd = motd.isEmpty ? parameters : "\(self.motd)\n\(parameters)"
             
         case Command.Reply.ENDOFMOTD:
             self.finishedReadingMOTD = true

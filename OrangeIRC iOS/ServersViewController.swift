@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import OrangeIRCCore
 
 class ServersViewController : UITableViewController {
     
     let CELL_IDENTIFIER = "Cell"
     let ACTIVITY_CELL_IDENTIFIER = "ActivityCell"
     let ADD_SERVER_SEGUE_IDENTIFIER = "AddServer"
+    
+    struct Segues {
+        
+        private init() { }
+        
+        static let ShowMOTD = "ShowMOTD"
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +98,7 @@ class ServersViewController : UITableViewController {
             // Add a show MOTD button
             let motd = NSLocalizedString("MOTD", comment: "MOTD")
             let motdAction = UIAlertAction(title: motd, style: .default, handler: { (action) in
-                // TODO: Implement displaying the MOTD
+                self.performSegue(withIdentifier: Segues.ShowMOTD, sender: server)
             })
             serverOptions.addAction(motdAction)
         }
@@ -112,6 +121,18 @@ class ServersViewController : UITableViewController {
         case .insert:
             break
         case .none:
+            break
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier! {
+        case Segues.ShowMOTD:
+            let nav = segue.destination as! MOTDNavigationController
+            let server = sender as! Server
+            
+            nav.server = server
+        default:
             break
         }
     }

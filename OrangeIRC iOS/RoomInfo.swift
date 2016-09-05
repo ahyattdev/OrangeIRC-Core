@@ -24,7 +24,7 @@ class RoomInfo : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "\(self.room!.name) \(NSLocalizedString("INFO", comment: "Information"))"
+        self.navigationItem.title = "\(self.room!.name) @ \(room!.server!.host) \(NSLocalizedString("DETAILS", comment: "Information"))"
         
         NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.RoomDataDidChange, object: room!)
     }
@@ -58,7 +58,10 @@ class RoomInfo : UITableViewController {
             switch indexPath.row {
                 
             case 0:
-                if room!.isJoined {
+                if !room!.server!.isRegistered {
+                    cell.textLabel!.textColor = UIColor.orange
+                    cell.textLabel!.text = NSLocalizedString("CONNECT_AND_JOIN", comment: "Join")
+                } else if room!.isJoined {
                     cell.textLabel!.textColor = UIColor.red
                     cell.textLabel!.text = NSLocalizedString("LEAVE", comment: "Leave")
                 } else {
@@ -111,7 +114,10 @@ class RoomInfo : UITableViewController {
                 
             case 0:
                 // Toggle joined or left
-                if room!.isJoined {
+                if !room!.server!.isRegistered {
+                    room!.joinOnConnect = true
+                    room!.server!.connect()
+                } else if room!.isJoined {
                     room!.server!.leave(channel: room!.name)
                 } else {
                     room!.server?.join(channel: room!.name)

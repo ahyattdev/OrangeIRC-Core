@@ -32,6 +32,9 @@ public class Room : NSObject, NSCoding {
     
     public var isJoined = false
     
+    // Set for the connect and join button
+    public var joinOnConnect = false
+    
     public var type: RoomType
     
     // Don't display the users list while it is still being populated
