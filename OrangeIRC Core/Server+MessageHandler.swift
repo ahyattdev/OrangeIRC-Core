@@ -194,9 +194,28 @@ extension Server {
             delegate?.finishedReadingUserList(room: room)
             
         case Command.QUIT:
-            reset()
-            // No point reading any more data
-            return
+            guard let nick = message.prefix?.nickname else {
+                print("The server sent a QUIT message without specifying who quit")
+                break
+            }
+            // See if it is for us
+            if nick == self.nickname {
+                reset()
+            }
+            
+            // Log it
+            guard let user = findInAllRooms(user: nick) else {
+                print("Could not find the User for which to log the quit message for")
+                break
+            }
+            
+            let logEvent = UserQuitLogEvent(sender: nick)
+            
+            for room in findRoomsOf(user: user) {
+                room.log.append(logEvent)
+                delegate?.recieved(logEvent: logEvent, for: room)
+            }
+            
         default:
             print(message.message)
             print("Unimplemented command handle: \(message.command)")

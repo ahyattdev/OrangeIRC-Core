@@ -141,6 +141,9 @@ class RoomViewController : UITableViewController {
         case is UserPartLogEvent:
             cell.textLabel!.text = "\(userLogEvent!.sender) \(NSLocalizedString("LEFT_THE_ROOM", comment: "When someone joins the room"))"
             
+        case is UserQuitLogEvent:
+            cell.textLabel!.text = "\(userLogEvent!.sender) \(NSLocalizedString("QUIT", comment: "When someone quits"))"
+            
         case is MessageLogEvent:
             cell.textLabel!.text = messageLogEvent!.contents
             cell.detailTextLabel!.text = messageLogEvent!.sender.name

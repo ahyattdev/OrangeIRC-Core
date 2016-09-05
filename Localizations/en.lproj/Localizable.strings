@@ -101,3 +101,5 @@ AUTHENTICATE = "Authenticate";
 SEND_MESSAGE = "Send Message";
 
 CONNECT_AND_JOIN = "Connect and Join";
+
+QUIT = "quit";
