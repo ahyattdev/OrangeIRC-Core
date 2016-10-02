@@ -24,7 +24,8 @@ class RoomInfo : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "\(self.room!.name) @ \(room!.server!.host) \(NSLocalizedString("DETAILS", comment: "Information"))"
+        navigationItem.title = "\(self.room!.name) \(NSLocalizedString("DETAILS", comment: "Information"))"
+        navigationItem.prompt = room!.server!.host
         
         NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.RoomDataDidChange, object: room!)
     }

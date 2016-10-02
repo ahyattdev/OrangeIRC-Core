@@ -66,7 +66,7 @@ class RoomViewController : UITableViewController {
     
     func updateWith(room: Any?) {
         // Only run this on iPad
-        if !appDelegate.splitView!.isCollapsed && navigationController!.visibleViewController != self{
+        if !appDelegate.splitView!.isCollapsed && navigationController!.visibleViewController != self {
             navigationController!.popToViewController(self, animated: true)
         }
         
@@ -86,6 +86,7 @@ class RoomViewController : UITableViewController {
         navigationItem.rightBarButtonItems = newRoom.isJoined ? [optionsButton, composerButton] : [optionsButton]
         
         navigationItem.title = newRoom.name
+        navigationItem.prompt = newRoom.server!.host
         
         self.room = newRoom
         

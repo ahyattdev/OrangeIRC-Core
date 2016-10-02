@@ -56,7 +56,19 @@ extension Server {
                 break
             }
             
-            let channelName = message.target[0]
+            var channelName = ""
+            if message.target.count == 0 {
+                if message.parameters != nil {
+                    channelName = message.parameters!
+                }
+            } else {
+                channelName = message.target[0]
+            }
+            
+            if channelName.isEmpty {
+                break
+            }
+            
             var room: Room?
             if !alreadyExists(room: channelName) {
                 // Create a new room with log
