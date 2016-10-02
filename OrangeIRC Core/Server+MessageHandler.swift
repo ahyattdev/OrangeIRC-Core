@@ -109,6 +109,17 @@ extension Server {
             motd = motd.isEmpty ? parameters : "\(self.motd)\n\(parameters)"
             
         case Command.Reply.ENDOFMOTD:
+            // Clean the MOTD of "- "
+            motd = motd.replacingOccurrences(of: "\n- ", with: "\n")
+            
+            if motd.hasPrefix("- ") {
+                motd = motd.replacingCharacters(in: motd.range(of: "- ")!, with: "")
+            }
+            
+            if motd.hasPrefix(" \n") {
+                motd = motd.replacingCharacters(in: motd.range(of: " \n")!, with: "")
+            }
+            
             self.finishedReadingMOTD = true
             self.delegate?.finishedReadingMOTD(server: self)
             
