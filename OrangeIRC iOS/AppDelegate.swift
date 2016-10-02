@@ -276,5 +276,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         self.saveData()
     }
     
+    func recieved(error: String, server: Server) {
+        let fullError = "\(NSLocalizedString("ERROR_DISCONNECT_MESSAGE", comment: "")):\n\n\(error)"
+        
+        let alert = UIAlertController(title: server.host, message: fullError, preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)
+        alert.addAction(ok)
+        
+        self.window!.rootViewController!.present(alert, animated: true, completion: nil)
+    }
+    
 }
 

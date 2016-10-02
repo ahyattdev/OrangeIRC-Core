@@ -13,6 +13,8 @@ public protocol ServerDelegate {
     func didNotRespond(server: Server)
     func stoppedResponding(server: Server)
     
+    func recieved(error: String, server: Server)
+    
     func connectedSucessfully(server: Server)
     
     func didRegister(server: Server)

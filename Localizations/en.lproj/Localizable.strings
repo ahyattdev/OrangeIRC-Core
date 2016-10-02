@@ -103,3 +103,7 @@ SEND_MESSAGE = "Send Message";
 CONNECT_AND_JOIN = "Connect and Join";
 
 QUIT = "quit";
+
+UNKNOWN_ERROR = "Unknown Error";
+
+ERROR_DISCONNECT_MESSAGE = "The server refused to connect with the following error";

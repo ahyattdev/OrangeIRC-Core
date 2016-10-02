@@ -41,6 +41,16 @@ extension Server {
             // According to RFC 2812, this is a bounce message
             // But Freenode sends various server variables
             break
+            
+        case Command.ERROR:
+            guard let errorMessage = message.parameters else {
+                print("Failed to get an ERROR message")
+                delegate?.recieved(error: NSLocalizedString("UNKNOWN_ERROR", comment: "Unknown Error"), server: self)
+                break
+            }
+            
+            delegate?.recieved(error: errorMessage, server: self)
+            
         case Command.JOIN:
             guard let nick = message.prefix?.nickname else {
                 break
@@ -88,9 +98,14 @@ extension Server {
             delegate?.recieved(logEvent: logEvent, for: room)
             
         case Command.NOTICE:
+            let nickname = message.target[0]
+            guard let noticeMessage = message.parameters else {
+                print("Failed to parse NOTICE")
+                break
+            }
             if message.target[0] == self.nickname {
                 // This NOTICE is specifically sent to this nickname
-                self.delegate?.recieved(notice: message.parameters!, sender: message.prefix!.nickname!, server: self)
+                self.delegate?.recieved(notice: noticeMessage, sender: nickname, server: self)
             }
             
         case Command.PING:

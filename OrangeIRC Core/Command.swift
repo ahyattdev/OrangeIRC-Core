@@ -18,8 +18,7 @@ public struct Command {
     static let PONG = "PONG"
     static let QUIT = "QUIT"
     static let USER = "USER"
-    
-    //static let MSG = "MSG"
+    static let ERROR = "ERROR"
     
     static let NOTICE = "NOTICE"
     static let PRIVMSG = "PRIVMSG"
