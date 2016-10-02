@@ -29,6 +29,12 @@ class ServersViewController : UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateServerDisplay), name: Notifications.ServerStateDidChange, object: nil)
         
         self.navigationItem.title = NSLocalizedString("SERVERS", comment: "Servers")
+        
+        let closeButton = UIBarButtonItem(title: NSLocalizedString("CLOSE", comment: ""), style: .plain, target: self, action: #selector(close))
+        let addServerButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addServer))
+        
+        navigationItem.leftBarButtonItems = [closeButton, editButtonItem]
+        navigationItem.rightBarButtonItem = addServerButton
     }
     
     func updateServerDisplay() {
@@ -125,6 +131,15 @@ class ServersViewController : UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let server = appDelegate.servers.remove(at: sourceIndexPath.row)
+        appDelegate.servers.insert(server, at: destinationIndexPath.row)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case Segues.ShowMOTD:
@@ -141,11 +156,11 @@ class ServersViewController : UITableViewController {
         return true
     }
     
-    @IBAction func addServerButton(_ sender: AnyObject) {
+    func addServer() {
         self.performSegue(withIdentifier: ADD_SERVER_SEGUE_IDENTIFIER, sender: nil)
     }
     
-    @IBAction func cancelButton(_ sender: AnyObject) {
+    func close() {
         self.dismiss(animated: true, completion: nil)
     }
 }

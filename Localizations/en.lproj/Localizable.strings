@@ -107,3 +107,5 @@ QUIT = "quit";
 UNKNOWN_ERROR = "Unknown Error";
 
 ERROR_DISCONNECT_MESSAGE = "The server refused to connect with the following error";
+
+CLOSE = "Close";
