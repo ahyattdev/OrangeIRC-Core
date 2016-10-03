@@ -30,8 +30,20 @@ public struct Command {
         static let YOURHOST = "002"
         static let CREATED = "003"
         static let MYINFO = "004"
-        
         static let BOUNCE = "005"
+        
+        static let YOURID = "042"
+        
+        static let STATSDLINE = "250"
+        static let LUSERCLIENT = "251"
+        static let LUSEROP = "252"
+        static let LUSERUNKNOWN = "253"
+        static let LUSERCHANNELS = "254"
+        static let LUSERME = "255"
+        static let ADMINME = "256"
+        
+        static let LOCALUSERS = "265"
+        static let GLOBALUSERS = "266"
         
         static let USERHOST = "302"
         static let ISON = "303"

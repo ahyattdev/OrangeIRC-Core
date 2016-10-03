@@ -12,7 +12,7 @@ import CocoaAsyncSocket
 extension Server {
     
     func handle(message: Message) {
-        print(message.message)
+        
         switch message.command {
         case Command.Reply.WELCOME:
             self.isConnectingOrRegistering = false
@@ -122,6 +122,14 @@ extension Server {
             
         case Command.PING:
             self.write(string: "\(Command.PONG) :\(message.parameters!)")
+        
+        case Command.Reply.YOURID:
+            // Useless
+            break
+        
+        case Command.Reply.STATSDLINE, Command.Reply.LUSERCLIENT, Command.Reply.LUSEROP, Command.Reply.LUSERUNKNOWN, Command.Reply.LUSERCHANNELS, Command.Reply.LUSERME, Command.Reply.ADMINME, Command.Reply.LOCALUSERS, Command.Reply.GLOBALUSERS:
+            // These stats are not useful
+            break
             
         case Command.Reply.MOTDSTART:
             // Not useful

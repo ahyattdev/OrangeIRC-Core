@@ -33,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     override init() {
         dataPaths.servers = dataFolder.strings(byAppendingPaths: ["servers.plist"])[0]
         dataPaths.options = ""
-        print(dataPaths.servers)
         super.init()
     }
     
