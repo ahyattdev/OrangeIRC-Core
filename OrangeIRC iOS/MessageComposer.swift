@@ -25,7 +25,8 @@ class MessageComposer : UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
-        navigationItem.title = "\(room!.name) @ \(room!.server!.host)"
+        navigationItem.title = room!.name
+        navigationItem.prompt = room!.server!.host
         
         // Show the keyboard
         textView.becomeFirstResponder()

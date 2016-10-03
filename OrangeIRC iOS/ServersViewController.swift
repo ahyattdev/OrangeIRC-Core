@@ -113,9 +113,9 @@ class ServersViewController : UITableViewController {
         let cancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil)
         serverOptions.addAction(cancelAction)
         
-        self.present(serverOptions, animated: true, completion: {
-            self.tableView.deselectRow(at: indexPath, animated: true)
-        })
+        self.present(serverOptions, animated: true, completion: nil)
+        
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -132,12 +132,18 @@ class ServersViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Enables the move row indicators
         return true
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // Move the Server
         let server = appDelegate.servers.remove(at: sourceIndexPath.row)
         appDelegate.servers.insert(server, at: destinationIndexPath.row)
+        
+        // Post a notification and save data
+        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
+        appDelegate.saveData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -153,6 +159,7 @@ class ServersViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Enables the delete row button
         return true
     }
     
