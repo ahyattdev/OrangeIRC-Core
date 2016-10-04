@@ -78,10 +78,13 @@ struct Message {
             self.command = commandAndTargetComponents.remove(at: 0)
             self.target = commandAndTargetComponents
             
-            var parametersStart = trimmedString.index(after: colonSpaceRange.upperBound)
-            // Fixes a bug where the first character of the parameters is cut off
-            parametersStart = trimmedString.index(before: parametersStart)
-            self.parameters = trimmedString[parametersStart ..< trimmedString.endIndex]
+            // If this check if not performed, this code could crash if the last character of trimmedString is a colon
+            if colonSpaceRange.upperBound != trimmedString.endIndex {
+                var parametersStart = trimmedString.index(after: colonSpaceRange.upperBound)
+                // Fixes a bug where the first character of the parameters is cut off
+                parametersStart = trimmedString.index(before: parametersStart)
+                self.parameters = trimmedString[parametersStart ..< trimmedString.endIndex]
+            }
         } else {
             // There are no parameters
             var spaceSeperatedArray = trimmedString.components(separatedBy: " ")

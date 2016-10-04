@@ -53,6 +53,7 @@ extension Server {
                 break
             }
             
+            // Hide the ERROR some servers send when the client sends QUIT
             if errorMessage.contains("Quit: ") {
                 break
             }
