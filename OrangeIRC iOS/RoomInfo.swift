@@ -41,7 +41,7 @@ class RoomInfo : UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 1
+            return 2
         case 1:
             return room!.users.count
         default:
@@ -69,6 +69,28 @@ class RoomInfo : UITableViewController {
                     cell.textLabel!.textColor = UIColor.orange
                     cell.textLabel!.text = NSLocalizedString("JOIN", comment: "Join")
                 }
+                
+            case 1:
+                // The autojoin switch
+                let autojoinSwitch = UISwitch()
+                
+                autojoinSwitch.isOn = room!.autoJoin
+                
+                autojoinSwitch.addTarget(self, action: #selector(autojoinPress(sender:event:)), for: .touchUpInside)
+                
+                let switchHeight = autojoinSwitch.frame.height
+                let switchWidth = autojoinSwitch.frame.width
+                
+                let cellHeight = cell.frame.height
+                let cellWidth = cell.frame.width
+                
+                let horizontalPadding: CGFloat = 13.0
+                
+                autojoinSwitch.frame = CGRect(x: cellWidth - switchWidth - horizontalPadding, y: (cellHeight / 2) - (switchHeight / 2), width: switchWidth, height: switchHeight)
+                
+                cell.addSubview(autojoinSwitch)
+                
+                cell.textLabel!.text = NSLocalizedString("AUTOMATICALLY_JOIN", comment: "")
                 
             default: break
                 
@@ -131,6 +153,11 @@ class RoomInfo : UITableViewController {
         default: break
             
         }
+    }
+    
+    func autojoinPress(sender: UISwitch, event: UIControlEvents) {
+        room!.autoJoin = sender.isOn
+        appDelegate.saveData()
     }
     
 }

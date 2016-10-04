@@ -20,8 +20,12 @@ extension Server {
             self.isRegistered = true
             for room in rooms {
                 if room.joinOnConnect {
+                    // Completes the feature of the Connect and Join button
                     join(channel: room.name)
                     room.joinOnConnect = false
+                } else if room.autoJoin && !room.isJoined {
+                    // Completes the room autojoin feature
+                    join(channel: room.name)
                 }
             }
             
@@ -46,6 +50,10 @@ extension Server {
             guard let errorMessage = message.parameters else {
                 print("Failed to get an ERROR message")
                 delegate?.recieved(error: NSLocalizedString("UNKNOWN_ERROR", comment: "Unknown Error"), server: self)
+                break
+            }
+            
+            if errorMessage.contains("Quit: ") {
                 break
             }
             

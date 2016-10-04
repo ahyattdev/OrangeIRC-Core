@@ -12,19 +12,28 @@ public class Room : NSObject, NSCoding {
     
     struct Coding {
         
+        // To prevent this struct from being initialized
+        private init() { }
+        
         static let Name = "Name"
         // We can't call it Type, because that would be a keyword
         static let RoomType = "Type"
+        static let AutoJoin = "AutoJoin"
         
     }
     
+    
+    // Preserved variables
+    public var type: RoomType
+    public var name: String
+    public var autoJoin = false
+    
+    // Should be set by the AppDelegate when the room is loaded or created
     public var server: Server?
     
     public var log = [LogEvent]()
     
     public var users = [User]()
-    
-    public var name: String
     
     public var topic: String?
     
@@ -32,10 +41,9 @@ public class Room : NSObject, NSCoding {
     
     public var isJoined = false
     
+    
     // Set for the connect and join button
     public var joinOnConnect = false
-    
-    public var type: RoomType
     
     // Don't display the users list while it is still being populated
     public var hasCompleteUsersList = false
@@ -62,11 +70,14 @@ public class Room : NSObject, NSCoding {
         }
         
         self.init(name: name, type: type)
+        
+        autoJoin = coder.decodeBool(forKey: Coding.AutoJoin)
     }
     
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(self.name, forKey: Coding.Name)
         aCoder.encode(self.type.rawValue, forKey: Coding.RoomType)
+        aCoder.encode(autoJoin, forKey: Coding.AutoJoin)
     }
     
     public func send(message: String) {
