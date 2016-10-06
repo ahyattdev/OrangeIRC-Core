@@ -109,3 +109,13 @@ UNKNOWN_ERROR = "Unknown Error";
 ERROR_DISCONNECT_MESSAGE = "The server refused to connect with the following error";
 
 CLOSE = "Close";
+
+ROOM_NAME = "Room Name";
+
+ADD_ROOM_SERVER_SECTION_DESCRIPTION = "The room will be joined on the server you specify";
+
+INVALID_ROOM_NAME = "Missing Room Name";
+
+INVALID_ROOM_NAME_MESSAGE = "You must specify a room name.";
+
+MISSING_CHANNEL_PREFIX = "ALL IRC channels require a prefix. If you are not sure of a prefix, a “#” is usually the prefix. Example: #channelname.";

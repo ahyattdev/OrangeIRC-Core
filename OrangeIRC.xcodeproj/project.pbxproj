@@ -57,8 +57,7 @@
 		6A18EAE81D5BC66C00AF1EF9 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A18EAE71D5BC66C00AF1EF9 /* SwitchCell.swift */; };
 		6A2503601D59511900C18750 /* MessageLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A25035F1D59511900C18750 /* MessageLogEvent.swift */; };
 		6A2503611D59511900C18750 /* MessageLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A25035F1D59511900C18750 /* MessageLogEvent.swift */; };
-		6A3919A21D4C28E400BA6466 /* AddRoomServerSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3919A11D4C28E400BA6466 /* AddRoomServerSelection.swift */; };
-		6A3919A41D4C2D3B00BA6466 /* AddRoomServerSelectionNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3919A31D4C2D3B00BA6466 /* AddRoomServerSelectionNavigation.swift */; };
+		6A3B389D1DA359860004E868 /* AddRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */; };
 		6A4BB74F1D25F1500032B5D0 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BB74D1D25F1500032B5D0 /* Tag.swift */; };
 		6A6CBFDE1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
 		6A6CBFDF1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
@@ -72,7 +71,6 @@
 		6ADD58DF1D29DB330051DB28 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58DE1D29DB330051DB28 /* RoomsViewController.swift */; };
 		6ADD58E11D29DD220051DB28 /* ServersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58E01D29DD220051DB28 /* ServersViewController.swift */; };
 		6ADD58E31D29E4890051DB28 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58E21D29E4890051DB28 /* RoomViewController.swift */; };
-		6AF3901B1D4C520800A46F1C /* RoomNameEntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF3901A1D4C520800A46F1C /* RoomNameEntryTableViewController.swift */; };
 		6AF4264C1D2CAD060029250A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6AF4264E1D2CAD060029250A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -138,8 +136,7 @@
 		66EDD2F61D29664E0013E7CC /* OrangeIRCCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrangeIRCCore.h; sourceTree = "<group>"; };
 		6A18EAE71D5BC66C00AF1EF9 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		6A25035F1D59511900C18750 /* MessageLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLogEvent.swift; sourceTree = "<group>"; };
-		6A3919A11D4C28E400BA6466 /* AddRoomServerSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomServerSelection.swift; sourceTree = "<group>"; };
-		6A3919A31D4C2D3B00BA6466 /* AddRoomServerSelectionNavigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomServerSelectionNavigation.swift; sourceTree = "<group>"; };
+		6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomTableViewController.swift; sourceTree = "<group>"; };
 		6A4BB74D1D25F1500032B5D0 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
 		6A7A6A011D29CDC60012D037 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -150,7 +147,6 @@
 		6ADD58DE1D29DB330051DB28 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		6ADD58E01D29DD220051DB28 /* ServersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServersViewController.swift; sourceTree = "<group>"; };
 		6ADD58E21D29E4890051DB28 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
-		6AF3901A1D4C520800A46F1C /* RoomNameEntryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomNameEntryTableViewController.swift; sourceTree = "<group>"; };
 		6AF4264D1D2CAD060029250A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -242,7 +238,6 @@
 		66A75AFD1D234694001161A3 /* OrangeIRC iOS */ = {
 			isa = PBXGroup;
 			children = (
-				6A25035C1D59508F00C18750 /* Adding Rooms */,
 				66A75AFE1D234694001161A3 /* AppDelegate.swift */,
 				66C858161D7B6360009E486F /* AppDelegate+Color.swift */,
 				6AA193281D2CB2B700A66DDE /* BetterSplitView.swift */,
@@ -257,6 +252,7 @@
 				661AF5011D2C809E00CFC190 /* AddServerViewController.swift */,
 				6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */,
 				661AF5031D2C833700CFC190 /* Notifications.swift */,
+				6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */,
 				6605688B1D78F1AC00A2502B /* Main.storyboard */,
 				660568891D78F1A500A2502B /* LaunchScreen.storyboard */,
 				6A2081C21D5999C4006CD605 /* Cells */,
@@ -289,16 +285,6 @@
 				661AF5051D2C89E900CFC190 /* TextFieldCell.swift */,
 			);
 			name = Cells;
-			sourceTree = "<group>";
-		};
-		6A25035C1D59508F00C18750 /* Adding Rooms */ = {
-			isa = PBXGroup;
-			children = (
-				6AF3901A1D4C520800A46F1C /* RoomNameEntryTableViewController.swift */,
-				6A3919A11D4C28E400BA6466 /* AddRoomServerSelection.swift */,
-				6A3919A31D4C2D3B00BA6466 /* AddRoomServerSelectionNavigation.swift */,
-			);
-			name = "Adding Rooms";
 			sourceTree = "<group>";
 		};
 		6A25035D1D5950E300C18750 /* Server */ = {
@@ -486,9 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AF3901B1D4C520800A46F1C /* RoomNameEntryTableViewController.swift in Sources */,
 				661AF5041D2C833700CFC190 /* Notifications.swift in Sources */,
-				6A3919A21D4C28E400BA6466 /* AddRoomServerSelection.swift in Sources */,
 				6ADD58DF1D29DB330051DB28 /* RoomsViewController.swift in Sources */,
 				6605688E1D7901C400A2502B /* RoomInfo.swift in Sources */,
 				669DF7041D7CE974007F82DB /* MOTDNavigationController.swift in Sources */,
@@ -502,9 +486,9 @@
 				6A18EAE81D5BC66C00AF1EF9 /* SwitchCell.swift in Sources */,
 				6ADD58E31D29E4890051DB28 /* RoomViewController.swift in Sources */,
 				663D71921D7C64C300202EF2 /* MessageComposer.swift in Sources */,
+				6A3B389D1DA359860004E868 /* AddRoomTableViewController.swift in Sources */,
 				669DF7021D7CE96B007F82DB /* MOTDViewer.swift in Sources */,
 				66C858171D7B6360009E486F /* AppDelegate+Color.swift in Sources */,
-				6A3919A41D4C2D3B00BA6466 /* AddRoomServerSelectionNavigation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

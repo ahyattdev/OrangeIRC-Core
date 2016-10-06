@@ -51,13 +51,13 @@ class AddServerViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var tempFieldCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.TextFieldCell)
         if tempFieldCell == nil {
-            tempFieldCell = TextFieldCell(style: .default, reuseIdentifier: CellIdentifiers.TextFieldCell)
+            tempFieldCell = TextFieldCell()
         }
         let textFieldCell = tempFieldCell as! TextFieldCell
         
         var tempSwitchCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.SwitchCell)
         if tempSwitchCell == nil {
-            tempSwitchCell = SwitchCell(style: .default, reuseIdentifier: CellIdentifiers.SwitchCell)
+            tempSwitchCell = SwitchCell()
         }
         textFieldCell.textField.autocorrectionType = .no
         textFieldCell.textField.autocapitalizationType = .none
@@ -70,23 +70,23 @@ class AddServerViewController : UITableViewController {
         case 0:
             switch indexPath.row {
             case 0:
-                textFieldCell.label.text = NSLocalizedString("HOSTNAME", comment: "Hostname")
+                textFieldCell.textLabel!.text = NSLocalizedString("HOSTNAME", comment: "Hostname")
                 textFieldCell.textField.placeholder = NSLocalizedString("IRC_DOT_EXAMPLE_DOT_COM", comment: "irc.example.com")
                 textFieldCell.textField.keyboardType = .URL
                 self.hostCell = textFieldCell
             case 1:
-                textFieldCell.label.text = NSLocalizedString("PORT", comment: "Port")
+                textFieldCell.textLabel!.text = NSLocalizedString("PORT", comment: "Port")
                 textFieldCell.textField.placeholder = "6667"
                 textFieldCell.textField.keyboardType = .numberPad
                 self.portCell = textFieldCell
             case 2:
-                textFieldCell.label.text = NSLocalizedString("PASSWORD", comment: "Password")
+                textFieldCell.textLabel!.text = NSLocalizedString("PASSWORD", comment: "Password")
                 textFieldCell.textField.placeholder = AddServerViewController.OPTIONAL
                 textFieldCell.textField.isSecureTextEntry = true
                 self.passwordCell = textFieldCell
             case 3:
                 self.autoJoinCell = switchCell
-                switchCell.label.text = NSLocalizedString("AUTOMATICALLY_JOIN", comment: "Automatically Join")
+                switchCell.textLabel!.text = NSLocalizedString("AUTOMATICALLY_JOIN", comment: "Automatically Join")
                 returnValue = switchCell
             default:
                 break
@@ -94,15 +94,15 @@ class AddServerViewController : UITableViewController {
         case 1:
             switch  indexPath.row {
             case 0:
-                textFieldCell.label.text = NSLocalizedString("NICKNAME", comment: "Nickname")
+                textFieldCell.textLabel!.text = NSLocalizedString("NICKNAME", comment: "Nickname")
                 textFieldCell.textField.placeholder = AddServerViewController.REQUIRED
                 self.nicknameCell = textFieldCell
             case 1:
-                textFieldCell.label.text = NSLocalizedString("USERNAME", comment: "Username")
+                textFieldCell.textLabel!.text = NSLocalizedString("USERNAME", comment: "Username")
                 textFieldCell.textField.placeholder = AddServerViewController.REQUIRED
                 self.usernameCell = textFieldCell
             case 2:
-                textFieldCell.label.text = NSLocalizedString("REAL_NAME", comment: "Real Name")
+                textFieldCell.textLabel!.text = NSLocalizedString("REAL_NAME", comment: "Real Name")
                 textFieldCell.textField.placeholder = AddServerViewController.REQUIRED
                 textFieldCell.textField.autocapitalizationType = .words
                 self.realnameCell = textFieldCell

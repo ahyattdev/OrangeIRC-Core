@@ -35,6 +35,9 @@ class RoomsViewController : UITableViewController {
         self.navigationItem.title = NSLocalizedString("ROOMS", comment: "Rooms")
         self.navigationItem.leftBarButtonItem?.title = NSLocalizedString("SERVERS", comment: "Servers")
         
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButton))
+        navigationItem.rightBarButtonItem = addButton
+        
         appDelegate.roomsView = self
     }
     
@@ -129,12 +132,6 @@ class RoomsViewController : UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
-        case Segues.ShowAddChannel.rawValue:
-            let nav = segue.destination as! AddRoomServerSelectionNavigation
-            nav.roomType = RoomType.Channel
-        case Segues.ShowAddPrivate.rawValue:
-            let nav = segue.destination as! AddRoomServerSelectionNavigation
-            nav.roomType = RoomType.PrivateMessage
         case Segues.ShowRoom.rawValue:
             let room = sender as? Room
             let roomViewController = segue.destination as! RoomViewController
@@ -148,6 +145,12 @@ class RoomsViewController : UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let room = self.allRooms[indexPath.row]
         appDelegate.show(room: room)
+    }
+    
+    func addButton() {
+        let addRoom = AddRoomTableViewController(style: .grouped)
+        let nav = UINavigationController(rootViewController: addRoom)
+        present(nav, animated: true, completion: nil)
     }
     
 }

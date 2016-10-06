@@ -61,7 +61,7 @@ class ServersViewController : UITableViewController {
         
         var tempCell = tableView.dequeueReusableCell(withIdentifier: identifier)
         if tempCell == nil {
-            tempCell = TextFieldCell(style: UITableViewCellStyle.default, reuseIdentifier: identifier)
+            tempCell = TextFieldCell()
         }
         
         let cell = tempCell! as UITableViewCell

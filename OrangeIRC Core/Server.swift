@@ -15,6 +15,8 @@ let CRLF = "\r\n"
 
 public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
+    public static let ValidChannelPrefixes = NSCharacterSet(charactersIn: "&#!+")
+    
     // NSCoding keys extracted to here so to avoid typos causing bugs
     struct Coding {
         
@@ -54,6 +56,8 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     public var rooms: [Room] = [Room]()
     public var autoJoin = false
     // End saved data
+    
+    public var roomsFlaggedForAutoJoin = [String]()
     
     public var encoding: String.Encoding
     

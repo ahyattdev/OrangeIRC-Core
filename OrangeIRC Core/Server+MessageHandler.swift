@@ -91,6 +91,14 @@ extension Server {
                 // We joined a room
                 room!.isJoined = true
                 self.delegate?.joined(room: room!)
+                for i in 0 ..< roomsFlaggedForAutoJoin.count {
+                    let roomName = roomsFlaggedForAutoJoin[i]
+                    if roomName == room!.name {
+                        room!.autoJoin = true
+                        roomsFlaggedForAutoJoin.remove(at: i)
+                        break
+                    }
+                }
             }
             
             let logEvent = UserJoinLogEvent(sender: nick)
