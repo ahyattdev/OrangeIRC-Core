@@ -74,16 +74,19 @@ class AddServerViewController : UITableViewController {
                 textFieldCell.textField.placeholder = NSLocalizedString("IRC_DOT_EXAMPLE_DOT_COM", comment: "irc.example.com")
                 textFieldCell.textField.keyboardType = .URL
                 self.hostCell = textFieldCell
+                hostCell!.tag = 0
             case 1:
                 textFieldCell.textLabel!.text = NSLocalizedString("PORT", comment: "Port")
                 textFieldCell.textField.placeholder = "6667"
                 textFieldCell.textField.keyboardType = .numberPad
                 self.portCell = textFieldCell
+                portCell!.tag = 1
             case 2:
                 textFieldCell.textLabel!.text = NSLocalizedString("PASSWORD", comment: "Password")
                 textFieldCell.textField.placeholder = AddServerViewController.OPTIONAL
                 textFieldCell.textField.isSecureTextEntry = true
                 self.passwordCell = textFieldCell
+                passwordCell!.tag = 2
             case 3:
                 self.autoJoinCell = switchCell
                 switchCell.textLabel!.text = NSLocalizedString("AUTOMATICALLY_JOIN", comment: "Automatically Join")
@@ -97,15 +100,18 @@ class AddServerViewController : UITableViewController {
                 textFieldCell.textLabel!.text = NSLocalizedString("NICKNAME", comment: "Nickname")
                 textFieldCell.textField.placeholder = AddServerViewController.REQUIRED
                 self.nicknameCell = textFieldCell
+                nicknameCell!.tag = 3
             case 1:
                 textFieldCell.textLabel!.text = NSLocalizedString("USERNAME", comment: "Username")
                 textFieldCell.textField.placeholder = AddServerViewController.REQUIRED
                 self.usernameCell = textFieldCell
+                usernameCell!.tag = 4
             case 2:
                 textFieldCell.textLabel!.text = NSLocalizedString("REAL_NAME", comment: "Real Name")
                 textFieldCell.textField.placeholder = AddServerViewController.REQUIRED
                 textFieldCell.textField.autocapitalizationType = .words
                 self.realnameCell = textFieldCell
+                realnameCell!.tag = 5
             default:
                 break
             }
@@ -114,6 +120,10 @@ class AddServerViewController : UITableViewController {
         }
         
         return returnValue
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
     
     @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
@@ -127,10 +137,6 @@ class AddServerViewController : UITableViewController {
     
     @IBAction func cancelBarButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
