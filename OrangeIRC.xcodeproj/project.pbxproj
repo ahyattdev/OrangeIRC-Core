@@ -45,8 +45,6 @@
 		66EDD2F31D2963E60013E7CC /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BB74D1D25F1500032B5D0 /* Tag.swift */; };
 		66EDD2F41D2963E60013E7CC /* ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3E1D23496C001161A3 /* ServerDelegate.swift */; };
 		66EDD2F51D2963E60013E7CC /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A07D1D24332A00F81A1B /* Command.swift */; };
-		66EDD2F71D29664E0013E7CC /* OrangeIRCCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 66EDD2F61D29664E0013E7CC /* OrangeIRCCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		66EDD2F81D29664E0013E7CC /* OrangeIRCCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 66EDD2F61D29664E0013E7CC /* OrangeIRCCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		66EDD2F91D29669D0013E7CC /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
 		66EDD2FA1D2966AA0013E7CC /* OrangeIRCCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A75B251D234737001161A3 /* OrangeIRCCore.framework */; };
 		66EDD2FB1D2966AA0013E7CC /* OrangeIRCCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66A75B251D234737001161A3 /* OrangeIRCCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -127,7 +125,6 @@
 		66C858101D7B17FA009E486F /* UserPartLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPartLogEvent.swift; sourceTree = "<group>"; };
 		66C858161D7B6360009E486F /* AppDelegate+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Color.swift"; sourceTree = "<group>"; };
 		66EDD2E11D29621B0013E7CC /* OrangeIRCCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OrangeIRCCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		66EDD2F61D29664E0013E7CC /* OrangeIRCCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrangeIRCCore.h; sourceTree = "<group>"; };
 		6A18EAE71D5BC66C00AF1EF9 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		6A25035F1D59511900C18750 /* MessageLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLogEvent.swift; sourceTree = "<group>"; };
 		6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomTableViewController.swift; sourceTree = "<group>"; };
@@ -258,7 +255,6 @@
 			isa = PBXGroup;
 			children = (
 				66A75B171D2346ED001161A3 /* Info.plist */,
-				66EDD2F61D29664E0013E7CC /* OrangeIRCCore.h */,
 				6A25035D1D5950E300C18750 /* Server */,
 				6A25035E1D5950FB00C18750 /* Log */,
 				6A7A6A041D29D0850012D037 /* Room.swift */,
@@ -314,7 +310,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66EDD2F81D29664E0013E7CC /* OrangeIRCCore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +317,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66EDD2F71D29664E0013E7CC /* OrangeIRCCore.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

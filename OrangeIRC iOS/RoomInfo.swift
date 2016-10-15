@@ -137,6 +137,14 @@ class RoomInfo : UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 0 && indexPath.row == 1 {
+            return false
+        }
+        
+        return true
+    }
+    
     func autojoinPress(sender: UISwitch, event: UIControlEvents) {
         room!.autoJoin = sender.isOn
         appDelegate.saveData()
