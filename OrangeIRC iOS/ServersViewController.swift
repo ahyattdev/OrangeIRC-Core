@@ -128,7 +128,7 @@ class ServersViewController : UITableViewController {
     }
     
     func addServer() {
-        let addServerViewController = AddServerViewController()
+        let addServerViewController = AddServerViewController(style: .grouped)
         let nav = UINavigationController(rootViewController: addServerViewController)
         modalPresentationStyle = .pageSheet
         present(nav, animated: true, completion: nil)

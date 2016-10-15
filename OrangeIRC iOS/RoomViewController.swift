@@ -11,49 +11,25 @@ import OrangeIRCCore
 
 class RoomViewController : UITableViewController {
     
-    struct Segues {
-        
-        private init() { }
-        
-        static let ShowInfo = "ShowInfo"
-        static let ShowComposer = "ShowComposer"
-        
-    }
-    
-    struct CellIdentifiers {
-        
-        private init() { }
-        
-        static let Cell = "Cell"
-    }
-    
     var room: Room?
     
-    var composerButton: UIBarButtonItem {
-        get {
-            return UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(composerButtonTapped))
-        }
-        
-    }
+    var composerButton: UIBarButtonItem?
     
-    var optionsButton: UIBarButtonItem {
-        get {
-            return UIBarButtonItem(title: NSLocalizedString("DETAILS", comment: "Details"), style: .plain, target: self, action: #selector(optionsButtonTapped))
-        }
-    }
+    var detailButton: UIBarButtonItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handle(_:)), name: Notifications.DisplayedRoomDidChange, object: nil)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        composerButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(showMessageComposer))
+        detailButton = UIBarButtonItem(title: NSLocalizedString("DETAILS", comment: "Details"), style: .plain, target: self, action: #selector(showRoomInfo))
         
-        if room != nil {
-            navigationItem.rightBarButtonItems = room!.isJoined ? [optionsButton, composerButton] : [optionsButton]
-        }
+        navigationItem.rightBarButtonItems = [detailButton!, composerButton!]
+        
+        updateButtons()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handle(_:)), name: Notifications.DisplayedRoomDidChange, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(roomDataChanged(_:)), name: Notifications.RoomDataDidChange, object: nil)
     }
     
     func handle(_ notification: NSNotification) {
@@ -62,6 +38,22 @@ class RoomViewController : UITableViewController {
             updateWith(room: notification.object)
         default: break
         }
+    }
+    
+    func roomDataChanged(_ notification: NSNotification) {
+        if self.room != nil, let room = notification.object as? Room {
+            if room == self.room! {
+                updateButtons()
+            }
+        }
+    }
+    
+    func updateButtons() {
+        // Only enable the composer button when a message can be sent
+        composerButton!.isEnabled = !(room == nil) && (room?.server?.isRegistered)! && room!.isJoined
+        
+        // Only enable the details button if the room is set
+        detailButton!.isEnabled = !(room == nil)
     }
     
     func updateWith(room: Any?) {
@@ -82,9 +74,6 @@ class RoomViewController : UITableViewController {
             return
         }
         
-        // Don't show the option to compose a message if we are not in the room
-        navigationItem.rightBarButtonItems = newRoom.isJoined ? [optionsButton, composerButton] : [optionsButton]
-        
         navigationItem.title = newRoom.name
         navigationItem.prompt = newRoom.server!.host
         
@@ -92,28 +81,24 @@ class RoomViewController : UITableViewController {
         
         NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.RoomLogDidChange, object: room!)
         
+        // Don't show the option to compose a message if we are not in the room
+        updateButtons()
+        
         tableView.reloadData()
     }
     
-    func optionsButtonTapped() {
-        self.performSegue(withIdentifier: Segues.ShowInfo, sender: self.room!)
+    func showRoomInfo() {
+        let roomInfoViewController = RoomInfo(style: .grouped)
+        roomInfoViewController.room = room!
+        show(roomInfoViewController, sender: nil)
     }
     
-    func composerButtonTapped() {
-        self.performSegue(withIdentifier: Segues.ShowComposer, sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case Segues.ShowInfo:
-            let info = segue.destination as! RoomInfo
-            info.room = room
-        case Segues.ShowComposer:
-            let nav = segue.destination as! ComposerNavigationController
-            nav.room = room
-        default:
-            break
-        }
+    func showMessageComposer() {
+        let composer = MessageComposer()
+        composer.room = room!
+        let nav = UINavigationController(rootViewController: composer)
+        modalPresentationStyle = .formSheet
+        present(nav, animated: true, completion: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -129,11 +114,12 @@ class RoomViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: CellIdentifiers.Cell)
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         
         let logEvent = room!.log[indexPath.row]
         let userLogEvent = logEvent as? UserLogEvent
         let messageLogEvent = logEvent as? MessageLogEvent
+        
         switch logEvent.self {
             
         case is UserJoinLogEvent:

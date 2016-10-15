@@ -64,25 +64,15 @@ class RoomInfo : UITableViewController {
                 
             case 1:
                 // The autojoin switch
-                let autojoinSwitch = UISwitch()
+                let switchCell = SwitchCell()
                 
-                autojoinSwitch.isOn = room!.autoJoin
+                switchCell.switch.isOn = room!.autoJoin
                 
-                autojoinSwitch.addTarget(self, action: #selector(autojoinPress(sender:event:)), for: .touchUpInside)
+                switchCell.switch.addTarget(self, action: #selector(autojoinPress(sender:event:)), for: .touchUpInside)
                 
-                let switchHeight = autojoinSwitch.frame.height
-                let switchWidth = autojoinSwitch.frame.width
+                switchCell.textLabel!.text = NSLocalizedString("AUTOMATICALLY_JOIN", comment: "")
                 
-                let cellHeight = cell.frame.height
-                let cellWidth = cell.frame.width
-                
-                let horizontalPadding: CGFloat = 13.0
-                
-                autojoinSwitch.frame = CGRect(x: cellWidth - switchWidth - horizontalPadding, y: (cellHeight / 2) - (switchHeight / 2), width: switchWidth, height: switchHeight)
-                
-                cell.addSubview(autojoinSwitch)
-                
-                cell.textLabel!.text = NSLocalizedString("AUTOMATICALLY_JOIN", comment: "")
+                return switchCell
                 
             default: break
                 

@@ -11,15 +11,12 @@ import OrangeIRCCore
 
 class MessageComposer : UIViewController {
     
-    @IBOutlet var textView: UITextView!
-    
     var room: Room?
+    
+    var textView = UITextView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Link to the room
-        room = (navigationController! as! ComposerNavigationController).room
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         
@@ -28,10 +25,10 @@ class MessageComposer : UIViewController {
         navigationItem.title = room!.name
         navigationItem.prompt = room!.server!.host
         
+        view = textView
+        
         // Show the keyboard
         textView.becomeFirstResponder()
-        
-        addKeyCommand(UIKeyCommand(input: "\n", modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(done), discoverabilityTitle: NSLocalizedString("SEND_MESSAGE", comment: "Send message")))
     }
     
     func cancel() {
@@ -40,7 +37,7 @@ class MessageComposer : UIViewController {
     
     func done() {
         room!.send(message: textView.text)
-        cancel()
+        dismiss(animated: true, completion: nil)
     }
     
 }
