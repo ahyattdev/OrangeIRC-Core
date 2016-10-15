@@ -39,11 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         dataPaths.options = ""
         
         super.init()
-        
+    }
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         splitView.delegate = self
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = splitView
+        
+        window!.rootViewController = splitView
         
         let roomsNav = UINavigationController()
         
@@ -54,11 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         roomsNav.show(roomsView, sender: nil)
         roomNav.show(roomView, sender: nil)
         
-        window?.makeKeyAndVisible()
-    }
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        // Override point for customization after application launch.
+        window!.tintColor = UIColor.orange
+        window!.makeKeyAndVisible()
+        
         self.loadData()
         return true
     }
@@ -104,13 +105,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     func show(room: Room) {
         // FIXME: Showing rooms
         
-//        if splitView.isCollapsed {
-//            // Done on iPhone
-//            roomsView.performSegue(withIdentifier: "ShowRoom", sender: room)
-//        } else {
-//            // We can only use the notification if the view controller will exist
-//            NotificationCenter.default.post(name: Notifications.DisplayedRoomDidChange, object: room)
-//        }
+        if splitView.isCollapsed {
+            // Done on iPhone
+            roomsView.navigationController?.pushViewController(roomView, animated: true)
+        } else {
+            // We can only use the notification if the view controller will exist
+            NotificationCenter.default.post(name: Notifications.DisplayedRoomDidChange, object: room)
+        }
     }
     
     func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) -> Server {

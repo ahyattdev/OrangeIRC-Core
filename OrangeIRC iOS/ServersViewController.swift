@@ -11,18 +11,6 @@ import OrangeIRCCore
 
 class ServersViewController : UITableViewController {
     
-    let CELL_IDENTIFIER = "Cell"
-    let ACTIVITY_CELL_IDENTIFIER = "ActivityCell"
-    let ADD_SERVER_SEGUE_IDENTIFIER = "AddServer"
-    
-    struct Segues {
-        
-        private init() { }
-        
-        static let ShowMOTD = "ShowMOTD"
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,21 +40,9 @@ class ServersViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let server = self.appDelegate.servers[indexPath.row]
         
-        var identifier = ""
-        if server.isConnectingOrRegistering {
-            identifier = ACTIVITY_CELL_IDENTIFIER
-        } else {
-            identifier = CELL_IDENTIFIER
-        }
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
-        var tempCell = tableView.dequeueReusableCell(withIdentifier: identifier)
-        if tempCell == nil {
-            tempCell = TextFieldCell()
-        }
-        
-        let cell = tempCell! as UITableViewCell
-        
-        cell.textLabel?.text = server.host
+        cell.textLabel!.text = server.host
         
         if server.isRegistered {
             cell.detailTextLabel?.text = NSLocalizedString("CONNECTED", comment: "Connected")
@@ -104,7 +80,7 @@ class ServersViewController : UITableViewController {
             // Add a show MOTD button
             let motd = NSLocalizedString("MOTD", comment: "MOTD")
             let motdAction = UIAlertAction(title: motd, style: .default, handler: { (action) in
-                self.performSegue(withIdentifier: Segues.ShowMOTD, sender: server)
+                self.showMOTD(server: server)
             })
             serverOptions.addAction(motdAction)
         }
@@ -146,28 +122,27 @@ class ServersViewController : UITableViewController {
         appDelegate.saveData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case Segues.ShowMOTD:
-            let nav = segue.destination as! MOTDNavigationController
-            let server = sender as! Server
-            
-            nav.server = server
-        default:
-            break
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Enables the delete row button
         return true
     }
     
     func addServer() {
-        self.performSegue(withIdentifier: ADD_SERVER_SEGUE_IDENTIFIER, sender: nil)
+        let addServerViewController = AddServerViewController()
+        let nav = UINavigationController(rootViewController: addServerViewController)
+        modalPresentationStyle = .pageSheet
+        present(nav, animated: true, completion: nil)
     }
     
     func close() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func showMOTD(server: Server) {
+        let motdViewer = MOTDViewer()
+        motdViewer.server = server
+        let nav = UINavigationController(rootViewController: motdViewer)
+        modalPresentationStyle = .pageSheet
+        present(nav, animated: true, completion: nil)
     }
 }

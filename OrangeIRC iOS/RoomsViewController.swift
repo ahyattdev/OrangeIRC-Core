@@ -11,19 +11,6 @@ import OrangeIRCCore
 
 class RoomsViewController : UITableViewController {
     
-    enum Segues : String {
-        
-        case ShowServers = "ShowServers"
-        case ShowAddChannel = "ShowAddChannel"
-        case ShowAddPrivate = "ShowAddPrivate"
-        case ShowRoom = "ShowRoom"
-        
-    }
-    
-    enum CellIdentifiers : String {
-        case Cell = "Cell"
-    }
-    
     var allRooms = [Room]()
     
     override func viewDidLoad() {
@@ -80,17 +67,6 @@ class RoomsViewController : UITableViewController {
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier! {
-        case Segues.ShowRoom.rawValue:
-            let room = sender as? Room
-            let roomViewController = segue.destination as! RoomViewController
-            roomViewController.updateWith(room: room)
-        default:
-            break
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let room = self.allRooms[indexPath.row]
@@ -98,7 +74,7 @@ class RoomsViewController : UITableViewController {
     }
     
     func serversButton() {
-        let servers = AddServerViewController()
+        let servers = ServersViewController()
         let nav = UINavigationController(rootViewController: servers)
         modalPresentationStyle = .pageSheet
         present(nav, animated: true, completion: nil)

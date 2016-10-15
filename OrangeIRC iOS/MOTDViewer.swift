@@ -11,17 +11,19 @@ import OrangeIRCCore
 
 class MOTDViewer : UIViewController {
     
-    @IBOutlet var textView: UITextView!
+    var server: Server?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nav = navigationController as! MOTDNavigationController
+        let textView = UITextView()
         
         textView.isEditable = false
-        textView.text = nav.server!.motd
+        textView.text = server!.motd
         
-        navigationItem.prompt = nav.server!.host
+        view = textView
+        
+        navigationItem.prompt = server!.host
         navigationItem.title = NSLocalizedString("MOTD", comment: "Message of the Day")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
