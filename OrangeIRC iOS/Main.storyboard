@@ -434,9 +434,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HpC-DY-6kj"/>
         <segue reference="AV0-CG-Trw"/>
         <segue reference="KeL-62-eGc"/>
+        <segue reference="0fx-DJ-9xT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

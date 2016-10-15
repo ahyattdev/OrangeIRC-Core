@@ -11,14 +11,6 @@ import OrangeIRCCore
 
 class RoomInfo : UITableViewController {
     
-    struct CellIdentifiers {
-        
-        private init() { }
-        
-        static let Cell = "Cell"
-        
-    }
-    
     var room: Room?
     
     override func viewDidLoad() {
@@ -50,7 +42,7 @@ class RoomInfo : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: CellIdentifiers.Cell)
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         
         switch indexPath.section {
             

@@ -33,12 +33,13 @@ class RoomsViewController : UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(notification:)), name: Notifications.RoomDataDidChange, object: nil)
         
         self.navigationItem.title = NSLocalizedString("ROOMS", comment: "Rooms")
-        self.navigationItem.leftBarButtonItem?.title = NSLocalizedString("SERVERS", comment: "Servers")
         
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButton))
+        let serversButtonTitle = NSLocalizedString("SERVERS", comment: "Servers")
+        let serversButton = UIBarButtonItem(title: serversButtonTitle, style: .plain, target: self, action: #selector(self.serversButton))
+        navigationItem.leftBarButtonItem = serversButton
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRoomButton))
         navigationItem.rightBarButtonItem = addButton
-        
-        appDelegate.roomsView = self
     }
     
     func reloadTableView(notification: NSNotification) {
@@ -62,11 +63,7 @@ class RoomsViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var tempCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.Cell.rawValue)
-        if tempCell == nil {
-            tempCell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: CellIdentifiers.Cell.rawValue)
-        }
-        let cell = tempCell!
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
         let room = self.allRooms[indexPath.row]
         
@@ -81,53 +78,6 @@ class RoomsViewController : UITableViewController {
         }
         
         return cell
-    }
-    
-    @IBAction func addRoom(_ sender: UIBarButtonItem) {
-        // There is no point in showing this if there are not any connected servers
-        guard self.appDelegate.registeredServers.count > 0 else {
-            let title = NSLocalizedString("NO_REGISTERED_SERVERS", comment: "Not connected to any registered servers")
-            let message = NSLocalizedString("NO_REGISTERED_SERVERS_DESCRIPTION", comment: "No registered servers description")
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
-            return
-        }
-        
-        let roomType = NSLocalizedString("ROOM_TYPE", comment: "Room Type")
-        let roomTypeDescription = NSLocalizedString("CHOOSE_ROOM_TYPE", comment: "Choose a room type")
-        let roomTypeActionSheet = UIAlertController(title: roomType, message: roomTypeDescription, preferredStyle: .actionSheet)
-        
-        let channelAct = UIAlertAction(title: RoomType.Channel.localizedName(), style: .default, handler: { (action) in
-            self.performSegue(withIdentifier: Segues.ShowAddChannel.rawValue, sender: RoomType.Channel.rawValue)
-            self.navigationItem.leftBarButtonItem!.isEnabled = true
-        })
-        roomTypeActionSheet.addAction(channelAct)
-        
-        let privateAct = UIAlertAction(title: RoomType.PrivateMessage.localizedName(), style: .default, handler: { (action) in
-            self.performSegue(withIdentifier: Segues.ShowAddPrivate.rawValue, sender: RoomType.PrivateMessage.rawValue)
-            self.navigationItem.leftBarButtonItem!.isEnabled = true
-        })
-        roomTypeActionSheet.addAction(privateAct)
-        
-        let cancelAct = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "Cancel"), style: .cancel, handler: { (action) in
-            roomTypeActionSheet.dismiss(animated: true, completion: nil)
-            self.navigationItem.leftBarButtonItem!.isEnabled = true
-        })
-        roomTypeActionSheet.addAction(cancelAct)
-        
-        // To get the action sheet to be centered on the button that triggers it
-        roomTypeActionSheet.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-        
-        // Make the left bar button disabled while the action sheet is presented
-        self.navigationItem.leftBarButtonItem!.isEnabled = false
-        
-        self.present(roomTypeActionSheet, animated: true, completion: nil)
-    }
-    
-    @IBAction func serversButton(_ sender: AnyObject) {
-        self.performSegue(withIdentifier: Segues.ShowServers.rawValue, sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -147,9 +97,28 @@ class RoomsViewController : UITableViewController {
         appDelegate.show(room: room)
     }
     
-    func addButton() {
+    func serversButton() {
+        let servers = AddServerViewController()
+        let nav = UINavigationController(rootViewController: servers)
+        modalPresentationStyle = .pageSheet
+        present(nav, animated: true, completion: nil)
+    }
+    
+    func addRoomButton() {
+        // Make sure that there is a registered server for the room to be added on
+        guard self.appDelegate.registeredServers.count > 0 else {
+            let title = NSLocalizedString("NO_REGISTERED_SERVERS", comment: "Not connected to any registered servers")
+            let message = NSLocalizedString("NO_REGISTERED_SERVERS_DESCRIPTION", comment: "No registered servers description")
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         let addRoom = AddRoomTableViewController(style: .grouped)
         let nav = UINavigationController(rootViewController: addRoom)
+        modalPresentationStyle = .pageSheet
         present(nav, animated: true, completion: nil)
     }
     

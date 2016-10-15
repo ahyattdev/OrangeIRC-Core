@@ -10,9 +10,11 @@ import UIKit
 import OrangeIRCCore
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFieldDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFieldDelegate, UISplitViewControllerDelegate {
     
     struct NickServ {
+        
+        private init() { }
         
         static let ALREADY_REGISTERED = "This nickname is registered."
         static let AUTH_SUCCESS = "You are now identified for"
@@ -27,13 +29,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     var nickservPasswordField: UITextField?
     var doneAction: UIAlertAction?
     
-    var splitView: BetterSplitView?
-    var roomsView: RoomsViewController?
+    // View controllers
+    var splitView = UISplitViewController()
+    var roomsView = RoomsViewController()
+    var roomView = RoomViewController()
     
     override init() {
         dataPaths.servers = dataFolder.strings(byAppendingPaths: ["servers.plist"])[0]
         dataPaths.options = ""
+        
         super.init()
+        
+        splitView.delegate = self
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = splitView
+        
+        let roomsNav = UINavigationController()
+        
+        let roomNav = UINavigationController()
+        
+        splitView.viewControllers = [roomsNav, roomNav]
+        
+        roomsNav.show(roomsView, sender: nil)
+        roomNav.show(roomView, sender: nil)
+        
+        window?.makeKeyAndVisible()
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
@@ -81,13 +102,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func show(room: Room) {
-        if splitView!.isCollapsed {
-            // Done on iPhone
-            roomsView?.performSegue(withIdentifier: "ShowRoom", sender: room)
-        } else {
-            // We can only use the notification if the view controller will exist
-            NotificationCenter.default.post(name: Notifications.DisplayedRoomDidChange, object: room)
-        }
+        // FIXME: Showing rooms
+        
+//        if splitView.isCollapsed {
+//            // Done on iPhone
+//            roomsView.performSegue(withIdentifier: "ShowRoom", sender: room)
+//        } else {
+//            // We can only use the notification if the view controller will exist
+//            NotificationCenter.default.post(name: Notifications.DisplayedRoomDidChange, object: room)
+//        }
     }
     
     func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) -> Server {

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6605688A1D78F1A500A2502B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 660568891D78F1A500A2502B /* LaunchScreen.storyboard */; };
-		6605688C1D78F1AC00A2502B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6605688B1D78F1AC00A2502B /* Main.storyboard */; };
 		6605688E1D7901C400A2502B /* RoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605688D1D7901C400A2502B /* RoomInfo.swift */; };
 		661AF5021D2C809E00CFC190 /* AddServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5011D2C809E00CFC190 /* AddServerViewController.swift */; };
 		661AF5041D2C833700CFC190 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5031D2C833700CFC190 /* Notifications.swift */; };
@@ -59,6 +57,8 @@
 		6A2503611D59511900C18750 /* MessageLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A25035F1D59511900C18750 /* MessageLogEvent.swift */; };
 		6A3B389D1DA359860004E868 /* AddRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */; };
 		6A4BB74F1D25F1500032B5D0 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BB74D1D25F1500032B5D0 /* Tag.swift */; };
+		6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */; };
+		6A66A1111DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66A1101DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift */; };
 		6A6CBFDE1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
 		6A6CBFDF1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
 		6A7A6A021D29CDC60012D037 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A011D29CDC60012D037 /* User.swift */; };
@@ -67,7 +67,6 @@
 		6A7A6A061D29D0850012D037 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A041D29D0850012D037 /* Room.swift */; };
 		6A82A07F1D24332A00F81A1B /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A07D1D24332A00F81A1B /* Command.swift */; };
 		6A8B031C1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */; };
-		6AA193291D2CB2B700A66DDE /* BetterSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA193281D2CB2B700A66DDE /* BetterSplitView.swift */; };
 		6ADD58DF1D29DB330051DB28 /* RoomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58DE1D29DB330051DB28 /* RoomsViewController.swift */; };
 		6ADD58E11D29DD220051DB28 /* ServersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58E01D29DD220051DB28 /* ServersViewController.swift */; };
 		6ADD58E31D29E4890051DB28 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58E21D29E4890051DB28 /* RoomViewController.swift */; };
@@ -100,7 +99,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		660568891D78F1A500A2502B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6605688B1D78F1AC00A2502B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6605688D1D7901C400A2502B /* RoomInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomInfo.swift; sourceTree = "<group>"; };
 		661AF5011D2C809E00CFC190 /* AddServerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddServerViewController.swift; sourceTree = "<group>"; };
@@ -138,12 +136,13 @@
 		6A25035F1D59511900C18750 /* MessageLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLogEvent.swift; sourceTree = "<group>"; };
 		6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomTableViewController.swift; sourceTree = "<group>"; };
 		6A4BB74D1D25F1500032B5D0 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
+		6A66A1101DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UISplitViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
 		6A7A6A011D29CDC60012D037 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6A7A6A041D29D0850012D037 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		6A82A07D1D24332A00F81A1B /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AppDelegate.swift"; sourceTree = "<group>"; };
-		6AA193281D2CB2B700A66DDE /* BetterSplitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BetterSplitView.swift; sourceTree = "<group>"; };
 		6ADD58DE1D29DB330051DB28 /* RoomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsViewController.swift; sourceTree = "<group>"; };
 		6ADD58E01D29DD220051DB28 /* ServersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServersViewController.swift; sourceTree = "<group>"; };
 		6ADD58E21D29E4890051DB28 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
@@ -240,7 +239,7 @@
 			children = (
 				66A75AFE1D234694001161A3 /* AppDelegate.swift */,
 				66C858161D7B6360009E486F /* AppDelegate+Color.swift */,
-				6AA193281D2CB2B700A66DDE /* BetterSplitView.swift */,
+				6A66A1101DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift */,
 				6ADD58DE1D29DB330051DB28 /* RoomsViewController.swift */,
 				6ADD58E21D29E4890051DB28 /* RoomViewController.swift */,
 				663D71911D7C64C300202EF2 /* MessageComposer.swift */,
@@ -254,7 +253,6 @@
 				661AF5031D2C833700CFC190 /* Notifications.swift */,
 				6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */,
 				6605688B1D78F1AC00A2502B /* Main.storyboard */,
-				660568891D78F1A500A2502B /* LaunchScreen.storyboard */,
 				6A2081C21D5999C4006CD605 /* Cells */,
 				660568871D78ED1C00A2502B /* Resources */,
 			);
@@ -283,6 +281,7 @@
 			children = (
 				6A18EAE71D5BC66C00AF1EF9 /* SwitchCell.swift */,
 				661AF5051D2C89E900CFC190 /* TextFieldCell.swift */,
+				6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -443,10 +442,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6605688A1D78F1A500A2502B /* LaunchScreen.storyboard in Resources */,
 				6AF4264C1D2CAD060029250A /* Localizable.strings in Resources */,
 				66A75B061D234694001161A3 /* Assets.xcassets in Resources */,
-				6605688C1D78F1AC00A2502B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,12 +477,13 @@
 				6ADD58E11D29DD220051DB28 /* ServersViewController.swift in Sources */,
 				663D71941D7C707B00202EF2 /* ComposerNavigationController.swift in Sources */,
 				6A8B031C1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift in Sources */,
+				6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */,
 				661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */,
-				6AA193291D2CB2B700A66DDE /* BetterSplitView.swift in Sources */,
 				6A18EAE81D5BC66C00AF1EF9 /* SwitchCell.swift in Sources */,
 				6ADD58E31D29E4890051DB28 /* RoomViewController.swift in Sources */,
 				663D71921D7C64C300202EF2 /* MessageComposer.swift in Sources */,
 				6A3B389D1DA359860004E868 /* AddRoomTableViewController.swift in Sources */,
+				6A66A1111DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift in Sources */,
 				669DF7021D7CE96B007F82DB /* MOTDViewer.swift in Sources */,
 				66C858171D7B6360009E486F /* AppDelegate+Color.swift in Sources */,
 			);

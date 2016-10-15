@@ -31,6 +31,12 @@ class AddServerViewController : UITableViewController {
         super.viewDidLoad()
         
         self.navigationItem.title = NSLocalizedString("ADD_SERVER", comment: "Add Server")
+        
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelButton))
+        navigationItem.leftBarButtonItem = cancelButton
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneButton))
+        navigationItem.rightBarButtonItem = doneButton
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -126,17 +132,17 @@ class AddServerViewController : UITableViewController {
         return false
     }
     
-    @IBAction func doneBarButton(_ sender: UIBarButtonItem) {
-        // TODO: Implement sanity checks
-        
-        let server = self.appDelegate.addServer(host: (self.hostCell?.textField.text)!, port: Int((self.portCell?.textField.text)!)!, nickname: (self.nicknameCell?.textField.text)!, username: (self.usernameCell?.textField.text)!, realname: (self.realnameCell?.textField.text)!, password: (self.passwordCell?.textField.text)!)
-        server.autoJoin = self.autoJoinCell!.switch.isOn
-        
-        self.dismiss(animated: true, completion: nil)
+    func cancelButton() {
+        dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func cancelBarButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
+    func doneButton() {
+        // TODO: Implement sanity checks
+        
+        let server = appDelegate.addServer(host: (hostCell?.textField.text)!, port: Int((portCell?.textField.text)!)!, nickname: (nicknameCell?.textField.text)!, username: (usernameCell?.textField.text)!, realname: (realnameCell?.textField.text)!, password: (passwordCell?.textField.text)!)
+        server.autoJoin = autoJoinCell!.switch.isOn
+        
+        dismiss(animated: true, completion: nil)
     }
     
 }
