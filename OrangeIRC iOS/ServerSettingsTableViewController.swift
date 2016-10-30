@@ -53,13 +53,16 @@ class ServerSettingsTableViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = NSLocalizedString("ADD_SERVER", comment: "Add Server")
+        title = NSLocalizedString("ADD_SERVER", comment: "Add Server")
         
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelButton))
         navigationItem.leftBarButtonItem = cancelButton
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneButton))
         navigationItem.rightBarButtonItem = doneButton
+        
+        // Close this when the escape key is pressed
+        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(self.cancelButton), discoverabilityTitle: NSLocalizedString("CANCEL", comment: "")))
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

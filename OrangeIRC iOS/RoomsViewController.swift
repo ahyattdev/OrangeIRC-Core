@@ -19,7 +19,7 @@ class RoomsViewController : UITableViewController {
         // Reload the tableview when the room data changes
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(notification:)), name: Notifications.RoomDataDidChange, object: nil)
         
-        self.navigationItem.title = NSLocalizedString("ROOMS", comment: "Rooms")
+        title = NSLocalizedString("ROOMS", comment: "Rooms")
         
         let serversButtonTitle = NSLocalizedString("SERVERS", comment: "Servers")
         let serversButton = UIBarButtonItem(title: serversButtonTitle, style: .plain, target: self, action: #selector(self.serversButton))
@@ -27,6 +27,9 @@ class RoomsViewController : UITableViewController {
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRoomButton))
         navigationItem.rightBarButtonItem = addButton
+        
+        // Add a shortcut for adding a room
+        addKeyCommand(UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(addRoomButton), discoverabilityTitle: NSLocalizedString("ADD_ROOM", comment: "")))
     }
     
     func reloadTableView(notification: NSNotification) {

@@ -24,7 +24,7 @@ class MOTDViewer : UIViewController {
         view = textView
         
         navigationItem.prompt = server!.host
-        navigationItem.title = NSLocalizedString("MOTD", comment: "Message of the Day")
+        title = NSLocalizedString("MOTD", comment: "Message of the Day")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
     }

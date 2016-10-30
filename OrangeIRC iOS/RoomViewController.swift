@@ -70,12 +70,12 @@ class RoomViewController : UITableViewController {
         
         guard let newRoom = room as? Room else {
             // Remove the details button and title
-            navigationItem.title = nil
+            title = nil
             navigationItem.rightBarButtonItems = nil
             return
         }
         
-        navigationItem.title = newRoom.name
+        title = newRoom.name
         navigationItem.prompt = newRoom.server!.host
         
         self.room = newRoom

@@ -16,13 +16,19 @@ class ServersViewController : UITableViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateServerDisplay), name: Notifications.ServerStateDidChange, object: nil)
         
-        self.navigationItem.title = NSLocalizedString("SERVERS", comment: "Servers")
+        title = NSLocalizedString("SERVERS", comment: "Servers")
         
         let closeButton = UIBarButtonItem(title: NSLocalizedString("CLOSE", comment: ""), style: .plain, target: self, action: #selector(close))
         let addServerButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addServer))
         
         navigationItem.leftBarButtonItems = [closeButton, editButtonItem]
         navigationItem.rightBarButtonItem = addServerButton
+        
+        // Add a shortcut for adding a server
+        addKeyCommand(UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(addServer), discoverabilityTitle: NSLocalizedString("ADD_SERVER", comment: "")))
+        
+        // Close this when the escape key is pressed
+        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(close), discoverabilityTitle: NSLocalizedString("CLOSE", comment: "")))
     }
     
     func updateServerDisplay() {

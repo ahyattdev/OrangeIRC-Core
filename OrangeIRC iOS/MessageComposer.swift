@@ -22,7 +22,7 @@ class MessageComposer : UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
-        navigationItem.title = room!.name
+        title = room!.name
         navigationItem.prompt = room!.server!.host
         
         view = textView
