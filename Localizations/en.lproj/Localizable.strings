@@ -119,3 +119,13 @@ INVALID_ROOM_NAME = "Missing Room Name";
 INVALID_ROOM_NAME_MESSAGE = "You must specify a room name.";
 
 MISSING_CHANNEL_PREFIX = "ALL IRC channels require a prefix. If you are not sure of a prefix, a “#” is usually the prefix. Example: #channelname.";
+
+SETTINGS = "Settings";
+
+SETTINGS_CHANGED = "Server Settings Changed";
+
+DO_YOU_WANT_TO_RECONNECT = "Do you want to reconnect with these new settings?";
+
+RECONNECT = "Reconnect";
+
+DONT_RECONNECT = "Don't Reconnect";

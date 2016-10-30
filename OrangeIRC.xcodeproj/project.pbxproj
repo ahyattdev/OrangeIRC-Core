@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6605688E1D7901C400A2502B /* RoomInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605688D1D7901C400A2502B /* RoomInfo.swift */; };
-		661AF5021D2C809E00CFC190 /* AddServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5011D2C809E00CFC190 /* AddServerViewController.swift */; };
+		661AF5021D2C809E00CFC190 /* ServerSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */; };
 		661AF5041D2C833700CFC190 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5031D2C833700CFC190 /* Notifications.swift */; };
 		661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5051D2C89E900CFC190 /* TextFieldCell.swift */; };
 		663D71921D7C64C300202EF2 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663D71911D7C64C300202EF2 /* MessageComposer.swift */; };
@@ -97,7 +97,7 @@
 
 /* Begin PBXFileReference section */
 		6605688D1D7901C400A2502B /* RoomInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomInfo.swift; sourceTree = "<group>"; };
-		661AF5011D2C809E00CFC190 /* AddServerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddServerViewController.swift; sourceTree = "<group>"; };
+		661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSettingsTableViewController.swift; sourceTree = "<group>"; };
 		661AF5031D2C833700CFC190 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		661AF5051D2C89E900CFC190 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		663D71911D7C64C300202EF2 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 				669DF7011D7CE96B007F82DB /* MOTDViewer.swift */,
 				6605688D1D7901C400A2502B /* RoomInfo.swift */,
 				6ADD58E01D29DD220051DB28 /* ServersViewController.swift */,
-				661AF5011D2C809E00CFC190 /* AddServerViewController.swift */,
+				661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */,
 				6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */,
 				6A6B0FC71DB27CA5005043F4 /* Launch Screen.storyboard */,
 				6A2081C21D5999C4006CD605 /* Cells */,
@@ -461,7 +461,7 @@
 				661AF5041D2C833700CFC190 /* Notifications.swift in Sources */,
 				6ADD58DF1D29DB330051DB28 /* RoomsViewController.swift in Sources */,
 				6605688E1D7901C400A2502B /* RoomInfo.swift in Sources */,
-				661AF5021D2C809E00CFC190 /* AddServerViewController.swift in Sources */,
+				661AF5021D2C809E00CFC190 /* ServerSettingsTableViewController.swift in Sources */,
 				66A75AFF1D234694001161A3 /* AppDelegate.swift in Sources */,
 				6ADD58E11D29DD220051DB28 /* ServersViewController.swift in Sources */,
 				6A8B031C1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift in Sources */,

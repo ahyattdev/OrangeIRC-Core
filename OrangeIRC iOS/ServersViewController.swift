@@ -60,6 +60,16 @@ class ServersViewController : UITableViewController {
         
         serverOptions.popoverPresentationController?.sourceView = self.view
         
+        // Edits a server's settings
+        let settings = UIAlertAction(title: NSLocalizedString("SETTINGS", comment: ""), style: .default, handler: { a in
+            let editor = ServerSettingsTableViewController(style: .grouped, edit: server)
+            let nav = UINavigationController(rootViewController: editor)
+            self.modalPresentationStyle = .pageSheet
+            self.present(nav, animated: true, completion: nil)
+            
+        })
+        serverOptions.addAction(settings)
+        
         if server.isConnectingOrRegistering || server.isRegistered {
             // Add a disconnect button
             let disconnect = NSLocalizedString("DISCONNECT", comment: "Disconnect")
@@ -128,7 +138,7 @@ class ServersViewController : UITableViewController {
     }
     
     func addServer() {
-        let addServerViewController = AddServerViewController(style: .grouped)
+        let addServerViewController = ServerSettingsTableViewController(style: .grouped)
         let nav = UINavigationController(rootViewController: addServerViewController)
         modalPresentationStyle = .pageSheet
         present(nav, animated: true, completion: nil)

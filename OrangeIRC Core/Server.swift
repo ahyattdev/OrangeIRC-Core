@@ -63,6 +63,9 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     public var isRegistered = false
     
+    // Used for reconnect functionality
+    private var connectOnDisconnect = false
+    
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
         self.host = host
         self.port = port
@@ -125,7 +128,23 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         }
     }
     
-    public func reset() {
+    public func disconnect() {
+        write(string: Command.QUIT)
+    }
+    
+    /*
+ 
+      FIXME: This should be done with blocks instead of booleans.
+ 
+      Example: disconnect(completion: <closure>)
+ 
+    */
+    public func reconnect() {
+        connectOnDisconnect = true
+        disconnect()
+    }
+    
+    func reset() {
         self.isConnectingOrRegistering = false
         self.isRegistered = false
         self.finishedReadingMOTD = false
@@ -138,6 +157,11 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         }
         
         self.delegate?.didDisconnect(server: self)
+        
+        if connectOnDisconnect {
+            connect()
+            connectOnDisconnect = false
+        }
     }
     
     func sendPassMessage() {
@@ -159,10 +183,6 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         if !self.nickservPassword.isEmpty {
             self.write(string: "\(Command.PRIVMSG) \(Command.Services.NickServ) :\(Command.IDENTIFY) \(self.nickservPassword)", with: Tag.NickServPassword)
         }
-    }
-    
-    public func disconnect() {
-        write(string: Command.QUIT)
     }
     
     func write(string: String, with tag: Int) {
