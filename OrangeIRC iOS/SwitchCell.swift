@@ -23,6 +23,8 @@ class SwitchCell : UITableViewCell {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
+        
         let switchHeight = self.switch.frame.height
         let switchWidth = self.switch.frame.width
         
@@ -32,6 +34,8 @@ class SwitchCell : UITableViewCell {
         let horizontalPadding: CGFloat = 13.0
         
         self.switch.frame = CGRect(x: cellWidth - switchWidth - horizontalPadding, y: (cellHeight / 2) - (switchHeight / 2), width: switchWidth, height: switchHeight)
+        
+        addSubview(self.switch)
     }
     
 }

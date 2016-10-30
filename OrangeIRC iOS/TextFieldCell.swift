@@ -21,18 +21,21 @@ class TextFieldCell : UITableViewCell {
     
     init() {
         super.init(style: .default, reuseIdentifier: nil)
-        
-        let offset: CGFloat = 125
-        
-        textField.frame.origin.x = offset
-        textField.frame.origin.y = 6
-        textField.frame.size.height = frame.height - 12
-        textField.frame.size.width = frame.width - offset - 8
         addSubview(textField)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let offset: CGFloat = 125
+        textField.frame.origin.x = offset
+        textField.frame.origin.y = 6
+        textField.frame.size.height = frame.height - 12
+        textField.frame.size.width = frame.width - offset - 8
     }
     
 }
