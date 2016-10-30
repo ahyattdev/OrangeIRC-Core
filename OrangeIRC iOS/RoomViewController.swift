@@ -113,7 +113,7 @@ class RoomViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        let cell = TextViewCell()
         
         let logEvent = room!.log[indexPath.row]
         let userLogEvent = logEvent as? UserLogEvent
@@ -132,9 +132,8 @@ class RoomViewController : UITableViewController {
             
         case is MessageLogEvent:
             cell.textLabel!.text = messageLogEvent!.contents
-            cell.detailTextLabel!.text = messageLogEvent!.sender.name
-            cell.detailTextLabel!.textColor = appDelegate.color(for: messageLogEvent!.sender, in: room!)
-        
+            //cell.detailTextLabel!.text = messageLogEvent!.sender.name
+            //cell.detailTextLabel!.textColor = appDelegate.color(for: messageLogEvent!.sender, in: room!)
         default:
             break
         }
@@ -142,5 +141,22 @@ class RoomViewController : UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let logEvent = room!.log[indexPath.row]
+        
+        if logEvent.self is MessageLogEvent {
+            // FIXME: Creating a text view again for every height is inefficient, it should be cached
+            let messageLogEvent = logEvent as! MessageLogEvent
+            let textView = UITextView()
+            textView.text = messageLogEvent.contents
+            return textView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude)).height + 12
+        }
+        
+        return super.tableView(tableView, heightForRowAt: indexPath)
+    }
     
 }

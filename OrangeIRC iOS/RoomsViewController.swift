@@ -52,6 +52,8 @@ class RoomsViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
+        cell.accessoryType = .disclosureIndicator
+        
         let room = self.allRooms[indexPath.row]
         
         cell.textLabel!.text = "\(room.name) @ \(room.server!.host)"
