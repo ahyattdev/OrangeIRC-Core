@@ -17,6 +17,8 @@ class RoomViewController : UITableViewController {
     
     var detailButton: UIBarButtonItem?
     
+    private var heights = [CGFloat]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,11 +133,13 @@ class RoomViewController : UITableViewController {
             cell.textLabel!.text = "\(userLogEvent!.sender) \(NSLocalizedString("QUIT", comment: "When someone quits"))"
             
         case is MessageLogEvent:
-            cell.textLabel!.text = messageLogEvent!.contents
+            cell.textView.text = messageLogEvent!.contents
             //cell.detailTextLabel!.text = messageLogEvent!.sender.name
             //cell.detailTextLabel!.textColor = appDelegate.color(for: messageLogEvent!.sender, in: room!)
+            
         default:
             break
+            
         }
         
         return cell

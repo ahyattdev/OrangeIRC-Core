@@ -13,7 +13,7 @@ class TextFieldCell : UITableViewCell {
     
     var HORIZONTAL_SPACE: CGFloat {
         get {
-            return frame.width - 16
+            return contentView.frame.width - 16
         }
     }
     
@@ -21,7 +21,7 @@ class TextFieldCell : UITableViewCell {
     
     init() {
         super.init(style: .default, reuseIdentifier: nil)
-        addSubview(textField)
+        contentView.addSubview(textField)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,8 +34,8 @@ class TextFieldCell : UITableViewCell {
         let offset: CGFloat = 125
         textField.frame.origin.x = offset
         textField.frame.origin.y = 6
-        textField.frame.size.height = frame.height - 12
-        textField.frame.size.width = frame.width - offset - 8
+        textField.frame.size.height = contentView.frame.height - 12
+        textField.frame.size.width = contentView.frame.width - offset - 8
     }
     
 }

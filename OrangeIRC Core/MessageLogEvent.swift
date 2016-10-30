@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MessageLogEvent : LogEvent {
+public class MessageLogEvent : LogEvent, CustomDebugStringConvertible {
     
     public var contents: String
     public var sender: User
@@ -16,6 +16,10 @@ public class MessageLogEvent : LogEvent {
     public init(contents: String, sender: User) {
         self.contents = contents
         self.sender = sender
+    }
+    
+    public var debugDescription: String {
+        return "MessageLogEvent(contents: \(contents), sender: \(sender.name)"
     }
     
 }

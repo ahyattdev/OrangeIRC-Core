@@ -35,7 +35,7 @@ class SwitchCell : UITableViewCell {
         
         self.switch.frame = CGRect(x: cellWidth - switchWidth - horizontalPadding, y: (cellHeight / 2) - (switchHeight / 2), width: switchWidth, height: switchHeight)
         
-        addSubview(self.switch)
+        contentView.addSubview(self.switch)
     }
     
 }
