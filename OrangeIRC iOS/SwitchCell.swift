@@ -8,10 +8,6 @@
 
 import UIKit
 
-import Foundation
-
-@IBDesignable
-
 class SwitchCell : UITableViewCell {
     
     let `switch` = UISwitch()
@@ -19,7 +15,7 @@ class SwitchCell : UITableViewCell {
     init() {
         super.init(style: .default, reuseIdentifier: nil)
         
-        contentView.addSubview(self.switch)
+        //contentView.addSubview(self.switch)
     }
     
     required init?(coder aDecoder: NSCoder) {

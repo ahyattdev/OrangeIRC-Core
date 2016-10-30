@@ -11,11 +11,6 @@ import OrangeIRCCore
 
 class AddServerViewController : UITableViewController {
     
-    struct CellIdentifiers {
-        static let TextFieldCell = "TextFieldCell"
-        static let SwitchCell = "SwitchCell"
-    }
-    
     static let REQUIRED = NSLocalizedString("REQUIRED", comment: "Required")
     static let OPTIONAL = NSLocalizedString("OPTIONAL", comment: "Optional")
     
@@ -55,22 +50,11 @@ class AddServerViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var tempFieldCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.TextFieldCell)
-        if tempFieldCell == nil {
-            tempFieldCell = TextFieldCell()
-        }
-        let textFieldCell = tempFieldCell as! TextFieldCell
+        let textFieldCell = TextFieldCell()
+        let switchCell = SwitchCell()
         
-        var tempSwitchCell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.SwitchCell)
-        if tempSwitchCell == nil {
-            tempSwitchCell = SwitchCell()
-        }
         textFieldCell.textField.autocorrectionType = .no
         textFieldCell.textField.autocapitalizationType = .none
-        
-        let switchCell = tempSwitchCell as! SwitchCell
-        
-        var returnValue: UITableViewCell = textFieldCell
         
         switch indexPath.section {
         case 0:
@@ -96,7 +80,7 @@ class AddServerViewController : UITableViewController {
             case 3:
                 self.autoJoinCell = switchCell
                 switchCell.textLabel!.text = NSLocalizedString("AUTOMATICALLY_JOIN", comment: "Automatically Join")
-                returnValue = switchCell
+                return switchCell
             default:
                 break
             }
@@ -125,7 +109,7 @@ class AddServerViewController : UITableViewController {
             break
         }
         
-        return returnValue
+        return textFieldCell
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
