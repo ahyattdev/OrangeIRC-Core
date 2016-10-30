@@ -129,3 +129,5 @@ DO_YOU_WANT_TO_RECONNECT = "Do you want to reconnect with these new settings?";
 RECONNECT = "Reconnect";
 
 DONT_RECONNECT = "Don't Reconnect";
+
+ADD_ROOM = "Add Room";

@@ -41,19 +41,18 @@ class RoomViewController : UITableViewController {
     }
     
     func roomDataChanged(_ notification: NSNotification) {
-        if self.room != nil, let room = notification.object as? Room {
-            if room == self.room! {
-                updateButtons()
-            }
-        }
+        updateButtons()
     }
     
     func updateButtons() {
         // Only enable the composer button when a message can be sent
-        composerButton!.isEnabled = !(room == nil) && (room?.server?.isRegistered)! && room!.isJoined
-        
-        // Only enable the details button if the room is set
-        detailButton!.isEnabled = !(room == nil)
+        if room == nil {
+            composerButton!.isEnabled = false
+            detailButton!.isEnabled = false
+        } else {
+            composerButton!.isEnabled = room!.server!.isRegistered && room!.isJoined
+            detailButton!.isEnabled = true
+        }
     }
     
     func updateWith(room: Any?) {
@@ -142,5 +141,6 @@ class RoomViewController : UITableViewController {
         
         return cell
     }
+    
     
 }

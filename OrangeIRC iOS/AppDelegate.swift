@@ -103,10 +103,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func show(room: Room) {
-        // FIXME: Showing rooms
-        
         if splitView.isCollapsed {
             // Done on iPhone
+            roomView.updateWith(room: room)
             roomsView.navigationController?.pushViewController(roomView, animated: true)
         } else {
             // We can only use the notification if the view controller will exist

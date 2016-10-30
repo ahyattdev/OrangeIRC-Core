@@ -24,6 +24,8 @@ class AddRoomTableViewController : UITableViewController {
         
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = doneButton
+        
+        title = NSLocalizedString("ADD_ROOM", comment: "")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
