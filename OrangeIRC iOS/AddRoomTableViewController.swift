@@ -26,6 +26,9 @@ class AddRoomTableViewController : UITableViewController {
         navigationItem.rightBarButtonItem = doneButton
         
         title = NSLocalizedString("ADD_ROOM", comment: "")
+        
+        // Close this when the escape key is pressed
+        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(cancel), discoverabilityTitle: NSLocalizedString("CANCEL", comment: "")))
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

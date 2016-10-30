@@ -29,6 +29,9 @@ class MessageComposer : UIViewController {
         
         // Show the keyboard
         textView.becomeFirstResponder()
+        
+        // Close this when the escape key is pressed
+        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(cancel), discoverabilityTitle: NSLocalizedString("CANCEL", comment: "")))
     }
     
     func cancel() {
