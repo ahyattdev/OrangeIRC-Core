@@ -68,6 +68,8 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     // Used for reconnect functionality
     private var connectOnDisconnect = false
     
+    public var socketOpen = false
+    
     var userCache: UserCache = UserCache()
     
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
@@ -154,6 +156,8 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     }
     
     func reset() {
+        let notifyDelegate = isConnectingOrRegistering || isRegistered
+        
         self.isConnectingOrRegistering = false
         self.isRegistered = false
         self.finishedReadingMOTD = false
@@ -164,8 +168,10 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         for room in rooms {
             room.isJoined = false
         }
-        
-        self.delegate?.didDisconnect(server: self)
+        if notifyDelegate {
+            // Only tell the delegate that we disconnected if we were connected
+            self.delegate?.didDisconnect(server: self)
+        }
         
         if connectOnDisconnect {
             connect()

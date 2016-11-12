@@ -12,6 +12,7 @@ import CocoaAsyncSocket
 extension Server {
     
     public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+        socketOpen = true
         delegate?.connectedSucessfully(server: self)
         socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
         print("Connected to host: \(host)")
@@ -26,6 +27,11 @@ extension Server {
     }
     
     public func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
+        if !socketOpen && (err != nil) {
+            delegate?.didNotRespond(server: self)
+        }
+        
+        socketOpen = false
         // We need to wait after QUIT is sent, as things are sent asyncronously
         reset()
     }

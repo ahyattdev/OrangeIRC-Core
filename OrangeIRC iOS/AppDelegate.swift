@@ -186,22 +186,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         return roomsOfServer
     }
     
-    func didNotRespond(server: Server) {
-        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
-    }
-    
-    func stoppedResponding(server: Server) {
-        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
-    }
-    
-    func connectedSucessfully(server: Server) {
-        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
-    }
-    
-    func didRegister(server: Server) {
-        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
-    }
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == nickservPasswordField {
             guard let text = textField.text as NSString? else {
@@ -323,6 +307,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         
         saveData()
         dataChanged(room: nil)
+    }
+    
+    func didNotRespond(server: Server) {
+        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
+        
+        let message = NSLocalizedString("SERVER_DID_NOT_RESPOND_DESCRIPTION", comment: "").replacingOccurrences(of: "[SERVERNAME]", with: server.host)
+        let alert = UIAlertController(title: NSLocalizedString("SERVER_DID_NOT_RESPOND", comment: ""), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+        window!.rootViewController!.present(alert, animated: true, completion: nil)
+    }
+    
+    func stoppedResponding(server: Server) {
+        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
+    }
+    
+    func connectedSucessfully(server: Server) {
+        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
+    }
+    
+    func didRegister(server: Server) {
+        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
     }
     
     func finishedReadingUserList(room: Room) {
