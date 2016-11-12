@@ -21,7 +21,7 @@ class RoomsViewController : UITableViewController {
         
         let serversButtonTitle = NSLocalizedString("SERVERS", comment: "Servers")
         let serversButton = UIBarButtonItem(title: serversButtonTitle, style: .plain, target: self, action: #selector(self.serversButton))
-        navigationItem.leftBarButtonItem = serversButton
+        navigationItem.leftBarButtonItems = [serversButton, editButtonItem]
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRoomButton))
         navigationItem.rightBarButtonItem = addButton
@@ -66,6 +66,39 @@ class RoomsViewController : UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         let room = appDelegate.rooms[indexPath.row]
         appDelegate.show(room: room)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Enables the delete row button
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let room = self.appDelegate.rooms[indexPath.row]
+        
+        switch editingStyle {
+        case .delete:
+            self.appDelegate.delete(room: room)
+        case .insert:
+            break
+        case .none:
+            break
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        // Enables the move row indicators
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // Move the room
+        let room = appDelegate.rooms.remove(at: sourceIndexPath.row)
+        appDelegate.rooms.insert(room, at: destinationIndexPath.row)
+        
+        // Post a notification and save data
+        NotificationCenter.default.post(name: Notifications.RoomDataDidChange, object: nil)
+        appDelegate.saveData()
     }
     
     func serversButton() {
