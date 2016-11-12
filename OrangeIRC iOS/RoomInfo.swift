@@ -83,7 +83,7 @@ class RoomInfo : UITableViewController {
             let user = room!.users[indexPath.row]
             cell.textLabel!.text = user.name
             
-            cell.textLabel!.textColor = appDelegate.color(for: user, in: room!)
+            cell.textLabel!.textColor = user.color(room: room!)
             
         default: break
             

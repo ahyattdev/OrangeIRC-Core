@@ -36,29 +36,6 @@ public extension Server {
         return nil
     }
     
-    public func findInAllRooms(user: String) -> User? {
-        for room in rooms {
-            let possibleUser = room.user(name: user)
-            if possibleUser != nil {
-                return possibleUser!
-            }
-        }
-        
-        return nil
-    }
-    
-    public func findRoomsOf(user: User) -> [Room] {
-        var rooms = [Room]()
-        for room in rooms {
-            for otherUser in room.users {
-                if otherUser.name == user.name {
-                    rooms.append(room)
-                }
-            }
-        }
-        return rooms
-    }
-    
     func getOrAddRoom(name: String, type: RoomType) -> Room {
         for room in rooms {
             if room.name == name && room.type == type{

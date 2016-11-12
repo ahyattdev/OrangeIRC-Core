@@ -68,6 +68,8 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     // Used for reconnect functionality
     private var connectOnDisconnect = false
     
+    var userCache: UserCache = UserCache()
+    
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
         self.host = host
         self.port = port
@@ -76,6 +78,8 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.realname = realname
         self.encoding = encoding
         uuid = UUID()
+        super.init()
+        userCache.set(server: self)
     }
     
     public convenience init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding, password: String) {

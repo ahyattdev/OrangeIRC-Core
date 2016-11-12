@@ -62,6 +62,7 @@ extension Server {
             
         case Command.JOIN:
             guard let nick = message.prefix?.nickname else {
+                print("The message for JOIN had no prefix and/or nickname")
                 break
             }
             
@@ -75,49 +76,35 @@ extension Server {
             }
             
             if channelName.isEmpty {
+                print("Invalid channel name")
                 break
             }
             
             let room = getOrAddRoom(name: channelName, type: .Channel)
             
-            if nick == self.nickname {
-                // We joined a room
-                room.isJoined = true
-                self.delegate?.joined(room: room)
-                for i in 0 ..< roomsFlaggedForAutoJoin.count {
-                    let roomName = roomsFlaggedForAutoJoin[i]
-                    if roomName == room.name {
-                        room.autoJoin = true
-                        roomsFlaggedForAutoJoin.remove(at: i)
-                        break
-                    }
-                }
-            }
+            let user = userCache.getOrCreateUser(nickname: nick)
             
-            let logEvent = UserJoinLogEvent(sender: nick)
-            room.log.append(logEvent)
-            delegate?.recieved(logEvent: logEvent, for: room)
+            userCache.handleJoin(user: user, channel: room)
         
         case Command.PART:
             guard let nick = message.prefix?.nickname else {
+                print("Recieved a PART message without a prefix")
                 break
             }
             
             let roomName = message.target[0]
             
             guard let room = roomFrom(name: roomName) else {
+                print("Could not get room for room name")
                 break
             }
             
-            if nick == self.nickname {
-                // We left
-                room.isJoined = false
-                delegate?.left(room: room)
+            guard let user = userCache.getUser(by: nick) else {
+                print("Could not get user for nickname")
+                break
             }
             
-            let logEvent = UserPartLogEvent(sender: nick)
-            room.log.append(logEvent)
-            delegate?.recieved(logEvent: logEvent, for: room)
+            userCache.handleLeave(user: user, channel: room)
             
         case Command.NOTICE:
             guard let noticeMessage = message.parameters else {
@@ -208,7 +195,7 @@ extension Server {
                 break
             }
             
-            guard let sender = room.user(name: senderNick) else {
+            guard let sender = userCache.getUser(by: senderNick) else {
                 print("Could not identify the sender of a PRIVMSG")
                 break
             }
@@ -235,9 +222,7 @@ extension Server {
                 break
             }
             
-            for nick in nicknames {
-                room.addUser(nick: nick)
-            }
+            userCache.parse(userList: nicknames, for: room)
             
         case Command.Reply.ENDOFNAMES:
             if message.target.count < 1 {
@@ -263,17 +248,12 @@ extension Server {
             }
             
             // Log it
-            guard let user = findInAllRooms(user: nick) else {
+            guard let user = userCache.getUser(by: nick) else {
                 print("Could not find the User for which to log the quit message for")
                 break
             }
             
-            let logEvent = UserQuitLogEvent(sender: nick)
-            
-            for room in findRoomsOf(user: user) {
-                room.log.append(logEvent)
-                delegate?.recieved(logEvent: logEvent, for: room)
-            }
+            userCache.handleQuit(user: user)
             
         default:
             print(message.message)

@@ -108,49 +108,21 @@ public class Room : NSObject, NSCoding {
             
             for part in messageParts {
                 server!.write(string: "\(commandPrefix)\(part)")
-                guard let myUser = user(name: server!.nickname) else {
-                    print("Failed to add a message we sent to the log")
-                    continue
-                }
-                let logEvent = MessageLogEvent(contents: part, sender: myUser)
+                
+                let logEvent = MessageLogEvent(contents: part, sender: server!.userCache.me)
                 log.append(logEvent)
                 server!.delegate?.recieved(logEvent: logEvent, for: self)
             }
         }
     }
     
-    func addUser(nick: String) {
-        // Because they got rid of parameters being vars
-        var vnick = nick
-        let prefix = nick.substring(to: nick.index(after: nick.startIndex))
-        
-        var mode = User.Mode(rawValue: prefix)
-        if mode == nil {
-            mode = User.Mode.None
-        } else {
-            vnick.remove(at: nick.startIndex)
-        }
-        
-        let user = User(name: vnick, mode: mode!)
-        
-        if user.name == server!.nickname {
-            user.isSelf = true
-        }
-        
-        let otherUser = self.user(name: user.name)
-        if otherUser == nil {
-            // So there are no duplicates added
-            users.append(user)
-        }
-    }
-    
-    func user(name: String) -> User? {
-        for user in users {
-            if user.name == name {
-                return user
+    func contains(user: User) -> Bool {
+        for testUser in users {
+            if testUser === user {
+                return true
             }
         }
-        return nil
+        return false
     }
     
 }
