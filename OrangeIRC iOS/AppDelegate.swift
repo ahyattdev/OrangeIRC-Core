@@ -58,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        loadData()
         
         splitView.delegate = self
         
@@ -77,6 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         
         window!.tintColor = UIColor.orange
         window!.makeKeyAndVisible()
+        
+        loadData()
         
         return true
     }

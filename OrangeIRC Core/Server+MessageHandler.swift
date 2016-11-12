@@ -120,14 +120,17 @@ extension Server {
             delegate?.recieved(logEvent: logEvent, for: room)
             
         case Command.NOTICE:
-            let nickname = message.target[0]
             guard let noticeMessage = message.parameters else {
                 print("Failed to parse NOTICE")
                 break
             }
             if message.target[0] == self.nickname {
                 // This NOTICE is specifically sent to this nickname
-                self.delegate?.recieved(notice: noticeMessage, sender: nickname, server: self)
+                guard let sender = message.prefix?.nickname else {
+                    print("Recieved a NOTICE without a prefix: \(message)")
+                    break
+                }
+                self.delegate?.recieved(notice: noticeMessage, sender: sender, server: self)
             }
             
         case Command.PING:
