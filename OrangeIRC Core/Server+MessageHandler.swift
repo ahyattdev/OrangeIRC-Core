@@ -78,23 +78,16 @@ extension Server {
                 break
             }
             
-            var room: Room?
-            if !alreadyExists(room: channelName) {
-                // Create a new room with log
-                room = Room(name: channelName, type: .Channel, server: self)
-                self.rooms.append(room!)
-            } else {
-                room = roomFrom(name: channelName)
-            }
+            let room = getOrAddRoom(name: channelName, type: .Channel)
             
             if nick == self.nickname {
                 // We joined a room
-                room!.isJoined = true
-                self.delegate?.joined(room: room!)
+                room.isJoined = true
+                self.delegate?.joined(room: room)
                 for i in 0 ..< roomsFlaggedForAutoJoin.count {
                     let roomName = roomsFlaggedForAutoJoin[i]
-                    if roomName == room!.name {
-                        room!.autoJoin = true
+                    if roomName == room.name {
+                        room.autoJoin = true
                         roomsFlaggedForAutoJoin.remove(at: i)
                         break
                     }
@@ -102,8 +95,8 @@ extension Server {
             }
             
             let logEvent = UserJoinLogEvent(sender: nick)
-            room!.log.append(logEvent)
-            delegate?.recieved(logEvent: logEvent, for: room!)
+            room.log.append(logEvent)
+            delegate?.recieved(logEvent: logEvent, for: room)
         
         case Command.PART:
             guard let nick = message.prefix?.nickname else {

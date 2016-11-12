@@ -28,6 +28,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         static let Rooms = "Rooms"
         static let NickServPassword = "NickServPassword"
         static let AutoJoin = "AutoJoin"
+        static let UUID = "UUID"
         
     }
     
@@ -36,6 +37,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     public var finishedReadingMOTD = false
     
     public var log = [String]()
+    public var rooms: [Room] = [Room]()
     
     public var delegate: ServerDelegate?
     
@@ -53,8 +55,8 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     public var realname: String
     public var password = ""
     public var nickservPassword = ""
-    public var rooms: [Room] = [Room]()
     public var autoJoin = false
+    public var uuid: UUID
     // End saved data
     
     public var roomsFlaggedForAutoJoin = [String]()
@@ -73,6 +75,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.username = username
         self.realname = realname
         self.encoding = encoding
+        uuid = UUID()
     }
     
     public convenience init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding, password: String) {
@@ -85,16 +88,13 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
             let nickname = coder.decodeObject(forKey: Coding.Nickname) as? String,
             let username = coder.decodeObject(forKey: Coding.Username) as? String,
             let realname = coder.decodeObject(forKey: Coding.Realname) as? String,
-            let nickservPassword = coder.decodeObject(forKey: Coding.NickServPassword) as? String,
-            let rooms = coder.decodeObject(forKey: Coding.Rooms) as? [Room] else {
+            let nickservPassword = coder.decodeObject(forKey: Coding.NickServPassword) as? String else {
                 return nil
         }
         // According to the compiler, this will always succeed
         let port = coder.decodeInteger(forKey: Coding.Port)
         
         self.init(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: String.Encoding.utf8)
-        
-        self.rooms = rooms
         
         // This property is not restored by NSCoding
         for room in self.rooms {
@@ -103,17 +103,22 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         
         self.nickservPassword = nickservPassword
         self.autoJoin = coder.decodeBool(forKey: Coding.AutoJoin)
+        
+        guard let uuid = coder.decodeObject(forKey: Coding.UUID) as? UUID else {
+            return nil
+        }
+        self.uuid = uuid
     }
     
     public func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.host, forKey: Coding.Host)
-        aCoder.encode(self.port, forKey: Coding.Port)
-        aCoder.encode(self.nickname, forKey: Coding.Nickname)
-        aCoder.encode(self.username, forKey: Coding.Username)
-        aCoder.encode(self.realname, forKey: Coding.Realname)
-        aCoder.encode(self.rooms, forKey: Coding.Rooms)
-        aCoder.encode(self.nickservPassword, forKey: Coding.NickServPassword)
-        aCoder.encode(self.autoJoin, forKey: Coding.AutoJoin)
+        aCoder.encode(host, forKey: Coding.Host)
+        aCoder.encode(port, forKey: Coding.Port)
+        aCoder.encode(nickname, forKey: Coding.Nickname)
+        aCoder.encode(username, forKey: Coding.Username)
+        aCoder.encode(realname, forKey: Coding.Realname)
+        aCoder.encode(nickservPassword, forKey: Coding.NickServPassword)
+        aCoder.encode(autoJoin, forKey: Coding.AutoJoin)
+        aCoder.encode(uuid, forKey: Coding.UUID)
     }
     
     public func connect() {

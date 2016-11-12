@@ -11,8 +11,6 @@ import OrangeIRCCore
 
 class RoomsViewController : UITableViewController {
     
-    var allRooms = [Room]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,19 +35,11 @@ class RoomsViewController : UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        self.allRooms = [Room]()
-        
-        for server in self.appDelegate.servers {
-            for room in server.rooms {
-                self.allRooms.append(room)
-            }
-        }
-        
         return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.allRooms.count
+        return appDelegate.rooms.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,7 +47,7 @@ class RoomsViewController : UITableViewController {
         
         cell.accessoryType = .disclosureIndicator
         
-        let room = self.allRooms[indexPath.row]
+        let room = appDelegate.rooms[indexPath.row]
         
         cell.textLabel!.text = "\(room.name) @ \(room.server!.host)"
         
@@ -74,7 +64,7 @@ class RoomsViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let room = self.allRooms[indexPath.row]
+        let room = appDelegate.rooms[indexPath.row]
         appDelegate.show(room: room)
     }
     

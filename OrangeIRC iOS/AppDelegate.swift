@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     let dataFolder = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
-    var dataPaths: (servers: String, options: String)
+    var dataPaths: (servers: String, rooms: String)
     
     var window: UIWindow?
     
@@ -34,14 +34,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     var roomsView = RoomsViewController()
     var roomView = RoomViewController()
     
+    // Saved data
+    var servers = [Server]()
+    var rooms = [Room]()
+    
+    var registeredServers: [Server] {
+        get {
+            var regServers = [Server]()
+            for server in self.servers {
+                if server.isRegistered {
+                    regServers.append(server)
+                }
+            }
+            return regServers
+        }
+    }
+    
     override init() {
         dataPaths.servers = dataFolder.strings(byAppendingPaths: ["servers.plist"])[0]
-        dataPaths.options = ""
+        dataPaths.rooms = dataFolder.strings(byAppendingPaths: ["rooms.plist"])[0]
         
         super.init()
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        loadData()
+        
         splitView.delegate = self
         
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -60,7 +78,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         window!.tintColor = UIColor.orange
         window!.makeKeyAndVisible()
         
-        self.loadData()
         return true
     }
 
@@ -72,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        self.saveData()
+        saveData()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -85,21 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        self.saveData()
-    }
-    
-    var servers = [Server]()
-    
-    var registeredServers: [Server] {
-        get {
-            var regServers = [Server]()
-            for server in self.servers {
-                if server.isRegistered {
-                    regServers.append(server)
-                }
-            }
-            return regServers
-        }
+        saveData()
     }
     
     func show(room: Room) {
@@ -118,18 +121,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         servers.append(server)
         server.delegate = self
         server.connect()
-        self.saveData()
+        saveData()
         
         // Returned so additional configuration can be done
         return server
     }
     
     func loadData() {
-        guard let servers = NSKeyedUnarchiver.unarchiveObject(withFile: self.dataPaths.servers) else {
-            self.saveData()
+        guard let servers = NSKeyedUnarchiver.unarchiveObject(withFile: dataPaths.servers) else {
+            // Initialize the file
+            saveData()
             return
         }
+        
         self.servers = servers as! [Server]
+        
+        guard let rooms = NSKeyedUnarchiver.unarchiveObject(withFile: dataPaths.rooms) else {
+            // Initialize the file
+            self.rooms = [Room]()
+            saveData()
+            return
+        }
+        
+        self.rooms = rooms as! [Room]
+        for room in self.rooms {
+            guard let server = server(for: room.serverUUID) else {
+                fatalError("A room without a matching server was loaded")
+            }
+            room.server = server
+            server.rooms.append(room)
+        }
+        
         for server in self.servers {
             server.delegate = self
             if server.autoJoin {
@@ -139,7 +161,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func saveData() {
-        NSKeyedArchiver.archiveRootObject(self.servers, toFile: self.dataPaths.servers)
+        NSKeyedArchiver.archiveRootObject(servers, toFile: dataPaths.servers)
+        NSKeyedArchiver.archiveRootObject(rooms, toFile: dataPaths.rooms)
+    }
+    
+    func server(for uuid: UUID) -> Server? {
+        for server in servers {
+            if server.uuid == uuid {
+                return server
+            }
+        }
+        return nil
+    }
+    
+    func rooms(for server: Server) -> [Room] {
+        var roomsOfServer = [Room]()
+        for room in rooms {
+            if room.serverUUID == server.uuid {
+                roomsOfServer.append(room)
+                room.server = server
+            }
+        }
+        return roomsOfServer
     }
     
     func didNotRespond(server: Server) {
@@ -159,14 +202,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == self.nickservPasswordField {
+        if textField == nickservPasswordField {
             guard let text = textField.text as NSString? else {
                 return true
             }
             let finalString = text.replacingCharacters(in: range, with: string)
             
             // Disable the done button if no password is given
-            self.doneAction!.isEnabled = !finalString.isEmpty
+            doneAction!.isEnabled = !finalString.isEmpty
         }
         
         return true
@@ -210,7 +253,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
                     
                     nicknamePasswordAlert.addAction(doneAction)
                     
-                    self.window!.rootViewController!.present(nicknamePasswordAlert, animated: true, completion: nil)
+                    window!.rootViewController!.present(nicknamePasswordAlert, animated: true, completion: nil)
                 } else {
                     // This normally happens after each connection
                     server.sendNickServPassword()
@@ -252,7 +295,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         })
         confirmation.addAction(deleteAction)
         
-        self.window!.rootViewController!.present(confirmation, animated: true, completion: nil)
+        window!.rootViewController!.present(confirmation, animated: true, completion: nil)
     }
     
     func finishedReadingUserList(room: Room) {
@@ -264,6 +307,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func joined(room: Room) {
+        if !rooms.contains(room) {
+            rooms.append(room)
+            saveData()
+        }
+        
         dataChanged(room: room)
     }
     
@@ -272,7 +320,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func startedConnecting(server: Server) {
-        self.serverStateChanged()
+        serverStateChanged()
     }
     
     func finishedReadingMOTD(server: Server) {
@@ -290,12 +338,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     
     func dataChanged(room: Room?) {
         NotificationCenter.default.post(name: Notifications.RoomDataDidChange, object: room)
-        self.saveData()
+        saveData()
     }
     
     func serverStateChanged() {
         NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
-        self.saveData()
+        saveData()
     }
     
     func recieved(error: String, server: Server) {
@@ -306,8 +354,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         let ok = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)
         alert.addAction(ok)
         
-        self.window!.rootViewController!.present(alert, animated: true, completion: nil)
+        window!.rootViewController!.present(alert, animated: true, completion: nil)
     }
     
 }
-

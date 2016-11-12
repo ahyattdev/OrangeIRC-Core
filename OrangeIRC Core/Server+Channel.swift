@@ -59,4 +59,16 @@ public extension Server {
         return rooms
     }
     
+    func getOrAddRoom(name: String, type: RoomType) -> Room {
+        for room in rooms {
+            if room.name == name && room.type == type{
+                return room
+            }
+        }
+        let room = Room(name: name, type: type, serverUUID: uuid)
+        room.server = self
+        rooms.append(room)
+        return room
+    }
+    
 }

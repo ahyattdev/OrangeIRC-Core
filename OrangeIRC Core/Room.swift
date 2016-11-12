@@ -19,14 +19,15 @@ public class Room : NSObject, NSCoding {
         // We can't call it Type, because that would be a keyword
         static let RoomType = "Type"
         static let AutoJoin = "AutoJoin"
+        static let ServerUUID = "ServerUUID"
         
     }
-    
     
     // Preserved variables
     public var type: RoomType
     public var name: String
     public var autoJoin = false
+    public var serverUUID: UUID
     
     // Should be set by the AppDelegate when the room is loaded or created
     public var server: Server?
@@ -48,15 +49,11 @@ public class Room : NSObject, NSCoding {
     // Don't display the users list while it is still being populated
     public var hasCompleteUsersList = false
     
-    public init(name: String, type: RoomType) {
+    public init(name: String, type: RoomType, serverUUID: UUID) {
         self.name = name
         self.type = type
+        self.serverUUID = serverUUID
         super.init()
-    }
-    
-    public convenience init(name: String, type: RoomType, server: Server) {
-        self.init(name: name, type: type)
-        self.server = server
     }
     
     public required convenience init?(coder: NSCoder) {
@@ -69,22 +66,27 @@ public class Room : NSObject, NSCoding {
             return nil
         }
         
-        self.init(name: name, type: type)
+        guard let serverUUID = coder.decodeObject(forKey: Coding.ServerUUID) as? UUID else {
+            return nil
+        }
+        
+        self.init(name: name, type: type, serverUUID: serverUUID)
         
         autoJoin = coder.decodeBool(forKey: Coding.AutoJoin)
     }
     
     public func encode(with aCoder: NSCoder) {
-        aCoder.encode(self.name, forKey: Coding.Name)
-        aCoder.encode(self.type.rawValue, forKey: Coding.RoomType)
+        aCoder.encode(name, forKey: Coding.Name)
+        aCoder.encode(type.rawValue, forKey: Coding.RoomType)
         aCoder.encode(autoJoin, forKey: Coding.AutoJoin)
+        aCoder.encode(serverUUID, forKey: Coding.ServerUUID)
     }
     
     public func send(message: String) {
         // Splits the message up into 512 byte chunks
         var message = message
         var messageParts = [String]()
-        let commandPrefix = "\(Command.PRIVMSG) \(self.name) :"
+        let commandPrefix = "\(Command.PRIVMSG) \(name) :"
         let MAX = 510 - commandPrefix.utf8.count
         
         while !message.isEmpty {

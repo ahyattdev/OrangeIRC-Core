@@ -112,6 +112,8 @@ class AddRoomTableViewController : UITableViewController {
                 roomNameField = cell.textField
                 roomNameField!.placeholder = NSLocalizedString("REQUIRED", comment: "")
                 cell.textLabel!.text = NSLocalizedString("ROOM_NAME", comment: "")
+                roomNameField!.autocorrectionType = .no
+                roomNameField!.autocapitalizationType = .none
                 return cell
                 
             case 1:
