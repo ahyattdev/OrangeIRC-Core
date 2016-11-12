@@ -16,6 +16,8 @@ public class User {
     
     public enum Mode : String {
         
+        public static let PREFIX_CHARACTER_SET = NSCharacterSet(charactersIn: "@+<-!")
+        
         case Operator = "@"
         case Voice = "+"
         case Invisible = "<"
