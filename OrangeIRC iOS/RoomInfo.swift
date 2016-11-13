@@ -103,7 +103,7 @@ class RoomInfo : UITableViewController {
             }
         case 1:
             // Users
-            return NSLocalizedString("USERS", comment: "")
+            return "\(room!.users.count) \(NSLocalizedString("USERS_ONLINE", comment: ""))"
         default:
             break
         }

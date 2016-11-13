@@ -152,6 +152,8 @@ class UserCache {
         if user.isSelf {
             // We left
             channel.isJoined = false
+            // Reset the users on this channel
+            channel.users.removeAll()
             server.delegate?.left(room: channel)
         }
         
