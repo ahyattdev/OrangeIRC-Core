@@ -84,6 +84,8 @@ extension Server {
             
             let user = userCache.getOrCreateUser(nickname: nick)
             
+            room.sortUsers()
+            
             userCache.handleJoin(user: user, channel: room)
         
         case Command.PART:
@@ -235,6 +237,7 @@ extension Server {
             }
             
             room.hasCompleteUsersList = true
+            room.sortUsers()
             delegate?.finishedReadingUserList(room: room)
             
         case Command.QUIT:

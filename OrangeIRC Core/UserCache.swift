@@ -127,7 +127,6 @@ class UserCache {
         
         let logEvent = UserJoinLogEvent(sender: user)
         channel.log.append(logEvent)
-        
         server.delegate?.recieved(logEvent: logEvent, for: channel)
     }
     
@@ -155,6 +154,14 @@ class UserCache {
             // Reset the users on this channel
             channel.users.removeAll()
             server.delegate?.left(room: channel)
+        } else {
+            // Remove the user object from the room
+            for i in 0 ..< channel.users.count {
+                if channel.users[i] === user {
+                    channel.users.remove(at: i)
+                    break
+                }
+            }
         }
         
         let logEvent = UserPartLogEvent(sender: user)

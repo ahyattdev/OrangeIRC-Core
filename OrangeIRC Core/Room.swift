@@ -125,4 +125,10 @@ public class Room : NSObject, NSCoding {
         return false
     }
     
+    func sortUsers() {
+        users.sort(by: { (a: User, b: User) -> Bool in
+            return a.name < b.name
+        })
+    }
+    
 }
