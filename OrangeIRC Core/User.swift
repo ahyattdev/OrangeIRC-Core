@@ -103,9 +103,11 @@ public class User {
     
     
 #if os(iOS)
+    
     public func color(room: Room) -> UIColor {
         guard let mode = getMode(for: room.name) else {
             // The user is not in the room
+            // Not really an error, this is just how users who leave are rendered
             return UIColor.lightGray
         }
         
@@ -136,6 +138,13 @@ public class User {
         
         return color
     }
+    
+    public func coloredName(for room: Room) -> NSAttributedString {
+        // The properly colored attributes
+        let attributes = [NSForegroundColorAttributeName : color(room: room)]
+        return NSAttributedString(string: name, attributes: attributes)
+    }
+    
 #endif
     
 }

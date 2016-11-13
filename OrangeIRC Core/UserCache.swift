@@ -81,7 +81,7 @@ class UserCache {
     }
     
     func handleQuit(user: User) {
-        let quitMessage = UserQuitLogEvent(sender: user.name)
+        let quitMessage = UserQuitLogEvent(sender: user)
         for channel in channelsFor(user: user) {
             channel.log.append(quitMessage)
             server.delegate?.recieved(logEvent: quitMessage, for: channel)
@@ -125,7 +125,7 @@ class UserCache {
         
         updateMetadata(user: user, room: channel, mode: .None)
         
-        let logEvent = UserJoinLogEvent(sender: user.name)
+        let logEvent = UserJoinLogEvent(sender: user)
         channel.log.append(logEvent)
         
         server.delegate?.recieved(logEvent: logEvent, for: channel)
@@ -155,7 +155,7 @@ class UserCache {
             server.delegate?.left(room: channel)
         }
         
-        let logEvent = UserPartLogEvent(sender: user.name)
+        let logEvent = UserPartLogEvent(sender: user)
         channel.log.append(logEvent)
         server.delegate?.recieved(logEvent: logEvent, for: channel)
         

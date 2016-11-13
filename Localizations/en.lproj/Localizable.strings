@@ -135,3 +135,5 @@ ADD_ROOM = "Add Room";
 SERVER_DID_NOT_RESPOND = "Server Did Not Respond";
 
 SERVER_DID_NOT_RESPOND_DESCRIPTION = "The server “[SERVERNAME]” did not respond.";
+
+USERS = "Users";

@@ -115,34 +115,47 @@ class RoomViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = TextViewCell()
-        
         let logEvent = room!.log[indexPath.row]
-        let userLogEvent = logEvent as? UserLogEvent
-        let messageLogEvent = logEvent as? MessageLogEvent
         
-        switch logEvent.self {
+        
+        if logEvent is UserLogEvent {
+            let regularCell = UITableViewCell(style: .default, reuseIdentifier: nil)
+            let userLogEvent = logEvent as! UserLogEvent
             
-        case is UserJoinLogEvent:
-            cell.textLabel!.text = "\(userLogEvent!.sender) \(NSLocalizedString("JOINED_THE_ROOM", comment: "When someone joins the room"))"
+            var suffix = ""
             
-        case is UserPartLogEvent:
-            cell.textLabel!.text = "\(userLogEvent!.sender) \(NSLocalizedString("LEFT_THE_ROOM", comment: "When someone joins the room"))"
+            switch userLogEvent.self {
+            case is UserJoinLogEvent:
+                suffix = NSLocalizedString("JOINED_THE_ROOM", comment: "")
+            case is UserPartLogEvent:
+                suffix = NSLocalizedString("LEFT_THE_ROOM", comment: "")
+            case is UserQuitLogEvent:
+                suffix = NSLocalizedString("QUIT", comment: "")
+            default:
+                break
+            }
             
-        case is UserQuitLogEvent:
-            cell.textLabel!.text = "\(userLogEvent!.sender) \(NSLocalizedString("QUIT", comment: "When someone quits"))"
+            let coloredName = userLogEvent.sender.coloredName(for: room!)
+            let attributedString = NSMutableAttributedString(attributedString: coloredName)
+            // Spacer
+            attributedString.append(NSAttributedString(string: " "))
+            attributedString.append(NSAttributedString(string: suffix))
+            regularCell.textLabel!.attributedText = attributedString
             
-        case is MessageLogEvent:
-            cell.textView.text = messageLogEvent!.contents
-            //cell.detailTextLabel!.text = messageLogEvent!.sender.name
-            //cell.detailTextLabel!.textColor = appDelegate.color(for: messageLogEvent!.sender, in: room!)
+            return regularCell
             
-        default:
-            break
+        } else if logEvent is MessageLogEvent {
+            let cell = TextViewCell()
+            cell.textView.isEditable = false
             
+            let messageLogEvent = logEvent as! MessageLogEvent
+            cell.textView.text = messageLogEvent.contents
+            return cell
+            
+        } else {
+            print("Unknown log event, could not be rendered")
+            return UITableViewCell()
         }
-        
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

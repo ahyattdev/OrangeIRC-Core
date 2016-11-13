@@ -10,9 +10,9 @@ import Foundation
 
 public class UserLogEvent : LogEvent {
     
-    public var sender: String
+    public var sender: User
     
-    public init(sender: String) {
+    public init(sender: User) {
         self.sender = sender
     }
     

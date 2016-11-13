@@ -101,6 +101,9 @@ class RoomInfo : UITableViewController {
                     return room!.topic!
                 }
             }
+        case 1:
+            // Users
+            return NSLocalizedString("USERS", comment: "")
         default:
             break
         }
