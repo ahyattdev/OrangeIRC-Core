@@ -8,7 +8,7 @@
 
 import Foundation
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import UIKit
 #endif
 
@@ -102,7 +102,7 @@ public class User {
     }
     
     
-#if os(iOS)
+#if os(iOS) || os(tvOS)
     
     public func color(room: Room) -> UIColor {
         guard let mode = getMode(for: room.name) else {
