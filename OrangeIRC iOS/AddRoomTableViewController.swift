@@ -31,6 +31,11 @@ class AddRoomTableViewController : UITableViewController {
         addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(cancel), discoverabilityTitle: NSLocalizedString("CANCEL", comment: "")))
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        roomNameField!.becomeFirstResponder()
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }

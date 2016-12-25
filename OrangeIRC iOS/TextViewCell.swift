@@ -16,6 +16,7 @@ class TextViewCell : UITableViewCell {
         super.init(style: .default, reuseIdentifier: nil)
         
         textView.isEditable = false
+        textView.font = UIFont.systemFont(ofSize: 17)
         
         textView.frame.origin.x = 8;
         textView.frame.origin.y = 6;
@@ -29,10 +30,10 @@ class TextViewCell : UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        let fixedWidth = contentView.frame.size.width - 16
-        let height = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude)).height
-        textView.frame.size = CGSize(width: fixedWidth, height: height)
+        textView.center = CGPoint(x: 0.5, y: 0.5)
+        let width = contentView.frame.width - 16
+        let height = textView.sizeThatFits(CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)).height
+        textView.frame = CGRect(x: contentView.frame.midX, y: contentView.frame.midY, width: width, height: height)
     }
     
 }

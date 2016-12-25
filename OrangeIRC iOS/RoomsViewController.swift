@@ -121,9 +121,9 @@ class RoomsViewController : UITableViewController {
         }
         
         let addRoom = AddRoomTableViewController(style: .grouped)
-        let nav = UINavigationController(rootViewController: addRoom)
         modalPresentationStyle = .pageSheet
-        present(nav, animated: true, completion: nil)
+        
+        navigationController?.present(addRoom, animated: true, completion: nil)
     }
     
 }

@@ -146,7 +146,10 @@ class RoomViewController : UITableViewController {
             
         } else if logEvent is MessageLogEvent {
             let cell = TextViewCell()
-            cell.textView.isEditable = false
+            
+            // Make the text stationary
+            cell.textView.isSelectable = false
+            cell.textView.isScrollEnabled = false
             
             let messageLogEvent = logEvent as! MessageLogEvent
             cell.textView.text = messageLogEvent.contents

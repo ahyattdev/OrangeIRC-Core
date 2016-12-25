@@ -65,14 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         
         window!.rootViewController = splitView
         
-        let roomsNav = UINavigationController()
+        let roomsNav = UINavigationController(rootViewController: roomsView)
         
-        let roomNav = UINavigationController()
+        let roomNav = UINavigationController(rootViewController: roomView)
         
         splitView.viewControllers = [roomsNav, roomNav]
-        
-        roomsNav.show(roomsView, sender: nil)
-        roomNav.show(roomView, sender: nil)
         
         window!.tintColor = UIColor.orange
         window!.makeKeyAndVisible()
@@ -200,6 +197,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         return true
     }
     
+    // Utility function to avoid:
+    // Warning: Attempt to present * on * whose view is not in the window hierarchy!
+    func showAlertGlobally(_ alert: UIAlertController) {
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.windowLevel = UIWindowLevelAlert
+        alertWindow.rootViewController = UIViewController()
+        alertWindow.makeKeyAndVisible()
+        showAlertGlobally(alert)
+    }
+    
     func recieved(notice: String, sender: String, server: Server) {
         switch sender {
         case "NickServ":
@@ -238,7 +245,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
                     
                     nicknamePasswordAlert.addAction(doneAction)
                     
-                    window!.rootViewController!.present(nicknamePasswordAlert, animated: true, completion: nil)
+                    showAlertGlobally(nicknamePasswordAlert)
                 } else {
                     // This normally happens after each connection
                     server.sendNickServPassword()
@@ -280,7 +287,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         })
         confirmation.addAction(deleteAction)
         
-        window!.rootViewController!.present(confirmation, animated: true, completion: nil)
+        showAlertGlobally(confirmation)
     }
     
     func delete(room: Room) {
@@ -315,7 +322,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         let message = NSLocalizedString("SERVER_DID_NOT_RESPOND_DESCRIPTION", comment: "").replacingOccurrences(of: "[SERVERNAME]", with: server.host)
         let alert = UIAlertController(title: NSLocalizedString("SERVER_DID_NOT_RESPOND", comment: ""), message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
-        window!.rootViewController!.present(alert, animated: true, completion: nil)
+        showAlertGlobally(alert)
     }
     
     func stoppedResponding(server: Server) {
@@ -386,7 +393,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         let ok = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)
         alert.addAction(ok)
         
-        window!.rootViewController!.present(alert, animated: true, completion: nil)
+        showAlertGlobally(alert)
     }
     
 }
