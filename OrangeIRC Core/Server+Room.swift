@@ -38,13 +38,32 @@ public extension Server {
     
     func getOrAddRoom(name: String, type: RoomType) -> Room {
         for room in rooms {
-            if room.name == name && room.type == type{
+            if room.name == name && room.type == type {
                 return room
             }
         }
         let room = Room(name: name, type: type, serverUUID: uuid)
         room.server = self
         rooms.append(room)
+        return room
+    }
+    
+    @discardableResult
+    public func startPrivateMessageSession(_ otherNick: String) -> Room {
+        // Should handle everything from creating the room to telling the delegate about it
+        // We started a new private message session
+        let user = userCache.getOrCreateUser(nickname: otherNick)
+        
+        let room = Room(name: otherNick, type: .PrivateMessage, serverUUID: uuid)
+        room.server = self
+        room.otherUser = user
+        rooms.append(room)
+        
+        room.isJoined = true
+        
+        // We won't create a join room log event, those aren't really a thing with private messages
+        delegate?.joined(room: room)
+        
         return room
     }
     

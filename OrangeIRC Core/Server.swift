@@ -15,8 +15,6 @@ let CRLF = "\r\n"
 
 public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
-    public static let ValidChannelPrefixes = NSCharacterSet(charactersIn: "&#!+")
-    
     // NSCoding keys extracted to here so to avoid typos causing bugs
     struct Coding {
         
@@ -168,6 +166,8 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         for room in rooms {
             room.isJoined = false
         }
+        
+        
         if notifyDelegate {
             // Only tell the delegate that we disconnected if we were connected
             self.delegate?.didDisconnect(server: self)

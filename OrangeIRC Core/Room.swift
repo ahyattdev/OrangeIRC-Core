@@ -20,17 +20,19 @@ public class Room : NSObject, NSCoding {
         static let RoomType = "Type"
         static let AutoJoin = "AutoJoin"
         static let ServerUUID = "ServerUUID"
+        static let OtherUser = "OtherUser"
         
     }
     
     // https://www.alien.net.au/irc/chantypes.html
-    static let CHANNEL_PREFIXES = NSCharacterSet(charactersIn: "#&!+.~")
+    public static let CHANNEL_PREFIXES = NSCharacterSet(charactersIn: "#&!+.~")
     
     // Preserved variables
     public var type: RoomType
     public var name: String
-    public var autoJoin = false
+    public var autoJoin = false // Only does something if this is a channel
     public var serverUUID: UUID
+    public var otherUser: User? // Nil unless this is a private message room
     
     // Should be set by the AppDelegate when the room is loaded or created
     public var server: Server?
@@ -43,8 +45,8 @@ public class Room : NSObject, NSCoding {
     
     public var hasTopic = false
     
+    // If this is a private message room, this will be if both us and the recipient are on the server
     public var isJoined = false
-    
     
     // Set for the connect and join button
     public var joinOnConnect = false
@@ -76,6 +78,10 @@ public class Room : NSObject, NSCoding {
         self.init(name: name, type: type, serverUUID: serverUUID)
         
         autoJoin = coder.decodeBool(forKey: Coding.AutoJoin)
+        
+        if let otherUser = coder.decodeObject(forKey: Coding.OtherUser) as? User {
+            self.otherUser = otherUser
+        }
     }
     
     public func encode(with aCoder: NSCoder) {
@@ -83,6 +89,10 @@ public class Room : NSObject, NSCoding {
         aCoder.encode(type.rawValue, forKey: Coding.RoomType)
         aCoder.encode(autoJoin, forKey: Coding.AutoJoin)
         aCoder.encode(serverUUID, forKey: Coding.ServerUUID)
+        if let otherUser = otherUser {
+            // So we don't encode something nil
+            aCoder.encode(otherUser, forKey: Coding.OtherUser)
+        }
     }
     
     public func send(message: String) {

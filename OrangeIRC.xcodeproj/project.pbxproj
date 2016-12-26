@@ -14,8 +14,8 @@
 		663D71921D7C64C300202EF2 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663D71911D7C64C300202EF2 /* MessageComposer.swift */; };
 		667BB2E91D29C1990029AB2D /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
 		667BB2EA1D29C1990029AB2D /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
-		667BB2EC1D29C2F60029AB2D /* Server+Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Channel.swift */; };
-		667BB2ED1D29C2F60029AB2D /* Server+Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Channel.swift */; };
+		667BB2EC1D29C2F60029AB2D /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
+		667BB2ED1D29C2F60029AB2D /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
 		66837D991D25E4A900F85410 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
 		66837D9A1D25E4A900F85410 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		669DF6FF1D7CDCD0007F82DB /* Server+Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */; };
@@ -61,7 +61,7 @@
 		6A2672A81E105CEB0087B331 /* MessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A212F8E1E104D4E006739B4 /* MessageTests.swift */; };
 		6A2672A91E105D180087B331 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B351D234885001161A3 /* Server.swift */; };
 		6A2672AA1E105D180087B331 /* ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3E1D23496C001161A3 /* ServerDelegate.swift */; };
-		6A2672AB1E105D180087B331 /* Server+Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Channel.swift */; };
+		6A2672AB1E105D180087B331 /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
 		6A2672AC1E105D180087B331 /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
 		6A2672AD1E105D180087B331 /* Server+MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF201D289A96000117C5 /* Server+MessageHandler.swift */; };
 		6A2672AE1E105D180087B331 /* Server+Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */; };
@@ -87,6 +87,12 @@
 		6A66A1111DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66A1101DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift */; };
 		6A6CBFDE1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
 		6A6CBFDF1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
+		6A7325081E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7325071E11A9F000AFCC0B /* UserOnlineLogEvent.swift */; };
+		6A7325091E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7325071E11A9F000AFCC0B /* UserOnlineLogEvent.swift */; };
+		6A73250A1E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7325071E11A9F000AFCC0B /* UserOnlineLogEvent.swift */; };
+		6A73250C1E11AA0700AFCC0B /* UserOfflineLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A73250B1E11AA0700AFCC0B /* UserOfflineLogEvent.swift */; };
+		6A73250D1E11AA0700AFCC0B /* UserOfflineLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A73250B1E11AA0700AFCC0B /* UserOfflineLogEvent.swift */; };
+		6A73250E1E11AA0700AFCC0B /* UserOfflineLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A73250B1E11AA0700AFCC0B /* UserOfflineLogEvent.swift */; };
 		6A7A6A021D29CDC60012D037 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A011D29CDC60012D037 /* User.swift */; };
 		6A7A6A031D29CDC60012D037 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A011D29CDC60012D037 /* User.swift */; };
 		6A7A6A051D29D0850012D037 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A041D29D0850012D037 /* Room.swift */; };
@@ -152,7 +158,7 @@
 		661AF5051D2C89E900CFC190 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		663D71911D7C64C300202EF2 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 		667BB2E81D29C1990029AB2D /* Server+Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Log.swift"; sourceTree = "<group>"; };
-		667BB2EB1D29C2F60029AB2D /* Server+Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Channel.swift"; sourceTree = "<group>"; };
+		667BB2EB1D29C2F60029AB2D /* Server+Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Room.swift"; sourceTree = "<group>"; };
 		66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		66837D9F1D25E51100F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/Mac/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		66837DA11D25E59900F85410 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -189,6 +195,8 @@
 		6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		6A66A1101DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UISplitViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
+		6A7325071E11A9F000AFCC0B /* UserOnlineLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserOnlineLogEvent.swift; sourceTree = "<group>"; };
+		6A73250B1E11AA0700AFCC0B /* UserOfflineLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserOfflineLogEvent.swift; sourceTree = "<group>"; };
 		6A7A6A011D29CDC60012D037 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6A7A6A041D29D0850012D037 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		6A82A07D1D24332A00F81A1B /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
@@ -393,7 +401,7 @@
 			children = (
 				66A75B351D234885001161A3 /* Server.swift */,
 				66A75B3E1D23496C001161A3 /* ServerDelegate.swift */,
-				667BB2EB1D29C2F60029AB2D /* Server+Channel.swift */,
+				667BB2EB1D29C2F60029AB2D /* Server+Room.swift */,
 				667BB2E81D29C1990029AB2D /* Server+Log.swift */,
 				669FCF201D289A96000117C5 /* Server+MessageHandler.swift */,
 				669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */,
@@ -410,6 +418,8 @@
 				66C8580D1D7B17F1009E486F /* UserJoinLogEvent.swift */,
 				66C858101D7B17FA009E486F /* UserPartLogEvent.swift */,
 				669DF7051D7CFBEB007F82DB /* UserQuitLogEvent.swift */,
+				6A7325071E11A9F000AFCC0B /* UserOnlineLogEvent.swift */,
+				6A73250B1E11AA0700AFCC0B /* UserOfflineLogEvent.swift */,
 			);
 			name = Log;
 			sourceTree = "<group>";
@@ -729,6 +739,7 @@
 				66A75B401D23496C001161A3 /* ServerDelegate.swift in Sources */,
 				6A82A07F1D24332A00F81A1B /* Command.swift in Sources */,
 				669DF7071D7CFBEB007F82DB /* UserQuitLogEvent.swift in Sources */,
+				6A73250D1E11AA0700AFCC0B /* UserOfflineLogEvent.swift in Sources */,
 				66C8580F1D7B17F1009E486F /* UserJoinLogEvent.swift in Sources */,
 				66C858121D7B17FA009E486F /* UserPartLogEvent.swift in Sources */,
 				669FCF221D289A96000117C5 /* Server+MessageHandler.swift in Sources */,
@@ -736,7 +747,8 @@
 				6A6CBFDF1D3DBDC500EC6051 /* RoomType.swift in Sources */,
 				6A7A6A061D29D0850012D037 /* Room.swift in Sources */,
 				6A4BB74F1D25F1500032B5D0 /* Tag.swift in Sources */,
-				667BB2ED1D29C2F60029AB2D /* Server+Channel.swift in Sources */,
+				6A7325091E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */,
+				667BB2ED1D29C2F60029AB2D /* Server+Room.swift in Sources */,
 				6A7A6A031D29CDC60012D037 /* User.swift in Sources */,
 				66A75B341D23486F001161A3 /* LogEvent.swift in Sources */,
 				66C8580C1D7B1781009E486F /* UserLogEvent.swift in Sources */,
@@ -755,6 +767,7 @@
 				6A2503601D59511900C18750 /* MessageLogEvent.swift in Sources */,
 				66EDD2EF1D2963E60013E7CC /* Server.swift in Sources */,
 				669DF7061D7CFBEB007F82DB /* UserQuitLogEvent.swift in Sources */,
+				6A73250C1E11AA0700AFCC0B /* UserOfflineLogEvent.swift in Sources */,
 				66C8580E1D7B17F1009E486F /* UserJoinLogEvent.swift in Sources */,
 				66C858111D7B17FA009E486F /* UserPartLogEvent.swift in Sources */,
 				66EDD2F11D2963E60013E7CC /* Message.swift in Sources */,
@@ -762,7 +775,8 @@
 				6A6CBFDE1D3DBDC500EC6051 /* RoomType.swift in Sources */,
 				6A7A6A051D29D0850012D037 /* Room.swift in Sources */,
 				66EDD2EE1D2963E60013E7CC /* LogEvent.swift in Sources */,
-				667BB2EC1D29C2F60029AB2D /* Server+Channel.swift in Sources */,
+				6A7325081E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */,
+				667BB2EC1D29C2F60029AB2D /* Server+Room.swift in Sources */,
 				6A7A6A021D29CDC60012D037 /* User.swift in Sources */,
 				66EDD2F41D2963E60013E7CC /* ServerDelegate.swift in Sources */,
 				66C8580B1D7B1781009E486F /* UserLogEvent.swift in Sources */,
@@ -797,13 +811,15 @@
 				6A2672AF1E105D180087B331 /* LogEvent.swift in Sources */,
 				6A2672B01E105D180087B331 /* MessageLogEvent.swift in Sources */,
 				6A2672B21E105D180087B331 /* UserJoinLogEvent.swift in Sources */,
+				6A73250E1E11AA0700AFCC0B /* UserOfflineLogEvent.swift in Sources */,
 				6A2672B41E105D180087B331 /* UserQuitLogEvent.swift in Sources */,
 				6A2672BA1E105D180087B331 /* Command.swift in Sources */,
 				6A2672B31E105D180087B331 /* UserPartLogEvent.swift in Sources */,
 				6A2672BD1E1084FB0087B331 /* Message.swift in Sources */,
 				6A2672A91E105D180087B331 /* Server.swift in Sources */,
 				6A2672B51E105D180087B331 /* Room.swift in Sources */,
-				6A2672AB1E105D180087B331 /* Server+Channel.swift in Sources */,
+				6A2672AB1E105D180087B331 /* Server+Room.swift in Sources */,
+				6A73250A1E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */,
 				6A2672B71E105D180087B331 /* User.swift in Sources */,
 				6A2672B61E105D180087B331 /* RoomType.swift in Sources */,
 				6A2672AA1E105D180087B331 /* ServerDelegate.swift in Sources */,

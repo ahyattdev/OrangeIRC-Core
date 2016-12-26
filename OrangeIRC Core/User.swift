@@ -12,7 +12,15 @@ import Foundation
 import UIKit
 #endif
 
-public class User {
+public class User: NSObject, NSCoding {
+    
+    private struct Coding {
+        
+        private init() { }
+        
+        static let Name = "Name"
+        
+    }
     
     public enum Mode : String {
         
@@ -35,8 +43,22 @@ public class User {
     
     public var isSelf = false
     
+    public var isOnline = true
+    
     public init(name: String) {
         self.name = name
+    }
+    
+    public required convenience init?(coder aDecoder: NSCoder) {
+        guard let name = aDecoder.decodeObject(forKey: Coding.Name) as? String else {
+            return nil
+        }
+        
+        self.init(name: name)
+    }
+    
+    public func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: Coding.Name)
     }
     
     public func getMode(for channel: String) -> Mode? {

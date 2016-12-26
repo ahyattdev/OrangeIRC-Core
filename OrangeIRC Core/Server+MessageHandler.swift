@@ -23,7 +23,7 @@ extension Server {
                     // Completes the feature of the Connect and Join button
                     join(channel: room.name)
                     room.joinOnConnect = false
-                } else if room.autoJoin && !room.isJoined {
+                } else if room.autoJoin && !room.isJoined && room.type == .Channel {
                     // Completes the room autojoin feature
                     join(channel: room.name)
                 }
@@ -82,9 +82,21 @@ extension Server {
             
             let room = getOrAddRoom(name: channelName, type: .Channel)
             
+            // Set the autojoin setting if necessary
+            for i in 0 ..< roomsFlaggedForAutoJoin.count {
+                let roomName = roomsFlaggedForAutoJoin[i]
+                if roomName == room.name {
+                    room.autoJoin = true
+                    roomsFlaggedForAutoJoin.remove(at: i)
+                    break
+                }
+            }
+            
             let user = userCache.getOrCreateUser(nickname: nick)
             
-            room.sortUsers()
+            if room.type == .Channel {
+                room.sortUsers()
+            }
             
             userCache.handleJoin(user: user, channel: room)
         
@@ -186,7 +198,7 @@ extension Server {
                 break
             }
             
-            let roomName = message.target[0]
+            var roomName = message.target[0]
             
             guard roomName.characters.count > 1 else {
                 break
@@ -198,6 +210,11 @@ extension Server {
             
             
             let isPrivate = !Room.CHANNEL_PREFIXES.characterIsMember(roomName.utf16.first!)
+            
+            if isPrivate {
+                // The IRC protocol puts our nickname as the roomname
+                roomName = message.prefix!.nickname!
+            }
             
             let isCommand = param.characters.first == "\u{01}" && param.characters.last == "\u{01}"
             
@@ -221,13 +238,14 @@ extension Server {
                     response = df.string(from: Date())
                 
                 case Command.PING:
-                    // No arguments here
+                    // No arguments here, just PING as a response
                     break
                     
                 case Command.VERSION:
                     let info = Bundle.main.infoDictionary
                     guard let version = info?["CFBundleShortVersionString"], let build = info?["CFBundleVersion"] else {
                         print("Failed to get version number")
+                        shouldReply = false
                         break
                     }
                     response = "OrangeIRC \(version) (\(build))"
@@ -243,34 +261,37 @@ extension Server {
                     write(string: "\(Command.NOTICE) \(message.prefix!.nickname!) :\u{01}\(param)\u{01}")
                 }
                 
-            } else if isPrivate {
-                
-                // TODO
-                
             } else {
-            
-                let room = roomFrom(name: roomName)
+                
+                var room = roomFrom(name: roomName)
                 
                 if room == nil && !isPrivate {
                     print("Recieved a PRIVMSG for an unknown channel")
                     break
                 }
                 
-                
-                
-                guard let senderNick = message.prefix?.nickname else {
-                    break
+                if room == nil && isPrivate {
+                    room = startPrivateMessageSession(message.prefix!.nickname!)
+                } else if room != nil && isPrivate {
+                    room!.otherUser!.isOnline = true
                 }
                 
-                guard let sender = userCache.getUser(by: senderNick) else {
+                var sender: User?
+                
+                if room!.type == .PrivateMessage {
+                    sender = room!.otherUser!
+                } else {
+                    sender = userCache.getUser(by: message.prefix!.nickname!)
+                }
+                
+                guard sender != nil else {
                     print("Could not identify the sender of a PRIVMSG")
                     break
                 }
                 
-                let logEvent = MessageLogEvent(contents: contents, sender: sender)
+                let logEvent = MessageLogEvent(contents: contents, sender: sender!)
                 room!.log.append(logEvent)
                 delegate?.recieved(logEvent: logEvent, for: room!)
-                
             }
         
         case Command.Reply.NAMREPLY:

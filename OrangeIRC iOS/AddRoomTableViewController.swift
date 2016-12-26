@@ -195,7 +195,7 @@ class AddRoomTableViewController : UITableViewController {
         let name = roomNameField!.text!
         let server = selectedServer!
         
-        if selectedRoomType == .Channel && !Server.ValidChannelPrefixes.characterIsMember(unichar(name.utf8.first!)) {
+        if selectedRoomType == .Channel && !Room.CHANNEL_PREFIXES.characterIsMember(unichar(name.utf8.first!)) {
             let title = NSLocalizedString("INVALID_ROOM_NAME", comment: "")
             let message = NSLocalizedString("MISSING_CHANNEL_PREFIX", comment: "")
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -213,6 +213,7 @@ class AddRoomTableViewController : UITableViewController {
         case .Channel:
             server.join(channel: name)
         case .PrivateMessage:
+            server.startPrivateMessageSession(name)
             break
         }
         

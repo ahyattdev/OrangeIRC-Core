@@ -14,9 +14,7 @@ class UserCache {
     
     // The server associated with this cache
     var server: Server {
-        get {
-            return _server!
-        }
+        return _server!
     }
     
     // Represents our user
@@ -27,6 +25,12 @@ class UserCache {
     
     init() {
         me = User(name: "")
+    }
+    
+    func goOffline() {
+        for user in users {
+            user.isOnline = false
+        }
     }
     
     func set(server: Server) {
@@ -46,6 +50,7 @@ class UserCache {
     }
     
     func channelsFor(user: User) -> [Room] {
+        // FIXME: Should use WHOIS
         var channels = [Room]()
         
         for channelNode in user.channels {
@@ -62,12 +67,27 @@ class UserCache {
             let splitUserData = split(nickname: nicknameWithPrefix)
             let user = getOrCreateUser(nickname: splitUserData.nickname)
             
+            // If they are given in the list of users, they must be online
+            
+            user.isOnline = true
+            
             if !room.contains(user: user) {
                 room.users.append(user)
             }
             
             // Correct the metadata of the User
             updateMetadata(user: user, room: room, mode: splitUserData.mode)
+            
+            // If we have a private message room, we must mark it as not joined
+            if let privateRoom = server.roomFrom(name: user.name) {
+                if !privateRoom.isJoined {
+                    privateRoom.isJoined = true
+                    
+                    let onlineEvent = UserOnlineLogEvent(sender: user)
+                    privateRoom.log.append(onlineEvent)
+                    server.delegate?.recieved(logEvent: onlineEvent, for: privateRoom)
+                }
+            }
         }
     }
     
@@ -81,10 +101,22 @@ class UserCache {
     }
     
     func handleQuit(user: User) {
+        user.isOnline = false
         let quitMessage = UserQuitLogEvent(sender: user)
         for channel in channelsFor(user: user) {
             channel.log.append(quitMessage)
             server.delegate?.recieved(logEvent: quitMessage, for: channel)
+        }
+        
+        // If we have a private message room, we must mark it as not joined
+        if let privateRoom = server.roomFrom(name: user.name) {
+            if privateRoom.isJoined {
+                privateRoom.isJoined = false
+                
+                let offlineEvent = UserOfflineLogEvent(sender: user)
+                privateRoom.log.append(offlineEvent)
+                server.delegate?.recieved(logEvent: offlineEvent, for: privateRoom)
+            }
         }
     }
     
@@ -110,6 +142,8 @@ class UserCache {
     }
     
     func handleJoin(user: User, channel: Room) {
+        user.isOnline = true
+        
         if user.isSelf {
             channel.isJoined = true
             server.delegate?.joined(room: channel)
@@ -128,6 +162,14 @@ class UserCache {
         let logEvent = UserJoinLogEvent(sender: user)
         channel.log.append(logEvent)
         server.delegate?.recieved(logEvent: logEvent, for: channel)
+        
+        if let privateRoom = server.roomFrom(name: user.name) {
+            if !privateRoom.isJoined {
+                let onlineEvent = UserOnlineLogEvent(sender: user)
+                privateRoom.log.append(onlineEvent)
+                server.delegate?.recieved(logEvent: onlineEvent, for: privateRoom)
+            }
+        }
     }
     
     func split(nickname: String) -> (nickname: String, mode: User.Mode) {
