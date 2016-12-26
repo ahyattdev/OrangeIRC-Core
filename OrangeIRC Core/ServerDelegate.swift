@@ -36,4 +36,8 @@ public protocol ServerDelegate {
     
     func recieved(logEvent: LogEvent, for room: Room)
     
+    func nickservPasswordNeeded(_ server: Server)
+    func nickservPasswordIncorrect(_ server: Server)
+    func nickservFailedAttemptsWarning(_ server: Server, count: Int, lastPrefix: Message.Prefix, date: String)
+
 }

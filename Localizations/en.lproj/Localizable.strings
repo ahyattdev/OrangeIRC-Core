@@ -137,3 +137,13 @@ SERVER_DID_NOT_RESPOND = "Server Did Not Respond";
 SERVER_DID_NOT_RESPOND_DESCRIPTION = "The server “[SERVERNAME]” did not respond.";
 
 USERS_ONLINE = "users online";
+
+NOTICE_FROM_ON = "“[USERNAME]” on “[SERVERNAME]” says:";
+
+NICKNAME_PASSWORD_INCORRECT = "Nickname Password Incorrect";
+
+PROVIDE_CORRECT_PASSWORD = "Provide the correct nickname password for “[NICKNAME]” on “[SERVERNAME]”.";
+
+FAILED_ATTEMPTS_NICKSERV = "Failed Attempts to Access Nickname";
+
+FAILED_ATTEMPTS_NICKSERV_MESSAGE = "A total of [NUM] attempts were made to access “[MYNICK]” on “[SERVERNAME]”. The data for who made the last attempt is:\n\nNickname: “[NICKNAME]”\nUsername: “[USERNAME]”\nHost: “[HOSTNAME]\nDate: “[DATE]”";

@@ -131,7 +131,13 @@ extension Server {
                     print("Recieved a NOTICE without a prefix: \(message)")
                     break
                 }
-                self.delegate?.recieved(notice: noticeMessage, sender: sender, server: self)
+                
+                if sender == "NickServ" {
+                    // We take care of these
+                    handleNickServ(noticeMessage)
+                } else {
+                    self.delegate?.recieved(notice: noticeMessage, sender: sender, server: self)
+                }
             }
             
         case Command.PING:

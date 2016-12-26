@@ -12,15 +12,6 @@ import OrangeIRCCore
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFieldDelegate, UISplitViewControllerDelegate {
     
-    struct NickServ {
-        
-        private init() { }
-        
-        static let ALREADY_REGISTERED = "This nickname is registered."
-        static let AUTH_SUCCESS = "You are now identified for"
-        
-    }
-    
     let dataFolder = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
     var dataPaths: (servers: String, rooms: String)
     
@@ -207,54 +198,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func recieved(notice: String, sender: String, server: Server) {
-        switch sender {
-        case "NickServ":
-            if notice.contains(NickServ.ALREADY_REGISTERED) {
-                if server.nickservPassword.isEmpty {
-                    let nicknameRegistered = NSLocalizedString("NICKNAME_REGISTERED", comment: "Nickname registered")
-                    let nicknameRegisteredDescription = NSLocalizedString("NICKNAME_REGISTERED_DESCRIPTION", comment: "Provide a password")
-                    
-                    let nicknamePasswordAlert = UIAlertController(title: nicknameRegistered, message: nicknameRegisteredDescription, preferredStyle: .alert)
-                    
-                    nicknamePasswordAlert.addTextField(configurationHandler: { (textField) in
-                        textField.placeholder = NSLocalizedString("NICKNAME_PASSWORD", comment: "Nickname Password")
-                        textField.isSecureTextEntry = true
-                        self.nickservPasswordField = textField
-                        textField.delegate = self
-                    })
-                    
-                    let disconnect = NSLocalizedString("DISCONNECT", comment: "Disconnect")
-                    let disconnectAction = UIAlertAction(title: disconnect, style: .destructive, handler: { (action) in
-                        server.disconnect()
-                    })
-                    nicknamePasswordAlert.addAction(disconnectAction)
-                    
-                    let done = NSLocalizedString("AUTHENTICATE", comment: "Done")
-                    let doneAction = UIAlertAction(title: done, style: .default, handler: { (action) in
-                        server.nickservPassword = self.nickservPasswordField!.text!
-                        self.saveData()
-                        server.sendNickServPassword()
-                        
-                        self.nickservPasswordField?.delegate = nil
-                        self.nickservPasswordField = nil
-                        self.doneAction = nil
-                    })
-                    doneAction.isEnabled = false
-                    self.doneAction = doneAction
-                    
-                    nicknamePasswordAlert.addAction(doneAction)
-                    
-                    showAlertGlobally(nicknamePasswordAlert)
-                }
-            } else if notice.contains(NickServ.AUTH_SUCCESS) {
-                // TODO: Do something here
-            } else {
-                print("Unknown NickServ message: \(notice)")
-            }
-        default:
-            // TODO: Present a dialog with the information from the NOTICE
-            break
-        }
+        var title = NSLocalizedString("NOTICE_FROM_ON", comment: "")
+        title = title.replacingOccurrences(of: "[USERNAME]", with: sender)
+        title = title.replacingOccurrences(of: "[SERVERNAME]", with: server.host)
+        let alert = UIAlertController(title: title, message: notice, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+        
+        showAlertGlobally(alert)
     }
     
     func delete(server: Server) {
@@ -388,6 +339,105 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         
         let ok = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)
         alert.addAction(ok)
+        
+        showAlertGlobally(alert)
+    }
+    
+    func nickservPasswordNeeded(_ server: Server) {
+        let nicknameRegistered = NSLocalizedString("NICKNAME_REGISTERED", comment: "Nickname registered")
+        let nicknameRegisteredDescription = NSLocalizedString("NICKNAME_REGISTERED_DESCRIPTION", comment: "Provide a password")
+        
+        let nicknamePasswordAlert = UIAlertController(title: nicknameRegistered, message: nicknameRegisteredDescription, preferredStyle: .alert)
+        
+        nicknamePasswordAlert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = NSLocalizedString("NICKNAME_PASSWORD", comment: "Nickname Password")
+            textField.isSecureTextEntry = true
+            self.nickservPasswordField = textField
+            textField.delegate = self
+        })
+        
+        let disconnect = NSLocalizedString("DISCONNECT", comment: "Disconnect")
+        let disconnectAction = UIAlertAction(title: disconnect, style: .destructive, handler: { (action) in
+            server.disconnect()
+        })
+        nicknamePasswordAlert.addAction(disconnectAction)
+        
+        let done = NSLocalizedString("AUTHENTICATE", comment: "Done")
+        let doneAction = UIAlertAction(title: done, style: .default, handler: { (action) in
+            server.nickservPassword = self.nickservPasswordField!.text!
+            self.saveData()
+            server.sendNickServPassword()
+            
+            self.nickservPasswordField?.delegate = nil
+            self.nickservPasswordField = nil
+            self.doneAction = nil
+        })
+        doneAction.isEnabled = false
+        self.doneAction = doneAction
+        
+        nicknamePasswordAlert.addAction(doneAction)
+        
+        showAlertGlobally(nicknamePasswordAlert)
+    }
+    
+    func nickservPasswordIncorrect(_ server: Server) {
+        let title = NSLocalizedString("NICKNAME_PASSWORD_INCORRECT", comment: "")
+        var message = NSLocalizedString("PROVIDE_CORRECT_PASSWORD", comment: "")
+        message = message.replacingOccurrences(of: "[NICKNAME]", with: server.nickname)
+        message = message.replacingOccurrences(of: "[SERVERNAME]", with: server.host)
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = NSLocalizedString("NICKNAME_PASSWORD", comment: "Nickname Password")
+            textField.isSecureTextEntry = true
+            self.nickservPasswordField = textField
+            textField.delegate = self
+        })
+        
+        let disconnect = NSLocalizedString("DISCONNECT", comment: "Disconnect")
+        let disconnectAction = UIAlertAction(title: disconnect, style: .destructive, handler: { (action) in
+            server.disconnect()
+        })
+        alert.addAction(disconnectAction)
+        
+        let authenticate = NSLocalizedString("AUTHENTICATE", comment: "")
+        let authAction = UIAlertAction(title: authenticate, style: .default, handler: { (action) in
+            server.nickservPassword = self.nickservPasswordField!.text!
+            self.saveData()
+            server.sendNickServPassword()
+            
+            self.nickservPasswordField?.delegate = nil
+            self.nickservPasswordField = nil
+            self.doneAction = nil
+        })
+        authAction.isEnabled = false
+        doneAction = authAction
+        alert.addAction(authAction)
+        
+        showAlertGlobally(alert)
+    }
+    
+    func nickservFailedAttemptsWarning(_ server: Server, count: Int, lastPrefix: Message.Prefix, date: String) {
+        guard let nickname = lastPrefix.nickname,
+            let username = lastPrefix.user,
+            let hostname = lastPrefix.host else {
+                return
+        }
+        
+        let title = NSLocalizedString("FAILED_ATTEMPTS_NICKSERV", comment: "")
+        var message = NSLocalizedString("FAILED_ATTEMPTS_NICKSERV_MESSAGE", comment: "")
+        message = message.replacingOccurrences(of: "[NUM]", with: "\(count)")
+        message = message.replacingOccurrences(of: "[MYNICK]", with: server.nickname)
+        message = message.replacingOccurrences(of: "[SERVERNAME]", with: server.host)
+        message = message.replacingOccurrences(of: "[NICKNAME]", with: nickname)
+        message = message.replacingOccurrences(of: "[USERNAME]", with: username)
+        message = message.replacingOccurrences(of: "[HOSTNAME]", with: hostname)
+        message = message.replacingOccurrences(of: "[DATE]", with: date)
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
         
         showAlertGlobally(alert)
     }

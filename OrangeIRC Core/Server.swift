@@ -68,6 +68,9 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     public var socketOpen = false
     
+    // Used because the NickServ failed attempts notice comes in two NOTICEs
+    var lastSentNickServFailedAttempts = -1
+    
     var userCache: UserCache = UserCache()
     
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
