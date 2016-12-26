@@ -183,7 +183,6 @@
 		6A26728E1E105C230087B331 /* OrangeIRCCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OrangeIRCCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2672961E105C230087B331 /* OrangeIRCCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrangeIRCCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2672A51E105CC50087B331 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/tvOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
-		6A2672BE1E1098D70087B331 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomTableViewController.swift; sourceTree = "<group>"; };
 		6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
 		6A4BB74D1D25F1500032B5D0 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
@@ -306,7 +305,6 @@
 			isa = PBXGroup;
 			children = (
 				66837DA11D25E59900F85410 /* .gitignore */,
-				6A2672BE1E1098D70087B331 /* .travis.yml */,
 				6ABAD44A1DD70C8100D1B689 /* LICENSE */,
 				6ABAD4491DD70C2500D1B689 /* README.md */,
 				6ABAD4481DD70A4400D1B689 /* docs */,

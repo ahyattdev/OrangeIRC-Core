@@ -1,5 +1,0 @@
-language: swift
-osx_image: xcode8.2
-xcode_project: OrangeIRC.xcodeproj
-xcode_scheme: OrangeIRC Core (macOS)
-xcode_sdk: macosx10.12
