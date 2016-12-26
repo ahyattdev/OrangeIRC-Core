@@ -195,9 +195,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     }
     
     public func sendNickServPassword() {
-        if !self.nickservPassword.isEmpty {
-            self.write(string: "\(Command.PRIVMSG) \(Command.Services.NickServ) :\(Command.IDENTIFY) \(self.nickservPassword)", with: Tag.NickServPassword)
-        }
+        self.write(string: "\(Command.PRIVMSG) \(Command.Services.NickServ) :\(Command.IDENTIFY) \(self.nickservPassword)", with: Tag.NickServPassword)
     }
     
     func write(string: String, with tag: Int) {

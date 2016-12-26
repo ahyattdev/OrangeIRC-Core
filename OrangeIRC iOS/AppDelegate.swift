@@ -245,9 +245,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
                     nicknamePasswordAlert.addAction(doneAction)
                     
                     showAlertGlobally(nicknamePasswordAlert)
-                } else {
-                    // This normally happens after each connection
-                    server.sendNickServPassword()
                 }
             } else if notice.contains(NickServ.AUTH_SUCCESS) {
                 // TODO: Do something here
