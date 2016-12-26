@@ -39,15 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     var rooms = [Room]()
     
     var registeredServers: [Server] {
-        get {
-            var regServers = [Server]()
-            for server in self.servers {
-                if server.isRegistered {
-                    regServers.append(server)
-                }
+        var regServers = [Server]()
+        for server in self.servers {
+            if server.isRegistered {
+                regServers.append(server)
             }
-            return regServers
         }
+        return regServers
     }
     
     override init() {
@@ -201,10 +199,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     // Warning: Attempt to present * on * whose view is not in the window hierarchy!
     func showAlertGlobally(_ alert: UIAlertController) {
         let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        let vc = UIViewController()
         alertWindow.windowLevel = UIWindowLevelAlert
-        alertWindow.rootViewController = UIViewController()
+        alertWindow.rootViewController = vc
         alertWindow.makeKeyAndVisible()
-        showAlertGlobally(alert)
+        vc.present(alert, animated: true, completion: nil)
     }
     
     func recieved(notice: String, sender: String, server: Server) {

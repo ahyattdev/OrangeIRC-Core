@@ -24,6 +24,9 @@ public struct Command {
     static let PRIVMSG = "PRIVMSG"
     static let IDENTIFY = "IDENTIFY"
     
+    static let VERSION = "VERSION"
+    static let TIME = "TIME"
+    
     struct Reply {
         
         static let WELCOME = "001"

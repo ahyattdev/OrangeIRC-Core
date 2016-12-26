@@ -188,23 +188,90 @@ extension Server {
             
             let roomName = message.target[0]
             
-            guard let room = roomFrom(name: roomName) else {
-                print("Recieved a PRIVMSG for an unknown room")
+            guard roomName.characters.count > 1 else {
                 break
             }
             
-            guard let senderNick = message.prefix?.nickname else {
+            guard var param = message.parameters else {
                 break
             }
             
-            guard let sender = userCache.getUser(by: senderNick) else {
-                print("Could not identify the sender of a PRIVMSG")
-                break
-            }
             
-            let logEvent = MessageLogEvent(contents: contents, sender: sender)
-            room.log.append(logEvent)
-            delegate?.recieved(logEvent: logEvent, for: room)
+            let isPrivate = !Room.CHANNEL_PREFIXES.characterIsMember(roomName.utf16.first!)
+            
+            let isCommand = param.characters.first == "\u{01}" && param.characters.last == "\u{01}"
+            
+            if isPrivate && isCommand {
+                // This is a command
+                // Get rid of the first and last characters
+                
+                param = param[param.index(after: param.startIndex) ..< param.index(before: param.endIndex)]
+                
+                var response: String?
+                var shouldReply = true
+                
+                switch param {
+                    
+                case Command.TIME:
+                    let df = DateFormatter()
+
+                    df.locale = Locale(identifier: "en_US_POSIX")
+                    df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                    
+                    response = df.string(from: Date())
+                
+                case Command.PING:
+                    // No arguments here
+                    break
+                    
+                case Command.VERSION:
+                    let info = Bundle.main.infoDictionary
+                    guard let version = info?["CFBundleShortVersionString"], let build = info?["CFBundleVersion"] else {
+                        print("Failed to get version number")
+                        break
+                    }
+                    response = "OrangeIRC \(version) (\(build))"
+                
+                default:
+                    print("Unknown private message command: \(param)")
+                    shouldReply = false
+                }
+                
+                if let response = response, shouldReply {
+                    write(string: "\(Command.NOTICE) \(message.prefix!.nickname!) :\u{01}\(param) \(response)\u{01}")
+                } else if shouldReply {
+                    write(string: "\(Command.NOTICE) \(message.prefix!.nickname!) :\u{01}\(param)\u{01}")
+                }
+                
+            } else if isPrivate {
+                
+                // TODO
+                
+            } else {
+            
+                let room = roomFrom(name: roomName)
+                
+                if room == nil && !isPrivate {
+                    print("Recieved a PRIVMSG for an unknown channel")
+                    break
+                }
+                
+                
+                
+                guard let senderNick = message.prefix?.nickname else {
+                    break
+                }
+                
+                guard let sender = userCache.getUser(by: senderNick) else {
+                    print("Could not identify the sender of a PRIVMSG")
+                    break
+                }
+                
+                let logEvent = MessageLogEvent(contents: contents, sender: sender)
+                room!.log.append(logEvent)
+                delegate?.recieved(logEvent: logEvent, for: room!)
+                
+            }
         
         case Command.Reply.NAMREPLY:
             if message.target.count != 3 {

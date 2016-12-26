@@ -23,6 +23,9 @@ public class Room : NSObject, NSCoding {
         
     }
     
+    // https://www.alien.net.au/irc/chantypes.html
+    static let CHANNEL_PREFIXES = NSCharacterSet(charactersIn: "#&!+.~")
+    
     // Preserved variables
     public var type: RoomType
     public var name: String
