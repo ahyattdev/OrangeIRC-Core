@@ -38,18 +38,15 @@ extension Server {
     
     @objc(socket:didReadData:withTag:) public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         let strData = data.subdata(in: (0 ..< data.count))
-        guard let string = String(bytes: strData, encoding: self.encoding), string.isEmpty == false else {
+        
+        guard let string = String(bytes: strData, encoding: self.encoding), let message = Message(string) else {
+            print("Failed to parse message: \(data)")
+            socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
             return
         }
         
-        do {
-            self.log.append(string)
-            let message = try Message(string)
-            handle(message: message)
-        } catch {
-            print("Failed to parse message: \(string)")
-            socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
-        }
+        log.append(message)
+        handle(message: message)
     }
     
     public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {

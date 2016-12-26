@@ -36,7 +36,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     public var motd = ""
     public var finishedReadingMOTD = false
     
-    public var log = [String]()
+    public var log = [Message]()
     public var rooms: [Room] = [Room]()
     
     public var delegate: ServerDelegate?

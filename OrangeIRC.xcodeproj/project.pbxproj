@@ -74,11 +74,11 @@
 		6A2672B51E105D180087B331 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A041D29D0850012D037 /* Room.swift */; };
 		6A2672B61E105D180087B331 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
 		6A2672B71E105D180087B331 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A011D29CDC60012D037 /* User.swift */; };
-		6A2672B81E105D180087B331 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF1D1D2891B6000117C5 /* Message.swift */; };
 		6A2672B91E105D180087B331 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BB74D1D25F1500032B5D0 /* Tag.swift */; };
 		6A2672BA1E105D180087B331 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A07D1D24332A00F81A1B /* Command.swift */; };
 		6A2672BB1E105D180087B331 /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */; };
 		6A2672BC1E105D7F0087B331 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2672A51E105CC50087B331 /* CocoaAsyncSocket.framework */; };
+		6A2672BD1E1084FB0087B331 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF1D1D2891B6000117C5 /* Message.swift */; };
 		6A3B389D1DA359860004E868 /* AddRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */; };
 		6A43E6EE1DD6CBC0009DB1FC /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */; };
 		6A43E6EF1DD6CBC0009DB1FC /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */; };
@@ -800,6 +800,7 @@
 				6A2672B41E105D180087B331 /* UserQuitLogEvent.swift in Sources */,
 				6A2672BA1E105D180087B331 /* Command.swift in Sources */,
 				6A2672B31E105D180087B331 /* UserPartLogEvent.swift in Sources */,
+				6A2672BD1E1084FB0087B331 /* Message.swift in Sources */,
 				6A2672A91E105D180087B331 /* Server.swift in Sources */,
 				6A2672B51E105D180087B331 /* Room.swift in Sources */,
 				6A2672AB1E105D180087B331 /* Server+Channel.swift in Sources */,
@@ -808,7 +809,6 @@
 				6A2672AA1E105D180087B331 /* ServerDelegate.swift in Sources */,
 				6A2672AD1E105D180087B331 /* Server+MessageHandler.swift in Sources */,
 				6A2672B11E105D180087B331 /* UserLogEvent.swift in Sources */,
-				6A2672B81E105D180087B331 /* Message.swift in Sources */,
 				6A2672BB1E105D180087B331 /* UserCache.swift in Sources */,
 				6A2672AC1E105D180087B331 /* Server+Log.swift in Sources */,
 				6A2672AE1E105D180087B331 /* Server+Socket.swift in Sources */,
@@ -1677,6 +1677,7 @@
 				6A2672821E1055750087B331 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6A26729F1E105C230087B331 /* Build configuration list for PBXNativeTarget "OrangeIRC Core (tvOS)" */ = {
 			isa = XCConfigurationList;
@@ -1685,6 +1686,7 @@
 				6A2672A11E105C230087B331 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6A2672A21E105C230087B331 /* Build configuration list for PBXNativeTarget "OrangeIRC Core Tests (tvOS)" */ = {
 			isa = XCConfigurationList;
@@ -1693,6 +1695,7 @@
 				6A2672A41E105C230087B331 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
