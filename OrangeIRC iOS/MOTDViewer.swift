@@ -16,6 +16,11 @@ class MOTDViewer : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.prompt = server!.host
+        title = NSLocalizedString("MOTD", comment: "Message of the Day")
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        
         let textView = UITextView()
         
         textView.isEditable = false
@@ -23,10 +28,8 @@ class MOTDViewer : UIViewController {
         
         view = textView
         
-        navigationItem.prompt = server!.host
-        title = NSLocalizedString("MOTD", comment: "Message of the Day")
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        // Scroll to the top
+        textView.scrollRangeToVisible(NSRange(location: 0, length: 0))
     }
     
     func done() {

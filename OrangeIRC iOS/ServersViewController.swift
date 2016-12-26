@@ -52,7 +52,13 @@ class ServersViewController : UITableViewController {
         
         if server.isRegistered {
             cell.detailTextLabel?.text = NSLocalizedString("CONNECTED", comment: "Connected")
-        } else if !server.isConnectingOrRegistering {
+        } else if server.isConnectingOrRegistering {
+            // Add an activity indicator
+            let act = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            act.center = CGPoint(x: cell.contentView.bounds.width - (cell.contentView.bounds.height / 2), y: cell.contentView.bounds.height / 2)
+            cell.contentView.addSubview(act)
+            act.startAnimating()
+        } else {
             cell.detailTextLabel?.text = NSLocalizedString("NOT_CONNECTED", comment: "Not Connected")
         }
         
