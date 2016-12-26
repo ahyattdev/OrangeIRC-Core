@@ -118,7 +118,7 @@ INVALID_ROOM_NAME = "Missing Room Name";
 
 INVALID_ROOM_NAME_MESSAGE = "You must specify a room name.";
 
-MISSING_CHANNEL_PREFIX = "ALL IRC channels require a prefix. If you are not sure of a prefix, a “#” is usually the prefix. Example: #channelname.";
+MISSING_CHANNEL_PREFIX = "All IRC channels require a prefix. If you are not sure of a prefix, a “#” is usually the prefix. Example: “#channelname”.";
 
 SETTINGS = "Settings";
 
@@ -147,3 +147,7 @@ PROVIDE_CORRECT_PASSWORD = "Provide the correct nickname password for “[NICKNA
 FAILED_ATTEMPTS_NICKSERV = "Failed Attempts to Access Nickname";
 
 FAILED_ATTEMPTS_NICKSERV_MESSAGE = "A total of [NUM] attempts were made to access “[MYNICK]” on “[SERVERNAME]”. The data for who made the last attempt is:\n\nNickname: “[NICKNAME]”\nUsername: “[USERNAME]”\nHost: “[HOSTNAME]\nDate: “[DATE]”";
+
+SERVER = "Server";
+
+OK = "OK";

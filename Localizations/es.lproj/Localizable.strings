@@ -1,0 +1,153 @@
+/* 
+  Localizable.strings
+  OrangeIRC
+
+  Created by Andrew Hyatt on 7/5/16.
+
+*/
+
+HOSTNAME = "Servidor";
+
+PORT = "Puerto";
+
+NICKNAME = "Apodo";
+
+USERNAME = "Nombre de Usario";
+
+REAL_NAME = "Nombre Real";
+
+PASSWORD = "Contraseña";
+
+REQUIRED = "Necesario";
+
+OPTIONAL = "Opcional";
+
+IRC_DOT_EXAMPLE_DOT_COM = "irc.ejemplo.es";
+
+CONNECTED = "Conectado";
+
+NOT_CONNECTED = "Desconectado";
+
+CANCEL = "Cancelar";
+
+ROOM_TYPE = "Tipo de Sala";
+
+CHANNEL = "Canal";
+
+PRIVATE_MESSAGE = "Mensaje Privado";
+
+CHOOSE_ROOM_TYPE = "Escoja un tipo de sala";
+
+SELECT_SERVER = "Escoja un servidor";
+
+JOIN_DESCRIPTION = "Unirá una [ROOMTYPE]";
+
+ROOM_ENTRY_TITLE = "[ROOMTYPE] Nombre de Sala";
+
+NAME = "Nombre";
+
+NO_REGISTERED_SERVERS = "Ningún Servidor Registrado";
+
+NO_REGISTERED_SERVERS_DESCRIPTION = "No está registrado en alguno servidor.";
+
+SERVER_OPTIONS = "Opciones de Servidor";
+
+CONNECT = "Conectar";
+
+DISCONNECT = "Desconectar";
+
+MOTD = "Mensaje del Día";
+
+NICKNAME_REGISTERED = "Apodo Ya Está Registrado";
+
+NICKNAME_REGISTERED_DESCRIPTION = "Necesita una contraseña para usar este apodo. Lo salvará automáticamente para una conexión proxima al servidor.";
+
+NICKNAME_PASSWORD = "Contraseña de Apodo";
+
+DONE = "OK";
+
+DELETE_SERVER = "¿Elimina “[SERVER]”?";
+
+DELETE_SERVER_DESCRIPTION = "Si elimina este servidor, también eliminará las salas asociadas de el.";
+
+DELETE = "Eliminar";
+
+ROOMS = "Salas";
+
+SERVERS = "Servidores";
+
+NOT_JOINED = "Salido";
+
+JOINED = "Unido";
+
+ADD_SERVER = "Añadir una Servidor";
+
+AUTOMATICALLY_JOIN = "Unir Automáticamente";
+
+INFO = "Información";
+
+DETAILS = "Detalles";
+
+JOIN = "Unir";
+
+LEAVE = "Salir";
+
+JOINED_THE_ROOM = "unió la sala";
+
+LEFT_THE_ROOM = "salió la sala";
+
+AUTHENTICATE = "Autenticar";
+
+SEND_MESSAGE = "Envia la Mensaje";
+
+CONNECT_AND_JOIN = "Connectar y Unir";
+
+QUIT = "dejó";
+
+UNKNOWN_ERROR = "Error Desconocido";
+
+ERROR_DISCONNECT_MESSAGE = "El servidor rechazó la conexión con este error:";
+
+CLOSE = "Cerrar";
+
+ROOM_NAME = "Nombre de Sala";
+
+ADD_ROOM_SERVER_SECTION_DESCRIPTION = "La sala unirá en el servidor que especifica";
+
+INVALID_ROOM_NAME = "No Hay Nombre de Sala";
+
+INVALID_ROOM_NAME_MESSAGE = "Necesita un nombre de sala.";
+
+MISSING_CHANNEL_PREFIX = "Todos los canales IRC necesitan un prefijo. Si no sabe un prefijo, el es “#” generalmente. Ejemplo: “#nombredecanal”.";
+
+SETTINGS = "Ajustes";
+
+SETTINGS_CHANGED = "Ajustes de Servidor ha Cambiado";
+
+DO_YOU_WANT_TO_RECONNECT = "¿Quiere conectar otra vez con estos ajustes nuevas?";
+
+RECONNECT = "Conectar Otra Vez";
+
+DONT_RECONNECT = "No Conectar Otra Vez";
+
+ADD_ROOM = "Añadir una Sala";
+
+SERVER_DID_NOT_RESPOND = "Servidor no Respondió";
+
+SERVER_DID_NOT_RESPOND_DESCRIPTION = "El servidor “[SERVERNAME]” no respondió.";
+
+USERS_ONLINE = "usarios en línea";
+
+NOTICE_FROM_ON = "“[USERNAME]” en “[SERVERNAME]” dice:";
+
+NICKNAME_PASSWORD_INCORRECT = "Contraseña de Apodo Incorrecto";
+
+PROVIDE_CORRECT_PASSWORD = "Provea el apodo correcto para“[NICKNAME]” en “[SERVERNAME]”.";
+
+FAILED_ATTEMPTS_NICKSERV = "Intentos Fallados para Acceder su Apodo";
+
+FAILED_ATTEMPTS_NICKSERV_MESSAGE = "Un total de [NUM] intentos han accedido para “[MYNICK]” en “[SERVERNAME]”. Los datos para el intento último son:\n\nApodo: “[NICKNAME]”\nNombre de Usario: “[USERNAME]”\nServidor: “[HOSTNAME]\nFecha: “[DATE]”";
+
+SERVER = "Servidor";
+
+OK = "OK";
