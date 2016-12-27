@@ -204,6 +204,7 @@
 		6A73250F1E11C06C00AFCC0B /* Server+NickServ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+NickServ.swift"; sourceTree = "<group>"; };
 		6A7325131E11D14900AFCC0B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6A7325141E11E30300AFCC0B /* UserInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewController.swift; sourceTree = "<group>"; };
+		6A7325161E11F7EB00AFCC0B /* CONTRIBUTORS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTORS.md; sourceTree = "<group>"; };
 		6A7A6A011D29CDC60012D037 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6A7A6A041D29D0850012D037 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		6A82A07D1D24332A00F81A1B /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
@@ -322,6 +323,7 @@
 				66837DA11D25E59900F85410 /* .gitignore */,
 				6ABAD44A1DD70C8100D1B689 /* LICENSE */,
 				6ABAD4491DD70C2500D1B689 /* README.md */,
+				6A7325161E11F7EB00AFCC0B /* CONTRIBUTORS.md */,
 				6ABAD4481DD70A4400D1B689 /* docs */,
 				6AF4264E1D2CAD060029250A /* Localizable.strings */,
 				66A75AFD1D234694001161A3 /* OrangeIRC iOS */,
