@@ -36,8 +36,9 @@ class UserInfoTableViewController : UITableViewController {
     var rowData = [[String?]]()
     
     var user: User
+    var server: Server
     
-    init(user: User) {
+    init(user: User, server: Server) {
         // Populate rowData
         for i in 0 ..< rowNames.count {
             rowData.append([String?]())
@@ -46,16 +47,87 @@ class UserInfoTableViewController : UITableViewController {
             }
         }
         
-        rowData[2][1] = "foo"
-        
         self.user = user
+        self.server = server
+        
         super.init(style: .grouped)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handle(_:)), name: Notifications.UserInfoDidChange, object: user)
+        server.fetchInfo(user)
+    }
+    
+    func updateData() {
+        // Class
+        if let `class` = user.class {
+            switch `class` {
+                
+            case .Operator:
+                rowData[0][0] = NSLocalizedString("OPERATOR", comment: "")
+                
+            case .Normal:
+                rowData[0][0] = NSLocalizedString("NORMAL", comment: "")
+                
+            }
+        }
+        
+        // Away info
+        
+        // IP
+        rowData[1][0] = user.ip
+        
+        // Host
+        rowData[1][1] = user.host
+        
+        // Username
+        rowData[1][2] = user.username
+        
+        // Realname
+        rowData[1][3] = user.realname
+        
+        // Servername
+        rowData[2][0] = user.servername
+        
+        // Rooms
+        if let rooms = user.channelList {
+            var roomStr = ""
+            for room in rooms {
+                roomStr.append("\(room) ")
+            }
+            if !roomStr.isEmpty {
+                roomStr = roomStr[roomStr.startIndex ..< roomStr.index(before: roomStr.endIndex)]
+            }
+            rowData[2][1] = roomStr
+        }
+        
+        let now = Date()
+        
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .full
+        formatter.allowedUnits = [.year, .month, .weekOfMonth, .day, .hour, .minute]
+        
+        // Connected
+        if let online = user.onlineTime {
+            rowData[3][0] = formatter.string(from: online, to: now)
+        }
+        
+        // Idle
+        if let idle = user.idleTime {
+            rowData[3][1] = formatter.string(from: idle, to: now)
+        }
+    }
+    
+    func handle(_ notification: NSNotification) {
+        if notification.name == Notifications.UserInfoDidChange {
+            updateData()
+            tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = user.name
+        navigationItem.prompt = server.host
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -72,6 +144,9 @@ class UserInfoTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "")
+        
+        cell.textLabel?.font = cell.textLabel?.font.withSize(14)
+        cell.detailTextLabel?.font = cell.detailTextLabel?.font.withSize(14)
         
         cell.textLabel?.text = rowNames[indexPath.section][indexPath.row]
         
@@ -167,6 +242,10 @@ class UserInfoTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
     }
     
 }

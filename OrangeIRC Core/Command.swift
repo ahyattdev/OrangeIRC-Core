@@ -8,6 +8,8 @@
 
 import Foundation
 
+// https://www.alien.net.au/irc/irc2numerics.html
+
 public struct Command {
     
     static let JOIN = "JOIN"
@@ -19,6 +21,8 @@ public struct Command {
     static let QUIT = "QUIT"
     static let USER = "USER"
     static let ERROR = "ERROR"
+    
+    static let WHOIS = "WHOIS"
     
     static let NOTICE = "NOTICE"
     static let PRIVMSG = "PRIVMSG"
@@ -71,6 +75,8 @@ public struct Command {
         static let UNIQOPIS = "325"
         static let CHANNELMODEIS = "324"
         
+        static let WHOISACCOUNT = "330"
+        
         static let NOTOPIC = "331"
         static let TOPIC = "332"
         
@@ -94,6 +100,8 @@ public struct Command {
         static let MOTDSTART = "375"
         static let MOTD = "372"
         static let ENDOFMOTD = "376"
+        
+        static let WHOISHOST = "378"
         
     }
     

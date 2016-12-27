@@ -139,7 +139,7 @@ class RoomInfo : UITableViewController {
         case 1:
             // User list
             let user = room!.users[indexPath.row]
-            let userInfo = UserInfoTableViewController(user: user)
+            let userInfo = UserInfoTableViewController(user: user, server: room!.server!)
             navigationController?.pushViewController(userInfo, animated: true)
             
         default: break

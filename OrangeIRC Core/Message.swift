@@ -132,6 +132,13 @@ public struct Message {
             self.command = commandAndTargetComponents.remove(at: 0)
             self.target = commandAndTargetComponents
             
+            // If the command is a 3-didgit numeric, the first target must go
+            if let cmd = Int(command) {
+                if cmd >= 0 && cmd < 1000  && target.count > 0 {
+                    target.remove(at: 0)
+                }
+            }
+            
             // If this check if not performed, this code could crash if the last character of trimmedString is a colon
             if colonSpaceRange.upperBound != trimmedString.endIndex {
                 var parametersStart = trimmedString.index(after: colonSpaceRange.upperBound)

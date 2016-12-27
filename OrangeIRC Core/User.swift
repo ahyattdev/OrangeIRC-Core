@@ -35,15 +35,34 @@ public class User: NSObject, NSCoding {
         
     }
     
+    public enum Class {
+        
+        case Normal
+        case Operator
+        
+    }
+    
     public typealias ChannelData = (name: String, mode: Mode, away: Bool)
     
     public var channels = [ChannelData]()
     
+    // Nickname
     public var name: String
     
     public var isSelf = false
     
     public var isOnline = true
+    
+    // Begin WHOIS data
+    public var username: String?
+    public var host: String?
+    public var ip: String?
+    public var servername: String?
+    public var realname: String?
+    public var onlineTime: Date?
+    public var idleTime: Date?
+    public var channelList: [String]?
+    public var `class`: Class?
     
     public init(name: String) {
         self.name = name
@@ -122,7 +141,6 @@ public class User: NSObject, NSCoding {
             }
         }
     }
-    
     
 #if os(iOS) || os(tvOS)
     

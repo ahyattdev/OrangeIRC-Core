@@ -213,4 +213,8 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.socket?.write(Data(bytes: bytes), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
     }
     
+    public func fetchInfo(_ user: User) {
+        write(string: "\(Command.WHOIS) \(user.name)")
+    }
+    
 }

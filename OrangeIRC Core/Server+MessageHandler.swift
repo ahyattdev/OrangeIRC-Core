@@ -301,12 +301,12 @@ extension Server {
             }
         
         case Command.Reply.NAMREPLY:
-            if message.target.count != 3 {
+            if message.target.count != 2 {
                 print("Error parsing NAMREPLY")
                 break
             }
             
-            let channelName = message.target[2]
+            let channelName = message.target[1]
             
             guard let room = roomFrom(name: channelName) else {
                 print("Got a list of users in a room, but did not have data on the room!")
@@ -325,7 +325,7 @@ extension Server {
                 break
             }
             
-            let roomName = message.target[1]
+            let roomName = message.target[0]
             guard let room = roomFrom(name: roomName) else {
                 break
             }
@@ -351,6 +351,97 @@ extension Server {
             }
             
             userCache.handleQuit(user: user)
+            
+        case Command.Reply.WHOISUSER:
+            guard message.target.count == 4, let realname = message.parameters else {
+                break
+            }
+            
+            let nickname = message.target[0]
+            var username = message.target[1]
+            let hostname = message.target[2]
+            
+            // Take the tilde off the username
+            if username.characters.first == "~" {
+                username.remove(at: username.startIndex)
+            }
+            
+            let user = userCache.getOrCreateUser(nickname: nickname)
+            
+            user.username = username
+            user.host = hostname
+            user.realname = realname
+            
+        case Command.Reply.WHOISSERVER:
+            guard message.target.count == 2 else {
+                break
+            }
+            
+            let user = userCache.getOrCreateUser(nickname: message.target[0])
+            let server = message.target[1]
+            user.servername = server
+            
+        case Command.Reply.WHOISOPERATOR:
+            break
+            
+        case Command.Reply.WHOISIDLE:
+            guard message.target.count == 3, let onlineInterval = Int(message.target[2]), let idleInterval = Int(message.target[1]) else {
+                break
+            }
+            
+            let user = userCache.getOrCreateUser(nickname: message.target[0])
+            
+            user.onlineTime = Date(timeIntervalSince1970: TimeInterval(onlineInterval))
+            user.idleTime = Date(timeIntervalSinceNow: TimeInterval(-idleInterval))
+            
+        case Command.Reply.WHOISCHANNELS:
+            guard message.target.count == 1, let param = message.parameters else {
+                break
+            }
+            
+            let user = userCache.getOrCreateUser(nickname: message.target[0])
+            
+            user.channelList = param.components(separatedBy: " ")
+            
+        case Command.Reply.WHOISHOST:
+            guard message.target.count == 1, var param = message.parameters else {
+                break
+            }
+            
+            let user = userCache.getOrCreateUser(nickname: message.target[0])
+            
+            // Chop off the start
+            guard let asteriskIndex = param.range(of: " *@")?.upperBound else {
+                break
+            }
+            
+            param = param[asteriskIndex ..< param.endIndex]
+            
+            let comp = param.components(separatedBy: " ")
+            
+            guard comp.count == 2 else {
+                break
+            }
+            
+            user.host = comp[0]
+            user.ip = comp[1]
+            
+        case Command.Reply.WHOISACCOUNT:
+            // Not useful
+            break
+            
+        case Command.Reply.ENDOFWHOIS:
+            guard message.target.count == 1 else {
+                break
+            }
+            
+            let user = userCache.getOrCreateUser(nickname: message.target[0])
+            
+            if user.class == nil {
+                user.class = .Normal
+            }
+            
+            delegate?.infoWasUpdated(user)
             
         default:
             print(message.message)

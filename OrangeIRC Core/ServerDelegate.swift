@@ -39,5 +39,7 @@ public protocol ServerDelegate {
     func nickservPasswordNeeded(_ server: Server)
     func nickservPasswordIncorrect(_ server: Server)
     func nickservFailedAttemptsWarning(_ server: Server, count: Int, lastPrefix: Message.Prefix, date: String)
-
+    
+    func infoWasUpdated(_ user: User)
+    
 }

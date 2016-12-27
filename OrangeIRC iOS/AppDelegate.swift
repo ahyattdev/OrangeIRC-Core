@@ -442,4 +442,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         showAlertGlobally(alert)
     }
     
+    func infoWasUpdated(_ user: User) {
+        NotificationCenter.default.post(name: Notifications.UserInfoDidChange, object: user)
+    }
+    
 }

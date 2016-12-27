@@ -16,5 +16,6 @@ struct Notifications {
     static let RoomDataDidChange = NSNotification.Name(rawValue: "RoomDataDidChange")
     static let DisplayedRoomDidChange = NSNotification.Name(rawValue: "DisplayedRoomDidChange")
     static let RoomLogDidChange = NSNotification.Name(rawValue: "RoomLogDidChange")
+    static let UserInfoDidChange = NSNotification.Name(rawValue: "UserInfoDidChange")
     
 }
