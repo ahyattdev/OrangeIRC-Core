@@ -12,9 +12,9 @@ PORT = "Puerto";
 
 NICKNAME = "Apodo";
 
-USERNAME = "Nombre de Usario";
+USERNAME = "Nombre de usario";
 
-REAL_NAME = "Nombre Real";
+REAL_NAME = "Nombre real";
 
 PASSWORD = "Contraseña";
 
@@ -30,27 +30,27 @@ NOT_CONNECTED = "Desconectado";
 
 CANCEL = "Cancelar";
 
-ROOM_TYPE = "Tipo de Sala";
+ROOM_TYPE = "Tipo de sala";
 
-CHANNEL = "Canal";
+CHANNEL = "canal";
 
-PRIVATE_MESSAGE = "Mensaje Privado";
+PRIVATE_MESSAGE = "mensaje privado";
 
 CHOOSE_ROOM_TYPE = "Escoja un tipo de sala";
 
 SELECT_SERVER = "Escoja un servidor";
 
-JOIN_DESCRIPTION = "Unirá una [ROOMTYPE]";
+JOIN_DESCRIPTION = "Se unirá una sala de [ROOMTYPE]";
 
-ROOM_ENTRY_TITLE = "[ROOMTYPE] Nombre de Sala";
+ROOM_ENTRY_TITLE = "[ROOMTYPE] nombre de sala";
 
 NAME = "Nombre";
 
-NO_REGISTERED_SERVERS = "Ningún Servidor Registrado";
+NO_REGISTERED_SERVERS = "Ningún servidor registrado";
 
-NO_REGISTERED_SERVERS_DESCRIPTION = "No está registrado en alguno servidor.";
+NO_REGISTERED_SERVERS_DESCRIPTION = "Usted no está registrado en alguno servidor.";
 
-SERVER_OPTIONS = "Opciones de Servidor";
+SERVER_OPTIONS = "Opciones de servidor";
 
 CONNECT = "Conectar";
 
@@ -60,13 +60,13 @@ MOTD = "Mensaje del Día";
 
 NICKNAME_REGISTERED = "Apodo Ya Está Registrado";
 
-NICKNAME_REGISTERED_DESCRIPTION = "Necesita una contraseña para usar este apodo. Lo salvará automáticamente para una conexión proxima al servidor.";
+NICKNAME_REGISTERED_DESCRIPTION = "Necesita una contraseña para usar este apodo. Se lo guardará automáticamente para su próxima conexión a este servidor.";
 
-NICKNAME_PASSWORD = "Contraseña de Apodo";
+NICKNAME_PASSWORD = "Contraseña de apodo";
 
 DONE = "OK";
 
-DELETE_SERVER = "¿Elimina “[SERVER]”?";
+DELETE_SERVER = "¿Eliminar “[SERVER]”?";
 
 DELETE_SERVER_DESCRIPTION = "Si elimina este servidor, también eliminará las salas asociadas de el.";
 
@@ -80,59 +80,59 @@ NOT_JOINED = "Salido";
 
 JOINED = "Unido";
 
-ADD_SERVER = "Añadir una Servidor";
+ADD_SERVER = "Añadir una servidor";
 
-AUTOMATICALLY_JOIN = "Unir Automáticamente";
+AUTOMATICALLY_JOIN = "Unir automáticamente";
 
 INFO = "Información";
 
 DETAILS = "Detalles";
 
-JOIN = "Unir";
+JOIN = "Unirse";
 
 LEAVE = "Salir";
 
-JOINED_THE_ROOM = "unió la sala";
+JOINED_THE_ROOM = "se unió la sala";
 
 LEFT_THE_ROOM = "salió la sala";
 
 AUTHENTICATE = "Autenticar";
 
-SEND_MESSAGE = "Envia la Mensaje";
+SEND_MESSAGE = "Envia la mensaje";
 
-CONNECT_AND_JOIN = "Connectar y Unir";
+CONNECT_AND_JOIN = "Connectar y unirse";
 
 QUIT = "dejó";
 
-UNKNOWN_ERROR = "Error Desconocido";
+UNKNOWN_ERROR = "Error desconocido";
 
 ERROR_DISCONNECT_MESSAGE = "El servidor rechazó la conexión con este error:";
 
 CLOSE = "Cerrar";
 
-ROOM_NAME = "Nombre de Sala";
+ROOM_NAME = "Nombre de sala";
 
-ADD_ROOM_SERVER_SECTION_DESCRIPTION = "La sala unirá en el servidor que especifica";
+ADD_ROOM_SERVER_SECTION_DESCRIPTION = "La sala se unirá en el servidor que especifica";
 
-INVALID_ROOM_NAME = "No Hay Nombre de Sala";
+INVALID_ROOM_NAME = "No hay nombre de sala";
 
 INVALID_ROOM_NAME_MESSAGE = "Necesita un nombre de sala.";
 
-MISSING_CHANNEL_PREFIX = "Todos los canales IRC necesitan un prefijo. Si no sabe un prefijo, el es “#” generalmente. Ejemplo: “#nombredecanal”.";
+MISSING_CHANNEL_PREFIX = "Todos los canales IRC necesitan un prefijo. Si no sabe un prefijo, generalmente es “#”. Ejemplo: “#nombredecanal”.";
 
 SETTINGS = "Ajustes";
 
-SETTINGS_CHANGED = "Ajustes de Servidor ha Cambiado";
+SETTINGS_CHANGED = "Ajustes de servidor han cambiado";
 
 DO_YOU_WANT_TO_RECONNECT = "¿Quiere conectar otra vez con estos ajustes nuevas?";
 
-RECONNECT = "Conectar Otra Vez";
+RECONNECT = "Conectar otra vez";
 
-DONT_RECONNECT = "No Conectar Otra Vez";
+DONT_RECONNECT = "No conectar otra vez";
 
-ADD_ROOM = "Añadir una Sala";
+ADD_ROOM = "Añadir una sala";
 
-SERVER_DID_NOT_RESPOND = "Servidor no Respondió";
+SERVER_DID_NOT_RESPOND = "Servidor no respondió";
 
 SERVER_DID_NOT_RESPOND_DESCRIPTION = "El servidor “[SERVERNAME]” no respondió.";
 
@@ -140,11 +140,11 @@ USERS_ONLINE = "usarios en línea";
 
 NOTICE_FROM_ON = "“[USERNAME]” en “[SERVERNAME]” dice:";
 
-NICKNAME_PASSWORD_INCORRECT = "Contraseña de Apodo Incorrecto";
+NICKNAME_PASSWORD_INCORRECT = "Contraseña de apodo incorrecto";
 
 PROVIDE_CORRECT_PASSWORD = "Provea el apodo correcto para“[NICKNAME]” en “[SERVERNAME]”.";
 
-FAILED_ATTEMPTS_NICKSERV = "Intentos Fallados para Acceder su Apodo";
+FAILED_ATTEMPTS_NICKSERV = "Intentos fallados para acceder su apodo";
 
 FAILED_ATTEMPTS_NICKSERV_MESSAGE = "Un total de [NUM] intentos han accedido para “[MYNICK]” en “[SERVERNAME]”. Los datos para el intento último son:\n\nApodo: “[NICKNAME]”\nNombre de Usario: “[USERNAME]”\nServidor: “[HOSTNAME]\nFecha: “[DATE]”";
 

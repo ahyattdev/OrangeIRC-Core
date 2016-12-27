@@ -85,6 +85,8 @@ class RoomInfo : UITableViewController {
             
             cell.textLabel!.textColor = user.color(room: room!)
             
+            cell.accessoryType = .disclosureIndicator
+            
         default: break
             
         }
@@ -130,10 +132,15 @@ class RoomInfo : UITableViewController {
                 } else {
                     room!.server?.join(channel: room!.name)
                 }
-                
             default: break
                 
             }
+            
+        case 1:
+            // User list
+            let user = room!.users[indexPath.row]
+            let userInfo = UserInfoTableViewController(user: user)
+            navigationController?.pushViewController(userInfo, animated: true)
             
         default: break
             

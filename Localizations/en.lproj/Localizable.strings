@@ -151,3 +151,17 @@ FAILED_ATTEMPTS_NICKSERV_MESSAGE = "A total of [NUM] attempts were made to acces
 SERVER = "Server";
 
 OK = "OK";
+
+CLASS = "Class";
+
+AWAY_INFO = "Away Info";
+
+IP_ADDRESS = "IP Address";
+
+IDLE = "Idle";
+
+PING = "Ping";
+
+LOCAL_TIME = "Local Time";
+
+CLIENT_INFO = "Client Info";
