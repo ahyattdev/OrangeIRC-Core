@@ -32,6 +32,8 @@ class RoomViewController : UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handle(_:)), name: Notifications.DisplayedRoomDidChange, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(roomDataChanged(_:)), name: Notifications.RoomDataDidChange, object: nil)
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
     
     func handle(_ notification: NSNotification) {
@@ -152,6 +154,8 @@ class RoomViewController : UITableViewController {
             
             let messageLogEvent = logEvent as! MessageLogEvent
             cell.textView.text = messageLogEvent.contents
+            cell.label.attributedText = messageLogEvent.sender.coloredName(for: room!)
+            
             return cell
             
         } else {
@@ -165,17 +169,13 @@ class RoomViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let logEvent = room!.log[indexPath.row]
+        let event = room!.log[indexPath.row]
         
-        if logEvent.self is MessageLogEvent {
-            // FIXME: Creating a text view again for every height is inefficient, it should be cached
-            let messageLogEvent = logEvent as! MessageLogEvent
-            let textView = UITextView()
-            textView.text = messageLogEvent.contents
-            return textView.sizeThatFits(CGSize(width: view.frame.width - 16, height: CGFloat.greatestFiniteMagnitude)).height + 12
+        if let msgEvent = event as? MessageLogEvent {
+            return TextViewCell.getHeight(msgEvent.contents, width: tableView.frame.width - 32)
+        } else {
+            return super.tableView(tableView, heightForRowAt: indexPath)
         }
-        
-        return super.tableView(tableView, heightForRowAt: indexPath)
     }
     
 }

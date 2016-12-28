@@ -197,7 +197,9 @@ class RoomInfoTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         if room.type == .Channel {
-            return indexPath.section == 0 && indexPath.row == 1
+            return
+                (indexPath.section == 0 && indexPath.row == 0) || // Join button
+                (indexPath.section == 1) // Users list
         } else {
             return false
         }

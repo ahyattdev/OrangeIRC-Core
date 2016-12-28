@@ -79,7 +79,8 @@ class UsersSearchResultsController : UITableViewController, UISearchResultsUpdat
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = filteredUsers[indexPath.row]
         let userInfo = UserInfoTableViewController(user: user, server: room.server!)
-        self.dismiss(animated: true, completion: nil)
+        searchController.dismiss(animated: true, completion: nil)
+        searchController.searchBar.text = nil
         nav.pushViewController(userInfo, animated: true)
     }
     
