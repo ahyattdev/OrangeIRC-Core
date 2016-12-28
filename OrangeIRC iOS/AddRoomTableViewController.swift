@@ -50,7 +50,11 @@ class AddRoomTableViewController : UITableViewController {
             return 2
         case 2:
             // Room name and autojoin
-            return 2
+            if selectedRoomType == .Channel {
+                return 2
+            } else {
+                return 1
+            }
         default:
             return super.tableView(tableView, numberOfRowsInSection: section)
         }
@@ -114,7 +118,14 @@ class AddRoomTableViewController : UITableViewController {
             switch indexPath.row {
             case 0:
                 let cell = TextFieldCell()
-                roomNameField = cell.textField
+                if roomNameField == nil {
+                    roomNameField = cell.textField
+                } else {
+                    cell.contentView.willRemoveSubview(cell.textField)
+                    cell.textField = roomNameField!
+                    cell.contentView.addSubview(roomNameField!)
+                }
+                roomNameField!.becomeFirstResponder()
                 roomNameField!.placeholder = NSLocalizedString("REQUIRED", comment: "")
                 cell.textLabel!.text = NSLocalizedString("ROOM_NAME", comment: "")
                 roomNameField!.autocorrectionType = .no
@@ -156,8 +167,7 @@ class AddRoomTableViewController : UITableViewController {
             default:
                 break
             }
-            
-            tableView.reloadSections(IndexSet(1 ..< 2), with: .automatic)
+            tableView.reloadSections(IndexSet(1 ... 2), with: .none)
             
         default:
             break

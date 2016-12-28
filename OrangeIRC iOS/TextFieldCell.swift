@@ -17,7 +17,7 @@ class TextFieldCell : UITableViewCell {
         }
     }
     
-    let textField = UITextField()
+    var textField = UITextField()
     
     init() {
         super.init(style: .default, reuseIdentifier: nil)

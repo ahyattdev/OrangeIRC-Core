@@ -64,6 +64,11 @@ class UserCache {
     
     func parse(userList: [String], for room: Room) {
         for nicknameWithPrefix in userList {
+            if nicknameWithPrefix.isEmpty {
+                // Some servers put a space after the nickname list, causing our code to put in an empty nick
+                continue
+            }
+            
             let splitUserData = split(nickname: nicknameWithPrefix)
             let user = getOrCreateUser(nickname: splitUserData.nickname)
             

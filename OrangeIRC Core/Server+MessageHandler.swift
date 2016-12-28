@@ -126,7 +126,12 @@ extension Server {
                 break
             }
             if message.target[0] == self.nickname {
-                // This NOTICE is specifically sent to this nickname
+                if let servername = message.prefix?.servername, let message = message.parameters {
+                    // Notice from the server, not a user
+                    delegate?.recieved(notice: message, sender: servername, server: self)
+                    break
+                }
+                
                 guard let sender = message.prefix?.nickname else {
                     print("Recieved a NOTICE without a prefix: \(message)")
                     break
@@ -186,7 +191,7 @@ extension Server {
             channel.hasTopic = false
             
         case Command.Reply.TOPIC:
-            let channelName = message.target[1]
+            let channelName = message.target[0]
             guard let channel = roomFrom(name: channelName) else {
                 break
             }
