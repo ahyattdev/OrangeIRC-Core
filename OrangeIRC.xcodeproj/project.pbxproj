@@ -11,7 +11,7 @@
 		661AF5021D2C809E00CFC190 /* ServerSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */; };
 		661AF5041D2C833700CFC190 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5031D2C833700CFC190 /* Notifications.swift */; };
 		661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5051D2C89E900CFC190 /* TextFieldCell.swift */; };
-		663D71921D7C64C300202EF2 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663D71911D7C64C300202EF2 /* MessageComposer.swift */; };
+		663D71921D7C64C300202EF2 /* ComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663D71911D7C64C300202EF2 /* ComposerViewController.swift */; };
 		667BB2E91D29C1990029AB2D /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
 		667BB2EA1D29C1990029AB2D /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
 		667BB2EC1D29C2F60029AB2D /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
@@ -20,7 +20,7 @@
 		66837D9A1D25E4A900F85410 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		669DF6FF1D7CDCD0007F82DB /* Server+Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */; };
 		669DF7001D7CDCD0007F82DB /* Server+Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */; };
-		669DF7021D7CE96B007F82DB /* MOTDViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF7011D7CE96B007F82DB /* MOTDViewer.swift */; };
+		669DF7021D7CE96B007F82DB /* MOTDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF7011D7CE96B007F82DB /* MOTDViewController.swift */; };
 		669DF7061D7CFBEB007F82DB /* UserQuitLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF7051D7CFBEB007F82DB /* UserQuitLogEvent.swift */; };
 		669DF7071D7CFBEB007F82DB /* UserQuitLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF7051D7CFBEB007F82DB /* UserQuitLogEvent.swift */; };
 		669FCF1F1D2891B6000117C5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF1D1D2891B6000117C5 /* Message.swift */; };
@@ -161,14 +161,14 @@
 		661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSettingsTableViewController.swift; sourceTree = "<group>"; };
 		661AF5031D2C833700CFC190 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		661AF5051D2C89E900CFC190 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
-		663D71911D7C64C300202EF2 /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
+		663D71911D7C64C300202EF2 /* ComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposerViewController.swift; sourceTree = "<group>"; };
 		667BB2E81D29C1990029AB2D /* Server+Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Log.swift"; sourceTree = "<group>"; };
 		667BB2EB1D29C2F60029AB2D /* Server+Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Room.swift"; sourceTree = "<group>"; };
 		66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		66837D9F1D25E51100F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/Mac/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		66837DA11D25E59900F85410 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Socket.swift"; sourceTree = "<group>"; };
-		669DF7011D7CE96B007F82DB /* MOTDViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOTDViewer.swift; sourceTree = "<group>"; };
+		669DF7011D7CE96B007F82DB /* MOTDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOTDViewController.swift; sourceTree = "<group>"; };
 		669DF7051D7CFBEB007F82DB /* UserQuitLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserQuitLogEvent.swift; sourceTree = "<group>"; };
 		669FCF1D1D2891B6000117C5 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		669FCF201D289A96000117C5 /* Server+MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+MessageHandler.swift"; sourceTree = "<group>"; };
@@ -359,8 +359,8 @@
 				661AF5031D2C833700CFC190 /* Notifications.swift */,
 				6ADD58DE1D29DB330051DB28 /* RoomsTableViewController.swift */,
 				6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */,
-				663D71911D7C64C300202EF2 /* MessageComposer.swift */,
-				669DF7011D7CE96B007F82DB /* MOTDViewer.swift */,
+				663D71911D7C64C300202EF2 /* ComposerViewController.swift */,
+				669DF7011D7CE96B007F82DB /* MOTDViewController.swift */,
 				6605688D1D7901C400A2502B /* RoomInfoTableViewController.swift */,
 				6A1EECF11E142A5800A67C35 /* UsersSearchResultsController.swift */,
 				6A7325141E11E30300AFCC0B /* UserInfoTableViewController.swift */,
@@ -741,10 +741,10 @@
 				6A18EAE81D5BC66C00AF1EF9 /* SwitchCell.swift in Sources */,
 				6A7325151E11E30300AFCC0B /* UserInfoTableViewController.swift in Sources */,
 				6ADD58E31D29E4890051DB28 /* RoomTableViewController.swift in Sources */,
-				663D71921D7C64C300202EF2 /* MessageComposer.swift in Sources */,
+				663D71921D7C64C300202EF2 /* ComposerViewController.swift in Sources */,
 				6A3B389D1DA359860004E868 /* AddRoomTableViewController.swift in Sources */,
 				6A66A1111DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift in Sources */,
-				669DF7021D7CE96B007F82DB /* MOTDViewer.swift in Sources */,
+				669DF7021D7CE96B007F82DB /* MOTDViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

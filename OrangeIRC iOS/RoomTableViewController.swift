@@ -102,8 +102,7 @@ class RoomTableViewController : UITableViewController {
     }
     
     func showMessageComposer() {
-        let composer = MessageComposer()
-        composer.room = room
+        let composer = ComposerViewController(room)
         let nav = UINavigationController(rootViewController: composer)
         modalPresentationStyle = .formSheet
         present(nav, animated: true, completion: nil)

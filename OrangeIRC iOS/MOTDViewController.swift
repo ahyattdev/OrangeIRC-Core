@@ -9,14 +9,24 @@
 import UIKit
 import OrangeIRCCore
 
-class MOTDViewer : UIViewController {
+class MOTDViewController : UIViewController {
     
-    var server: Server?
+    let server: Server
+    
+    init(_ server: Server) {
+        self.server = server
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.prompt = server!.host
+        navigationItem.prompt = server.host
         title = NSLocalizedString("MOTD", comment: "Message of the Day")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
@@ -24,7 +34,7 @@ class MOTDViewer : UIViewController {
         let textView = UITextView()
         
         textView.isEditable = false
-        textView.text = server!.motd
+        textView.text = server.motd
         
         view = textView
         

@@ -164,8 +164,7 @@ class ServersViewController : UITableViewController {
     }
     
     func showMOTD(server: Server) {
-        let motdViewer = MOTDViewer()
-        motdViewer.server = server
+        let motdViewer = MOTDViewController(server)
         let nav = UINavigationController(rootViewController: motdViewer)
         modalPresentationStyle = .pageSheet
         present(nav, animated: true, completion: nil)

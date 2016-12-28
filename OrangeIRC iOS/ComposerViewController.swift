@@ -9,11 +9,29 @@
 import UIKit
 import OrangeIRCCore
 
-class MessageComposer : UIViewController {
+class ComposerViewController : UIViewController {
     
-    var room: Room?
+    let room: Room
+    
+    var initialText: String?
     
     var textView = UITextView()
+    
+    init(_ room: Room) {
+        self.room = room
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    convenience init(_ room: Room, initialText: String) {
+        self.init(room)
+        
+        self.initialText = initialText
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +40,14 @@ class MessageComposer : UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
-        title = room!.name
-        navigationItem.prompt = room!.server!.host
+        title = room.name
+        navigationItem.prompt = room.server!.host
         
         view = textView
+        
+        if let initialText = initialText {
+            textView.text = initialText
+        }
         
         // Show the keyboard
         textView.becomeFirstResponder()
@@ -39,7 +61,7 @@ class MessageComposer : UIViewController {
     }
     
     func done() {
-        room!.send(message: textView.text)
+        room.send(message: textView.text)
         dismiss(animated: true, completion: nil)
     }
     
