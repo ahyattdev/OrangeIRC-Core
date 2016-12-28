@@ -89,8 +89,7 @@ class RoomViewController : UITableViewController {
     }
     
     func showRoomInfo() {
-        let roomInfoViewController = RoomInfo(style: .grouped)
-        roomInfoViewController.room = room!
+        let roomInfoViewController = RoomInfoTableViewController(room!)
         show(roomInfoViewController, sender: nil)
     }
     

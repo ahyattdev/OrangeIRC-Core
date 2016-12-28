@@ -106,7 +106,7 @@ class RoomsViewController : UITableViewController {
     func serversButton() {
         let servers = ServersViewController()
         let nav = UINavigationController(rootViewController: servers)
-        modalPresentationStyle = .pageSheet
+        modalPresentationStyle = .overCurrentContext
         present(nav, animated: true, completion: nil)
     }
     
