@@ -9,7 +9,7 @@
 import UIKit
 import OrangeIRCCore
 
-class RoomsViewController : UITableViewController {
+class RoomsTableViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,10 @@ class RoomsViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let room = appDelegate.rooms[indexPath.row]
-        appDelegate.show(room: room)
+        
+        let roomViewController = RoomTableViewController(room)
+        
+        appDelegate.splitView.showDetailViewController(UINavigationController(rootViewController: roomViewController), sender: nil)
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

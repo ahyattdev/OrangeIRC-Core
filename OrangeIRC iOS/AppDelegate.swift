@@ -21,9 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     var doneAction: UIAlertAction?
     
     // View controllers
-    var splitView = UISplitViewController()
-    var roomsView = RoomsViewController()
-    var roomView = RoomViewController()
+    let splitView = UISplitViewController()
     
     // Saved data
     var servers = [Server]()
@@ -47,23 +45,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        
         splitView.delegate = self
+        
+        splitView.preferredDisplayMode = .allVisible
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
         window!.rootViewController = splitView
         
-        let roomsNav = UINavigationController(rootViewController: roomsView)
-        
-        let roomNav = UINavigationController(rootViewController: roomView)
-        
-        splitView.viewControllers = [roomsNav, roomNav]
-        
         window!.tintColor = UIColor.orange
-        window!.makeKeyAndVisible()
         
         loadData()
+        
+        splitView.viewControllers = [
+            UINavigationController(rootViewController: RoomsTableViewController(style: .plain)),
+            UINavigationController(rootViewController: UITableViewController(style: .plain))
+        ]
+        
+        window!.makeKeyAndVisible()
         
         return true
     }
@@ -90,17 +89,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         saveData()
-    }
-    
-    func show(room: Room) {
-        if splitView.isCollapsed {
-            // Done on iPhone
-            roomView.updateWith(room: room)
-            roomsView.navigationController?.pushViewController(roomView, animated: true)
-        } else {
-            // We can only use the notification if the view controller will exist
-            NotificationCenter.default.post(name: Notifications.DisplayedRoomDidChange, object: room)
-        }
     }
     
     func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) -> Server {
