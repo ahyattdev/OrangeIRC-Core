@@ -63,6 +63,8 @@ public class User: NSObject, NSCoding {
     public var idleTime: Date?
     public var channelList: [String]?
     public var `class`: Class?
+    public var awayMessage: String?
+    public var away: Bool?
     
     public init(name: String) {
         self.name = name

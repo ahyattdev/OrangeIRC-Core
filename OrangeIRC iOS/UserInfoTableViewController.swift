@@ -71,6 +71,13 @@ class UserInfoTableViewController : UITableViewController {
         }
         
         // Away info
+        if let away = user.away {
+            if away, let awayMessage = user.awayMessage {
+                rowData[0][1] = awayMessage
+            } else {
+                rowData[0][1] = NSLocalizedString("NOT_AWAY", comment: "")
+            }
+        }
         
         // IP
         rowData[1][0] = user.ip

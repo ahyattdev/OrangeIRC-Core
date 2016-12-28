@@ -442,11 +442,25 @@ extension Server {
             
             let user = userCache.getOrCreateUser(nickname: message.target[0])
             
+            if user.awayMessage == nil {
+                user.away = false
+            }
+            
             if user.class == nil {
                 user.class = .Normal
             }
             
             delegate?.infoWasUpdated(user)
+        
+        case Command.Reply.AWAY:
+            guard message.target.count == 1, let awayMessage = message.parameters else {
+                break
+            }
+            
+            let user = userCache.getOrCreateUser(nickname: message.target[0])
+            
+            user.awayMessage = awayMessage
+            user.away = true
             
         default:
             print(message.message)

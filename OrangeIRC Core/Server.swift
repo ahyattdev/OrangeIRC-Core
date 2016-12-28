@@ -214,6 +214,8 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     }
     
     public func fetchInfo(_ user: User) {
+        user.awayMessage = nil
+        user.away = nil
         write(string: "\(Command.WHOIS) \(user.name)")
     }
     
