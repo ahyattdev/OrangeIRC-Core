@@ -155,7 +155,15 @@ class RoomTableViewController : UITableViewController {
             
             let messageLogEvent = logEvent as! MessageLogEvent
             cell.textView.text = messageLogEvent.contents
-            cell.label.attributedText = messageLogEvent.sender.coloredName(for: room)
+            let to = NSLocalizedString("TO", comment: "")
+            let attr = NSMutableAttributedString(attributedString: messageLogEvent.sender.coloredName(for: room))
+            
+            if let replyTo = messageLogEvent.replyTo {
+                attr.append(NSAttributedString(string: " \(to) "))
+                attr.append(replyTo.coloredName(for: room))
+            }
+            
+            cell.label.attributedText = attr
             
             return cell
             

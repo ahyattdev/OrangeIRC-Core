@@ -9,7 +9,7 @@
 import UIKit
 import OrangeIRCCore
 
-class ServersViewController : UITableViewController {
+class ServersTableViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

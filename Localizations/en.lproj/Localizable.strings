@@ -165,3 +165,5 @@ PING = "Ping";
 LOCAL_TIME = "Local Time";
 
 CLIENT_INFO = "Client Info";
+
+TO = "to";

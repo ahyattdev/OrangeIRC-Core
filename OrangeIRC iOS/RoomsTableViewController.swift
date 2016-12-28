@@ -107,7 +107,7 @@ class RoomsTableViewController : UITableViewController {
     }
     
     func serversButton() {
-        let servers = ServersViewController()
+        let servers = ServersTableViewController()
         let nav = UINavigationController(rootViewController: servers)
         modalPresentationStyle = .overCurrentContext
         present(nav, animated: true, completion: nil)

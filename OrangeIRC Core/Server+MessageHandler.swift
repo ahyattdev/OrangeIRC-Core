@@ -300,7 +300,7 @@ extension Server {
                     break
                 }
                 
-                let logEvent = MessageLogEvent(contents: contents, sender: sender!)
+                let logEvent = MessageLogEvent(contents, sender: sender!, userCache: userCache)
                 room!.log.append(logEvent)
                 delegate?.recieved(logEvent: logEvent, for: room!)
             }

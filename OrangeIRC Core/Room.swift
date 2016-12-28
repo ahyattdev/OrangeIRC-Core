@@ -122,7 +122,7 @@ public class Room : NSObject, NSCoding {
             for part in messageParts {
                 server!.write(string: "\(commandPrefix)\(part)")
                 
-                let logEvent = MessageLogEvent(contents: part, sender: server!.userCache.me)
+                let logEvent = MessageLogEvent(part, sender: server!.userCache.me, userCache: server!.userCache)
                 log.append(logEvent)
                 server!.delegate?.recieved(logEvent: logEvent, for: self)
             }
