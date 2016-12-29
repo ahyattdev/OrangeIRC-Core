@@ -104,6 +104,7 @@
 		6A7A6A061D29D0850012D037 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A041D29D0850012D037 /* Room.swift */; };
 		6A82A07F1D24332A00F81A1B /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A07D1D24332A00F81A1B /* Command.swift */; };
 		6A8B031C1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */; };
+		6AA8CC801E14982C007CB6C5 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AA8CC7F1E14982C007CB6C5 /* Launch Screen.xib */; };
 		6ADD58DF1D29DB330051DB28 /* RoomsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58DE1D29DB330051DB28 /* RoomsTableViewController.swift */; };
 		6ADD58E11D29DD220051DB28 /* ServersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58E01D29DD220051DB28 /* ServersTableViewController.swift */; };
 		6ADD58E31D29E4890051DB28 /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */; };
@@ -211,6 +212,7 @@
 		6A7A6A041D29D0850012D037 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		6A82A07D1D24332A00F81A1B /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AppDelegate.swift"; sourceTree = "<group>"; };
+		6AA8CC7F1E14982C007CB6C5 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		6ABAD4481DD70A4400D1B689 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		6ABAD4491DD70C2500D1B689 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6ABAD44A1DD70C8100D1B689 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			children = (
 				66A75B051D234694001161A3 /* Assets.xcassets */,
 				66A75B0A1D234694001161A3 /* Info.plist */,
+				6AA8CC7F1E14982C007CB6C5 /* Launch Screen.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 			files = (
 				6AF4264C1D2CAD060029250A /* Localizable.strings in Resources */,
 				66A75B061D234694001161A3 /* Assets.xcassets in Resources */,
+				6AA8CC801E14982C007CB6C5 /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,7 +962,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1019,7 +1022,6 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

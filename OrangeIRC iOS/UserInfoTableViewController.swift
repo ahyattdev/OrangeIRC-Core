@@ -152,9 +152,6 @@ class UserInfoTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "")
         
-        cell.textLabel?.font = cell.textLabel?.font.withSize(14)
-        cell.detailTextLabel?.font = cell.detailTextLabel?.font.withSize(14)
-        
         cell.textLabel?.text = rowNames[indexPath.section][indexPath.row]
         
         if let data = rowData[indexPath.section][indexPath.row] {

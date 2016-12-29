@@ -150,7 +150,7 @@ class RoomTableViewController : UITableViewController {
             let cell = TextViewCell()
             
             // Make the text stationary
-            cell.textView.isSelectable = false
+            //cell.textView.isSelectable = false
             cell.textView.isScrollEnabled = false
             
             let messageLogEvent = logEvent as! MessageLogEvent

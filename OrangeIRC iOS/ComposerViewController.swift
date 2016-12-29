@@ -45,6 +45,8 @@ class ComposerViewController : UIViewController {
         
         view = textView
         
+        textView.font = UIFont.systemFont(ofSize: 17)
+        
         if let initialText = initialText {
             textView.text = initialText
         }

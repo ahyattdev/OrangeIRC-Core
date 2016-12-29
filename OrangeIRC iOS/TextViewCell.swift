@@ -17,6 +17,7 @@ class TextViewCell : UITableViewCell {
         super.init(style: .default, reuseIdentifier: nil)
         
         textView.isEditable = false
+        textView.dataDetectorTypes = .all
         textView.font = UIFont.systemFont(ofSize: 17)
         
         label.font = UIFont.systemFont(ofSize: 12)

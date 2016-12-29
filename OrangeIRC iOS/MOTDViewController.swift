@@ -34,6 +34,7 @@ class MOTDViewController : UIViewController {
         let textView = UITextView()
         
         textView.isEditable = false
+        textView.dataDetectorTypes = .all
         textView.text = server.motd
         
         view = textView

@@ -45,8 +45,6 @@ class RoomsTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
-        cell.textLabel?.font = cell.textLabel?.font.withSize(14)
-        cell.detailTextLabel?.font = cell.detailTextLabel?.font.withSize(14)
         cell.accessoryType = .disclosureIndicator
         
         let room = appDelegate.rooms[indexPath.row]

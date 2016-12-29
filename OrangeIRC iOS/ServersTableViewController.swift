@@ -48,9 +48,6 @@ class ServersTableViewController : UITableViewController {
         
         let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
-        cell.textLabel?.font = cell.textLabel?.font.withSize(14)
-        cell.detailTextLabel?.font = cell.detailTextLabel?.font.withSize(14)
-        
         cell.textLabel!.text = server.host
         
         if server.isRegistered {
