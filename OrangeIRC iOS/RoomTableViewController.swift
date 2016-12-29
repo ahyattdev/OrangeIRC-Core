@@ -187,4 +187,35 @@ class RoomTableViewController : UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        let event = room.log[indexPath.row]
+        
+        return event is MessageLogEvent
+    }
+    
+    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        let event = room.log[indexPath.row]
+        
+        if event is MessageLogEvent {
+            if action == #selector(copy(_:)) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+        if action == #selector(copy(_:)), let event = room.log[indexPath.row] as? MessageLogEvent {
+            let pasteBoard = UIPasteboard.general
+            pasteBoard.string = event.contents
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+        let event = room.log[indexPath.row]
+        
+        return event is MessageLogEvent
+    }
+    
 }
