@@ -9,7 +9,7 @@
 import UIKit
 import OrangeIRCCore
 
-class RoomTableViewController : UITableViewController {
+class RoomTableViewController : UITableViewController, MessageCellDelegate {
     
     let room: Room
     
@@ -46,6 +46,12 @@ class RoomTableViewController : UITableViewController {
         
         title = room.name
         navigationItem.prompt = room.server!.host
+        
+        let replyToSender = UIMenuItem(title: NSLocalizedString("REPLY", comment: ""), action: #selector(reply(sender:message:)))
+        let replyToRecipient = UIMenuItem(title: NSLocalizedString("REPLY_TO_RECIPIENT", comment: ""), action: #selector(reply(recipient:message:)))
+        
+        UIMenuController.shared.menuItems = [replyToSender, replyToRecipient]
+        UIMenuController.shared.update()
     }
     
     func roomDataChanged(_ notification: NSNotification) {
@@ -57,37 +63,6 @@ class RoomTableViewController : UITableViewController {
         composerButton.isEnabled = room.server!.isRegistered && room.isJoined
         detailButton.isEnabled = true
     }
-    
-/*    func updateWith(room: Any?) {
-        // Only run this on iPad
-        if !appDelegate.splitView.isCollapsed && navigationController!.visibleViewController != self {
-            navigationController!.popToViewController(self, animated: true)
-        }
-        
-        if self.room != nil {
-            // Stop observing the old room
-            NotificationCenter.default.removeObserver(tableView, name: Notifications.RoomLogDidChange, object: room)
-        }
-        
-        guard let newRoom = room as? Room else {
-            // Remove the details button and title
-            title = nil
-            navigationItem.rightBarButtonItems = nil
-            return
-        }
-        
-        title = newRoom.name
-        navigationItem.prompt = newRoom.server!.host
-        
-        self.room = newRoom
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadLog), name: Notifications.RoomLogDidChange, object: room)
-        
-        // Don't show the option to compose a message if we are not in the room
-        updateButtons()
-        
-        tableView.reloadData()
-    }*/
     
     func reloadLog() {
         // New messages are on the log, reload display
@@ -102,10 +77,9 @@ class RoomTableViewController : UITableViewController {
     }
     
     func showMessageComposer() {
-        let composer = ComposerViewController(room)
-        let nav = UINavigationController(rootViewController: composer)
+        let composer = ComposerTableViewController(room: room, mode: .Composer)
         modalPresentationStyle = .formSheet
-        present(nav, animated: true, completion: nil)
+        present(UINavigationController(rootViewController: composer), animated: true, completion: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -146,26 +120,10 @@ class RoomTableViewController : UITableViewController {
             
             return regularCell
             
-        } else if logEvent is MessageLogEvent {
-            let cell = TextViewCell()
-            
-            // Make the text stationary
-            //cell.textView.isSelectable = false
-            cell.textView.isScrollEnabled = false
-            
-            let messageLogEvent = logEvent as! MessageLogEvent
-            cell.textView.text = messageLogEvent.contents
-            let to = NSLocalizedString("TO", comment: "")
-            let attr = NSMutableAttributedString(attributedString: messageLogEvent.sender.coloredName(for: room))
-            
-            if let replyTo = messageLogEvent.replyTo {
-                attr.append(NSAttributedString(string: " \(to) "))
-                attr.append(replyTo.coloredName(for: room))
-            }
-            
-            cell.label.attributedText = attr
-            
-            return cell
+        } else if let msgEvent = logEvent as? MessageLogEvent {
+            let msgCell = MessageCell(message: msgEvent, room: room, showLabel: true)
+            msgCell.delegate = self
+            return msgCell
             
         } else {
             print("Unknown log event, could not be rendered")
@@ -181,7 +139,7 @@ class RoomTableViewController : UITableViewController {
         let event = room.log[indexPath.row]
         
         if let msgEvent = event as? MessageLogEvent {
-            return TextViewCell.getHeight(msgEvent.contents, width: tableView.frame.width - 32)
+            return TextViewCell.getHeight(msgEvent.contents, width: tableView.frame.width - 32, showLabel: true)
         } else {
             return super.tableView(tableView, heightForRowAt: indexPath)
         }
@@ -196,8 +154,10 @@ class RoomTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         let event = room.log[indexPath.row]
         
-        if event is MessageLogEvent {
-            if action == #selector(copy(_:)) {
+        if let msgEvent = event as? MessageLogEvent {
+            if action == #selector(copy(_:)) || action == #selector(reply(sender:message:)){
+                return true
+            } else if action == #selector(reply(recipient:message:)), msgEvent.replyTo != nil {
                 return true
             }
         }
@@ -206,9 +166,24 @@ class RoomTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
-        if action == #selector(copy(_:)), let event = room.log[indexPath.row] as? MessageLogEvent {
-            let pasteBoard = UIPasteboard.general
-            pasteBoard.string = event.contents
+        if let msgEvent = room.log[indexPath.row] as? MessageLogEvent {
+            
+            switch action {
+                
+            case #selector(copy(_:)):
+                let pasteBoard = UIPasteboard.general
+                pasteBoard.string = msgEvent.contents
+                
+            case #selector(reply(sender:message:)):
+                reply(sender: msgEvent.sender, message: msgEvent)
+                
+            case #selector(reply(recipient:message:)):
+                reply(recipient: msgEvent.replyTo!, message: msgEvent)
+                
+            default:
+                break
+            }
+            
         }
     }
     
@@ -218,4 +193,19 @@ class RoomTableViewController : UITableViewController {
         return event is MessageLogEvent
     }
     
+    func reply(sender: User, message: MessageLogEvent) {
+        let composer = ComposerTableViewController(message: message, room: room, mode: .ReplyToSender)
+        modalPresentationStyle = .formSheet
+        present(UINavigationController(rootViewController: composer), animated: true, completion: nil)
+    }
+    
+    func reply(recipient: User, message: MessageLogEvent) {
+        let composer = ComposerTableViewController(message: message, room: room, mode: .ReplyToRecipient)
+        modalPresentationStyle = .formSheet
+        present(UINavigationController(rootViewController: composer), animated: true, completion: nil)
+    }
+    
+    func showInfo(_ user: User) {
+        
+    }
 }

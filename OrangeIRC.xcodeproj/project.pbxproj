@@ -11,7 +11,6 @@
 		661AF5021D2C809E00CFC190 /* ServerSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */; };
 		661AF5041D2C833700CFC190 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5031D2C833700CFC190 /* Notifications.swift */; };
 		661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5051D2C89E900CFC190 /* TextFieldCell.swift */; };
-		663D71921D7C64C300202EF2 /* ComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663D71911D7C64C300202EF2 /* ComposerViewController.swift */; };
 		667BB2E91D29C1990029AB2D /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
 		667BB2EA1D29C1990029AB2D /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
 		667BB2EC1D29C2F60029AB2D /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
@@ -26,7 +25,6 @@
 		669FCF1F1D2891B6000117C5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF1D1D2891B6000117C5 /* Message.swift */; };
 		669FCF221D289A96000117C5 /* Server+MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF201D289A96000117C5 /* Server+MessageHandler.swift */; };
 		66A75AFF1D234694001161A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75AFE1D234694001161A3 /* AppDelegate.swift */; };
-		66A75B061D234694001161A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66A75B051D234694001161A3 /* Assets.xcassets */; };
 		66A75B341D23486F001161A3 /* LogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B2E1D23483C001161A3 /* LogEvent.swift */; };
 		66A75B371D234885001161A3 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B351D234885001161A3 /* Server.swift */; };
 		66A75B401D23496C001161A3 /* ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3E1D23496C001161A3 /* ServerDelegate.swift */; };
@@ -104,10 +102,14 @@
 		6A7A6A061D29D0850012D037 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A041D29D0850012D037 /* Room.swift */; };
 		6A82A07F1D24332A00F81A1B /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A07D1D24332A00F81A1B /* Command.swift */; };
 		6A8B031C1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */; };
-		6AA8CC801E14982C007CB6C5 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AA8CC7F1E14982C007CB6C5 /* Launch Screen.xib */; };
+		6A9FEB621E15E49700F5CF4D /* SegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */; };
+		6A9FEB641E15F13500F5CF4D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A9FEB631E15F13500F5CF4D /* Launch Screen.storyboard */; };
 		6ADD58DF1D29DB330051DB28 /* RoomsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58DE1D29DB330051DB28 /* RoomsTableViewController.swift */; };
 		6ADD58E11D29DD220051DB28 /* ServersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58E01D29DD220051DB28 /* ServersTableViewController.swift */; };
 		6ADD58E31D29E4890051DB28 /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */; };
+		6AE1F6C31E14C4AB002AE37B /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F6C21E14C4AB002AE37B /* MessageCell.swift */; };
+		6AE1F6C51E14C623002AE37B /* ComposerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F6C41E14C623002AE37B /* ComposerTableViewController.swift */; };
+		6AE1F6C71E14D444002AE37B /* MessageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F6C61E14D444002AE37B /* MessageCellDelegate.swift */; };
 		6AF4264C1D2CAD060029250A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6AF4264E1D2CAD060029250A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -162,7 +164,6 @@
 		661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSettingsTableViewController.swift; sourceTree = "<group>"; };
 		661AF5031D2C833700CFC190 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		661AF5051D2C89E900CFC190 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
-		663D71911D7C64C300202EF2 /* ComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposerViewController.swift; sourceTree = "<group>"; };
 		667BB2E81D29C1990029AB2D /* Server+Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Log.swift"; sourceTree = "<group>"; };
 		667BB2EB1D29C2F60029AB2D /* Server+Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Room.swift"; sourceTree = "<group>"; };
 		66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
@@ -175,7 +176,6 @@
 		669FCF201D289A96000117C5 /* Server+MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+MessageHandler.swift"; sourceTree = "<group>"; };
 		66A75AFB1D234694001161A3 /* OrangeIRC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrangeIRC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A75AFE1D234694001161A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		66A75B051D234694001161A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66A75B0A1D234694001161A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66A75B171D2346ED001161A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66A75B251D234737001161A3 /* OrangeIRCCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OrangeIRCCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,13 +212,17 @@
 		6A7A6A041D29D0850012D037 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		6A82A07D1D24332A00F81A1B /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AppDelegate.swift"; sourceTree = "<group>"; };
-		6AA8CC7F1E14982C007CB6C5 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlCell.swift; sourceTree = "<group>"; };
+		6A9FEB631E15F13500F5CF4D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6ABAD4481DD70A4400D1B689 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		6ABAD4491DD70C2500D1B689 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6ABAD44A1DD70C8100D1B689 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6ADD58DE1D29DB330051DB28 /* RoomsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomsTableViewController.swift; sourceTree = "<group>"; };
 		6ADD58E01D29DD220051DB28 /* ServersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServersTableViewController.swift; sourceTree = "<group>"; };
 		6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
+		6AE1F6C21E14C4AB002AE37B /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		6AE1F6C41E14C623002AE37B /* ComposerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposerTableViewController.swift; sourceTree = "<group>"; };
+		6AE1F6C61E14D444002AE37B /* MessageCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellDelegate.swift; sourceTree = "<group>"; };
 		6AF4264D1D2CAD060029250A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -289,9 +293,8 @@
 		660568871D78ED1C00A2502B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				66A75B051D234694001161A3 /* Assets.xcassets */,
+				6A9FEB631E15F13500F5CF4D /* Launch Screen.storyboard */,
 				66A75B0A1D234694001161A3 /* Info.plist */,
-				6AA8CC7F1E14982C007CB6C5 /* Launch Screen.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -362,7 +365,7 @@
 				661AF5031D2C833700CFC190 /* Notifications.swift */,
 				6ADD58DE1D29DB330051DB28 /* RoomsTableViewController.swift */,
 				6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */,
-				663D71911D7C64C300202EF2 /* ComposerViewController.swift */,
+				6AE1F6C41E14C623002AE37B /* ComposerTableViewController.swift */,
 				669DF7011D7CE96B007F82DB /* MOTDViewController.swift */,
 				6605688D1D7901C400A2502B /* RoomInfoTableViewController.swift */,
 				6A1EECF11E142A5800A67C35 /* UsersSearchResultsController.swift */,
@@ -399,6 +402,9 @@
 				6A18EAE71D5BC66C00AF1EF9 /* SwitchCell.swift */,
 				661AF5051D2C89E900CFC190 /* TextFieldCell.swift */,
 				6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */,
+				6AE1F6C21E14C4AB002AE37B /* MessageCell.swift */,
+				6AE1F6C61E14D444002AE37B /* MessageCellDelegate.swift */,
+				6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -677,9 +683,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A9FEB641E15F13500F5CF4D /* Launch Screen.storyboard in Resources */,
 				6AF4264C1D2CAD060029250A /* Localizable.strings in Resources */,
-				66A75B061D234694001161A3 /* Assets.xcassets in Resources */,
-				6AA8CC801E14982C007CB6C5 /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,7 +737,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AE1F6C71E14D444002AE37B /* MessageCellDelegate.swift in Sources */,
 				661AF5041D2C833700CFC190 /* Notifications.swift in Sources */,
+				6A9FEB621E15E49700F5CF4D /* SegmentedControlCell.swift in Sources */,
 				6ADD58DF1D29DB330051DB28 /* RoomsTableViewController.swift in Sources */,
 				6A1EECF21E142A5800A67C35 /* UsersSearchResultsController.swift in Sources */,
 				6605688E1D7901C400A2502B /* RoomInfoTableViewController.swift in Sources */,
@@ -741,14 +748,15 @@
 				6ADD58E11D29DD220051DB28 /* ServersTableViewController.swift in Sources */,
 				6A8B031C1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift in Sources */,
 				6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */,
+				6AE1F6C51E14C623002AE37B /* ComposerTableViewController.swift in Sources */,
 				661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */,
 				6A18EAE81D5BC66C00AF1EF9 /* SwitchCell.swift in Sources */,
 				6A7325151E11E30300AFCC0B /* UserInfoTableViewController.swift in Sources */,
 				6ADD58E31D29E4890051DB28 /* RoomTableViewController.swift in Sources */,
-				663D71921D7C64C300202EF2 /* ComposerViewController.swift in Sources */,
 				6A3B389D1DA359860004E868 /* AddRoomTableViewController.swift in Sources */,
 				6A66A1111DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift in Sources */,
 				669DF7021D7CE96B007F82DB /* MOTDViewController.swift in Sources */,
+				6AE1F6C31E14C4AB002AE37B /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,7 +969,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1021,7 +1028,6 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

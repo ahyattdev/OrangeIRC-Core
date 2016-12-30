@@ -49,6 +49,12 @@ public extension Server {
     }
     
     @discardableResult
+    public func startPrivateMessageSession(_ otherNick: String, with message: String) {
+        startPrivateMessageSession(otherNick)
+        write(string: "\(Command.PRIVMSG) \(otherNick) :\(message)")
+    }
+    
+    @discardableResult
     public func startPrivateMessageSession(_ otherNick: String) -> Room {
         // Should handle everything from creating the room to telling the delegate about it
         // We started a new private message session

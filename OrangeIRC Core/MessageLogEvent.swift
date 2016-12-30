@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MessageLogEvent : LogEvent, CustomDebugStringConvertible {
+public class MessageLogEvent : LogEvent {
     
     public var contents: String
     public var sender: User
@@ -29,10 +29,6 @@ public class MessageLogEvent : LogEvent, CustomDebugStringConvertible {
                 }
             }
         }
-    }
-    
-    public var debugDescription: String {
-        return "MessageLogEvent(contents: \(contents), sender: \(sender.name)"
     }
     
 }

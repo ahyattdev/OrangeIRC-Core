@@ -166,4 +166,14 @@ LOCAL_TIME = "Local Time";
 
 CLIENT_INFO = "Client Info";
 
-TO = "to";
+TO_UPPERCASE = "To";
+
+TO_LOWERCASE = "to";
+
+ON = "on";
+
+NEW_MESSAGE = "New Message";
+
+REPLY = "Reply";
+
+SEND = "Send";
