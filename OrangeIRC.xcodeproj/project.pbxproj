@@ -200,6 +200,9 @@
 		6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomTableViewController.swift; sourceTree = "<group>"; };
 		6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
 		6A4BB74D1D25F1500032B5D0 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		6A558D341E16BF150077BBF4 /* OrangeIRC.xcf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OrangeIRC.xcf; sourceTree = "<group>"; };
+		6A558D351E16BF2F0077BBF4 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
+		6A558D361E16C01B0077BBF4 /* OrangeIRC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrangeIRC.png; sourceTree = "<group>"; };
 		6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		6A66A1101DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UISplitViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
@@ -335,6 +338,9 @@
 				6ABAD44A1DD70C8100D1B689 /* LICENSE */,
 				6ABAD4491DD70C2500D1B689 /* README.md */,
 				6A7325161E11F7EB00AFCC0B /* CONTRIBUTORS.md */,
+				6A558D351E16BF2F0077BBF4 /* TODO.md */,
+				6A558D341E16BF150077BBF4 /* OrangeIRC.xcf */,
+				6A558D361E16C01B0077BBF4 /* OrangeIRC.png */,
 				6ABAD4481DD70A4400D1B689 /* docs */,
 				6AF4264E1D2CAD060029250A /* Localizable.strings */,
 				66A75AFD1D234694001161A3 /* OrangeIRC iOS */,
