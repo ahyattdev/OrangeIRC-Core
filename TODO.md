@@ -1,5 +1,5 @@
 # TODO
-* Keep connections alive in the background
+* Keep connections alive in the background
 * Display notifications for new messages
 * Badge rooms and the app for new messages
 * Add room info for private message rooms
