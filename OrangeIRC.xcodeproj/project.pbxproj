@@ -112,6 +112,7 @@
 		6AE1F6C51E14C623002AE37B /* ComposerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F6C41E14C623002AE37B /* ComposerTableViewController.swift */; };
 		6AE1F6C71E14D444002AE37B /* MessageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F6C61E14D444002AE37B /* MessageCellDelegate.swift */; };
 		6AF4264C1D2CAD060029250A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6AF4264E1D2CAD060029250A /* Localizable.strings */; };
+		6AF88F9F1E17388100FD9A9D /* Screenshots in Resources */ = {isa = PBXBuildFile; fileRef = 6AF88F9E1E17388100FD9A9D /* Screenshots */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +230,7 @@
 		6AE1F6C41E14C623002AE37B /* ComposerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposerTableViewController.swift; sourceTree = "<group>"; };
 		6AE1F6C61E14D444002AE37B /* MessageCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellDelegate.swift; sourceTree = "<group>"; };
 		6AF4264D1D2CAD060029250A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6AF88F9E1E17388100FD9A9D /* Screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screenshots; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,6 +344,7 @@
 				6A558D341E16BF150077BBF4 /* OrangeIRC.xcf */,
 				6A558D361E16C01B0077BBF4 /* OrangeIRC.png */,
 				6ABAD4481DD70A4400D1B689 /* docs */,
+				6AF88F9E1E17388100FD9A9D /* Screenshots */,
 				6AF4264E1D2CAD060029250A /* Localizable.strings */,
 				66A75AFD1D234694001161A3 /* OrangeIRC iOS */,
 				66A75B141D2346ED001161A3 /* OrangeIRC Core */,
@@ -692,6 +695,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AF88F9F1E17388100FD9A9D /* Screenshots in Resources */,
 				6A9FEB641E15F13500F5CF4D /* Launch Screen.storyboard in Resources */,
 				6A9FEB8D1E161B4E00F5CF4D /* Assets.xcassets in Resources */,
 				6AF4264C1D2CAD060029250A /* Localizable.strings in Resources */,

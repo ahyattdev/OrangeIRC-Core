@@ -6,3 +6,4 @@
 * Add ping, local time, and client info data to user info
 * Fix cell content alignment issues on iPad
 * Make reply detection more intelligent
+* Handle MODE messages
