@@ -150,80 +150,18 @@ class UserInfoTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "")
-        
-        cell.textLabel?.text = rowNames[indexPath.section][indexPath.row]
         
         if let data = rowData[indexPath.section][indexPath.row] {
+            let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+            cell.textLabel?.text = rowNames[indexPath.section][indexPath.row]
             cell.detailTextLabel?.text = data
+            return cell
         } else {
-            let act = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-            act.center = CGPoint(x: cell.contentView.bounds.width - (cell.contentView.bounds.height / 2), y: cell.contentView.bounds.height / 2)
-            cell.contentView.addSubview(act)
-            act.startAnimating()
+            let cell = ActivityIndicatorCell(style: .default, reuseIdentifier: nil)
+            cell.textLabel?.text = rowNames[indexPath.section][indexPath.row]
+            cell.activityIndicator.startAnimating()
+            return cell
         }
-        
-        switch (indexPath.section, indexPath.row) {
-            
-        case (0, 0):
-            // Class
-            break
-            
-        case (0, 1):
-            // Away Info
-            break
-            
-            
-        case (1, 0):
-            // IP
-            break
-            
-        case (1, 1):
-            // Hostname
-            break
-            
-        case (1, 2):
-            // Username
-            break
-            
-        case (1, 3):
-            // Realname
-            break
-            
-            
-        case (2, 0):
-            // Server
-            break
-            
-        case (2, 1):
-            // Rooms
-            break
-            
-        case (3, 0):
-            // Time connected
-            break
-            
-        case (3, 1):
-            // Time idle
-            break
-            
-            
-        case (4, 0):
-            // Ping
-            break
-            
-        case (4, 1):
-            // Local time
-            break
-            
-        case (4, 2):
-            // Client info
-            break
-            
-        default:
-            break
-        }
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {

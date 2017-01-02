@@ -25,7 +25,7 @@ class SwitchCell : UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.switch.frame.origin = CGPoint(x: contentView.frame.width - self.switch.frame.width - separatorInset.right, y: (contentView.frame.height - self.switch.frame.height) / 2)
+        self.switch.frame.origin = CGPoint(x: contentView.frame.width - self.switch.frame.width - separatorInset.left - separatorInset.right, y: (contentView.frame.height - self.switch.frame.height) / 2)
         
         
         if let textLabel = textLabel {

@@ -46,7 +46,7 @@ class ServersTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let server = self.appDelegate.servers[indexPath.row]
         
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+        var cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
         cell.textLabel!.text = server.host
         
@@ -54,10 +54,9 @@ class ServersTableViewController : UITableViewController {
             cell.detailTextLabel?.text = NSLocalizedString("CONNECTED", comment: "Connected")
         } else if server.isConnectingOrRegistering {
             // Add an activity indicator
-            let act = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-            act.center = CGPoint(x: cell.contentView.bounds.width - (cell.contentView.bounds.height / 2), y: cell.contentView.bounds.height / 2)
-            cell.contentView.addSubview(act)
-            act.startAnimating()
+            cell = ActivityIndicatorCell(style: .default, reuseIdentifier: nil)
+            cell.textLabel?.text = server.host
+            (cell as! ActivityIndicatorCell).activityIndicator.startAnimating()
         } else {
             cell.detailTextLabel?.text = NSLocalizedString("NOT_CONNECTED", comment: "Not Connected")
         }
