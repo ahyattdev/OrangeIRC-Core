@@ -78,8 +78,9 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
     
     func showMessageComposer() {
         let composer = ComposerTableViewController(room: room, mode: .Composer)
-        modalPresentationStyle = .formSheet
-        present(UINavigationController(rootViewController: composer), animated: true, completion: nil)
+        let nav = UINavigationController(rootViewController: composer)
+        nav.modalPresentationStyle = .formSheet
+        present(nav, animated: true, completion: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -196,14 +197,16 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
     
     func reply(sender: User, message: MessageLogEvent) {
         let composer = ComposerTableViewController(message: message, room: room, mode: .ReplyToSender)
-        modalPresentationStyle = .formSheet
-        present(UINavigationController(rootViewController: composer), animated: true, completion: nil)
+        let nav = UINavigationController(rootViewController: composer)
+        nav.modalPresentationStyle = .formSheet
+        present(nav, animated: true, completion: nil)
     }
     
     func reply(recipient: User, message: MessageLogEvent) {
         let composer = ComposerTableViewController(message: message, room: room, mode: .ReplyToRecipient)
-        modalPresentationStyle = .formSheet
-        present(UINavigationController(rootViewController: composer), animated: true, completion: nil)
+        let nav = UINavigationController(rootViewController: composer)
+        nav.modalPresentationStyle = .formSheet
+        present(nav, animated: true, completion: nil)
     }
     
     func showInfo(_ user: User) {

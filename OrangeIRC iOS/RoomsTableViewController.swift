@@ -102,7 +102,7 @@ class RoomsTableViewController : UITableViewController {
     func serversButton() {
         let servers = ServersTableViewController()
         let nav = UINavigationController(rootViewController: servers)
-        modalPresentationStyle = .overCurrentContext
+        nav.modalPresentationStyle = .formSheet
         present(nav, animated: true, completion: nil)
     }
     
@@ -119,8 +119,9 @@ class RoomsTableViewController : UITableViewController {
         }
         
         let addRoom = AddRoomTableViewController(style: .grouped)
-        modalPresentationStyle = .pageSheet
-        navigationController?.present(UINavigationController(rootViewController: addRoom), animated: true, completion: nil)
+        let nav = UINavigationController(rootViewController: addRoom)
+        nav.modalPresentationStyle = .formSheet
+        navigationController?.present(nav, animated: true, completion: nil)
     }
     
 }

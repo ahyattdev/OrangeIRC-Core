@@ -14,7 +14,7 @@ class ServersTableViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateServerDisplay), name: Notifications.ServerStateDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateServerDisplay), name: Notifications.ServerStateDidChange, object: nil)
         
         title = NSLocalizedString("SERVERS", comment: "Servers")
         
@@ -32,7 +32,7 @@ class ServersTableViewController : UITableViewController {
     }
     
     func updateServerDisplay() {
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,11 +40,11 @@ class ServersTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.appDelegate.servers.count
+        return appDelegate.servers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let server = self.appDelegate.servers[indexPath.row]
+        let server = appDelegate.servers[indexPath.row]
         
         var cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
@@ -65,17 +65,17 @@ class ServersTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let server = self.appDelegate.servers[indexPath.row]
+        let server = appDelegate.servers[indexPath.row]
         let message = NSLocalizedString("SERVER_OPTIONS", comment: "Server options")
         let serverOptions = UIAlertController(title: server.host, message: message, preferredStyle: .actionSheet)
         
-        serverOptions.popoverPresentationController?.sourceView = self.view
+        serverOptions.popoverPresentationController?.sourceView = view
         
         // Edits a server's settings
         let settings = UIAlertAction(title: NSLocalizedString("SETTINGS", comment: ""), style: .default, handler: { a in
             let editor = ServerSettingsTableViewController(style: .grouped, edit: server)
             let nav = UINavigationController(rootViewController: editor)
-            self.modalPresentationStyle = .pageSheet
+            nav.modalPresentationStyle = .formSheet
             self.present(nav, animated: true, completion: nil)
             
         })
@@ -110,17 +110,17 @@ class ServersTableViewController : UITableViewController {
         let cancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil)
         serverOptions.addAction(cancelAction)
         
-        self.present(serverOptions, animated: true, completion: nil)
+        present(serverOptions, animated: true, completion: nil)
         
-        self.tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let server = self.appDelegate.servers[indexPath.row]
+        let server = appDelegate.servers[indexPath.row]
         
         switch editingStyle {
         case .delete:
-            self.appDelegate.delete(server: server)
+            appDelegate.delete(server: server)
         case .insert:
             break
         case .none:
@@ -151,18 +151,18 @@ class ServersTableViewController : UITableViewController {
     func addServer() {
         let addServerViewController = ServerSettingsTableViewController(style: .grouped)
         let nav = UINavigationController(rootViewController: addServerViewController)
-        modalPresentationStyle = .pageSheet
+        nav.modalPresentationStyle = .formSheet
         present(nav, animated: true, completion: nil)
     }
     
     func close() {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func showMOTD(server: Server) {
         let motdViewer = MOTDViewController(server)
         let nav = UINavigationController(rootViewController: motdViewer)
-        modalPresentationStyle = .pageSheet
+        nav.modalPresentationStyle = .pageSheet
         present(nav, animated: true, completion: nil)
     }
 }
