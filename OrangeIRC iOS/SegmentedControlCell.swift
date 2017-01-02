@@ -31,7 +31,9 @@ class SegmentedControlCell : UITableViewCell {
     }
     
     override func layoutSubviews() {
-        segmentedControl.frame = CGRect(x: 16, y: 3, width: contentView.frame.width - 32, height: contentView.frame.height - 6)
+        super.layoutSubviews()
+        
+        segmentedControl.frame = CGRect(x: separatorInset.left, y: separatorInset.top, width: contentView.frame.width - separatorInset.left - separatorInset.right, height: contentView.frame.height - separatorInset.top - separatorInset.bottom)
     }
     
 }

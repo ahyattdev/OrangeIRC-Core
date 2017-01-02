@@ -177,3 +177,7 @@ NEW_MESSAGE = "New Message";
 REPLY = "Reply";
 
 SEND = "Send";
+
+REQUIRED_FIELD_EMPTY = "Required Field Empty";
+
+THE_FIELD_IS_EMPTY = "The [NAME] field is empty.";

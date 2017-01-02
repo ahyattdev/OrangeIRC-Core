@@ -15,7 +15,7 @@ class SwitchCell : UITableViewCell {
     init() {
         super.init(style: .default, reuseIdentifier: nil)
         
-        //contentView.addSubview(self.switch)
+        contentView.addSubview(self.switch)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,17 +25,15 @@ class SwitchCell : UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let switchHeight = self.switch.frame.height
-        let switchWidth = self.switch.frame.width
+        self.switch.frame.origin = CGPoint(x: contentView.frame.width - self.switch.frame.width - separatorInset.right, y: (contentView.frame.height - self.switch.frame.height) / 2)
         
-        let cellHeight = contentView.frame.height
-        let cellWidth = contentView.frame.width
         
-        let horizontalPadding: CGFloat = 13.0
-        
-        self.switch.frame = CGRect(x: cellWidth - switchWidth - horizontalPadding, y: (cellHeight / 2) - (switchHeight / 2), width: switchWidth, height: switchHeight)
-        
-        contentView.addSubview(self.switch)
+        if let textLabel = textLabel {
+            let otherWidth = separatorInset.left + separatorInset.right + self.switch.frame.width + 6
+            if textLabel.intrinsicContentSize.width > otherWidth {
+                textLabel.frame.size.width = contentView.frame.width - otherWidth
+            }
+        }
     }
     
 }

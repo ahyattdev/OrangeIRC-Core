@@ -100,7 +100,6 @@ class ServerSettingsTableViewController : UITableViewController {
                 textFieldCell.textField.placeholder = NSLocalizedString("IRC_DOT_EXAMPLE_DOT_COM", comment: "irc.example.com")
                 textFieldCell.textField.keyboardType = .URL
                 self.hostCell = textFieldCell
-                hostCell!.tag = 0
                 
                 if mode == .Edit {
                     hostCell!.textField.text = server!.host
@@ -111,7 +110,6 @@ class ServerSettingsTableViewController : UITableViewController {
                 textFieldCell.textField.placeholder = "6667"
                 textFieldCell.textField.keyboardType = .numberPad
                 self.portCell = textFieldCell
-                portCell!.tag = 1
                 
                 if mode == .Edit {
                     portCell!.textField.text = String(server!.port)
@@ -122,7 +120,6 @@ class ServerSettingsTableViewController : UITableViewController {
                 textFieldCell.textField.placeholder = OPTIONAL
                 textFieldCell.textField.isSecureTextEntry = true
                 self.passwordCell = textFieldCell
-                passwordCell!.tag = 2
                 
                 if mode == .Edit {
                     passwordCell!.textField.text = server!.password
@@ -147,7 +144,6 @@ class ServerSettingsTableViewController : UITableViewController {
                 textFieldCell.textLabel!.text = NSLocalizedString("NICKNAME", comment: "Nickname")
                 textFieldCell.textField.placeholder = REQUIRED
                 self.nicknameCell = textFieldCell
-                nicknameCell!.tag = 3
                 
                 if mode == .Edit {
                     nicknameCell!.textField.text = server!.nickname
@@ -157,7 +153,6 @@ class ServerSettingsTableViewController : UITableViewController {
                 textFieldCell.textLabel!.text = NSLocalizedString("USERNAME", comment: "Username")
                 textFieldCell.textField.placeholder = REQUIRED
                 self.usernameCell = textFieldCell
-                usernameCell!.tag = 4
                 
                 if mode == .Edit {
                     usernameCell!.textField.text = server!.username
@@ -168,7 +163,6 @@ class ServerSettingsTableViewController : UITableViewController {
                 textFieldCell.textField.placeholder = REQUIRED
                 textFieldCell.textField.autocapitalizationType = .words
                 self.realnameCell = textFieldCell
-                realnameCell!.tag = 5
                 
                 if mode == .Edit {
                     realnameCell!.textField.text = server!.realname
@@ -195,6 +189,15 @@ class ServerSettingsTableViewController : UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    func showMissingField(_ name: String, textField: UITextField) {
+        let message = NSLocalizedString("THE_FIELD_IS_EMPTY", comment: "").replacingOccurrences(of: "[NAME]", with: name.lowercased())
+        let alert = UIAlertController(title: NSLocalizedString("REQUIRED_FIELD_EMPTY", comment: ""), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { a in
+            textField.becomeFirstResponder()
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
     func doneButton() {
         // TODO: Implement sanity checks
         
@@ -202,7 +205,32 @@ class ServerSettingsTableViewController : UITableViewController {
             
         case .Add:
             // Make a new server
-            let server = appDelegate.addServer(host: (hostCell?.textField.text)!, port: Int((portCell?.textField.text)!)!, nickname: (nicknameCell?.textField.text)!, username: (usernameCell?.textField.text)!, realname: (realnameCell?.textField.text)!, password: (passwordCell?.textField.text)!)
+            guard let host = hostCell?.textField.text, !hostCell!.textField.text!.isEmpty else {
+                showMissingField(NSLocalizedString("HOST", comment: ""), textField: hostCell!.textField)
+                return
+            }
+            guard let port = Int(portCell!.textField.text!), !portCell!.textField.text!.isEmpty else {
+                showMissingField(NSLocalizedString("PORT", comment: ""), textField: portCell!.textField)
+                return
+            }
+            guard let nickname = nicknameCell?.textField.text, !nicknameCell!.textField.text!.isEmpty else {
+                showMissingField(NSLocalizedString("NICKNAME", comment: ""), textField: nicknameCell!.textField)
+                return
+            }
+            guard let username = usernameCell?.textField.text, !usernameCell!.textField.text!.isEmpty else {
+                showMissingField(NSLocalizedString("USERNAME", comment: ""), textField: usernameCell!.textField)
+                return
+            }
+            guard let realname = realnameCell?.textField.text, !realnameCell!.textField.text!.isEmpty else {
+                showMissingField(NSLocalizedString("REALNAME", comment: ""), textField: realnameCell!.textField)
+                return
+            }
+            guard let password = passwordCell?.textField.text else {
+                return
+            }
+            
+            let server = appDelegate.addServer(host: host, port: port, nickname: nickname, username: username, realname: realname, password: password)
+            
             server.autoJoin = autoJoinCell!.switch.isOn
             
             dismiss(animated: true, completion: nil)

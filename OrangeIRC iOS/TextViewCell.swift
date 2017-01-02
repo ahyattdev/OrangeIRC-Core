@@ -43,11 +43,11 @@ class TextViewCell : UITableViewCell {
         
         textView.frame.size = textView.sizeThatFits(CGSize(width: contentView.frame.width - 32, height: contentView.frame.height - txtOffset))
         
-        textView.frame.size.width = contentView.frame.width - 32
+        textView.frame.size.width = contentView.frame.width - separatorInset.left - separatorInset.right
         
-        textView.frame.origin = CGPoint(x: 16, y: txtOffset)
+        textView.frame.origin = CGPoint(x: separatorInset.left, y: txtOffset)
         
-        label.frame = CGRect(x: 16, y: 6, width: contentView.frame.width - 32, height: 12)
+        label.frame = CGRect(x: separatorInset.left, y: 6, width: contentView.frame.width - separatorInset.left - separatorInset.right, height: 12)
     }
     
     static func getHeight(_ text: String, width: CGFloat, showLabel: Bool) -> CGFloat {
