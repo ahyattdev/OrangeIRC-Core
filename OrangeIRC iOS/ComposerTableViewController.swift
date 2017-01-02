@@ -176,7 +176,6 @@ class ComposerTableViewController : UITableViewController, UITextViewDelegate {
             return TextViewCell.getHeight(message!.contents, width: tableView.frame.width - 32, showLabel: true)
         } else {
             let height = TextViewCell.getHeight(composedMessage, width: tableView.frame.width - 32, showLabel: false)
-            print(height)
             return height
         }
     }

@@ -43,22 +43,17 @@ class RoomsTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
-        
+        let cell = RightDetailSubtitleCell(reuseIdentifier: nil)
         cell.accessoryType = .disclosureIndicator
         
         let room = appDelegate.rooms[indexPath.row]
         
-        cell.textLabel!.text = "\(room.name) @ \(room.server!.host)"
+        cell.title.text = room.name
+        cell.detail.text = room.isJoined ? NSLocalizedString("JOINED", comment: "") : NSLocalizedString("NOT_JOINED", comment: "")
+        cell.detail.textColor = room.isJoined ? UIColor.darkText : UIColor.lightGray
         
-        if room.isJoined {
-            cell.detailTextLabel!.text = NSLocalizedString("JOINED", comment: "Not Joined")
-            cell.textLabel!.textColor = UIColor.darkText
-        } else {
-            cell.detailTextLabel!.text = NSLocalizedString("NOT_JOINED", comment: "Not Joined")
-            cell.textLabel!.textColor = UIColor.lightGray
-        }
-        
+        cell.subtitle.text = room.server!.host
+ 
         return cell
     }
     

@@ -113,6 +113,7 @@
 		6AE1F6C71E14D444002AE37B /* MessageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F6C61E14D444002AE37B /* MessageCellDelegate.swift */; };
 		6AF4264C1D2CAD060029250A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6AF4264E1D2CAD060029250A /* Localizable.strings */; };
 		6AF88F9F1E17388100FD9A9D /* Screenshots in Resources */ = {isa = PBXBuildFile; fileRef = 6AF88F9E1E17388100FD9A9D /* Screenshots */; };
+		6AF88FA11E174E1C00FD9A9D /* RightDetailSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF88FA01E174E1C00FD9A9D /* RightDetailSubtitleCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +232,7 @@
 		6AE1F6C61E14D444002AE37B /* MessageCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellDelegate.swift; sourceTree = "<group>"; };
 		6AF4264D1D2CAD060029250A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6AF88F9E1E17388100FD9A9D /* Screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screenshots; sourceTree = "<group>"; };
+		6AF88FA01E174E1C00FD9A9D /* RightDetailSubtitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailSubtitleCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,6 +419,7 @@
 				6AE1F6C21E14C4AB002AE37B /* MessageCell.swift */,
 				6AE1F6C61E14D444002AE37B /* MessageCellDelegate.swift */,
 				6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */,
+				6AF88FA01E174E1C00FD9A9D /* RightDetailSubtitleCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				6A8B031C1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift in Sources */,
 				6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */,
 				6AE1F6C51E14C623002AE37B /* ComposerTableViewController.swift in Sources */,
+				6AF88FA11E174E1C00FD9A9D /* RightDetailSubtitleCell.swift in Sources */,
 				661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */,
 				6A18EAE81D5BC66C00AF1EF9 /* SwitchCell.swift in Sources */,
 				6A7325151E11E30300AFCC0B /* UserInfoTableViewController.swift in Sources */,

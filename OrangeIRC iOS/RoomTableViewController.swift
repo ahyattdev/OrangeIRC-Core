@@ -108,6 +108,7 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
             case is UserQuitLogEvent:
                 suffix = NSLocalizedString("QUIT", comment: "")
             default:
+                print("Unknown UserLogEvent, no caption found")
                 break
             }
             

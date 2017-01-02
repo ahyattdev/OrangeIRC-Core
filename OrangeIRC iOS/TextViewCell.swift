@@ -61,7 +61,6 @@ class TextViewCell : UITableViewCell {
         dummyTextView.attributedText = attributedText
         dummyTextView.font = UIFont.systemFont(ofSize: 17)
         let size = dummyTextView.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude))
-        print(size)
         return size.height + offset
     }
     
