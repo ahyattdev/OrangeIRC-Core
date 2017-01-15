@@ -9,7 +9,7 @@
 import UIKit
 import OrangeIRCCore
 
-class RoomsTableViewController : UITableViewController {
+class RoomsTableViewController : UITableViewController, UIViewControllerPreviewingDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,10 @@ class RoomsTableViewController : UITableViewController {
         
         // Add a shortcut for adding a room
         addKeyCommand(UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(addRoomButton), discoverabilityTitle: NSLocalizedString("ADD_ROOM", comment: "")))
+        
+        if traitCollection.forceTouchCapability == .available {
+            registerForPreviewing(with: self, sourceView: view)
+        }
     }
     
     func reloadTableView(notification: NSNotification) {
@@ -122,6 +126,26 @@ class RoomsTableViewController : UITableViewController {
         let nav = UINavigationController(rootViewController: addRoom)
         nav.modalPresentationStyle = .formSheet
         navigationController?.present(nav, animated: true, completion: nil)
+    }
+    
+    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let indexPath = tableView.indexPathForRow(at: location) else {
+            return nil
+        }
+        
+        let cell = tableView(tableView, cellForRowAt: indexPath)
+        
+        let room = appDelegate.rooms[indexPath.row]
+        
+        let tvc = RoomTableViewController(room)
+        
+        previewingContext.sourceRect = cell.frame
+        
+        return tvc
+    }
+    
+    public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        navigationController?.pushViewController(viewControllerToCommit, animated: true)
     }
     
 }
