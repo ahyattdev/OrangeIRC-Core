@@ -129,7 +129,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     }
     
     public func connect() {
-        socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
+        self.socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
         
         do {
             try self.socket?.connect(toHost: self.host, onPort: UInt16(self.port), withTimeout: TIMEOUT_CONNECT)
@@ -217,6 +217,18 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         user.awayMessage = nil
         user.away = nil
         write(string: "\(Command.WHOIS) \(user.name)")
+    }
+    
+    public func prepareForBackground() {
+        if let socket = socket {
+            if socket.isConnected {
+                socket.perform {
+                    if !socket.enableBackgroundingOnSocket() {
+                        print("Failed to enable backgrounding for server: \(self.host)")
+                    }
+                }
+            }
+        }
     }
     
 }

@@ -139,7 +139,8 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         
         let tvc = RoomTableViewController(room)
         
-        previewingContext.sourceRect = cell.frame
+        // FIXME: Not at the correct height
+        previewingContext.sourceRect = cell.contentView.frame
         
         return tvc
     }
