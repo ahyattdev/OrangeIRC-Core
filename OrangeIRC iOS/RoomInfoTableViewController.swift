@@ -207,7 +207,7 @@ class RoomInfoTableViewController : UITableViewController {
     
     func autojoinPress(sender: UISwitch, event: UIControlEvents) {
         room.autoJoin = sender.isOn
-        appDelegate.saveData()
+        ServerManager.shared.saveData()
     }
     
 }

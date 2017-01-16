@@ -43,14 +43,14 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appDelegate.rooms.count
+        return ServerManager.shared.rooms.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = RightDetailSubtitleCell(reuseIdentifier: nil)
         cell.accessoryType = .disclosureIndicator
         
-        let room = appDelegate.rooms[indexPath.row]
+        let room = ServerManager.shared.rooms[indexPath.row]
         
         cell.title.text = room.name
         cell.detail.text = room.isJoined ? NSLocalizedString("JOINED", comment: "") : NSLocalizedString("NOT_JOINED", comment: "")
@@ -63,7 +63,7 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let room = appDelegate.rooms[indexPath.row]
+        let room = ServerManager.shared.rooms[indexPath.row]
         
         let roomViewController = RoomTableViewController(room)
         
@@ -76,7 +76,7 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let room = self.appDelegate.rooms[indexPath.row]
+        let room = ServerManager.shared.rooms[indexPath.row]
         
         switch editingStyle {
         case .delete:
@@ -95,12 +95,12 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // Move the room
-        let room = appDelegate.rooms.remove(at: sourceIndexPath.row)
-        appDelegate.rooms.insert(room, at: destinationIndexPath.row)
+        let room = ServerManager.shared.rooms.remove(at: sourceIndexPath.row)
+        ServerManager.shared.rooms.insert(room, at: destinationIndexPath.row)
         
         // Post a notification and save data
         NotificationCenter.default.post(name: Notifications.RoomDataDidChange, object: nil)
-        appDelegate.saveData()
+        ServerManager.shared.saveData()
     }
     
     func serversButton() {
@@ -112,7 +112,7 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
     
     func addRoomButton() {
         // Make sure that there is a registered server for the room to be added on
-        guard self.appDelegate.registeredServers.count > 0 else {
+        guard ServerManager.shared.registeredServers.count > 0 else {
             let title = NSLocalizedString("NO_REGISTERED_SERVERS", comment: "Not connected to any registered servers")
             let message = NSLocalizedString("NO_REGISTERED_SERVERS_DESCRIPTION", comment: "No registered servers description")
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -135,14 +135,17 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         
         let cell = tableView(tableView, cellForRowAt: indexPath)
         
-        let room = appDelegate.rooms[indexPath.row]
+        let room = ServerManager.shared.rooms[indexPath.row]
         
         let tvc = RoomTableViewController(room)
         
         // FIXME: Not at the correct height
         previewingContext.sourceRect = cell.contentView.frame
         
-        return tvc
+        let nav = UINavigationController(rootViewController: tvc)
+        
+        // Wrap in a navigation controller so we get a title
+        return nav
     }
     
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {

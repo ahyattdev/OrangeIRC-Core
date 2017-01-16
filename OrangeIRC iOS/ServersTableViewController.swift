@@ -40,11 +40,11 @@ class ServersTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return appDelegate.servers.count
+        return ServerManager.shared.servers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let server = appDelegate.servers[indexPath.row]
+        let server = ServerManager.shared.servers[indexPath.row]
         
         var cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
@@ -65,7 +65,7 @@ class ServersTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let server = appDelegate.servers[indexPath.row]
+        let server = ServerManager.shared.servers[indexPath.row]
         let message = NSLocalizedString("SERVER_OPTIONS", comment: "Server options")
         let serverOptions = UIAlertController(title: server.host, message: message, preferredStyle: .actionSheet)
         
@@ -116,7 +116,7 @@ class ServersTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        let server = appDelegate.servers[indexPath.row]
+        let server = ServerManager.shared.servers[indexPath.row]
         
         switch editingStyle {
         case .delete:
@@ -135,12 +135,12 @@ class ServersTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // Move the Server
-        let server = appDelegate.servers.remove(at: sourceIndexPath.row)
-        appDelegate.servers.insert(server, at: destinationIndexPath.row)
+        let server = ServerManager.shared.servers.remove(at: sourceIndexPath.row)
+        ServerManager.shared.servers.insert(server, at: destinationIndexPath.row)
         
         // Post a notification and save data
         NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
-        appDelegate.saveData()
+        ServerManager.shared.saveData()
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

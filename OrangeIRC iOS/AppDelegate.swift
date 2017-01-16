@@ -12,9 +12,6 @@ import OrangeIRCCore
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFieldDelegate, UISplitViewControllerDelegate {
     
-    let dataFolder = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
-    var dataPaths: (servers: String, rooms: String)
-    
     var window: UIWindow?
     
     var nickservPasswordField: UITextField?
@@ -22,27 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     
     // View controllers
     let splitView = UISplitViewController()
-    
-    // Saved data
-    var servers = [Server]()
-    var rooms = [Room]()
-    
-    var registeredServers: [Server] {
-        var regServers = [Server]()
-        for server in self.servers {
-            if server.isRegistered {
-                regServers.append(server)
-            }
-        }
-        return regServers
-    }
-    
-    override init() {
-        dataPaths.servers = dataFolder.strings(byAppendingPaths: ["servers.plist"])[0]
-        dataPaths.rooms = dataFolder.strings(byAppendingPaths: ["rooms.plist"])[0]
-        
-        super.init()
-    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
         splitView.delegate = self
@@ -55,12 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         
         window!.tintColor = UIColor.orange
         
-        loadData()
+        ServerManager.shared.loadData()
         
         splitView.viewControllers = [
             UINavigationController(rootViewController: RoomsTableViewController(style: .plain)),
             UINavigationController(rootViewController: UITableViewController(style: .plain))
         ]
+        
+        ServerManager.shared.serverDelegate = self
         
         window!.makeKeyAndVisible()
         
@@ -75,9 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        saveData()
+        ServerManager.shared.saveData()
         
-        for server in servers {
+        for server in ServerManager.shared.servers {
             server.prepareForBackground()
         }
     }
@@ -92,78 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        saveData()
+        ServerManager.shared.saveData()
     }
-    
-    func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) -> Server {
-        let server = Server(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: String.Encoding.utf8)
-        servers.append(server)
-        server.delegate = self
-        server.connect()
-        saveData()
         
-        // Returned so additional configuration can be done
-        return server
-    }
-    
-    func loadData() {
-        guard let servers = NSKeyedUnarchiver.unarchiveObject(withFile: dataPaths.servers) else {
-            // Initialize the file
-            saveData()
-            return
-        }
-        
-        self.servers = servers as! [Server]
-        
-        guard let rooms = NSKeyedUnarchiver.unarchiveObject(withFile: dataPaths.rooms) else {
-            // Initialize the file
-            self.rooms = [Room]()
-            saveData()
-            return
-        }
-        
-        self.rooms = rooms as! [Room]
-        for room in self.rooms {
-            guard let server = server(for: room.serverUUID) else {
-                fatalError("A room without a matching server was loaded")
-            }
-            room.server = server
-            server.rooms.append(room)
-        }
-        
-        for server in self.servers {
-            server.delegate = self
-            if server.autoJoin {
-                server.connect()
-            }
-        }
-    }
-    
-    func saveData() {
-        NSKeyedArchiver.archiveRootObject(servers, toFile: dataPaths.servers)
-        NSKeyedArchiver.archiveRootObject(rooms, toFile: dataPaths.rooms)
-    }
-    
-    func server(for uuid: UUID) -> Server? {
-        for server in servers {
-            if server.uuid == uuid {
-                return server
-            }
-        }
-        return nil
-    }
-    
-    func rooms(for server: Server) -> [Room] {
-        var roomsOfServer = [Room]()
-        for room in rooms {
-            if room.serverUUID == server.uuid {
-                roomsOfServer.append(room)
-                room.server = server
-            }
-        }
-        return roomsOfServer
-    }
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField == nickservPasswordField {
             guard let text = textField.text as NSString? else {
@@ -200,6 +109,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         showAlertGlobally(alert)
     }
     
+    func delete(room: Room) {
+        let server = room.server!
+        
+        // Leave gracefully
+        if room.isJoined {
+            server.leave(channel: room.name)
+        }
+        
+        // Remove from the array of rooms of the server of this room
+        for i in 0 ..< server.rooms.count {
+            if server.rooms[i] == room {
+                server.rooms.remove(at: i)
+                break
+            }
+        }
+        
+        // Remove from the AppDelegate array of rooms
+        for i in 0 ..< ServerManager.shared.rooms.count {
+            if ServerManager.shared.rooms[i] == room {
+                ServerManager.shared.rooms.remove(at: i)
+                break
+            }
+        }
+        
+        ServerManager.shared.saveData()
+        dataChanged(room: nil)
+    }
+    
     func delete(server: Server) {
         let title = NSLocalizedString("DELETE_SERVER", comment: "Delete server").replacingOccurrences(of: "[SERVER]", with: server.host)
         let message = NSLocalizedString("DELETE_SERVER_DESCRIPTION", comment: "Delete server description")
@@ -211,9 +148,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         let deleteAction = UIAlertAction(title: NSLocalizedString("DELETE", comment: "Delete"), style: .destructive, handler: { (action) in
             server.disconnect()
             server.delegate = nil
-            for i in 0 ..< self.servers.count {
-                if self.servers[i] == server {
-                    self.servers.remove(at: i)
+            for i in 0 ..< ServerManager.shared.servers.count {
+                if ServerManager.shared.servers[i] == server {
+                    ServerManager.shared.servers.remove(at: i)
                     break
                 }
             }
@@ -222,37 +159,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
             
             NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
             
-            self.saveData()
+            ServerManager.shared.saveData()
         })
         confirmation.addAction(deleteAction)
         
         showAlertGlobally(confirmation)
-    }
-    
-    func delete(room: Room) {
-        let server = room.server!
-        
-        // Leave gracefully
-        server.leave(channel: room.name)
-        
-        // Remove from the array of rooms of the server of this room
-        for i in 0 ..< server.rooms.count {
-            if server.rooms[i] == room {
-                server.rooms.remove(at: i)
-                break
-            }
-        }
-        
-        // Remove from the AppDelegate array of rooms
-        for i in 0 ..< rooms.count {
-            if rooms[i] == room {
-                rooms.remove(at: i)
-                break
-            }
-        }
-        
-        saveData()
-        dataChanged(room: nil)
     }
     
     func didNotRespond(server: Server) {
@@ -285,9 +196,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     func joined(room: Room) {
-        if !rooms.contains(room) {
-            rooms.append(room)
-            saveData()
+        if !ServerManager.shared.rooms.contains(room) {
+            ServerManager.shared.rooms.append(room)
+            ServerManager.shared.saveData()
         }
         
         dataChanged(room: room)
@@ -316,12 +227,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     
     func dataChanged(room: Room?) {
         NotificationCenter.default.post(name: Notifications.RoomDataDidChange, object: room)
-        saveData()
+        ServerManager.shared.saveData()
     }
     
     func serverStateChanged() {
         NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: nil)
-        saveData()
+        ServerManager.shared.saveData()
     }
     
     func recieved(error: String, server: Server) {
@@ -357,7 +268,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         let done = NSLocalizedString("AUTHENTICATE", comment: "Done")
         let doneAction = UIAlertAction(title: done, style: .default, handler: { (action) in
             server.nickservPassword = self.nickservPasswordField!.text!
-            self.saveData()
+            ServerManager.shared.saveData()
             server.sendNickServPassword()
             
             self.nickservPasswordField?.delegate = nil
@@ -396,7 +307,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         let authenticate = NSLocalizedString("AUTHENTICATE", comment: "")
         let authAction = UIAlertAction(title: authenticate, style: .default, handler: { (action) in
             server.nickservPassword = self.nickservPasswordField!.text!
-            self.saveData()
+            ServerManager.shared.saveData()
             server.sendNickServPassword()
             
             self.nickservPasswordField?.delegate = nil

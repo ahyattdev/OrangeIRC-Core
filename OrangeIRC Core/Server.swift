@@ -131,6 +131,9 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     public func connect() {
         self.socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
         
+        // We like new protocols
+        self.socket!.isIPv4PreferredOverIPv6 = false
+        
         do {
             try self.socket?.connect(toHost: self.host, onPort: UInt16(self.port), withTimeout: TIMEOUT_CONNECT)
             self.isConnectingOrRegistering = true

@@ -44,7 +44,7 @@ class AddRoomTableViewController : UITableViewController {
         switch section {
         case 0:
             // Server to create the room on
-            return appDelegate.registeredServers.count
+            return ServerManager.shared.registeredServers.count
         case 1:
             // Room type
             return 2
@@ -85,7 +85,7 @@ class AddRoomTableViewController : UITableViewController {
         case 0:
             let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
             
-            let server = appDelegate.registeredServers[indexPath.row]
+            let server = ServerManager.shared.registeredServers[indexPath.row]
             
             if indexPath.row == 0 && selectedServer == nil {
                 selectedServer = server
@@ -153,7 +153,7 @@ class AddRoomTableViewController : UITableViewController {
         switch indexPath.section {
         case 0:
             // The server list
-            selectedServer = appDelegate.registeredServers[indexPath.row]
+            selectedServer = ServerManager.shared.registeredServers[indexPath.row]
             
             tableView.reloadSections(IndexSet(0 ..< 1), with: .automatic)
             

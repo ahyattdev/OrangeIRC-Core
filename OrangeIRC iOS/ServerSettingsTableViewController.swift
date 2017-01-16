@@ -229,7 +229,7 @@ class ServerSettingsTableViewController : UITableViewController {
                 return
             }
             
-            let server = appDelegate.addServer(host: host, port: port, nickname: nickname, username: username, realname: realname, password: password)
+            let server = ServerManager.shared.addServer(host: host, port: port, nickname: nickname, username: username, realname: realname, password: password)
             
             server.autoJoin = autoJoinCell!.switch.isOn
             
@@ -257,7 +257,7 @@ class ServerSettingsTableViewController : UITableViewController {
             server!.autoJoin = autoJoinCell!.switch.isOn
             
             // We should save data here
-            appDelegate.saveData()
+            ServerManager.shared.saveData()
             
             if shouldDisplayReconnectPrompt {
                 // Prompt the user to reconnect
