@@ -68,7 +68,7 @@ public extension Server {
         room.isJoined = true
         
         // We won't create a join room log event, those aren't really a thing with private messages
-        delegate?.joined(room: room)
+        NotificationCenter.default.post(name: Notifications.RoomCreated, object: room)
         
         return room
     }

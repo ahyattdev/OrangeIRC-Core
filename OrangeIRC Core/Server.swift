@@ -31,8 +31,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     }
     
     // MOTD support
-    public var motd = ""
-    public var finishedReadingMOTD = false
+    public var motd: String?
     
     public var log = [Message]()
     public var rooms: [Room] = [Room]()
@@ -65,8 +64,6 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     // Used for reconnect functionality
     private var connectOnDisconnect = false
-    
-    public var socketOpen = false
     
     // Used because the NickServ failed attempts notice comes in two NOTICEs
     var lastSentNickServFailedAttempts = -1
@@ -137,9 +134,9 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         do {
             try self.socket?.connect(toHost: self.host, onPort: UInt16(self.port), withTimeout: TIMEOUT_CONNECT)
             self.isConnectingOrRegistering = true
-            self.delegate?.startedConnecting(server: self)
+            self.delegate?.startedConnecting(self)
         } catch {
-            self.delegate?.didNotRespond(server: self)
+            self.delegate?.didNotRespond(self)
         }
     }
     
@@ -164,8 +161,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         
         self.isConnectingOrRegistering = false
         self.isRegistered = false
-        self.finishedReadingMOTD = false
-        self.motd = ""
+        self.motd = nil
         self.socket?.setDelegate(nil, delegateQueue: nil)
         self.socket = nil
         
@@ -176,7 +172,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         
         if notifyDelegate {
             // Only tell the delegate that we disconnected if we were connected
-            self.delegate?.didDisconnect(server: self)
+            self.delegate?.didDisconnect(self)
         }
         
         if connectOnDisconnect {

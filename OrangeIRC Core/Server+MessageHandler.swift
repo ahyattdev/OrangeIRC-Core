@@ -16,7 +16,7 @@ extension Server {
         switch message.command {
         case Command.Reply.WELCOME:
             self.isConnectingOrRegistering = false
-            self.delegate?.didRegister(server: self)
+            self.delegate?.registeredSuccessfully(self)
             self.isRegistered = true
             for room in rooms {
                 if room.joinOnConnect {
@@ -49,7 +49,7 @@ extension Server {
         case Command.ERROR:
             guard let errorMessage = message.parameters else {
                 print("Failed to get an ERROR message")
-                delegate?.recieved(error: NSLocalizedString("UNKNOWN_ERROR", comment: "Unknown Error"), server: self)
+                delegate?.recieved(error: NSLocalizedString("UNKNOWN_ERROR", comment: "Unknown Error"), on: self)
                 break
             }
             
@@ -58,7 +58,7 @@ extension Server {
                 break
             }
             
-            delegate?.recieved(error: errorMessage, server: self)
+            delegate?.recieved(error: errorMessage, on: self)
             
         case Command.JOIN:
             guard let nick = message.prefix?.nickname else {
@@ -128,7 +128,7 @@ extension Server {
             if message.target[0] == self.nickname {
                 if let servername = message.prefix?.servername, let message = message.parameters {
                     // Notice from the server, not a user
-                    delegate?.recieved(notice: message, sender: servername, server: self)
+                    delegate?.recieved(notice: message, sender: servername, on: self)
                     break
                 }
                 
@@ -141,7 +141,7 @@ extension Server {
                     // We take care of these
                     handleNickServ(noticeMessage)
                 } else {
-                    self.delegate?.recieved(notice: noticeMessage, sender: sender, server: self)
+                    self.delegate?.recieved(notice: noticeMessage, sender: sender, on: self)
                 }
             }
             
@@ -166,22 +166,25 @@ extension Server {
             }
             
             // This prevents a preceding newline at the start of the MOTD
-            motd = motd.isEmpty ? parameters : "\(self.motd)\n\(parameters)"
+            motd = motd == nil ? parameters : "\(self.motd)\n\(parameters)"
             
         case Command.Reply.ENDOFMOTD:
             // Clean the MOTD of "- "
-            motd = motd.replacingOccurrences(of: "\n- ", with: "\n")
-            
-            if motd.hasPrefix("- ") {
-                motd = motd.replacingCharacters(in: motd.range(of: "- ")!, with: "")
+            if var motd = motd {
+                motd = motd.replacingOccurrences(of: "\n- ", with: "\n")
+                
+                if motd.hasPrefix("- ") {
+                    motd = motd.replacingCharacters(in: motd.range(of: "- ")!, with: "")
+                }
+                
+                if motd.hasPrefix(" \n") {
+                    motd = motd.replacingCharacters(in: motd.range(of: " \n")!, with: "")
+                }
+                
+                self.motd = motd
+                
+                self.delegate?.motdUpdated(self)
             }
-            
-            if motd.hasPrefix(" \n") {
-                motd = motd.replacingCharacters(in: motd.range(of: " \n")!, with: "")
-            }
-            
-            self.finishedReadingMOTD = true
-            self.delegate?.finishedReadingMOTD(server: self)
             
         case Command.Reply.NOTOPIC:
             let channelName = message.target[0]
@@ -337,7 +340,7 @@ extension Server {
             
             room.hasCompleteUsersList = true
             room.sortUsers()
-            delegate?.finishedReadingUserList(room: room)
+            delegate?.finishedReadingUserList(room)
             
         case Command.QUIT:
             guard let nick = message.prefix?.nickname else {

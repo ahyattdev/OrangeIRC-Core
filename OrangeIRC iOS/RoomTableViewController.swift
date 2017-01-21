@@ -40,9 +40,9 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
         
         updateButtons()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(roomDataChanged(_:)), name: Notifications.RoomDataDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(roomDataChanged(_:)), name: Notifications.RoomStateUpdated, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadLog), name: Notifications.RoomLogDidChange, object: room)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadLog), name: Notifications.NewLogEventForRoom, object: room)
         
         title = room.name
         navigationItem.prompt = room.server!.host

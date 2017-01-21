@@ -151,7 +151,7 @@ class UserCache {
         
         if user.isSelf {
             channel.isJoined = true
-            server.delegate?.joined(room: channel)
+            NotificationCenter.default.post(name: Notifications.RoomStateUpdated, object: channel)
             // Do autojoin
             for i in 0 ..< server.roomsFlaggedForAutoJoin.count {
                 let roomName = server.roomsFlaggedForAutoJoin[i]
@@ -200,7 +200,7 @@ class UserCache {
             channel.isJoined = false
             // Reset the users on this channel
             channel.users.removeAll()
-            server.delegate?.left(room: channel)
+            NotificationCenter.default.post(name: Notifications.RoomStateUpdated, object: channel)
         } else {
             // Remove the user object from the room
             for i in 0 ..< channel.users.count {

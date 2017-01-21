@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class ServerManager {
+public class ServerManager : ServerDelegate {
     
     // Singleton
     public static let shared = ServerManager()
@@ -48,6 +48,8 @@ public class ServerManager {
         server.delegate = serverDelegate
         server.connect()
         saveData()
+        
+        NotificationCenter.default.post(name: Notifications.ServerCreated, object: server)
         
         // Returned so additional configuration can be done
         return server
@@ -111,4 +113,22 @@ public class ServerManager {
         return roomsOfServer
     }
     
+    public func delete(server: Server) {
+        server.disconnect()
+        server.delegate = nil
+        for i in 0 ..< servers.count {
+            if servers[i] == server {
+                servers.remove(at: i)
+                break
+            }
+        }
+        
+        for room in server.rooms {
+            NotificationCenter.default.post(name: Notifications.RoomDeleted, object: room)
+        }
+        
+        NotificationCenter.default.post(name: Notifications.ServerDeleted, object: server)
+        
+        saveData()
+    }
 }

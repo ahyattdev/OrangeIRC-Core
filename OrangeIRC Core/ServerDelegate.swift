@@ -10,31 +10,19 @@ import Foundation
 
 public protocol ServerDelegate {
     
-    func didNotRespond(server: Server)
-    func stoppedResponding(server: Server)
+    func didNotRespond(_ server: Server)
+    func stoppedResponding(_ server: Server)
+    func startedConnecting(_ server: Server)
+    func didDisconnect(_ server: Server)
+    func registeredSuccessfully(_ server: Server)
     
-    func recieved(error: String, server: Server)
-    
-    func connectedSucessfully(server: Server)
-    
-    func didRegister(server: Server)
-    
-    func recieved(notice: String, sender: String, server: Server)
-    
-    func finishedReadingUserList(room: Room)
-    func recievedTopic(room: Room)
-    
-    func joined(room: Room)
-    
-    func left(room: Room)
-    
-    func startedConnecting(server: Server)
-    
-    func finishedReadingMOTD(server: Server)
-    
-    func didDisconnect(server: Server)
-    
+    func recieved(notice: String, sender: String, on server: Server)
     func recieved(logEvent: LogEvent, for room: Room)
+    func recieved(error: String, on server: Server)
+    func recieved(topic: String, for room: Room)
+    
+    func finishedReadingUserList(_ room: Room)
+    func motdUpdated(_ server: Server)
     
     func nickservPasswordNeeded(_ server: Server)
     func nickservPasswordIncorrect(_ server: Server)

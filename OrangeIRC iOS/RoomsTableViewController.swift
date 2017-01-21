@@ -15,7 +15,9 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         super.viewDidLoad()
         
         // Reload the tableview when the room data changes
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(notification:)), name: Notifications.RoomDataDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(notification:)), name: Notifications.RoomStateUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(registerForUpdates(_:)), name: Notifications.RoomCreated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(notification:)), name: Notifications.RoomDeleted, object: nil)
         
         title = NSLocalizedString("ROOMS", comment: "Rooms")
         
@@ -31,6 +33,12 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: view)
+        }
+    }
+    
+    func registerForUpdates(_ notification: NSNotification) {
+        if let room = notification.object as? Room {
+            NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(notification:)), name: Notifications.RoomStateUpdated, object: room)
         }
     }
     
@@ -99,7 +107,7 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         ServerManager.shared.rooms.insert(room, at: destinationIndexPath.row)
         
         // Post a notification and save data
-        NotificationCenter.default.post(name: Notifications.RoomDataDidChange, object: nil)
+        NotificationCenter.default.post(name: Notifications.RoomStateUpdated, object: nil)
         ServerManager.shared.saveData()
     }
     

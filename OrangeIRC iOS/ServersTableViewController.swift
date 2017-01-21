@@ -97,7 +97,7 @@ class ServersTableViewController : UITableViewController {
             serverOptions.addAction(connectAction)
         }
         
-        if server.finishedReadingMOTD && server.isRegistered {
+        if server.motd != nil {
             // Add a show MOTD button
             let motd = NSLocalizedString("MOTD", comment: "MOTD")
             let motdAction = UIAlertAction(title: motd, style: .default, handler: { (action) in
@@ -120,7 +120,7 @@ class ServersTableViewController : UITableViewController {
         
         switch editingStyle {
         case .delete:
-            appDelegate.delete(server: server)
+            appDelegate.deleteWithConfirmation(server: server)
         case .insert:
             break
         case .none:
