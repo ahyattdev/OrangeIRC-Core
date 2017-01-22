@@ -18,22 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     var doneAction: UIAlertAction?
     
     // View controllers
-    let splitView = UISplitViewController()
+    static let splitView = UISplitViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        splitView.delegate = self
+        AppDelegate.splitView.delegate = self
         
-        splitView.preferredDisplayMode = .allVisible
+        AppDelegate.splitView.preferredDisplayMode = .allVisible
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        window!.rootViewController = splitView
+        window!.rootViewController = AppDelegate.splitView
         
         window!.tintColor = UIColor.orange
         
         ServerManager.shared.loadData()
         
-        splitView.viewControllers = [
+        AppDelegate.splitView.viewControllers = [
             UINavigationController(rootViewController: RoomsTableViewController(style: .plain)),
             UINavigationController(rootViewController: UITableViewController(style: .plain))
         ]
@@ -45,6 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         return true
     }
 
+    @objc(splitViewController:collapseSecondaryViewController:ontoPrimaryViewController:) func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        return true
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -98,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         vc.present(alert, animated: true, completion: nil)
     }
     
-    func deleteWithConfirmation(server: Server) {
+    static func deleteWithConfirmation(server: Server) {
         let title = NSLocalizedString("DELETE_SERVER", comment: "Delete server").replacingOccurrences(of: "[SERVER]", with: server.host)
         let message = NSLocalizedString("DELETE_SERVER_DESCRIPTION", comment: "Delete server description")
         let confirmation = UIAlertController(title: title, message: message, preferredStyle: .alert)

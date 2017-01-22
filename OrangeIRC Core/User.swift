@@ -18,7 +18,7 @@ public class User: NSObject, NSCoding {
         
         private init() { }
         
-        static let Name = "Name"
+        static let Nick = "Nick"
         
     }
     
@@ -47,9 +47,7 @@ public class User: NSObject, NSCoding {
     public var channels = [ChannelData]()
     
     // Nickname
-    public var name: String
-    
-    public var isSelf = false
+    public var nick: String
     
     public var isOnline = true
     
@@ -66,20 +64,20 @@ public class User: NSObject, NSCoding {
     public var awayMessage: String?
     public var away: Bool?
     
-    public init(name: String) {
-        self.name = name
+    public init(_ nick: String) {
+        self.nick = nick
     }
     
     public required convenience init?(coder aDecoder: NSCoder) {
-        guard let name = aDecoder.decodeObject(forKey: Coding.Name) as? String else {
+        guard let nick = aDecoder.decodeObject(forKey: Coding.Nick) as? String else {
             return nil
         }
         
-        self.init(name: name)
+        self.init(nick)
     }
     
     public func encode(with aCoder: NSCoder) {
-        aCoder.encode(name, forKey: Coding.Name)
+        aCoder.encode(nick, forKey: Coding.Nick)
     }
     
     public func getMode(for channel: String) -> Mode? {
@@ -174,7 +172,7 @@ public class User: NSObject, NSCoding {
             color = UIColor.lightGray
         }
         
-        if isSelf {
+        if room.server!.userCache.me == self {
             color = UIColor.orange
         }
         
@@ -184,9 +182,13 @@ public class User: NSObject, NSCoding {
     public func coloredName(for room: Room) -> NSAttributedString {
         // The properly colored attributes
         let attributes = [NSForegroundColorAttributeName : color(room: room)]
-        return NSAttributedString(string: name, attributes: attributes)
+        return NSAttributedString(string: nick, attributes: attributes)
     }
     
 #endif
+    
+    public static func ==(lhs: User, rhs: User) -> Bool {
+        return lhs.nick == rhs.nick
+    }
     
 }

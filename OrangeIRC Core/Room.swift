@@ -140,7 +140,7 @@ public class Room : NSObject, NSCoding {
     
     func sortUsers() {
         users.sort(by: { (a: User, b: User) -> Bool in
-            return a.name < b.name
+            return a.nick < b.nick
         })
     }
     

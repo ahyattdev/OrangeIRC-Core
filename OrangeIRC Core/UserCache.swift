@@ -18,14 +18,10 @@ class UserCache {
     }
     
     // Represents our user
-    var me: User
+    var me = User("")
     
     // The cache of users
     var users = [User]()
-    
-    init() {
-        me = User(name: "")
-    }
     
     func goOffline() {
         for user in users {
@@ -35,14 +31,13 @@ class UserCache {
     
     func set(server: Server) {
         _server = server
-        me.isSelf = true
-        me.name = server.nickname
+        me.nick = server.nickname
         users.append(me)
     }
     
     func getUser(by name: String) -> User? {
         for user in users {
-            if user.name == name {
+            if user.nick == name {
                 return user
             }
         }
@@ -84,7 +79,7 @@ class UserCache {
             updateMetadata(user: user, room: room, mode: splitUserData.mode)
             
             // If we have a private message room, we must mark it as not joined
-            if let privateRoom = server.roomFrom(name: user.name) {
+            if let privateRoom = server.roomFrom(name: user.nick) {
                 if !privateRoom.isJoined {
                     privateRoom.isJoined = true
                     
@@ -98,7 +93,7 @@ class UserCache {
     
     func cacheContains(nickname: String) -> Bool {
         for user in users {
-            if user.name == nickname {
+            if user.nick == nickname {
                 return true
             }
         }
@@ -114,7 +109,7 @@ class UserCache {
         }
         
         // If we have a private message room, we must mark it as not joined
-        if let privateRoom = server.roomFrom(name: user.name) {
+        if let privateRoom = server.roomFrom(name: user.nick) {
             if privateRoom.isJoined {
                 privateRoom.isJoined = false
                 
@@ -131,7 +126,7 @@ class UserCache {
         
         // Create it if necessary
         if !cacheContains(nickname: nickname) {
-            user = User(name: nickname)
+            user = User(nickname)
             users.append(user!)
         }
         return user!
@@ -149,7 +144,7 @@ class UserCache {
     func handleJoin(user: User, channel: Room) {
         user.isOnline = true
         
-        if user.isSelf {
+        if me == user {
             channel.isJoined = true
             NotificationCenter.default.post(name: Notifications.RoomStateUpdated, object: channel)
             // Do autojoin
@@ -168,7 +163,7 @@ class UserCache {
         channel.log.append(logEvent)
         server.delegate?.recieved(logEvent: logEvent, for: channel)
         
-        if let privateRoom = server.roomFrom(name: user.name) {
+        if let privateRoom = server.roomFrom(name: user.nick) {
             if !privateRoom.isJoined {
                 let onlineEvent = UserOnlineLogEvent(sender: user)
                 privateRoom.log.append(onlineEvent)
@@ -195,7 +190,7 @@ class UserCache {
     }
     
     func handleLeave(user: User, channel: Room) {
-        if user.isSelf {
+        if me == user {
             // We left
             channel.isJoined = false
             // Reset the users on this channel

@@ -132,7 +132,7 @@ public class ServerManager : ServerDelegate {
         saveData()
     }
     
-    func delete(room: Room) {
+    public func delete(room: Room) {
         let server = room.server!
         
         // Leave gracefully

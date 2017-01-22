@@ -75,7 +75,7 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         
         let roomViewController = RoomTableViewController(room)
         
-        appDelegate.splitView.showDetailViewController(UINavigationController(rootViewController: roomViewController), sender: nil)
+        AppDelegate.splitView.showDetailViewController(UINavigationController(rootViewController: roomViewController), sender: nil)
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -88,7 +88,7 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         
         switch editingStyle {
         case .delete:
-            self.appDelegate.delete(room)
+            ServerManager.shared.delete(room: room)
         case .insert:
             break
         case .none:

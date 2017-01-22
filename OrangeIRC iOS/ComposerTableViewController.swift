@@ -66,7 +66,7 @@ class ComposerTableViewController : UITableViewController, UITextViewDelegate {
             navigationItem.prompt = room.name
         } else {
             title = NSLocalizedString("REPLY", comment: "")
-            navigationItem.prompt = "\(NSLocalizedString("TO_UPPERCASE", comment: "")) \(otherUser!.name) \(NSLocalizedString("ON", comment: "")) \(room.name)"
+            navigationItem.prompt = "\(NSLocalizedString("TO_UPPERCASE", comment: "")) \(otherUser!.nick) \(NSLocalizedString("ON", comment: "")) \(room.name)"
         }
     }
     
@@ -84,10 +84,10 @@ class ComposerTableViewController : UITableViewController, UITextViewDelegate {
             // FIXME: Magic numbers
             if destinationPicker!.selectedSegmentIndex == 0 {
                 // Send on channel
-                room.send(message: "\(otherUser!.name): \(composedMessage)")
+                room.send(message: "\(otherUser!.nick): \(composedMessage)")
             } else {
                 // Send as private message
-                room.server!.startPrivateMessageSession(otherUser!.name, with: composedMessage)
+                room.server!.startPrivateMessageSession(otherUser!.nick, with: composedMessage)
             }
         }
         dismiss(animated: true, completion: nil)

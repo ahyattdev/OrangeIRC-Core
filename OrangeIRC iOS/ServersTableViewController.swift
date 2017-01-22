@@ -120,7 +120,7 @@ class ServersTableViewController : UITableViewController {
         
         switch editingStyle {
         case .delete:
-            appDelegate.deleteWithConfirmation(server: server)
+            AppDelegate.deleteWithConfirmation(server: server)
         case .insert:
             break
         case .none:

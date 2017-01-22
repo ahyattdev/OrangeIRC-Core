@@ -10,8 +10,6 @@
 		6605688E1D7901C400A2502B /* RoomInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605688D1D7901C400A2502B /* RoomInfoTableViewController.swift */; };
 		661AF5021D2C809E00CFC190 /* ServerSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */; };
 		661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5051D2C89E900CFC190 /* TextFieldCell.swift */; };
-		667BB2E91D29C1990029AB2D /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
-		667BB2EA1D29C1990029AB2D /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
 		667BB2EC1D29C2F60029AB2D /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
 		667BB2ED1D29C2F60029AB2D /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
 		66837D991D25E4A900F85410 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
@@ -60,7 +58,6 @@
 		6A2672A91E105D180087B331 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B351D234885001161A3 /* Server.swift */; };
 		6A2672AA1E105D180087B331 /* ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3E1D23496C001161A3 /* ServerDelegate.swift */; };
 		6A2672AB1E105D180087B331 /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
-		6A2672AC1E105D180087B331 /* Server+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2E81D29C1990029AB2D /* Server+Log.swift */; };
 		6A2672AD1E105D180087B331 /* Server+MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF201D289A96000117C5 /* Server+MessageHandler.swift */; };
 		6A2672AE1E105D180087B331 /* Server+Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */; };
 		6A2672AF1E105D180087B331 /* LogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B2E1D23483C001161A3 /* LogEvent.swift */; };
@@ -83,7 +80,6 @@
 		6A4BB74F1D25F1500032B5D0 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BB74D1D25F1500032B5D0 /* Tag.swift */; };
 		6A4BBD7E1E1A11B300987C45 /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BBD7D1E1A11B300987C45 /* ActivityIndicatorCell.swift */; };
 		6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */; };
-		6A66A1111DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66A1101DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift */; };
 		6A6CBFDE1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
 		6A6CBFDF1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
 		6A7325081E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7325071E11A9F000AFCC0B /* UserOnlineLogEvent.swift */; };
@@ -111,7 +107,6 @@
 		6A8389101E343896006ED94B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A83890F1E343896006ED94B /* Settings.swift */; };
 		6A8389111E343896006ED94B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A83890F1E343896006ED94B /* Settings.swift */; };
 		6A8389121E343896006ED94B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A83890F1E343896006ED94B /* Settings.swift */; };
-		6A8B031C1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */; };
 		6A9FEB621E15E49700F5CF4D /* SegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */; };
 		6A9FEB641E15F13500F5CF4D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A9FEB631E15F13500F5CF4D /* Launch Screen.storyboard */; };
 		6A9FEB8D1E161B4E00F5CF4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A9FEB8C1E161B4E00F5CF4D /* Assets.xcassets */; };
@@ -180,7 +175,6 @@
 		661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSettingsTableViewController.swift; sourceTree = "<group>"; };
 		661AF5031D2C833700CFC190 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = "../OrangeIRC iOS/Notifications.swift"; sourceTree = "<group>"; };
 		661AF5051D2C89E900CFC190 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
-		667BB2E81D29C1990029AB2D /* Server+Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Log.swift"; sourceTree = "<group>"; };
 		667BB2EB1D29C2F60029AB2D /* Server+Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Room.swift"; sourceTree = "<group>"; };
 		66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		66837D9F1D25E51100F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/Mac/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
@@ -220,7 +214,6 @@
 		6A558D351E16BF2F0077BBF4 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		6A558D361E16C01B0077BBF4 /* OrangeIRC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrangeIRC.png; sourceTree = "<group>"; };
 		6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
-		6A66A1101DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UISplitViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
 		6A7325071E11A9F000AFCC0B /* UserOnlineLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserOnlineLogEvent.swift; sourceTree = "<group>"; };
 		6A73250B1E11AA0700AFCC0B /* UserOfflineLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserOfflineLogEvent.swift; sourceTree = "<group>"; };
@@ -234,7 +227,6 @@
 		6A8389061E33F3A8006ED94B /* ServerManager+ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ServerManager+ServerDelegate.swift"; sourceTree = "<group>"; };
 		6A83890D1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+ServerDelegate.swift"; sourceTree = "<group>"; };
 		6A83890F1E343896006ED94B /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+AppDelegate.swift"; sourceTree = "<group>"; };
 		6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlCell.swift; sourceTree = "<group>"; };
 		6A9FEB631E15F13500F5CF4D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6A9FEB8C1E161B4E00F5CF4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -393,8 +385,6 @@
 			children = (
 				66A75AFE1D234694001161A3 /* AppDelegate.swift */,
 				6A83890D1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift */,
-				6A66A1101DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift */,
-				6A8B031B1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift */,
 				6ADD58DE1D29DB330051DB28 /* RoomsTableViewController.swift */,
 				6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */,
 				6AE1F6C41E14C623002AE37B /* ComposerTableViewController.swift */,
@@ -462,7 +452,6 @@
 				6A8389061E33F3A8006ED94B /* ServerManager+ServerDelegate.swift */,
 				66A75B3E1D23496C001161A3 /* ServerDelegate.swift */,
 				667BB2EB1D29C2F60029AB2D /* Server+Room.swift */,
-				667BB2E81D29C1990029AB2D /* Server+Log.swift */,
 				669FCF201D289A96000117C5 /* Server+MessageHandler.swift */,
 				669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */,
 				6A73250F1E11C06C00AFCC0B /* Server+NickServ.swift */,
@@ -791,7 +780,6 @@
 				66A75AFF1D234694001161A3 /* AppDelegate.swift in Sources */,
 				6A4BBD7E1E1A11B300987C45 /* ActivityIndicatorCell.swift in Sources */,
 				6ADD58E11D29DD220051DB28 /* ServersTableViewController.swift in Sources */,
-				6A8B031C1D2C9FEA0002A2C6 /* UIViewController+AppDelegate.swift in Sources */,
 				6A83890E1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift in Sources */,
 				6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */,
 				6AE1F6C51E14C623002AE37B /* ComposerTableViewController.swift in Sources */,
@@ -801,7 +789,6 @@
 				6A7325151E11E30300AFCC0B /* UserInfoTableViewController.swift in Sources */,
 				6ADD58E31D29E4890051DB28 /* RoomTableViewController.swift in Sources */,
 				6A3B389D1DA359860004E868 /* AddRoomTableViewController.swift in Sources */,
-				6A66A1111DB1B11700252A8D /* AppDelegate+UISplitViewControllerDelegate.swift in Sources */,
 				669DF7021D7CE96B007F82DB /* MOTDViewController.swift in Sources */,
 				6AE1F6C31E14C4AB002AE37B /* MessageCell.swift in Sources */,
 			);
@@ -822,7 +809,6 @@
 				66C858121D7B17FA009E486F /* UserPartLogEvent.swift in Sources */,
 				6AE6F90C1E2B29BC007CC0AE /* ServerManager.swift in Sources */,
 				669FCF221D289A96000117C5 /* Server+MessageHandler.swift in Sources */,
-				667BB2EA1D29C1990029AB2D /* Server+Log.swift in Sources */,
 				6A6CBFDF1D3DBDC500EC6051 /* RoomType.swift in Sources */,
 				6A7A6A061D29D0850012D037 /* Room.swift in Sources */,
 				6A4BB74F1D25F1500032B5D0 /* Tag.swift in Sources */,
@@ -855,7 +841,6 @@
 				66C858111D7B17FA009E486F /* UserPartLogEvent.swift in Sources */,
 				6AE6F90B1E2B29BC007CC0AE /* ServerManager.swift in Sources */,
 				66EDD2F11D2963E60013E7CC /* Message.swift in Sources */,
-				667BB2E91D29C1990029AB2D /* Server+Log.swift in Sources */,
 				6A6CBFDE1D3DBDC500EC6051 /* RoomType.swift in Sources */,
 				6A7A6A051D29D0850012D037 /* Room.swift in Sources */,
 				66EDD2EE1D2963E60013E7CC /* LogEvent.swift in Sources */,
@@ -917,7 +902,6 @@
 				6A7325121E11C06C00AFCC0B /* Server+NickServ.swift in Sources */,
 				6A2672B11E105D180087B331 /* UserLogEvent.swift in Sources */,
 				6A2672BB1E105D180087B331 /* UserCache.swift in Sources */,
-				6A2672AC1E105D180087B331 /* Server+Log.swift in Sources */,
 				6A2672AE1E105D180087B331 /* Server+Socket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -48,7 +48,7 @@ class UsersSearchResultsController : UITableViewController, UISearchResultsUpdat
             filteredUsers.removeAll()
         } else {
             filteredUsers = room.users.filter {
-                $0.name.lowercased().contains(searchController.searchBar.text!.lowercased())
+                $0.nick.lowercased().contains(searchController.searchBar.text!.lowercased())
             }
         }
         tableView.reloadData()
@@ -67,7 +67,7 @@ class UsersSearchResultsController : UITableViewController, UISearchResultsUpdat
         
         // The users list
         let user = filteredUsers[indexPath.row]
-        cell.textLabel!.text = user.name
+        cell.textLabel!.text = user.nick
         
         cell.textLabel!.textColor = user.color(room: room)
         

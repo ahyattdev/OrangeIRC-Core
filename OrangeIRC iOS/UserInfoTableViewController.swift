@@ -133,7 +133,7 @@ class UserInfoTableViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = user.name
+        title = user.nick
         navigationItem.prompt = server.host
     }
     

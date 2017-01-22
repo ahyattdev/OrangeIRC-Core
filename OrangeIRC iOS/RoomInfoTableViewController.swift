@@ -113,7 +113,7 @@ class RoomInfoTableViewController : UITableViewController {
             case 1:
                 // The users list
                 let user = room.users[indexPath.row]
-                cell.textLabel!.text = user.name
+                cell.textLabel!.text = user.nick
                 
                 cell.textLabel!.textColor = user.color(room: room)
                 
