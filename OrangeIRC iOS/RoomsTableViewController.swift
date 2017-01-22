@@ -88,7 +88,7 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         
         switch editingStyle {
         case .delete:
-            self.appDelegate.delete(room: room)
+            self.appDelegate.delete(room)
         case .insert:
             break
         case .none:

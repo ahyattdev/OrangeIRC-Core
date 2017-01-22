@@ -98,33 +98,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         vc.present(alert, animated: true, completion: nil)
     }
     
-    func delete(room: Room) {
-        let server = room.server!
-        
-        // Leave gracefully
-        if room.isJoined {
-            server.leave(channel: room.name)
-        }
-        
-        // Remove from the array of rooms of the server of this room
-        for i in 0 ..< server.rooms.count {
-            if server.rooms[i] == room {
-                server.rooms.remove(at: i)
-                break
-            }
-        }
-        
-        // Remove from the AppDelegate array of rooms
-        for i in 0 ..< ServerManager.shared.rooms.count {
-            if ServerManager.shared.rooms[i] == room {
-                ServerManager.shared.rooms.remove(at: i)
-                break
-            }
-        }
-        
-        ServerManager.shared.saveData()
-    }
-    
     func deleteWithConfirmation(server: Server) {
         let title = NSLocalizedString("DELETE_SERVER", comment: "Delete server").replacingOccurrences(of: "[SERVER]", with: server.host)
         let message = NSLocalizedString("DELETE_SERVER_DESCRIPTION", comment: "Delete server description")

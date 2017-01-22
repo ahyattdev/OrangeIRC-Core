@@ -131,4 +131,31 @@ public class ServerManager : ServerDelegate {
         
         saveData()
     }
+    
+    func delete(room: Room) {
+        let server = room.server!
+        
+        // Leave gracefully
+        if room.isJoined {
+            server.leave(channel: room.name)
+        }
+        
+        // Remove from the array of rooms of the server of this room
+        for i in 0 ..< server.rooms.count {
+            if server.rooms[i] == room {
+                server.rooms.remove(at: i)
+                break
+            }
+        }
+        
+        // Remove from the AppDelegate array of rooms
+        for i in 0 ..< rooms.count {
+            if rooms[i] == room {
+                rooms.remove(at: i)
+                break
+            }
+        }
+        
+        saveData()
+    }
 }
