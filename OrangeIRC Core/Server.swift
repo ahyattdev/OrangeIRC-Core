@@ -40,7 +40,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     public var isConnectingOrRegistering = false
     
-    public var userBitmask = 0
+    public var userBitmask: UInt8 = 0
     
     var socket: GCDAsyncSocket?
     

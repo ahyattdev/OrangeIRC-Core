@@ -13,26 +13,31 @@ extension ServerManager {
     
     public func didNotRespond(_ server: Server) {
         NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: server)
+        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
         serverDelegate?.didNotRespond(server)
     }
     
     public func stoppedResponding(_ server: Server) {
         NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: server)
+        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
         serverDelegate?.stoppedResponding(server)
     }
     
     public func startedConnecting(_ server: Server) {
         NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: server)
+        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
         serverDelegate?.startedConnecting(server)
     }
     
     public func didDisconnect(_ server: Server) {
         NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: server)
+        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
         serverDelegate?.didDisconnect(server)
     }
     
     public func registeredSuccessfully(_ server: Server) {
         NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: server)
+        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
         serverDelegate?.registeredSuccessfully(server)
     }
     

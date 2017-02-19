@@ -14,7 +14,7 @@ class ServersTableViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateServerDisplay), name: Notifications.ServerStateDidChange, object: nil)
+        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.ServerDataChanged, object: nil)
         
         title = NSLocalizedString("SERVERS", comment: "Servers")
         
@@ -29,10 +29,6 @@ class ServersTableViewController : UITableViewController {
         
         // Close this when the escape key is pressed
         addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(close), discoverabilityTitle: NSLocalizedString("CLOSE", comment: "")))
-    }
-    
-    func updateServerDisplay() {
-        tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
