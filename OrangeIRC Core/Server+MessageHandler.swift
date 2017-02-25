@@ -166,7 +166,7 @@ extension Server {
             }
             
             // This prevents a preceding newline at the start of the MOTD
-            motd = motd == nil ? parameters : "\(self.motd)\n\(parameters)"
+            motd = motd == nil ? parameters : "\(self.motd!)\n\(parameters)"
             
         case Command.Reply.ENDOFMOTD:
             // Clean the MOTD of "- "

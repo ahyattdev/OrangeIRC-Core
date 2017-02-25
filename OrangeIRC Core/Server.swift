@@ -79,7 +79,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.encoding = encoding
         uuid = UUID()
         super.init()
-        userCache.set(server: self)
+        userCache.server = self
     }
     
     public convenience init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding, password: String) {

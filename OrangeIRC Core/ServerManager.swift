@@ -56,20 +56,21 @@ public class ServerManager : ServerDelegate {
     public func loadData() {
         guard let loadedServers = NSKeyedUnarchiver.unarchiveObject(withFile: dataPaths.servers.path) else {
             // Initialize the file
+            servers = [Server]()
             saveData()
             return
         }
         
         servers = loadedServers as! [Server]
         
-        guard let rooms = NSKeyedUnarchiver.unarchiveObject(withFile: dataPaths.rooms.path) else {
+        guard let loadedRooms = NSKeyedUnarchiver.unarchiveObject(withFile: dataPaths.rooms.path) else {
             // Initialize the file
-            self.rooms = [Room]()
+            rooms = [Room]()
             saveData()
             return
         }
         
-        self.rooms = rooms as! [Room]
+        self.rooms = loadedRooms as! [Room]
         for room in self.rooms {
             guard let server = server(for: room.serverUUID) else {
                 fatalError("A room without a matching server was loaded")

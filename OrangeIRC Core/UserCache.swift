@@ -10,11 +10,14 @@ import Foundation
 
 class UserCache {
     
-    var _server: Server?
-    
     // The server associated with this cache
-    var server: Server {
-        return _server!
+    weak var server: Server! {
+        didSet {
+            me.nick = server.nickname
+            if !users.contains(me) {
+                users.append(me)
+            }
+        }
     }
     
     // Represents our user
@@ -27,12 +30,6 @@ class UserCache {
         for user in users {
             user.isOnline = false
         }
-    }
-    
-    func set(server: Server) {
-        _server = server
-        me.nick = server.nickname
-        users.append(me)
     }
     
     func getUser(by name: String) -> User? {
