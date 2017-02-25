@@ -30,7 +30,7 @@ class RoomInfoTableViewController : UITableViewController {
         
         let searchResultsController = UsersSearchResultsController(room, navigationController: navigationController!)
         
-        title = "\(self.room.name) \(NSLocalizedString("DETAILS", comment: "Information"))"
+        title = "\(self.room.name) \(localized("DETAILS"))"
         navigationItem.prompt = room.server!.displayName
         
         NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.RoomStateUpdated, object: room)
@@ -85,13 +85,13 @@ class RoomInfoTableViewController : UITableViewController {
                 case 0:
                     if !room.server!.isRegistered {
                         cell.textLabel!.textColor = UIColor.orange
-                        cell.textLabel!.text = NSLocalizedString("CONNECT_AND_JOIN", comment: "Join")
+                        cell.textLabel!.text = localized("CONNECT_AND_JOIN")
                     } else if room.isJoined {
                         cell.textLabel!.textColor = UIColor.red
-                        cell.textLabel!.text = NSLocalizedString("LEAVE", comment: "Leave")
+                        cell.textLabel!.text = localized("LEAVE")
                     } else {
                         cell.textLabel!.textColor = UIColor.orange
-                        cell.textLabel!.text = NSLocalizedString("JOIN", comment: "Join")
+                        cell.textLabel!.text = localized("JOIN")
                     }
                     
                 case 1:
@@ -102,7 +102,7 @@ class RoomInfoTableViewController : UITableViewController {
                     
                     switchCell.switch.addTarget(self, action: #selector(autojoinPress(sender:event:)), for: .touchUpInside)
                     
-                    switchCell.textLabel!.text = NSLocalizedString("AUTOMATICALLY_JOIN", comment: "")
+                    switchCell.textLabel!.text = localized("AUTOMATICALLY_JOIN")
                     
                     return switchCell
                     
@@ -144,7 +144,7 @@ class RoomInfoTableViewController : UITableViewController {
                 
             case 1:
                 // Users
-                return "\(room.users.count) \(NSLocalizedString("USERS_ONLINE", comment: ""))"
+                return "\(room.users.count) \(localized("USERS_ONLINE"))"
                 
             default:
                 return nil

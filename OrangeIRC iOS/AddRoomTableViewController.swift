@@ -25,10 +25,10 @@ class AddRoomTableViewController : UITableViewController {
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = doneButton
         
-        title = NSLocalizedString("ADD_ROOM", comment: "")
+        title = localized("ADD_ROOM")
         
         // Close this when the escape key is pressed
-        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(cancel), discoverabilityTitle: NSLocalizedString("CANCEL", comment: "")))
+        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(cancel), discoverabilityTitle: localized("CANCEL")))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,9 +63,9 @@ class AddRoomTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return NSLocalizedString("SERVER", comment: "")
+            return localized("SERVER")
         case 1:
-            return NSLocalizedString("ROOM_TYPE", comment: "")
+            return localized("ROOM_TYPE")
         default:
             return nil
         }
@@ -74,7 +74,7 @@ class AddRoomTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         switch section {
         case 0:
-            return NSLocalizedString("ADD_ROOM_SERVER_SECTION_DESCRIPTION", comment: "")
+            return localized("ADD_ROOM_SERVER_SECTION_DESCRIPTION")
         default:
             return nil
         }
@@ -126,15 +126,15 @@ class AddRoomTableViewController : UITableViewController {
                     cell.contentView.addSubview(roomNameField!)
                 }
                 roomNameField!.becomeFirstResponder()
-                roomNameField!.placeholder = NSLocalizedString("REQUIRED", comment: "")
-                cell.textLabel!.text = NSLocalizedString("ROOM_NAME", comment: "")
+                roomNameField!.placeholder = localized("REQUIRED")
+                cell.textLabel!.text = localized("ROOM_NAME")
                 roomNameField!.autocorrectionType = .no
                 roomNameField!.autocapitalizationType = .none
                 return cell
                 
             case 1:
                 let cell = SwitchCell()
-                cell.textLabel!.text = NSLocalizedString("AUTOMATICALLY_JOIN", comment: "")
+                cell.textLabel!.text = localized("AUTOMATICALLY_JOIN")
                 cell.switch.isOn = autoJoinSetting
                 cell.switch.addTarget(self, action: #selector(autojoinSwitchFlip(sender:event:)), for: .touchUpInside)
                 return cell
@@ -193,10 +193,10 @@ class AddRoomTableViewController : UITableViewController {
     
     func done() {
         guard roomNameField != nil && roomNameField!.text != nil && !roomNameField!.text!.isEmpty else {
-            let title = NSLocalizedString("INVALID_ROOM_NAME", comment: "")
-            let message = NSLocalizedString("INVALID_ROOM_NAME_MESSAGE", comment: "")
+            let title = localized("INVALID_ROOM_NAME")
+            let message = localized("INVALID_ROOM_NAME_MESSAGE")
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let ok = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil)
+            let ok = UIAlertAction(title: localized("OK"), style: .default, handler: nil)
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
             return
@@ -206,10 +206,10 @@ class AddRoomTableViewController : UITableViewController {
         let server = selectedServer!
         
         if selectedRoomType == .Channel && !Room.CHANNEL_PREFIXES.characterIsMember(unichar(name.utf8.first!)) {
-            let title = NSLocalizedString("INVALID_ROOM_NAME", comment: "")
-            let message = NSLocalizedString("MISSING_CHANNEL_PREFIX", comment: "")
+            let title = localized("INVALID_ROOM_NAME")
+            let message = localized("MISSING_CHANNEL_PREFIX")
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let ok = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil)
+            let ok = UIAlertAction(title: localized("OK"), style: .default, handler: nil)
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
             return

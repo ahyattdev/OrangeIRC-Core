@@ -56,17 +56,17 @@ class ComposerTableViewController : UITableViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: NSLocalizedString("SEND", comment: ""), style: .done, target: self, action: #selector(send))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: localized("SEND"), style: .done, target: self, action: #selector(send))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
         
-        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(cancel), discoverabilityTitle: NSLocalizedString("CANCEL", comment: "")))
+        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(cancel), discoverabilityTitle: localized("CANCEL")))
         
         if mode == .Composer {
-            title = NSLocalizedString("NEW_MESSAGE", comment: "")
+            title = localized("NEW_MESSAGE")
             navigationItem.prompt = room.name
         } else {
-            title = NSLocalizedString("REPLY", comment: "")
-            navigationItem.prompt = "\(NSLocalizedString("TO_UPPERCASE", comment: "")) \(otherUser!.nick) \(NSLocalizedString("ON", comment: "")) \(room.name)"
+            title = localized("REPLY")
+            navigationItem.prompt = "\(localized("TO_UPPERCASE")) \(otherUser!.nick) \(localized("ON")) \(room.name)"
         }
     }
     
@@ -129,8 +129,8 @@ class ComposerTableViewController : UITableViewController, UITextViewDelegate {
             
         } else if mode != .Composer && indexPath.section == 1 && indexPath.row == 0 {
             // Show destination picker
-            let onChannel = NSLocalizedString("ON_CHANNEL", comment: "")
-            let privateMessage = NSLocalizedString("BY_PRIVATE_MESSAGE", comment: "")
+            let onChannel = localized("ON_CHANNEL")
+            let privateMessage = localized("BY_PRIVATE_MESSAGE")
             let segmentCell = SegmentedControlCell(segments: [onChannel, privateMessage], target: nil, action: nil)
             segmentCell.segmentedControl.selectedSegmentIndex = 0
             self.destinationPicker = segmentCell.segmentedControl

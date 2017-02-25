@@ -16,9 +16,9 @@ public enum RoomType : String {
     public func localizedName() -> String {
         switch self {
         case .Channel:
-            return NSLocalizedString("CHANNEL", comment: "Channel")
+            return localized("CHANNEL")
         case .PrivateMessage:
-            return NSLocalizedString("PRIVATE_MESSAGE", comment: "Private Message")
+            return localized("PRIVATE_MESSAGE")
         }
     }
     

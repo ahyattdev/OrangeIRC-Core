@@ -103,14 +103,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     static func deleteWithConfirmation(server: Server) {
-        let title = NSLocalizedString("DELETE_SERVER", comment: "Delete server").replacingOccurrences(of: "[SERVER]", with: server.displayName)
-        let message = NSLocalizedString("DELETE_SERVER_DESCRIPTION", comment: "Delete server description")
+        let title = localized("DELETE_SERVER").replacingOccurrences(of: "[SERVER]", with: server.displayName)
+        let message = localized("DELETE_SERVER_DESCRIPTION")
         let confirmation = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL", comment: "Cancel"), style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: localized("CANCEL"), style: .cancel, handler: nil)
         confirmation.addAction(cancelAction)
         
-        let deleteAction = UIAlertAction(title: NSLocalizedString("DELETE", comment: "Delete"), style: .destructive, handler: { (action) in
+        let deleteAction = UIAlertAction(title: localized("DELETE"), style: .destructive, handler: { (action) in
             ServerManager.shared.delete(server: server)
         })
         confirmation.addAction(deleteAction)

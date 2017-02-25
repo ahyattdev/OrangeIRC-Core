@@ -19,9 +19,9 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         NotificationCenter.default.addObserver(self, selector: #selector(registerForUpdates(_:)), name: Notifications.RoomCreated, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView(notification:)), name: Notifications.RoomDeleted, object: nil)
         
-        title = NSLocalizedString("ROOMS", comment: "Rooms")
+        title = localized("ROOMS")
         
-        let serversButtonTitle = NSLocalizedString("SERVERS", comment: "Servers")
+        let serversButtonTitle = localized("SERVERS")
         let serversButton = UIBarButtonItem(title: serversButtonTitle, style: .plain, target: self, action: #selector(self.serversButton))
         navigationItem.leftBarButtonItems = [serversButton, editButtonItem]
         
@@ -29,7 +29,7 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         navigationItem.rightBarButtonItem = addButton
         
         // Add a shortcut for adding a room
-        addKeyCommand(UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(addRoomButton), discoverabilityTitle: NSLocalizedString("ADD_ROOM", comment: "")))
+        addKeyCommand(UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(addRoomButton), discoverabilityTitle: localized("ADD_ROOM")))
         
         if traitCollection.forceTouchCapability == .available {
             registerForPreviewing(with: self, sourceView: view)
@@ -61,7 +61,7 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         let room = ServerManager.shared.rooms[indexPath.row]
         
         cell.title.text = room.name
-        cell.detail.text = room.isJoined ? NSLocalizedString("JOINED", comment: "") : NSLocalizedString("NOT_JOINED", comment: "")
+        cell.detail.text = room.isJoined ? localized("JOINED") : localized("NOT_JOINED")
         cell.detail.textColor = room.isJoined ? UIColor.darkText : UIColor.lightGray
         
         cell.subtitle.text = room.server!.displayName
@@ -121,10 +121,10 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
     func addRoomButton() {
         // Make sure that there is a registered server for the room to be added on
         guard ServerManager.shared.registeredServers.count > 0 else {
-            let title = NSLocalizedString("NO_REGISTERED_SERVERS", comment: "Not connected to any registered servers")
-            let message = NSLocalizedString("NO_REGISTERED_SERVERS_DESCRIPTION", comment: "No registered servers description")
+            let title = localized("NO_REGISTERED_SERVERS")
+            let message = localized("NO_REGISTERED_SERVERS_DESCRIPTION")
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)
+            let okAction = UIAlertAction(title: localized("OK"), style: .default, handler: nil)
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
             return

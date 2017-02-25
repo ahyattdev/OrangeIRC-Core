@@ -24,7 +24,7 @@ class MessageCell : TextViewCell {
         textView.isScrollEnabled = false
         
         textView.text = message.contents
-        let to = NSLocalizedString("TO_LOWERCASE", comment: "")
+        let to = localized("TO_LOWERCASE")
         let attr = NSMutableAttributedString(attributedString: message.sender.coloredName(for: room))
         
         if let replyTo = message.replyTo {

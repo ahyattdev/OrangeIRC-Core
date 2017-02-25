@@ -14,7 +14,7 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
     let room: Room
     
     let composerButton = UIBarButtonItem(barButtonSystemItem: .compose, target: nil, action: #selector(showMessageComposer))
-    let detailButton = UIBarButtonItem(title: NSLocalizedString("DETAILS", comment: "Details"), style: .plain, target: nil, action: #selector(showRoomInfo))
+    let detailButton = UIBarButtonItem(title: localized("DETAILS"), style: .plain, target: nil, action: #selector(showRoomInfo))
     
     private var heights = [CGFloat]()
     
@@ -47,8 +47,8 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
         title = room.name
         navigationItem.prompt = room.server!.displayName
         
-        let replyToSender = UIMenuItem(title: NSLocalizedString("REPLY", comment: ""), action: #selector(reply(sender:message:)))
-        let replyToRecipient = UIMenuItem(title: NSLocalizedString("REPLY_TO_RECIPIENT", comment: ""), action: #selector(reply(recipient:message:)))
+        let replyToSender = UIMenuItem(title: localized("REPLY"), action: #selector(reply(sender:message:)))
+        let replyToRecipient = UIMenuItem(title: localized("REPLY_TO_RECIPIENT"), action: #selector(reply(recipient:message:)))
         
         UIMenuController.shared.menuItems = [replyToSender, replyToRecipient]
         UIMenuController.shared.update()
@@ -103,11 +103,11 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
             
             switch userLogEvent.self {
             case is UserJoinLogEvent:
-                suffix = NSLocalizedString("JOINED_THE_ROOM", comment: "")
+                suffix = localized("JOINED_THE_ROOM")
             case is UserPartLogEvent:
-                suffix = NSLocalizedString("LEFT_THE_ROOM", comment: "")
+                suffix = localized("LEFT_THE_ROOM")
             case is UserQuitLogEvent:
-                suffix = NSLocalizedString("QUIT", comment: "")
+                suffix = localized("QUIT")
             default:
                 print("Unknown UserLogEvent, no caption found")
                 break

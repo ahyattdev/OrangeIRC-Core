@@ -49,7 +49,7 @@ extension Server {
         case Command.ERROR:
             guard let errorMessage = message.parameters else {
                 print("Failed to get an ERROR message")
-                delegate?.recieved(error: NSLocalizedString("UNKNOWN_ERROR", comment: "Unknown Error"), on: self)
+                delegate?.recieved(error: localized("UNKNOWN_ERROR"), on: self)
                 break
             }
             

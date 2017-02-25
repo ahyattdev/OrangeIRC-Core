@@ -13,23 +13,23 @@ class UserInfoTableViewController : UITableViewController {
     
     let rowNames = [
         [
-            NSLocalizedString("CLASS", comment: ""),
-            NSLocalizedString("AWAY_INFO", comment: "")
+            localized("CLASS"),
+            localized("AWAY_INFO")
         ], [
-            NSLocalizedString("IP_ADDRESS", comment: ""),
-            NSLocalizedString("HOSTNAME", comment: ""),
-            NSLocalizedString("USERNAME", comment: ""),
-            NSLocalizedString("REAL_NAME", comment: "")
+            localized("IP_ADDRESS"),
+            localized("HOSTNAME"),
+            localized("USERNAME"),
+            localized("REAL_NAME")
         ], [
-            NSLocalizedString("SERVER", comment: ""),
-            NSLocalizedString("ROOMS", comment: "")
+            localized("SERVER"),
+            localized("ROOMS")
         ], [
-            NSLocalizedString("CONNECTED", comment: ""),
-            NSLocalizedString("IDLE", comment: "")
+            localized("CONNECTED"),
+            localized("IDLE")
         ], [
-            NSLocalizedString("PING", comment: ""),
-            NSLocalizedString("LOCAL_TIME", comment: ""),
-            NSLocalizedString("CLIENT_INFO", comment: "")
+            localized("PING"),
+            localized("LOCAL_TIME"),
+            localized("CLIENT_INFO")
         ]
     ]
     
@@ -62,10 +62,10 @@ class UserInfoTableViewController : UITableViewController {
             switch `class` {
                 
             case .Operator:
-                rowData[0][0] = NSLocalizedString("OPERATOR", comment: "")
+                rowData[0][0] = localized("OPERATOR")
                 
             case .Normal:
-                rowData[0][0] = NSLocalizedString("NORMAL", comment: "")
+                rowData[0][0] = localized("NORMAL")
                 
             }
         }
@@ -75,7 +75,7 @@ class UserInfoTableViewController : UITableViewController {
             if away, let awayMessage = user.awayMessage {
                 rowData[0][1] = awayMessage
             } else {
-                rowData[0][1] = NSLocalizedString("NOT_AWAY", comment: "")
+                rowData[0][1] = localized("NOT_AWAY")
             }
         }
         

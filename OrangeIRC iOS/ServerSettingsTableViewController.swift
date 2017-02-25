@@ -18,8 +18,8 @@ class ServerSettingsTableViewController : UITableViewController {
         
     }
     
-    let REQUIRED = NSLocalizedString("REQUIRED", comment: "Required")
-    let OPTIONAL = NSLocalizedString("OPTIONAL", comment: "Optional")
+    let REQUIRED = localized("REQUIRED")
+    let OPTIONAL = localized("OPTIONAL")
     
     var hostCell: TextFieldCell?
     var portCell: TextFieldCell?
@@ -53,7 +53,7 @@ class ServerSettingsTableViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = NSLocalizedString("ADD_SERVER", comment: "Add Server")
+        title = localized("ADD_SERVER")
         
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelButton))
         navigationItem.leftBarButtonItem = cancelButton
@@ -62,7 +62,7 @@ class ServerSettingsTableViewController : UITableViewController {
         navigationItem.rightBarButtonItem = doneButton
         
         // Close this when the escape key is pressed
-        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(self.cancelButton), discoverabilityTitle: NSLocalizedString("CANCEL", comment: "")))
+        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(self.cancelButton), discoverabilityTitle: localized("CANCEL")))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,8 +96,8 @@ class ServerSettingsTableViewController : UITableViewController {
         case 0:
             switch indexPath.row {
             case 0:
-                textFieldCell.textLabel!.text = NSLocalizedString("HOSTNAME", comment: "Hostname")
-                textFieldCell.textField.placeholder = NSLocalizedString("IRC_DOT_EXAMPLE_DOT_COM", comment: "irc.example.com")
+                textFieldCell.textLabel!.text = localized("HOSTNAME")
+                textFieldCell.textField.placeholder = localized("IRC_DOT_EXAMPLE_DOT_COM")
                 textFieldCell.textField.keyboardType = .URL
                 self.hostCell = textFieldCell
                 
@@ -106,7 +106,7 @@ class ServerSettingsTableViewController : UITableViewController {
                 }
                 
             case 1:
-                textFieldCell.textLabel!.text = NSLocalizedString("PORT", comment: "Port")
+                textFieldCell.textLabel!.text = localized("PORT")
                 textFieldCell.textField.placeholder = "6667"
                 textFieldCell.textField.keyboardType = .numberPad
                 self.portCell = textFieldCell
@@ -116,7 +116,7 @@ class ServerSettingsTableViewController : UITableViewController {
                 }
                 
             case 2:
-                textFieldCell.textLabel!.text = NSLocalizedString("PASSWORD", comment: "Password")
+                textFieldCell.textLabel!.text = localized("PASSWORD")
                 textFieldCell.textField.placeholder = OPTIONAL
                 textFieldCell.textField.isSecureTextEntry = true
                 self.passwordCell = textFieldCell
@@ -127,7 +127,7 @@ class ServerSettingsTableViewController : UITableViewController {
                 
             case 3:
                 self.autoJoinCell = switchCell
-                switchCell.textLabel!.text = NSLocalizedString("AUTOMATICALLY_JOIN", comment: "Automatically Join")
+                switchCell.textLabel!.text = localized("AUTOMATICALLY_JOIN")
                 
                 if mode == .Edit {
                     autoJoinCell!.switch.isOn = server!.autoJoin
@@ -141,7 +141,7 @@ class ServerSettingsTableViewController : UITableViewController {
         case 1:
             switch  indexPath.row {
             case 0:
-                textFieldCell.textLabel!.text = NSLocalizedString("NICKNAME", comment: "Nickname")
+                textFieldCell.textLabel!.text = localized("NICKNAME")
                 textFieldCell.textField.placeholder = REQUIRED
                 self.nicknameCell = textFieldCell
                 
@@ -150,7 +150,7 @@ class ServerSettingsTableViewController : UITableViewController {
                 }
                 
             case 1:
-                textFieldCell.textLabel!.text = NSLocalizedString("USERNAME", comment: "Username")
+                textFieldCell.textLabel!.text = localized("USERNAME")
                 textFieldCell.textField.placeholder = REQUIRED
                 self.usernameCell = textFieldCell
                 
@@ -159,7 +159,7 @@ class ServerSettingsTableViewController : UITableViewController {
                 }
                 
             case 2:
-                textFieldCell.textLabel!.text = NSLocalizedString("REAL_NAME", comment: "Real Name")
+                textFieldCell.textLabel!.text = localized("REAL_NAME")
                 textFieldCell.textField.placeholder = REQUIRED
                 textFieldCell.textField.autocapitalizationType = .words
                 self.realnameCell = textFieldCell
@@ -190,9 +190,9 @@ class ServerSettingsTableViewController : UITableViewController {
     }
     
     func showMissingField(_ name: String, textField: UITextField) {
-        let message = NSLocalizedString("THE_FIELD_IS_EMPTY", comment: "").replacingOccurrences(of: "[NAME]", with: name.lowercased())
-        let alert = UIAlertController(title: NSLocalizedString("REQUIRED_FIELD_EMPTY", comment: ""), message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { a in
+        let message = localized("THE_FIELD_IS_EMPTY").replacingOccurrences(of: "[NAME]", with: name.lowercased())
+        let alert = UIAlertController(title: localized("REQUIRED_FIELD_EMPTY"), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: localized("OK"), style: .default, handler: { a in
             textField.becomeFirstResponder()
         }))
         present(alert, animated: true, completion: nil)
@@ -206,23 +206,23 @@ class ServerSettingsTableViewController : UITableViewController {
         case .Add:
             // Make a new server
             guard let host = hostCell?.textField.text, !hostCell!.textField.text!.isEmpty else {
-                showMissingField(NSLocalizedString("HOST", comment: ""), textField: hostCell!.textField)
+                showMissingField(localized("HOST"), textField: hostCell!.textField)
                 return
             }
             guard let port = Int(portCell!.textField.text!), !portCell!.textField.text!.isEmpty else {
-                showMissingField(NSLocalizedString("PORT", comment: ""), textField: portCell!.textField)
+                showMissingField(localized("PORT"), textField: portCell!.textField)
                 return
             }
             guard let nickname = nicknameCell?.textField.text, !nicknameCell!.textField.text!.isEmpty else {
-                showMissingField(NSLocalizedString("NICKNAME", comment: ""), textField: nicknameCell!.textField)
+                showMissingField(localized("NICKNAME"), textField: nicknameCell!.textField)
                 return
             }
             guard let username = usernameCell?.textField.text, !usernameCell!.textField.text!.isEmpty else {
-                showMissingField(NSLocalizedString("USERNAME", comment: ""), textField: usernameCell!.textField)
+                showMissingField(localized("USERNAME"), textField: usernameCell!.textField)
                 return
             }
             guard let realname = realnameCell?.textField.text, !realnameCell!.textField.text!.isEmpty else {
-                showMissingField(NSLocalizedString("REALNAME", comment: ""), textField: realnameCell!.textField)
+                showMissingField(localized("REALNAME"), textField: realnameCell!.textField)
                 return
             }
             guard let password = passwordCell?.textField.text else {
@@ -261,18 +261,18 @@ class ServerSettingsTableViewController : UITableViewController {
             
             if shouldDisplayReconnectPrompt {
                 // Prompt the user to reconnect
-                let title = NSLocalizedString("SETTINGS_CHANGED", comment: "")
-                let message = NSLocalizedString("DO_YOU_WANT_TO_RECONNECT", comment: "")
+                let title = localized("SETTINGS_CHANGED")
+                let message = localized("DO_YOU_WANT_TO_RECONNECT")
                 let reconnectPrompt = UIAlertController(title: title, message: message, preferredStyle: .alert)
                 
-                let reconnectTitle = NSLocalizedString("RECONNECT", comment: "")
+                let reconnectTitle = localized("RECONNECT")
                 let reconnect = UIAlertAction(title: reconnectTitle, style: .default, handler: { a in
                     self.server!.reconnect()
                     self.dismiss(animated: true, completion: nil)
                 })
                 reconnectPrompt.addAction(reconnect)
                 
-                let dontReconnectTitle = NSLocalizedString("DONT_RECONNECT", comment: "")
+                let dontReconnectTitle = localized("DONT_RECONNECT")
                 let dontReconnect = UIAlertAction(title: dontReconnectTitle, style: .cancel, handler: { a in
                     self.dismiss(animated: true, completion: nil)
                 })

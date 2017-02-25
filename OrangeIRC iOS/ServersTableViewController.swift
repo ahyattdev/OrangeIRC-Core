@@ -16,19 +16,19 @@ class ServersTableViewController : UITableViewController {
         
         NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.ServerDataChanged, object: nil)
         
-        title = NSLocalizedString("SERVERS", comment: "Servers")
+        title = localized("SERVERS")
         
-        let closeButton = UIBarButtonItem(title: NSLocalizedString("CLOSE", comment: ""), style: .plain, target: self, action: #selector(close))
+        let closeButton = UIBarButtonItem(title: localized("CLOSE"), style: .plain, target: self, action: #selector(close))
         let addServerButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addServer))
         
         navigationItem.leftBarButtonItems = [closeButton, editButtonItem]
         navigationItem.rightBarButtonItem = addServerButton
         
         // Add a shortcut for adding a server
-        addKeyCommand(UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(addServer), discoverabilityTitle: NSLocalizedString("ADD_SERVER", comment: "")))
+        addKeyCommand(UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(addServer), discoverabilityTitle: localized("ADD_SERVER")))
         
         // Close this when the escape key is pressed
-        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(close), discoverabilityTitle: NSLocalizedString("CLOSE", comment: "")))
+        addKeyCommand(UIKeyCommand(input: UIKeyInputEscape, modifierFlags: UIKeyModifierFlags(rawValue: 0), action: #selector(close), discoverabilityTitle: localized("CLOSE")))
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -47,14 +47,14 @@ class ServersTableViewController : UITableViewController {
         cell.textLabel!.text = server.displayName
         
         if server.isRegistered {
-            cell.detailTextLabel?.text = NSLocalizedString("CONNECTED", comment: "Connected")
+            cell.detailTextLabel?.text = localized("CONNECTED")
         } else if server.isConnectingOrRegistering {
             // Add an activity indicator
             cell = ActivityIndicatorCell(style: .default, reuseIdentifier: nil)
             cell.textLabel?.text = server.displayName
             (cell as! ActivityIndicatorCell).activityIndicator.startAnimating()
         } else {
-            cell.detailTextLabel?.text = NSLocalizedString("NOT_CONNECTED", comment: "Not Connected")
+            cell.detailTextLabel?.text = localized("NOT_CONNECTED")
         }
         
         return cell
@@ -62,13 +62,13 @@ class ServersTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let server = ServerManager.shared.servers[indexPath.row]
-        let message = NSLocalizedString("SERVER_OPTIONS", comment: "Server options")
+        let message = localized("SERVER_OPTIONS")
         let serverOptions = UIAlertController(title: server.displayName, message: message, preferredStyle: .actionSheet)
         
         serverOptions.popoverPresentationController?.sourceView = view
         
         // Edits a server's settings
-        let settings = UIAlertAction(title: NSLocalizedString("SETTINGS", comment: ""), style: .default, handler: { a in
+        let settings = UIAlertAction(title: localized("SETTINGS"), style: .default, handler: { a in
             let editor = ServerSettingsTableViewController(style: .grouped, edit: server)
             let nav = UINavigationController(rootViewController: editor)
             nav.modalPresentationStyle = .formSheet
@@ -79,14 +79,14 @@ class ServersTableViewController : UITableViewController {
         
         if server.isConnectingOrRegistering || server.isRegistered {
             // Add a disconnect button
-            let disconnect = NSLocalizedString("DISCONNECT", comment: "Disconnect")
+            let disconnect = localized("DISCONNECT")
             let disconnectAction = UIAlertAction(title: disconnect, style: .default, handler: { (action) in
                 server.disconnect()
             })
             serverOptions.addAction(disconnectAction)
         } else {
             // Add a connect button
-            let connect = NSLocalizedString("CONNECT", comment: "Connect")
+            let connect = localized("CONNECT")
             let connectAction = UIAlertAction(title: connect, style: .default, handler: { (action) in
                 server.connect()
             })
@@ -95,7 +95,7 @@ class ServersTableViewController : UITableViewController {
         
         if server.motd != nil {
             // Add a show MOTD button
-            let motd = NSLocalizedString("MOTD", comment: "MOTD")
+            let motd = localized("MOTD")
             let motdAction = UIAlertAction(title: motd, style: .default, handler: { (action) in
                 self.showMOTD(server: server)
             })
@@ -112,7 +112,7 @@ class ServersTableViewController : UITableViewController {
             serverOptions.addAction(chanlistAction)
         }
         
-        let cancel = NSLocalizedString("CANCEL", comment: "Cancel")
+        let cancel = localized("CANCEL")
         let cancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil)
         serverOptions.addAction(cancelAction)
         

@@ -12,9 +12,9 @@ import OrangeIRCCore
 extension AppDelegate {
     
     func didNotRespond(_ server: Server) {
-        let message = NSLocalizedString("SERVER_DID_NOT_RESPOND_DESCRIPTION", comment: "").replacingOccurrences(of: "[SERVERNAME]", with: server.displayName)
-        let alert = UIAlertController(title: NSLocalizedString("SERVER_DID_NOT_RESPOND", comment: ""), message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+        let message = localized("SERVER_DID_NOT_RESPOND_DESCRIPTION").replacingOccurrences(of: "[SERVERNAME]", with: server.displayName)
+        let alert = UIAlertController(title: localized("SERVER_DID_NOT_RESPOND"), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: localized("OK"), style: .default, handler: nil))
         AppDelegate.showAlertGlobally(alert)
     }
     
@@ -35,12 +35,12 @@ extension AppDelegate {
     }
     
     func recieved(notice: String, sender: String, on server: Server) {
-        var title = NSLocalizedString("NOTICE_FROM_ON", comment: "")
+        var title = localized("NOTICE_FROM_ON")
         title = title.replacingOccurrences(of: "[USERNAME]", with: sender)
         title = title.replacingOccurrences(of: "[SERVERNAME]", with: server.displayName)
         let alert = UIAlertController(title: title, message: notice, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: localized("OK"), style: .default, handler: nil))
         
         AppDelegate.showAlertGlobally(alert)
     }
@@ -50,11 +50,11 @@ extension AppDelegate {
     }
     
     func recieved(error: String, on server: Server) {
-        let fullError = "\(NSLocalizedString("ERROR_DISCONNECT_MESSAGE", comment: "")):\n\n\(error)"
+        let fullError = "\(localized("ERROR_DISCONNECT_MESSAGE")):\n\n\(error)"
         
         let alert = UIAlertController(title: server.displayName, message: fullError, preferredStyle: .alert)
         
-        let ok = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)
+        let ok = UIAlertAction(title: localized("OK"), style: .default, handler: nil)
         alert.addAction(ok)
         
         AppDelegate.showAlertGlobally(alert)
@@ -73,25 +73,25 @@ extension AppDelegate {
     }
     
     func nickservPasswordNeeded(_ server: Server) {
-        let nicknameRegistered = NSLocalizedString("NICKNAME_REGISTERED", comment: "Nickname registered")
-        let nicknameRegisteredDescription = NSLocalizedString("NICKNAME_REGISTERED_DESCRIPTION", comment: "Provide a password")
+        let nicknameRegistered = localized("NICKNAME_REGISTERED")
+        let nicknameRegisteredDescription = localized("NICKNAME_REGISTERED_DESCRIPTION")
         
         let nicknamePasswordAlert = UIAlertController(title: nicknameRegistered, message: nicknameRegisteredDescription, preferredStyle: .alert)
         
         nicknamePasswordAlert.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = NSLocalizedString("NICKNAME_PASSWORD", comment: "Nickname Password")
+            textField.placeholder = self.localized("NICKNAME_PASSWORD")
             textField.isSecureTextEntry = true
             self.nickservPasswordField = textField
             textField.delegate = self
         })
         
-        let disconnect = NSLocalizedString("DISCONNECT", comment: "Disconnect")
+        let disconnect = localized("DISCONNECT")
         let disconnectAction = UIAlertAction(title: disconnect, style: .destructive, handler: { (action) in
             server.disconnect()
         })
         nicknamePasswordAlert.addAction(disconnectAction)
         
-        let done = NSLocalizedString("AUTHENTICATE", comment: "Done")
+        let done = localized("AUTHENTICATE")
         let doneAction = UIAlertAction(title: done, style: .default, handler: { (action) in
             server.nickservPassword = self.nickservPasswordField!.text!
             ServerManager.shared.saveData()
@@ -110,27 +110,27 @@ extension AppDelegate {
     }
     
     func nickservPasswordIncorrect(_ server: Server) {
-        let title = NSLocalizedString("NICKNAME_PASSWORD_INCORRECT", comment: "")
-        var message = NSLocalizedString("PROVIDE_CORRECT_PASSWORD", comment: "")
+        let title = localized("NICKNAME_PASSWORD_INCORRECT")
+        var message = localized("PROVIDE_CORRECT_PASSWORD")
         message = message.replacingOccurrences(of: "[NICKNAME]", with: server.nickname)
         message = message.replacingOccurrences(of: "[SERVERNAME]", with: server.displayName)
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         alert.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = NSLocalizedString("NICKNAME_PASSWORD", comment: "Nickname Password")
+            textField.placeholder = self.localized("NICKNAME_PASSWORD")
             textField.isSecureTextEntry = true
             self.nickservPasswordField = textField
             textField.delegate = self
         })
         
-        let disconnect = NSLocalizedString("DISCONNECT", comment: "Disconnect")
+        let disconnect = localized("DISCONNECT")
         let disconnectAction = UIAlertAction(title: disconnect, style: .destructive, handler: { (action) in
             server.disconnect()
         })
         alert.addAction(disconnectAction)
         
-        let authenticate = NSLocalizedString("AUTHENTICATE", comment: "")
+        let authenticate = localized("AUTHENTICATE")
         let authAction = UIAlertAction(title: authenticate, style: .default, handler: { (action) in
             server.nickservPassword = self.nickservPasswordField!.text!
             ServerManager.shared.saveData()
@@ -154,8 +154,8 @@ extension AppDelegate {
                 return
         }
         
-        let title = NSLocalizedString("FAILED_ATTEMPTS_NICKSERV", comment: "")
-        var message = NSLocalizedString("FAILED_ATTEMPTS_NICKSERV_MESSAGE", comment: "")
+        let title = localized("FAILED_ATTEMPTS_NICKSERV")
+        var message = localized("FAILED_ATTEMPTS_NICKSERV_MESSAGE")
         message = message.replacingOccurrences(of: "[NUM]", with: "\(count)")
         message = message.replacingOccurrences(of: "[MYNICK]", with: server.nickname)
         message = message.replacingOccurrences(of: "[SERVERNAME]", with: server.displayName)
@@ -166,7 +166,7 @@ extension AppDelegate {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: localized("OK"), style: .default, handler: nil))
         
         AppDelegate.showAlertGlobally(alert)
     }

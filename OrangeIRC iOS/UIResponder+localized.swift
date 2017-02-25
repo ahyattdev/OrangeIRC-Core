@@ -14,4 +14,8 @@ extension UIResponder {
         return NSLocalizedString(string, comment: "")
     }
     
+    static func localized(_ string: String) -> String {
+        return NSLocalizedString(string, comment: "")
+    }
+    
 }
