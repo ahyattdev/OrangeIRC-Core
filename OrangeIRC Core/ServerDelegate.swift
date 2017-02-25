@@ -33,4 +33,10 @@ public protocol ServerDelegate {
     func chanlistUpdated(_ server: Server)
     func finishedReadingChanlist(_ server: Server)
     
+    func noSuch(nick: String, _ server: Server)
+    func noSuch(server: String, _ onServer: Server)
+    func noSuch(channel: String, _ server: Server)
+    func cannotSendTo(channel: String, _ server: Server)
+    func tooManyChannels(_ server: Server)
+    
 }

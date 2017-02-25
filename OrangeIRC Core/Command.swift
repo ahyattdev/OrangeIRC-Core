@@ -107,6 +107,25 @@ public struct Command {
         
     }
     
+    struct Error {
+        
+        static let NOSUCHNICK = "401"
+        static let NOSUCHSERVER = "402"
+        static let NOSUCHCHANNEL = "403"
+        static let CANNOTSENDTOCHAN = "404"
+        static let TOOMANYCHANNELS = "405"
+        static let WASNOSUCHNICK = "406"
+        static let TOOMANYTARGETS = "407"
+        static let NOSUCHSERVICE = "408"
+        static let NOORIGIN = "409"
+        static let NORECIPIENT = "411"
+        static let NOTEXTTOSEND = "412"
+        static let NOTOPLEVEL = "413"
+        static let WILDTOPLEVEL = "414"
+        static let BADMASK = "415"
+        
+    }
+    
     struct Services {
         
         static let NickServ = "NickServ"

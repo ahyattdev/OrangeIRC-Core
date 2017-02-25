@@ -96,4 +96,24 @@ extension ServerManager {
         serverDelegate?.infoWasUpdated(user)
     }
     
+    public func noSuch(nick: String, _ server: Server) {
+        serverDelegate?.noSuch(nick: nick, server)
+    }
+    
+    public func noSuch(server: String, _ onServer: Server) {
+        serverDelegate?.noSuch(server: server, onServer)
+    }
+    
+    public func noSuch(channel: String, _ server: Server) {
+        serverDelegate?.noSuch(channel: channel, server)
+    }
+    
+    public func cannotSendTo(channel: String, _ server: Server) {
+        serverDelegate?.cannotSendTo(channel: channel, server)
+    }
+    
+    public func tooManyChannels(_ server: Server) {
+        serverDelegate?.tooManyChannels(server)
+    }
+    
 }

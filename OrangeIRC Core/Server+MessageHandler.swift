@@ -492,6 +492,36 @@ extension Server {
         case Command.Reply.LISTEND:
             delegate?.finishedReadingChanlist(self)
             
+        case Command.Error.TOOMANYTARGETS, Command.Error.NOSUCHSERVICE, Command.Error.NOORIGIN, Command.Error.NORECIPIENT, Command.Error.NOTEXTTOSEND, Command.Error.NOTOPLEVEL, Command.Error.WILDTOPLEVEL, Command.Error.BADMASK:
+            // We likely won't be encountering these
+            break
+        
+        case Command.Error.NOSUCHNICK:
+            // No such nickname or channel
+            if message.target.count == 1 {
+                delegate?.noSuch(nick: message.target[0], self)
+            }
+            
+        case Command.Error.NOSUCHSERVER:
+            // No such server
+            if message.target.count == 1 {
+                delegate?.noSuch(server: message.target[0], self)
+            }
+            
+        case Command.Error.NOSUCHCHANNEL:
+            // No such channel
+            if message.target.count == 1 {
+                delegate?.noSuch(channel: message.target[0], self)
+            }
+            
+        case Command.Error.CANNOTSENDTOCHAN:
+            if message.target.count == 1 {
+                delegate?.cannotSendTo(channel: message.target[0], self)
+            }
+            
+        case Command.Error.TOOMANYCHANNELS:
+            delegate?.tooManyChannels(self)
+            
         default:
             print(message.message)
             print("Unimplemented command handle: \(message.command)")
