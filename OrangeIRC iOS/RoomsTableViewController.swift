@@ -64,7 +64,7 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
         cell.detail.text = room.isJoined ? NSLocalizedString("JOINED", comment: "") : NSLocalizedString("NOT_JOINED", comment: "")
         cell.detail.textColor = room.isJoined ? UIColor.darkText : UIColor.lightGray
         
-        cell.subtitle.text = room.server!.host
+        cell.subtitle.text = room.server!.displayName
  
         return cell
     }

@@ -19,6 +19,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     struct Coding {
         
         static let Host = "Host"
+        static let Alias = "Alias"
         static let Port = "Port"
         static let Nickname = "Nickname"
         static let Username = "Username"
@@ -36,6 +37,10 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     public var log = [Message]()
     public var rooms: [Room] = [Room]()
     
+    public typealias ListChannel = (name: String, users: Int, topic: String?)
+    // Call fetchChannelList() to populate
+    public var channelListCache = [ListChannel]()
+    
     public var delegate: ServerDelegate?
     
     public var isConnectingOrRegistering = false
@@ -44,8 +49,21 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     var socket: GCDAsyncSocket?
     
+    public var isConnected: Bool {
+        if let socket = socket {
+            return socket.isConnected
+        } else {
+            return false
+        }
+    }
+    
+    public var displayName: String {
+        return alias == nil ? host : alias!
+    }
+    
     // Saved data
     public var host: String
+    public var alias: String?
     public var port: Int
     public var nickname: String
     public var username: String
@@ -112,10 +130,13 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
             return nil
         }
         self.uuid = uuid
+        
+        alias = coder.decodeObject(forKey: Coding.Alias) as? String
     }
     
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(host, forKey: Coding.Host)
+        aCoder.encode(alias, forKey: Coding.Alias)
         aCoder.encode(port, forKey: Coding.Port)
         aCoder.encode(nickname, forKey: Coding.Nickname)
         aCoder.encode(username, forKey: Coding.Username)
@@ -216,6 +237,11 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         user.awayMessage = nil
         user.away = nil
         write(string: "\(Command.WHOIS) \(user.nick)")
+    }
+    
+    public func fetchChannelList() {
+        channelListCache.removeAll()
+        write(string: "\(Command.LIST)")
     }
     
     public func prepareForBackground() {

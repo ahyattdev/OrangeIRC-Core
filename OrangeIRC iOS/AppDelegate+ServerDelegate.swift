@@ -12,7 +12,7 @@ import OrangeIRCCore
 extension AppDelegate {
     
     func didNotRespond(_ server: Server) {
-        let message = NSLocalizedString("SERVER_DID_NOT_RESPOND_DESCRIPTION", comment: "").replacingOccurrences(of: "[SERVERNAME]", with: server.host)
+        let message = NSLocalizedString("SERVER_DID_NOT_RESPOND_DESCRIPTION", comment: "").replacingOccurrences(of: "[SERVERNAME]", with: server.displayName)
         let alert = UIAlertController(title: NSLocalizedString("SERVER_DID_NOT_RESPOND", comment: ""), message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
         AppDelegate.showAlertGlobally(alert)
@@ -37,7 +37,7 @@ extension AppDelegate {
     func recieved(notice: String, sender: String, on server: Server) {
         var title = NSLocalizedString("NOTICE_FROM_ON", comment: "")
         title = title.replacingOccurrences(of: "[USERNAME]", with: sender)
-        title = title.replacingOccurrences(of: "[SERVERNAME]", with: server.host)
+        title = title.replacingOccurrences(of: "[SERVERNAME]", with: server.displayName)
         let alert = UIAlertController(title: title, message: notice, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: nil))
@@ -52,7 +52,7 @@ extension AppDelegate {
     func recieved(error: String, on server: Server) {
         let fullError = "\(NSLocalizedString("ERROR_DISCONNECT_MESSAGE", comment: "")):\n\n\(error)"
         
-        let alert = UIAlertController(title: server.host, message: fullError, preferredStyle: .alert)
+        let alert = UIAlertController(title: server.displayName, message: fullError, preferredStyle: .alert)
         
         let ok = UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)
         alert.addAction(ok)
@@ -113,7 +113,7 @@ extension AppDelegate {
         let title = NSLocalizedString("NICKNAME_PASSWORD_INCORRECT", comment: "")
         var message = NSLocalizedString("PROVIDE_CORRECT_PASSWORD", comment: "")
         message = message.replacingOccurrences(of: "[NICKNAME]", with: server.nickname)
-        message = message.replacingOccurrences(of: "[SERVERNAME]", with: server.host)
+        message = message.replacingOccurrences(of: "[SERVERNAME]", with: server.displayName)
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -158,7 +158,7 @@ extension AppDelegate {
         var message = NSLocalizedString("FAILED_ATTEMPTS_NICKSERV_MESSAGE", comment: "")
         message = message.replacingOccurrences(of: "[NUM]", with: "\(count)")
         message = message.replacingOccurrences(of: "[MYNICK]", with: server.nickname)
-        message = message.replacingOccurrences(of: "[SERVERNAME]", with: server.host)
+        message = message.replacingOccurrences(of: "[SERVERNAME]", with: server.displayName)
         message = message.replacingOccurrences(of: "[NICKNAME]", with: nickname)
         message = message.replacingOccurrences(of: "[USERNAME]", with: username)
         message = message.replacingOccurrences(of: "[HOSTNAME]", with: hostname)
@@ -174,4 +174,13 @@ extension AppDelegate {
     func infoWasUpdated(_ user: User) {
         
     }
+    
+    func chanlistUpdated(_ server: Server) {
+        
+    }
+    
+    func finishedReadingChanlist(_ server: Server) {
+        
+    }
+    
 }

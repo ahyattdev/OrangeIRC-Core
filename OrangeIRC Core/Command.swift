@@ -31,6 +31,8 @@ public struct Command {
     static let VERSION = "VERSION"
     static let TIME = "TIME"
     
+    static let LIST = "LIST"
+    
     struct Reply {
         
         static let WELCOME = "001"

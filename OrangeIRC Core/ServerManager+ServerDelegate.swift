@@ -69,6 +69,16 @@ extension ServerManager {
         serverDelegate?.motdUpdated(server)
     }
     
+    public func chanlistUpdated(_ server: Server) {
+        NotificationCenter.default.post(name: Notifications.ListUpdatedForServer, object: server)
+        serverDelegate?.chanlistUpdated(server)
+    }
+    
+    public func finishedReadingChanlist(_ server: Server) {
+        NotificationCenter.default.post(name: Notifications.ListFinishedForServer, object: server)
+        serverDelegate?.finishedReadingChanlist(server)
+    }
+    
     public func nickservPasswordNeeded(_ server: Server) {
         serverDelegate?.nickservPasswordNeeded(server)
     }

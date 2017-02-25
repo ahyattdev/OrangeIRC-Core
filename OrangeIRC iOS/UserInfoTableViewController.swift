@@ -134,7 +134,7 @@ class UserInfoTableViewController : UITableViewController {
         super.viewDidLoad()
         
         title = user.nick
-        navigationItem.prompt = server.host
+        navigationItem.prompt = server.displayName
     }
     
     required init?(coder aDecoder: NSCoder) {

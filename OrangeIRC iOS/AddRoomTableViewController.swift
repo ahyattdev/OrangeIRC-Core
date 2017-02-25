@@ -95,7 +95,7 @@ class AddRoomTableViewController : UITableViewController {
                 cell.accessoryType = .checkmark
             }
             
-            cell.textLabel!.text = server.host
+            cell.textLabel!.text = server.displayName
             
             return cell
         case 1:

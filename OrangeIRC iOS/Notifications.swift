@@ -34,4 +34,8 @@ public struct Notifications {
     public static let UserListUpdatedForRoom    = NSNotification.Name(rawValue: "UserListUpdatedForRoom")
     
     public static let MOTDUpdatedForServer      = NSNotification.Name(rawValue: "MOTDUpdatedForServer")
+    
+    public static let ListUpdatedForServer      = NSNotification.Name(rawValue: "ListUpdatedForServer")
+    public static let ListFinishedForServer     = NSNotification.Name(rawValue: "ListFinishedForServer")
+    
 }

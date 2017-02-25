@@ -31,7 +31,7 @@ class RoomInfoTableViewController : UITableViewController {
         let searchResultsController = UsersSearchResultsController(room, navigationController: navigationController!)
         
         title = "\(self.room.name) \(NSLocalizedString("DETAILS", comment: "Information"))"
-        navigationItem.prompt = room.server!.host
+        navigationItem.prompt = room.server!.displayName
         
         NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.RoomStateUpdated, object: room)
         NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.TopicUpdatedForRoom, object: room)

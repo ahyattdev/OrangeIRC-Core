@@ -30,4 +30,7 @@ public protocol ServerDelegate {
     
     func infoWasUpdated(_ user: User)
     
+    func chanlistUpdated(_ server: Server)
+    func finishedReadingChanlist(_ server: Server)
+    
 }

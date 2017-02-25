@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     }
     
     static func deleteWithConfirmation(server: Server) {
-        let title = NSLocalizedString("DELETE_SERVER", comment: "Delete server").replacingOccurrences(of: "[SERVER]", with: server.host)
+        let title = NSLocalizedString("DELETE_SERVER", comment: "Delete server").replacingOccurrences(of: "[SERVER]", with: server.displayName)
         let message = NSLocalizedString("DELETE_SERVER_DESCRIPTION", comment: "Delete server description")
         let confirmation = UIAlertController(title: title, message: message, preferredStyle: .alert)
         

@@ -45,7 +45,7 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadLog), name: Notifications.NewLogEventForRoom, object: room)
         
         title = room.name
-        navigationItem.prompt = room.server!.host
+        navigationItem.prompt = room.server!.displayName
         
         let replyToSender = UIMenuItem(title: NSLocalizedString("REPLY", comment: ""), action: #selector(reply(sender:message:)))
         let replyToRecipient = UIMenuItem(title: NSLocalizedString("REPLY_TO_RECIPIENT", comment: ""), action: #selector(reply(recipient:message:)))

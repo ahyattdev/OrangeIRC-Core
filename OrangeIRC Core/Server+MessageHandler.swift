@@ -166,7 +166,7 @@ extension Server {
             }
             
             // This prevents a preceding newline at the start of the MOTD
-            motd = motd == nil ? parameters : "\(self.motd!)\n\(parameters)"
+            motd = motd == nil ? parameters : "\(motd!)\n\(parameters)"
             
         case Command.Reply.ENDOFMOTD:
             // Clean the MOTD of "- "
@@ -464,6 +464,33 @@ extension Server {
             
             user.awayMessage = awayMessage
             user.away = true
+            
+        case Command.Reply.LISTSTART:
+            // Clear the old ones
+            channelListCache.removeAll()
+            
+        case Command.Reply.LIST:
+            guard message.target.count == 2 else {
+                print("Invalid LIST reply target length")
+                break
+            }
+            
+            let name = message.target[0]
+            
+            guard let userCount = Int(message.target[1]) else {
+                print("Invalid LIST reply users count")
+                break
+            }
+            
+            channelListCache.append((name: name, users: userCount, topic: message.parameters))
+            
+            // Only call this for every 5th update, to avoid spam
+            if channelListCache.count % 5 == 0 {
+                delegate?.chanlistUpdated(self)
+            }
+            
+        case Command.Reply.LISTEND:
+            delegate?.finishedReadingChanlist(self)
             
         default:
             print(message.message)

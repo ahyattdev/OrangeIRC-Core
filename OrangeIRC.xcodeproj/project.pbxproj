@@ -107,6 +107,9 @@
 		6A8389101E343896006ED94B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A83890F1E343896006ED94B /* Settings.swift */; };
 		6A8389111E343896006ED94B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A83890F1E343896006ED94B /* Settings.swift */; };
 		6A8389121E343896006ED94B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A83890F1E343896006ED94B /* Settings.swift */; };
+		6A91CA531E622239004D38E1 /* UIResponder+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A91CA521E622239004D38E1 /* UIResponder+localized.swift */; };
+		6A91CA551E622305004D38E1 /* ChannelListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A91CA541E622305004D38E1 /* ChannelListTableViewController.swift */; };
+		6A91CA571E623435004D38E1 /* RightDetailTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A91CA561E623435004D38E1 /* RightDetailTextViewCell.swift */; };
 		6A9FEB621E15E49700F5CF4D /* SegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */; };
 		6A9FEB641E15F13500F5CF4D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A9FEB631E15F13500F5CF4D /* Launch Screen.storyboard */; };
 		6A9FEB8D1E161B4E00F5CF4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A9FEB8C1E161B4E00F5CF4D /* Assets.xcassets */; };
@@ -227,6 +230,9 @@
 		6A8389061E33F3A8006ED94B /* ServerManager+ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ServerManager+ServerDelegate.swift"; sourceTree = "<group>"; };
 		6A83890D1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+ServerDelegate.swift"; sourceTree = "<group>"; };
 		6A83890F1E343896006ED94B /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		6A91CA521E622239004D38E1 /* UIResponder+localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIResponder+localized.swift"; sourceTree = "<group>"; };
+		6A91CA541E622305004D38E1 /* ChannelListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelListTableViewController.swift; sourceTree = "<group>"; };
+		6A91CA561E623435004D38E1 /* RightDetailTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailTextViewCell.swift; sourceTree = "<group>"; };
 		6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlCell.swift; sourceTree = "<group>"; };
 		6A9FEB631E15F13500F5CF4D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6A9FEB8C1E161B4E00F5CF4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -385,16 +391,18 @@
 			children = (
 				66A75AFE1D234694001161A3 /* AppDelegate.swift */,
 				6A83890D1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift */,
+				6A91CA521E622239004D38E1 /* UIResponder+localized.swift */,
+				6ADD58E01D29DD220051DB28 /* ServersTableViewController.swift */,
+				6A91CA541E622305004D38E1 /* ChannelListTableViewController.swift */,
+				661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */,
+				669DF7011D7CE96B007F82DB /* MOTDViewController.swift */,
 				6ADD58DE1D29DB330051DB28 /* RoomsTableViewController.swift */,
 				6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */,
+				6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */,
 				6AE1F6C41E14C623002AE37B /* ComposerTableViewController.swift */,
-				669DF7011D7CE96B007F82DB /* MOTDViewController.swift */,
 				6605688D1D7901C400A2502B /* RoomInfoTableViewController.swift */,
 				6A1EECF11E142A5800A67C35 /* UsersSearchResultsController.swift */,
 				6A7325141E11E30300AFCC0B /* UserInfoTableViewController.swift */,
-				6ADD58E01D29DD220051DB28 /* ServersTableViewController.swift */,
-				661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */,
-				6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */,
 				6A2081C21D5999C4006CD605 /* Cells */,
 				660568871D78ED1C00A2502B /* Resources */,
 			);
@@ -430,6 +438,7 @@
 				6AE1F6C61E14D444002AE37B /* MessageCellDelegate.swift */,
 				6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */,
 				6AF88FA01E174E1C00FD9A9D /* RightDetailSubtitleCell.swift */,
+				6A91CA561E623435004D38E1 /* RightDetailTextViewCell.swift */,
 				6A4BBD7D1E1A11B300987C45 /* ActivityIndicatorCell.swift */,
 			);
 			name = Cells;
@@ -781,9 +790,12 @@
 				6A4BBD7E1E1A11B300987C45 /* ActivityIndicatorCell.swift in Sources */,
 				6ADD58E11D29DD220051DB28 /* ServersTableViewController.swift in Sources */,
 				6A83890E1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift in Sources */,
+				6A91CA571E623435004D38E1 /* RightDetailTextViewCell.swift in Sources */,
 				6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */,
+				6A91CA551E622305004D38E1 /* ChannelListTableViewController.swift in Sources */,
 				6AE1F6C51E14C623002AE37B /* ComposerTableViewController.swift in Sources */,
 				6AF88FA11E174E1C00FD9A9D /* RightDetailSubtitleCell.swift in Sources */,
+				6A91CA531E622239004D38E1 /* UIResponder+localized.swift in Sources */,
 				661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */,
 				6A18EAE81D5BC66C00AF1EF9 /* SwitchCell.swift in Sources */,
 				6A7325151E11E30300AFCC0B /* UserInfoTableViewController.swift in Sources */,

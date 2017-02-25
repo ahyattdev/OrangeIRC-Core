@@ -26,7 +26,7 @@ class MOTDViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.prompt = server.host
+        navigationItem.prompt = server.displayName
         title = NSLocalizedString("MOTD", comment: "Message of the Day")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))

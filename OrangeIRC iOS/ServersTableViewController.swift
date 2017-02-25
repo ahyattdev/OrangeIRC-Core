@@ -44,14 +44,14 @@ class ServersTableViewController : UITableViewController {
         
         var cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         
-        cell.textLabel!.text = server.host
+        cell.textLabel!.text = server.displayName
         
         if server.isRegistered {
             cell.detailTextLabel?.text = NSLocalizedString("CONNECTED", comment: "Connected")
         } else if server.isConnectingOrRegistering {
             // Add an activity indicator
             cell = ActivityIndicatorCell(style: .default, reuseIdentifier: nil)
-            cell.textLabel?.text = server.host
+            cell.textLabel?.text = server.displayName
             (cell as! ActivityIndicatorCell).activityIndicator.startAnimating()
         } else {
             cell.detailTextLabel?.text = NSLocalizedString("NOT_CONNECTED", comment: "Not Connected")
@@ -63,7 +63,7 @@ class ServersTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let server = ServerManager.shared.servers[indexPath.row]
         let message = NSLocalizedString("SERVER_OPTIONS", comment: "Server options")
-        let serverOptions = UIAlertController(title: server.host, message: message, preferredStyle: .actionSheet)
+        let serverOptions = UIAlertController(title: server.displayName, message: message, preferredStyle: .actionSheet)
         
         serverOptions.popoverPresentationController?.sourceView = view
         
@@ -100,6 +100,16 @@ class ServersTableViewController : UITableViewController {
                 self.showMOTD(server: server)
             })
             serverOptions.addAction(motdAction)
+        }
+        
+        if server.isConnected {
+            let chanlistAction = UIAlertAction(title: localized("CHANNEL_LIST"), style: .default, handler: { (action) in
+                let chanlistTVC = ChannelListTableViewController(server)
+                let nav = UINavigationController(rootViewController: chanlistTVC)
+                self.modalPresentationStyle = .formSheet
+                self.present(nav, animated: true, completion: nil)
+            })
+            serverOptions.addAction(chanlistAction)
         }
         
         let cancel = NSLocalizedString("CANCEL", comment: "Cancel")
