@@ -231,4 +231,9 @@ extension AppDelegate {
         AppDelegate.showAlertGlobally(alert)
     }
     
+    public func serverPaswordNeeed(_ server: Server) {
+        let alert = ServerPasswordAlert(server)
+        AppDelegate.showAlertGlobally(alert)
+    }
+    
 }

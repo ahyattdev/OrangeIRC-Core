@@ -38,5 +38,6 @@ public protocol ServerDelegate {
     func noSuch(channel: String, _ server: Server)
     func cannotSendTo(channel: String, _ server: Server)
     func tooManyChannels(_ server: Server)
+    func serverPaswordNeeed(_ server: Server)
     
 }

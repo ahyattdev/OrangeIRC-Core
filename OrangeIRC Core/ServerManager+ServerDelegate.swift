@@ -116,4 +116,8 @@ extension ServerManager {
         serverDelegate?.tooManyChannels(server)
     }
     
+    public func serverPaswordNeeed(_ server: Server) {
+        serverDelegate?.serverPaswordNeeed(server)
+    }
+    
 }

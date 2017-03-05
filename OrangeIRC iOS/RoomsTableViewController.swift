@@ -130,10 +130,6 @@ class RoomsTableViewController : UITableViewController, UIViewControllerPreviewi
             return
         }
         
-        let addRoom = AddRoomTableViewController(style: .grouped)
-        let nav = UINavigationController(rootViewController: addRoom)
-        nav.modalPresentationStyle = .formSheet
-        navigationController?.present(nav, animated: true, completion: nil)
     }
     
     public func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {

@@ -522,6 +522,10 @@ extension Server {
         case Command.Error.TOOMANYCHANNELS:
             delegate?.tooManyChannels(self)
             
+        case Command.Error.PASSWDMISMATCH:
+            // We need a password
+            delegate?.serverPaswordNeeed(self)
+            
         default:
             print(message.message)
             print("Unimplemented command handle: \(message.command)")
