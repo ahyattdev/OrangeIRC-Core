@@ -8,27 +8,27 @@
 
 import Foundation
 
-public class ServerManager : ServerDelegate {
+open class ServerManager : ServerDelegate {
     
     // Singleton
-    public static let shared = ServerManager()
+    open static let shared = ServerManager()
     
     // Saved data
-    public var servers: [Server]!
+    open var servers: [Server]!
     
     private init() {
         loadData()
     }
     
     // Runtime data
-    public var dataPaths: (servers: URL, rooms: URL) = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("servers.plist"),
+    open var dataPaths: (servers: URL, rooms: URL) = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("servers.plist"),
                                                  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("rooms.plist"))
     
     // Set by whatever uses this framework
-    public var serverDelegate: ServerDelegate?
+    open var serverDelegate: ServerDelegate?
     
     // Dynamic variables
-    public var registeredServers: [Server] {
+    open var registeredServers: [Server] {
         var regServers = [Server]()
         for server in servers {
             if server.isRegistered {
@@ -38,7 +38,7 @@ public class ServerManager : ServerDelegate {
         return regServers
     }
     
-    public func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) -> Server {
+    open func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) -> Server {
         let server = Server(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: String.Encoding.utf8)
         servers.append(server)
         server.delegate = self
@@ -52,7 +52,7 @@ public class ServerManager : ServerDelegate {
         return server
     }
     
-    public func loadData() {
+    open func loadData() {
         guard let loadedServers = NSKeyedUnarchiver.unarchiveObject(withFile: dataPaths.servers.path) else {
             // Initialize the file
             servers = [Server]()
@@ -70,13 +70,13 @@ public class ServerManager : ServerDelegate {
         }
     }
     
-    public func saveData() {
+    open func saveData() {
         NSKeyedArchiver.archiveRootObject(servers, toFile: dataPaths.servers.path)
     }
     
 
     
-    public func delete(server: Server) {
+    open func delete(server: Server) {
         server.disconnect()
         server.delegate = nil
         for i in 0 ..< servers.count {

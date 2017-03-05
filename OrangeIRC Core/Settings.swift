@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Settings {
+open class Settings {
     
     fileprivate struct Keys {
         
@@ -18,7 +18,7 @@ public class Settings {
         
     }
     
-    public static let shared = Settings()
+    open static let shared = Settings()
     private init() { }
     
     var autoReconnect = UserDefaults.standard.bool(forKey: Keys.AutoReconnect) {

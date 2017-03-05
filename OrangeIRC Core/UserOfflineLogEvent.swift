@@ -8,6 +8,6 @@
 
 import Foundation
 
-public class UserOfflineLogEvent : UserLogEvent {
+open class UserOfflineLogEvent : UserLogEvent {
     
 }

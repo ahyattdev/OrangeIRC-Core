@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class UserLogEvent : LogEvent {
+open class UserLogEvent : LogEvent {
     
-    public var sender: User
+    open var sender: User
     
     public init(sender: User) {
         self.sender = sender

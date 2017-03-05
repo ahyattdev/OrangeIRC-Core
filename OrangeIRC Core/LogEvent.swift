@@ -9,8 +9,8 @@
 import Foundation
 
 // Sort of like a Java abstract class for now
-public class LogEvent : NSObject {
+open class LogEvent : NSObject {
     
-    public var date: Date = Date()
+    open var date: Date = Date()
     
 }

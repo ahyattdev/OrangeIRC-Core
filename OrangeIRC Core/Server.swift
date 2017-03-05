@@ -9,7 +9,7 @@
 import Foundation
 import CocoaAsyncSocket
 
-public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
+open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     let TIMEOUT_CONNECT = TimeInterval(30)
     let TIMEOUT_NONE = TimeInterval(-1)
@@ -31,23 +31,23 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     }
     
     // MOTD support
-    public var motd: String?
+    open var motd: String?
     
-    public var log = [Message]()
+    open var log = [Message]()
     
     public typealias ListChannel = (name: String, users: Int, topic: String?)
     // Call fetchChannelList() to populate
-    public var channelListCache = [ListChannel]()
+    open var channelListCache = [ListChannel]()
     
-    public var delegate: ServerDelegate?
+    open var delegate: ServerDelegate?
     
-    public var isConnectingOrRegistering = false
+    open var isConnectingOrRegistering = false
     
-    public var userBitmask: UInt8 = 0
+    open var userBitmask: UInt8 = 0
     
     var socket: GCDAsyncSocket?
     
-    public var isConnected: Bool {
+    open var isConnected: Bool {
         if let socket = socket {
             return socket.isConnected
         } else {
@@ -55,28 +55,28 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         }
     }
     
-    public var displayName: String {
+    open var displayName: String {
         return alias == nil ? host : alias!
     }
     
     // Saved data
-    public var host: String
-    public var alias: String?
-    public var port: Int
-    public var nickname: String
-    public var username: String
-    public var realname: String
-    public var password = ""
-    public var nickservPassword = ""
-    public var autoJoin = false
-    public var rooms = [Room]()
+    open var host: String
+    open var alias: String?
+    open var port: Int
+    open var nickname: String
+    open var username: String
+    open var realname: String
+    open var password = ""
+    open var nickservPassword = ""
+    open var autoJoin = false
+    open var rooms = [Room]()
     // End saved data
     
-    public var roomsFlaggedForAutoJoin = [String]()
+    open var roomsFlaggedForAutoJoin = [String]()
     
-    public var encoding: String.Encoding
+    open var encoding: String.Encoding
     
-    public var isRegistered = false
+    open var isRegistered = false
     
     // Used for reconnect functionality
     private var connectOnDisconnect = false
@@ -134,7 +134,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         alias = coder.decodeObject(forKey: Coding.Alias) as? String
     }
     
-    public func encode(with aCoder: NSCoder) {
+    open func encode(with aCoder: NSCoder) {
         aCoder.encode(host, forKey: Coding.Host)
         aCoder.encode(alias, forKey: Coding.Alias)
         aCoder.encode(port, forKey: Coding.Port)
@@ -146,7 +146,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         aCoder.encode(rooms, forKey: Coding.Rooms)
     }
     
-    public func connect() {
+    open func connect() {
         self.socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
         
         // We like new protocols
@@ -161,7 +161,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         }
     }
     
-    public func disconnect() {
+    open func disconnect() {
         write(string: Command.QUIT)
     }
     
@@ -172,7 +172,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
       Example: disconnect(completion: <closure>)
  
     */
-    public func reconnect() {
+    open func reconnect() {
         connectOnDisconnect = true
         disconnect()
     }
@@ -210,12 +210,12 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     }
     
     // Doesn't send with a tag, part of the API
-    public func sendPassword() {
+    open func sendPassword() {
         write(string: "\(Command.PASS) \(password)")
     }
     
     // Same as above
-    public func sendNick() {
+    open func sendNick() {
         write(string: "\(Command.NICK) \(nickname)")
     }
     
@@ -229,7 +229,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.write(string: "\(Command.USER) \(self.username) \(self.userBitmask) * :\(self.realname)", with: Tag.User)
     }
     
-    public func sendNickServPassword() {
+    open func sendNickServPassword() {
         self.write(string: "\(Command.PRIVMSG) \(Command.Services.NickServ) :\(Command.IDENTIFY) \(self.nickservPassword)", with: Tag.NickServPassword)
     }
     
@@ -245,18 +245,18 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.socket?.write(Data(bytes: bytes), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
     }
     
-    public func fetchInfo(_ user: User) {
+    open func fetchInfo(_ user: User) {
         user.awayMessage = nil
         user.away = nil
         write(string: "\(Command.WHOIS) \(user.nick)")
     }
     
-    public func fetchChannelList() {
+    open func fetchChannelList() {
         channelListCache.removeAll()
         write(string: "\(Command.LIST)")
     }
     
-    public func prepareForBackground() {
+    open func prepareForBackground() {
         if let socket = socket {
             if socket.isConnected {
                 socket.perform {

@@ -16,7 +16,7 @@ let AT_SYMBOL = "@"
 let CARRIAGE_RETURN = "\r\n"
 let EMPTY = ""
 
-public struct Message {
+open class Message {
     
     public typealias Tag = (key: String, value: String?, vendor: String?)
     
@@ -45,13 +45,13 @@ public struct Message {
         
     }
     
-    public var message: String
-    public var prefix: Prefix?
-    public var command: String
-    public var target: [String]
-    public var parameters: String?
+    open var message: String
+    open var prefix: Prefix?
+    open var command: String
+    open var target: [String]
+    open var parameters: String?
     
-    public var tags = [Tag]()
+    open var tags = [Tag]()
     
     public init?(_ string: String) {
         

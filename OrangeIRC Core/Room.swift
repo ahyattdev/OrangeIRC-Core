@@ -8,19 +8,19 @@
 
 import Foundation
 
-public class Room : NSObject, NSCoding {
+open class Room : NSObject, NSCoding {
     
     // Should be set by the AppDelegate or ServerManager when the room is loaded or created
-    public var server: Server!
+    open var server: Server!
     
-    public var log = [LogEvent]()
+    open var log = [LogEvent]()
     
-    public var displayName: String {
+    open var displayName: String {
         return ""
     }
     
     // To be implemented by subclasses
-    public var canSendMessage: Bool {
+    open var canSendMessage: Bool {
         return false
     }
     
@@ -31,7 +31,7 @@ public class Room : NSObject, NSCoding {
         self.init()
     }
     
-    public func encode(with aCoder: NSCoder) {
+    open func encode(with aCoder: NSCoder) {
 
     }
     

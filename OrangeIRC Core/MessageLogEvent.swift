@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class MessageLogEvent : LogEvent {
+open class MessageLogEvent : LogEvent {
     
-    public var contents: String
-    public var sender: User
-    public var replyTo: User?
+    open var contents: String
+    open var sender: User
+    open var replyTo: User?
     
     init(_ contents: String, sender: User, userCache: UserCache) {
         self.contents = contents

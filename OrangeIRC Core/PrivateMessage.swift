@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PrivateMessage : Room {
+open class PrivateMessage : Room {
     
     fileprivate struct Coding {
         
@@ -19,13 +19,13 @@ public class PrivateMessage : Room {
     }
     
     // The user that this private message session is with
-    public let otherUser: User
+    open let otherUser: User
     
-    public override var displayName: String {
+    open override var displayName: String {
         return otherUser.nick
     }
     
-    public override var canSendMessage: Bool {
+    open override var canSendMessage: Bool {
         return otherUser.isOnline && server.isRegistered
     }
     init(_ otherUser: User) {
@@ -40,7 +40,7 @@ public class PrivateMessage : Room {
         self.init(otherUser)
     }
     
-    public override func encode(with aCoder: NSCoder) {
+    open override func encode(with aCoder: NSCoder) {
         aCoder.encode(otherUser, forKey: Coding.OtherUser)
     }
     

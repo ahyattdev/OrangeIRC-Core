@@ -12,7 +12,7 @@ import Foundation
 import UIKit
 #endif
 
-public class User: NSObject, NSCoding {
+open class User: NSObject, NSCoding {
     
     private struct Coding {
         
@@ -44,25 +44,25 @@ public class User: NSObject, NSCoding {
     
     public typealias ChannelData = (name: String, mode: Mode, away: Bool)
     
-    public var channels = [ChannelData]()
+    open var channels = [ChannelData]()
     
     // Nickname
-    public var nick: String
+    open var nick: String
     
-    public var isOnline = true
+    open var isOnline = true
     
     // Begin WHOIS data
-    public var username: String?
-    public var host: String?
-    public var ip: String?
-    public var servername: String?
-    public var realname: String?
-    public var onlineTime: Date?
-    public var idleTime: Date?
-    public var channelList: [String]?
-    public var `class`: Class?
-    public var awayMessage: String?
-    public var away: Bool?
+    open var username: String?
+    open var host: String?
+    open var ip: String?
+    open var servername: String?
+    open var realname: String?
+    open var onlineTime: Date?
+    open var idleTime: Date?
+    open var channelList: [String]?
+    open var `class`: Class?
+    open var awayMessage: String?
+    open var away: Bool?
     
     public init(_ nick: String) {
         self.nick = nick
@@ -76,11 +76,11 @@ public class User: NSObject, NSCoding {
         self.init(nick)
     }
     
-    public func encode(with aCoder: NSCoder) {
+    open func encode(with aCoder: NSCoder) {
         aCoder.encode(nick, forKey: Coding.Nick)
     }
     
-    public func getMode(for channel: String) -> Mode? {
+    open func getMode(for channel: String) -> Mode? {
         // Search through the list of channels this user is on to get the one we want and return it
         for channelNode in channels {
             if channelNode.name == channel {
@@ -91,7 +91,7 @@ public class User: NSObject, NSCoding {
         return nil
     }
     
-    public func set(mode: Mode, for channel: String) {
+    open func set(mode: Mode, for channel: String) {
         // Search through the list of channels this user is on to get the one we want and set it
         for var channelNode in channels {
             if channelNode.name == channel {
@@ -102,7 +102,7 @@ public class User: NSObject, NSCoding {
         print("This user is not on the specified channel")
     }
     
-    public func getAway(for channel: String) -> Bool? {
+    open func getAway(for channel: String) -> Bool? {
         // Search through the list of channels this user is on to get the one we want and return it
         for channelNode in channels {
             if channelNode.name == channel {
@@ -113,7 +113,7 @@ public class User: NSObject, NSCoding {
         return nil
     }
     
-    public func set(away: Bool, for channel: String) {
+    open func set(away: Bool, for channel: String) {
         // Search through the list of channels this user is on to get the one we want and set it
         for var channelNode in channels {
             if channelNode.name == channel {
@@ -124,7 +124,7 @@ public class User: NSObject, NSCoding {
         print("This user is not on the specified channel")
     }
     
-    public func isOn(channel: String) -> Bool {
+    open func isOn(channel: String) -> Bool {
         for channelNode in channels {
             if channelNode.name == channel {
                 return true
@@ -133,7 +133,7 @@ public class User: NSObject, NSCoding {
         return false
     }
     
-    public func removeFrom(channel: String) {
+    open func removeFrom(channel: String) {
         for i in 0 ..< channels.count {
             if channels[i].name == channel {
                 channels.remove(at: i)
@@ -144,7 +144,7 @@ public class User: NSObject, NSCoding {
     
 #if os(iOS) || os(tvOS)
     
-    public func color(room: Room) -> UIColor {
+    open func color(room: Room) -> UIColor {
         if let channel = room as? Channel {
             guard let mode = getMode(for: channel.name) else {
                 // The user is not in the room
@@ -186,7 +186,7 @@ public class User: NSObject, NSCoding {
         }
     }
     
-    public func coloredName(for room: Room) -> NSAttributedString {
+    open func coloredName(for room: Room) -> NSAttributedString {
         // The properly colored attributes
         let attributes = [NSForegroundColorAttributeName : color(room: room)]
         return NSAttributedString(string: nick, attributes: attributes)
@@ -194,7 +194,7 @@ public class User: NSObject, NSCoding {
     
 #endif
     
-    public static func ==(lhs: User, rhs: User) -> Bool {
+    open static func ==(lhs: User, rhs: User) -> Bool {
         return lhs.nick == rhs.nick
     }
     

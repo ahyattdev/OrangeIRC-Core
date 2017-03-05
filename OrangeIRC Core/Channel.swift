@@ -8,10 +8,10 @@
 
 import Foundation
 
-public class Channel : Room {
+open class Channel : Room {
     
     // https://www.alien.net.au/irc/chantypes.html
-    public static let CHANNEL_PREFIXES = NSCharacterSet(charactersIn: "#&!+.~")
+    open static let CHANNEL_PREFIXES = NSCharacterSet(charactersIn: "#&!+.~")
     
     fileprivate struct Coding {
         
@@ -24,29 +24,29 @@ public class Channel : Room {
     }
     
     // Preserved variables
-    public var name: String
-    public var autoJoin = false // Only does something if this is a channel
+    open var name: String
+    open var autoJoin = false // Only does something if this is a channel
     
-    public var users = [User]()
+    open var users = [User]()
     
-    public var topic: String?
+    open var topic: String?
     
-    public var hasTopic = false
+    open var hasTopic = false
     
     // If this is a private message room, this will be if both us and the recipient are on the server
-    public var isJoined = false
+    open var isJoined = false
     
-    public override var canSendMessage: Bool {
+    open override var canSendMessage: Bool {
         return isJoined && server.isRegistered
     }
     
     // Set for the connect and join button
-    public var joinOnConnect = false
+    open var joinOnConnect = false
     
     // Don't display the users list while it is still being populated
-    public var hasCompleteUsersList = false
+    open var hasCompleteUsersList = false
     
-    public override var displayName: String {
+    open override var displayName: String {
         return name
     }
     
@@ -65,7 +65,7 @@ public class Channel : Room {
         self.autoJoin = coder.decodeBool(forKey: Coding.AutoJoin)
     }
     
-    public override func encode(with aCoder: NSCoder) {
+    open override func encode(with aCoder: NSCoder) {
         
     }
     
@@ -84,7 +84,7 @@ public class Channel : Room {
         })
     }
     
-    public func send(message: String) {
+    open func send(message: String) {
         // Splits the message up into 512 byte chunks
         var message = message
         var messageParts = [String]()

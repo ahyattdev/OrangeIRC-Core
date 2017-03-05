@@ -8,6 +8,6 @@
 
 import Foundation
 
-public class UserJoinLogEvent : UserLogEvent {
+open class UserJoinLogEvent : UserLogEvent {
     
 }
