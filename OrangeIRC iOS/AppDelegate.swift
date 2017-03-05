@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         ServerManager.shared.loadData()
         
         AppDelegate.splitView.viewControllers = [
-            UINavigationController(rootViewController: RoomsTableViewController(style: .plain)),
+            UINavigationController(rootViewController: NetworksTableViewController()),
             UINavigationController(rootViewController: UITableViewController(style: .plain))
         ]
         
