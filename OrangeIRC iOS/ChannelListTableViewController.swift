@@ -37,6 +37,9 @@ class ChannelListTableViewController : UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(finished), name: Notifications.ListFinishedForServer, object: server)
         
         server.fetchChannelList()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 150
     }
     
     func refresh() {
@@ -66,7 +69,14 @@ class ChannelListTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = RightDetailTextViewCell(nil)
+        let ID = "RightDetailTextViewCell"
+        var cell: RightDetailTextViewCell!
+        if let dequeuedCell = tableView.dequeueReusableCell(withIdentifier: ID) as? RightDetailTextViewCell {
+            cell = dequeuedCell
+        } else {
+            cell = Bundle.main.loadNibNamed(ID, owner: self, options: nil)!.first as! RightDetailTextViewCell
+        }
+        
         let channelData = server.channelListCache[indexPath.row]
         
         cell.title.text = channelData.name
@@ -78,7 +88,7 @@ class ChannelListTableViewController : UITableViewController {
         } else {
             usersWord = localized("USERS")
         }
-        cell.detail.text = "\(channelData.users) \(usersWord)"
+        cell.detail.text = "\(channelData.users) \(usersWord!)"
         
         cell.textView.text = channelData.topic
         

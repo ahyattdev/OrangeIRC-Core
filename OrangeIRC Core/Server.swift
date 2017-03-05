@@ -202,12 +202,22 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         }
     }
     
-    public func sendPassMessage() {
+    func sendPassMessage() {
         print("Sent PASS message: \(self.host)")
         self.write(string: "\(Command.PASS) \(self.password)", with: Tag.Pass)
     }
     
-    public func sendNickMessage() {
+    // Doesn't send with a tag, part of the API
+    public func sendPassword() {
+        write(string: "\(Command.PASS) \(password)")
+    }
+    
+    // Same as above
+    public func sendNick() {
+        write(string: "\(Command.NICK) \(nickname)")
+    }
+    
+    func sendNickMessage() {
         print("Sent NICK message: \(self.host)")
         self.write(string: "\(Command.NICK) \(self.nickname)", with: Tag.Nick)
     }

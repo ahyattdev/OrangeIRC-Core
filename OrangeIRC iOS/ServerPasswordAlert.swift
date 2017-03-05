@@ -36,7 +36,7 @@ class ServerPasswordAlert : UIAlertController, UITextFieldDelegate {
         authenticate = UIAlertAction(title: localized("AUTHENTICATE"), style: .default, handler: { a in
             if let text = self.passwordField.text {
                 self.server.password = text
-                self.server.sendPassMessage()
+                self.server.sendPassword()
             }
         })
         authenticate.isEnabled = false

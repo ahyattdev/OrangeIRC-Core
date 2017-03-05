@@ -484,8 +484,8 @@ extension Server {
             
             channelListCache.append((name: name, users: userCount, topic: message.parameters))
             
-            // Only call this for every 5th update, to avoid spam
-            if channelListCache.count % 5 == 0 {
+            // Only call this for every 10th update, to avoid spam
+            if channelListCache.count % 10 == 0 {
                 delegate?.chanlistUpdated(self)
             }
             
