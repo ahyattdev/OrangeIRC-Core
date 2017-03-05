@@ -15,6 +15,15 @@ public class Room : NSObject, NSCoding {
     
     public var log = [LogEvent]()
     
+    public var displayName: String {
+        return ""
+    }
+    
+    // To be implemented by subclasses
+    public var canSendMessage: Bool {
+        return false
+    }
+    
     // This is basically an "abstract class"
     override init() { }
     

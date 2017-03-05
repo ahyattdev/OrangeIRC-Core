@@ -11,7 +11,7 @@ import OrangeIRCCore
 
 class UsersSearchResultsController : UITableViewController, UISearchResultsUpdating {
     
-    let room: Room
+    let room: Channel
     
     var filteredUsers = [User]()
     
@@ -19,7 +19,7 @@ class UsersSearchResultsController : UITableViewController, UISearchResultsUpdat
     
     var nav: UINavigationController
     
-    init(_ room: Room, navigationController: UINavigationController) {
+    init(_ room: Channel, navigationController: UINavigationController) {
         self.room = room
         nav = navigationController
         

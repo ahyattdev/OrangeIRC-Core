@@ -44,7 +44,7 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadLog), name: Notifications.NewLogEventForRoom, object: room)
         
-        title = room.name
+        title = room.displayName
         navigationItem.prompt = room.server!.displayName
         
         let replyToSender = UIMenuItem(title: localized("REPLY"), action: #selector(reply(sender:message:)))
@@ -60,7 +60,7 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
     
     func updateButtons() {
         // Only enable the composer button when a message can be sent
-        composerButton.isEnabled = room.server!.isRegistered && room.isJoined
+        composerButton.isEnabled = room.canSendMessage
         detailButton.isEnabled = true
     }
     

@@ -21,6 +21,13 @@ public class PrivateMessage : Room {
     // The user that this private message session is with
     public let otherUser: User
     
+    public override var displayName: String {
+        return otherUser.nick
+    }
+    
+    public override var canSendMessage: Bool {
+        return otherUser.isOnline && server.isRegistered
+    }
     init(_ otherUser: User) {
         self.otherUser = otherUser
         super.init()

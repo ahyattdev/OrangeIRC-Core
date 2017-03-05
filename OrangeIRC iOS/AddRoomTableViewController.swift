@@ -205,7 +205,7 @@ class AddRoomTableViewController : UITableViewController {
         let name = roomNameField!.text!
         let server = selectedServer!
         
-        if selectedRoomType == .Channel && !Room.CHANNEL_PREFIXES.characterIsMember(unichar(name.utf8.first!)) {
+        if selectedRoomType == .Channel && !Channel.CHANNEL_PREFIXES.characterIsMember(unichar(name.utf8.first!)) {
             let title = localized("INVALID_ROOM_NAME")
             let message = localized("MISSING_CHANNEL_PREFIX")
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

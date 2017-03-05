@@ -36,11 +36,19 @@ public class Channel : Room {
     // If this is a private message room, this will be if both us and the recipient are on the server
     public var isJoined = false
     
+    public override var canSendMessage: Bool {
+        return isJoined && server.isRegistered
+    }
+    
     // Set for the connect and join button
     public var joinOnConnect = false
     
     // Don't display the users list while it is still being populated
     public var hasCompleteUsersList = false
+    
+    public override var displayName: String {
+        return name
+    }
     
     public init(_ name: String) {
         self.name = name

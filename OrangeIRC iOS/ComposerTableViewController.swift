@@ -63,10 +63,10 @@ class ComposerTableViewController : UITableViewController, UITextViewDelegate {
         
         if mode == .Composer {
             title = localized("NEW_MESSAGE")
-            navigationItem.prompt = room.name
+            navigationItem.prompt = room.displayName
         } else {
             title = localized("REPLY")
-            navigationItem.prompt = "\(localized("TO_UPPERCASE")) \(otherUser!.nick) \(localized("ON")) \(room.name)"
+            navigationItem.prompt = "\(localized("TO_UPPERCASE")) \(otherUser!.nick) \(localized("ON")) \(room.displayName)"
         }
     }
     
@@ -77,17 +77,19 @@ class ComposerTableViewController : UITableViewController, UITextViewDelegate {
     }
     
     func send() {
-        if mode == .Composer {
-            room.send(message: composedMessage)
-        } else {
-            // There is a destination picker
-            // FIXME: Magic numbers
-            if destinationPicker!.selectedSegmentIndex == 0 {
-                // Send on channel
-                room.send(message: "\(otherUser!.nick): \(composedMessage)")
+        if let channel = room as? Channel {
+            if mode == .Composer {
+                channel.send(message: composedMessage)
             } else {
-                // Send as private message
-                room.server!.startPrivateMessageSession(otherUser!.nick, with: composedMessage)
+                // There is a destination picker
+                // FIXME: Magic numbers
+                if destinationPicker!.selectedSegmentIndex == 0 {
+                    // Send on channel
+                    channel.send(message: "\(otherUser!.nick): \(composedMessage)")
+                } else {
+                    // Send as private message
+                    room.server!.startPrivateMessageSession(otherUser!.nick, with: composedMessage)
+                }
             }
         }
         dismiss(animated: true, completion: nil)
