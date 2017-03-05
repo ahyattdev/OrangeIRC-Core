@@ -94,6 +94,7 @@
 		6A7325151E11E30300AFCC0B /* UserInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7325141E11E30300AFCC0B /* UserInfoTableViewController.swift */; };
 		6A765F381E6B8B28005E4152 /* ServerPasswordAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A765F371E6B8B28005E4152 /* ServerPasswordAlert.swift */; };
 		6A765F3A1E6BAC6D005E4152 /* RightDetailTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A765F391E6BAC6D005E4152 /* RightDetailTextViewCell.xib */; };
+		6A765F3C1E6BD004005E4152 /* NetworksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A765F3B1E6BD004005E4152 /* NetworksTableViewController.swift */; };
 		6A7A6A021D29CDC60012D037 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A011D29CDC60012D037 /* User.swift */; };
 		6A7A6A031D29CDC60012D037 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A011D29CDC60012D037 /* User.swift */; };
 		6A7A6A051D29D0850012D037 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A041D29D0850012D037 /* Room.swift */; };
@@ -130,6 +131,12 @@
 		6AF4264C1D2CAD060029250A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6AF4264E1D2CAD060029250A /* Localizable.strings */; };
 		6AF88F9F1E17388100FD9A9D /* Screenshots in Resources */ = {isa = PBXBuildFile; fileRef = 6AF88F9E1E17388100FD9A9D /* Screenshots */; };
 		6AF88FA11E174E1C00FD9A9D /* RightDetailSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF88FA01E174E1C00FD9A9D /* RightDetailSubtitleCell.swift */; };
+		6AFDA8C01E6C69D3003A30C5 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8BF1E6C69D3003A30C5 /* Channel.swift */; };
+		6AFDA8C11E6C69D3003A30C5 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8BF1E6C69D3003A30C5 /* Channel.swift */; };
+		6AFDA8C21E6C69D3003A30C5 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8BF1E6C69D3003A30C5 /* Channel.swift */; };
+		6AFDA8C41E6C69E2003A30C5 /* PrivateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8C31E6C69E2003A30C5 /* PrivateMessage.swift */; };
+		6AFDA8C51E6C69E2003A30C5 /* PrivateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8C31E6C69E2003A30C5 /* PrivateMessage.swift */; };
+		6AFDA8C61E6C69E2003A30C5 /* PrivateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8C31E6C69E2003A30C5 /* PrivateMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +238,7 @@
 		6A7325161E11F7EB00AFCC0B /* CONTRIBUTORS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTORS.md; sourceTree = "<group>"; };
 		6A765F371E6B8B28005E4152 /* ServerPasswordAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerPasswordAlert.swift; sourceTree = "<group>"; };
 		6A765F391E6BAC6D005E4152 /* RightDetailTextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightDetailTextViewCell.xib; sourceTree = "<group>"; };
+		6A765F3B1E6BD004005E4152 /* NetworksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworksTableViewController.swift; sourceTree = "<group>"; };
 		6A7A6A011D29CDC60012D037 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6A7A6A041D29D0850012D037 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		6A82A07D1D24332A00F81A1B /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
@@ -257,6 +265,8 @@
 		6AF4264D1D2CAD060029250A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		6AF88F9E1E17388100FD9A9D /* Screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screenshots; sourceTree = "<group>"; };
 		6AF88FA01E174E1C00FD9A9D /* RightDetailSubtitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailSubtitleCell.swift; sourceTree = "<group>"; };
+		6AFDA8BF1E6C69D3003A30C5 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		6AFDA8C31E6C69E2003A30C5 /* PrivateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -405,6 +415,7 @@
 				661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */,
 				669DF7011D7CE96B007F82DB /* MOTDViewController.swift */,
 				6ADD58DE1D29DB330051DB28 /* RoomsTableViewController.swift */,
+				6A765F3B1E6BD004005E4152 /* NetworksTableViewController.swift */,
 				6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */,
 				6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */,
 				6AE1F6C41E14C623002AE37B /* ComposerTableViewController.swift */,
@@ -428,6 +439,8 @@
 				6A25035E1D5950FB00C18750 /* Log */,
 				661AF5031D2C833700CFC190 /* Notifications.swift */,
 				6A7A6A041D29D0850012D037 /* Room.swift */,
+				6AFDA8BF1E6C69D3003A30C5 /* Channel.swift */,
+				6AFDA8C31E6C69E2003A30C5 /* PrivateMessage.swift */,
 				6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */,
 				6A7A6A011D29CDC60012D037 /* User.swift */,
 				669FCF1D1D2891B6000117C5 /* Message.swift */,
@@ -808,6 +821,7 @@
 				661AF5021D2C809E00CFC190 /* ServerSettingsTableViewController.swift in Sources */,
 				66A75AFF1D234694001161A3 /* AppDelegate.swift in Sources */,
 				6A4BBD7E1E1A11B300987C45 /* ActivityIndicatorCell.swift in Sources */,
+				6A765F3C1E6BD004005E4152 /* NetworksTableViewController.swift in Sources */,
 				6ADD58E11D29DD220051DB28 /* ServersTableViewController.swift in Sources */,
 				6A83890E1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift in Sources */,
 				6A91CA571E623435004D38E1 /* RightDetailTextViewCell.swift in Sources */,
@@ -838,6 +852,7 @@
 				6A91CA5A1E623F85004D38E1 /* Utilities.swift in Sources */,
 				669DF7071D7CFBEB007F82DB /* UserQuitLogEvent.swift in Sources */,
 				6A8389081E33F3A8006ED94B /* ServerManager+ServerDelegate.swift in Sources */,
+				6AFDA8C11E6C69D3003A30C5 /* Channel.swift in Sources */,
 				6A73250D1E11AA0700AFCC0B /* UserOfflineLogEvent.swift in Sources */,
 				66C8580F1D7B17F1009E486F /* UserJoinLogEvent.swift in Sources */,
 				66C858121D7B17FA009E486F /* UserPartLogEvent.swift in Sources */,
@@ -849,6 +864,7 @@
 				6A7325091E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */,
 				6A83890B1E33F3E0006ED94B /* Notifications.swift in Sources */,
 				667BB2ED1D29C2F60029AB2D /* Server+Room.swift in Sources */,
+				6AFDA8C51E6C69E2003A30C5 /* PrivateMessage.swift in Sources */,
 				6A7A6A031D29CDC60012D037 /* User.swift in Sources */,
 				66A75B341D23486F001161A3 /* LogEvent.swift in Sources */,
 				66C8580C1D7B1781009E486F /* UserLogEvent.swift in Sources */,
@@ -871,6 +887,7 @@
 				6A91CA591E623F85004D38E1 /* Utilities.swift in Sources */,
 				669DF7061D7CFBEB007F82DB /* UserQuitLogEvent.swift in Sources */,
 				6A8389071E33F3A8006ED94B /* ServerManager+ServerDelegate.swift in Sources */,
+				6AFDA8C01E6C69D3003A30C5 /* Channel.swift in Sources */,
 				6A73250C1E11AA0700AFCC0B /* UserOfflineLogEvent.swift in Sources */,
 				66C8580E1D7B17F1009E486F /* UserJoinLogEvent.swift in Sources */,
 				66C858111D7B17FA009E486F /* UserPartLogEvent.swift in Sources */,
@@ -882,6 +899,7 @@
 				6A7325081E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */,
 				6A83890A1E33F3E0006ED94B /* Notifications.swift in Sources */,
 				667BB2EC1D29C2F60029AB2D /* Server+Room.swift in Sources */,
+				6AFDA8C41E6C69E2003A30C5 /* PrivateMessage.swift in Sources */,
 				6A7A6A021D29CDC60012D037 /* User.swift in Sources */,
 				66EDD2F41D2963E60013E7CC /* ServerDelegate.swift in Sources */,
 				66C8580B1D7B1781009E486F /* UserLogEvent.swift in Sources */,
@@ -920,6 +938,7 @@
 				6A91CA5B1E623F85004D38E1 /* Utilities.swift in Sources */,
 				6A2672B21E105D180087B331 /* UserJoinLogEvent.swift in Sources */,
 				6A8389091E33F3A8006ED94B /* ServerManager+ServerDelegate.swift in Sources */,
+				6AFDA8C21E6C69D3003A30C5 /* Channel.swift in Sources */,
 				6A73250E1E11AA0700AFCC0B /* UserOfflineLogEvent.swift in Sources */,
 				6A2672B41E105D180087B331 /* UserQuitLogEvent.swift in Sources */,
 				6A2672BA1E105D180087B331 /* Command.swift in Sources */,
@@ -931,6 +950,7 @@
 				6A2672AB1E105D180087B331 /* Server+Room.swift in Sources */,
 				6A73250A1E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */,
 				6A83890C1E33F3E1006ED94B /* Notifications.swift in Sources */,
+				6AFDA8C61E6C69E2003A30C5 /* PrivateMessage.swift in Sources */,
 				6A2672B71E105D180087B331 /* User.swift in Sources */,
 				6A2672B61E105D180087B331 /* RoomType.swift in Sources */,
 				6A2672AA1E105D180087B331 /* ServerDelegate.swift in Sources */,

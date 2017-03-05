@@ -145,38 +145,45 @@ public class User: NSObject, NSCoding {
 #if os(iOS) || os(tvOS)
     
     public func color(room: Room) -> UIColor {
-        guard let mode = getMode(for: room.name) else {
-            // The user is not in the room
-            // Not really an error, this is just how users who leave are rendered
-            return UIColor.lightGray
+        if let channel = room as? Channel {
+            guard let mode = getMode(for: channel.name) else {
+                // The user is not in the room
+                // Not really an error, this is just how users who leave are rendered
+                return UIColor.lightGray
+            }
+            
+            var color = UIColor.black
+            switch mode {
+            case .Operator:
+                color = UIColor.red
+            case .Voice:
+                color = UIColor.blue
+            case .Invisible:
+                color = UIColor.gray
+            case .Deaf:
+                color = UIColor.lightGray
+            case .Zombie:
+                color = UIColor.gray
+            case .None:
+                // Default text color
+                break
+            }
+            
+            if !channel.isJoined {
+                color = UIColor.lightGray
+            }
+            
+            if room.server!.userCache.me == self {
+                color = UIColor.orange
+            }
+            
+            return color
+        } else if room is PrivateMessage {
+            return UIColor.black
+        } else {
+            // So we know that there was an issue
+            return UIColor.purple
         }
-        
-        var color = UIColor.black
-        switch mode {
-        case .Operator:
-            color = UIColor.red
-        case .Voice:
-            color = UIColor.blue
-        case .Invisible:
-            color = UIColor.gray
-        case .Deaf:
-            color = UIColor.lightGray
-        case .Zombie:
-            color = UIColor.gray
-        case .None:
-            // Default text color
-            break
-        }
-        
-        if !room.isJoined {
-            color = UIColor.lightGray
-        }
-        
-        if room.server!.userCache.me == self {
-            color = UIColor.orange
-        }
-        
-        return color
     }
     
     public func coloredName(for room: Room) -> NSAttributedString {

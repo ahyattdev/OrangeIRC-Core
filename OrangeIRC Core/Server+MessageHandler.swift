@@ -19,14 +19,17 @@ extension Server {
             self.delegate?.registeredSuccessfully(self)
             self.isRegistered = true
             for room in rooms {
-                if room.joinOnConnect {
-                    // Completes the feature of the Connect and Join button
-                    join(channel: room.name)
-                    room.joinOnConnect = false
-                } else if room.autoJoin && !room.isJoined && room.type == .Channel {
-                    // Completes the room autojoin feature
-                    join(channel: room.name)
+                if let channel = room as? Channel {
+                    if channel.joinOnConnect {
+                        // Completes the feature of the Connect and Join button
+                        join(channel: channel.name)
+                        channel.joinOnConnect = false
+                    } else if channel.autoJoin && !channel.isJoined {
+                        // Completes the room autojoin feature
+                        join(channel: channel.name)
+                    }
                 }
+
             }
             
         case Command.Reply.YOURHOST:
@@ -80,7 +83,7 @@ extension Server {
                 break
             }
             
-            let room = getOrAddRoom(name: channelName, type: .Channel)
+            let room = getOrAddChannel(channelName)
             
             // Set the autojoin setting if necessary
             for i in 0 ..< roomsFlaggedForAutoJoin.count {
@@ -94,9 +97,7 @@ extension Server {
             
             let user = userCache.getOrCreateUser(nickname: nick)
             
-            if room.type == .Channel {
-                room.sortUsers()
-            }
+            room.sortUsers()
             
             userCache.handleJoin(user: user, channel: room)
         
@@ -108,7 +109,7 @@ extension Server {
             
             let roomName = message.target[0]
             
-            guard let room = roomFrom(name: roomName) else {
+            guard let room = channelFrom(name: roomName) else {
                 print("Could not get room for room name")
                 break
             }
@@ -188,14 +189,14 @@ extension Server {
             
         case Command.Reply.NOTOPIC:
             let channelName = message.target[0]
-            guard let channel = roomFrom(name: channelName) else {
+            guard let channel = channelFrom(name: channelName) else {
                 break
             }
             channel.hasTopic = false
             
         case Command.Reply.TOPIC:
             let channelName = message.target[0]
-            guard let channel = roomFrom(name: channelName) else {
+            guard let channel = channelFrom(name: channelName) else {
                 break
             }
             channel.topic = message.parameters
@@ -223,7 +224,7 @@ extension Server {
             }
             
             
-            let isPrivate = !Room.CHANNEL_PREFIXES.characterIsMember(roomName.utf16.first!)
+            let isPrivate = !Channel.CHANNEL_PREFIXES.characterIsMember(roomName.utf16.first!)
             
             if isPrivate {
                 // The IRC protocol puts our nickname as the roomname
@@ -276,36 +277,25 @@ extension Server {
                 }
                 
             } else {
-                
-                var room = roomFrom(name: roomName)
-                
-                if room == nil && !isPrivate {
-                    print("Recieved a PRIVMSG for an unknown channel")
-                    break
-                }
-                
-                if room == nil && isPrivate {
-                    room = startPrivateMessageSession(message.prefix!.nickname!)
-                } else if room != nil && isPrivate {
-                    room!.otherUser!.isOnline = true
-                }
-                
-                var sender: User?
-                
-                if room!.type == .PrivateMessage {
-                    sender = room!.otherUser!
+                if isPrivate {
+                    var privateRoom: Room!
+                    if let existingRoom = privateMessageFrom(user: userCache.getOrCreateUser(nickname: message.prefix!.nickname!)) {
+                        privateRoom = existingRoom
+                    } else {
+                        privateRoom = startPrivateMessageSession(message.prefix!.nickname!)
+                    }
+                    let logEvent = MessageLogEvent(contents, sender: userCache.getOrCreateUser(nickname: message.prefix!.nickname!), userCache: userCache)
+                    privateRoom.log.append(logEvent)
+                    delegate?.recieved(logEvent: logEvent, for: privateRoom)
                 } else {
-                    sender = userCache.getUser(by: message.prefix!.nickname!)
+                    if let sender = userCache.getUser(by: message.prefix!.nickname!) {
+                        if let room = channelFrom(name: roomName) {
+                            let logEvent = MessageLogEvent(contents, sender: sender, userCache: userCache)
+                            room.log.append(logEvent)
+                            delegate?.recieved(logEvent: logEvent, for: room)
+                        }
+                    }
                 }
-                
-                guard sender != nil else {
-                    print("Could not identify the sender of a PRIVMSG")
-                    break
-                }
-                
-                let logEvent = MessageLogEvent(contents, sender: sender!, userCache: userCache)
-                room!.log.append(logEvent)
-                delegate?.recieved(logEvent: logEvent, for: room!)
             }
         
         case Command.Reply.NAMREPLY:
@@ -316,7 +306,7 @@ extension Server {
             
             let channelName = message.target[1]
             
-            guard let room = roomFrom(name: channelName) else {
+            guard let room = channelFrom(name: channelName) else {
                 print("Got a list of users in a room, but did not have data on the room!")
                 break
             }
@@ -334,7 +324,7 @@ extension Server {
             }
             
             let roomName = message.target[0]
-            guard let room = roomFrom(name: roomName) else {
+            guard let room = channelFrom(name: roomName) else {
                 break
             }
             

@@ -15,7 +15,6 @@ public class ServerManager : ServerDelegate {
     
     // Saved data
     public var servers: [Server]!
-    public var rooms: [Room]!
     
     private init() {
         loadData()
@@ -63,22 +62,6 @@ public class ServerManager : ServerDelegate {
         
         servers = loadedServers as! [Server]
         
-        guard let loadedRooms = NSKeyedUnarchiver.unarchiveObject(withFile: dataPaths.rooms.path) else {
-            // Initialize the file
-            rooms = [Room]()
-            saveData()
-            return
-        }
-        
-        self.rooms = loadedRooms as! [Room]
-        for room in self.rooms {
-            guard let server = server(for: room.serverUUID) else {
-                fatalError("A room without a matching server was loaded")
-            }
-            room.server = server
-            server.rooms.append(room)
-        }
-        
         for server in servers {
             server.delegate = self
             if server.autoJoin {
@@ -89,28 +72,9 @@ public class ServerManager : ServerDelegate {
     
     public func saveData() {
         NSKeyedArchiver.archiveRootObject(servers, toFile: dataPaths.servers.path)
-        NSKeyedArchiver.archiveRootObject(rooms, toFile: dataPaths.rooms.path)
     }
     
-    public func server(for uuid: UUID) -> Server? {
-        for server in servers {
-            if server.uuid == uuid {
-                return server
-            }
-        }
-        return nil
-    }
-    
-    public func rooms(for server: Server) -> [Room] {
-        var roomsOfServer = [Room]()
-        for room in rooms {
-            if room.serverUUID == server.uuid {
-                roomsOfServer.append(room)
-                room.server = server
-            }
-        }
-        return roomsOfServer
-    }
+
     
     public func delete(server: Server) {
         server.disconnect()
@@ -133,30 +97,4 @@ public class ServerManager : ServerDelegate {
         saveData()
     }
     
-    public func delete(room: Room) {
-        let server = room.server!
-        
-        // Leave gracefully
-        if room.isJoined {
-            server.leave(channel: room.name)
-        }
-        
-        // Remove from the array of rooms of the server of this room
-        for i in 0 ..< server.rooms.count {
-            if server.rooms[i] == room {
-                server.rooms.remove(at: i)
-                break
-            }
-        }
-        
-        // Remove from the AppDelegate array of rooms
-        for i in 0 ..< rooms.count {
-            if rooms[i] == room {
-                rooms.remove(at: i)
-                break
-            }
-        }
-        
-        saveData()
-    }
 }

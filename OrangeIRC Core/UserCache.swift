@@ -46,7 +46,7 @@ class UserCache {
         var channels = [Room]()
         
         for channelNode in user.channels {
-            if let room = server.roomFrom(name: channelNode.name) {
+            if let room = server.channelFrom(name: channelNode.name) {
                 channels.append(room)
             }
         }
@@ -54,7 +54,7 @@ class UserCache {
         return channels
     }
     
-    func parse(userList: [String], for room: Room) {
+    func parse(userList: [String], for room: Channel) {
         for nicknameWithPrefix in userList {
             if nicknameWithPrefix.isEmpty {
                 // Some servers put a space after the nickname list, causing our code to put in an empty nick
@@ -76,14 +76,11 @@ class UserCache {
             updateMetadata(user: user, room: room, mode: splitUserData.mode)
             
             // If we have a private message room, we must mark it as not joined
-            if let privateRoom = server.roomFrom(name: user.nick) {
-                if !privateRoom.isJoined {
-                    privateRoom.isJoined = true
-                    
+            if let privateRoom = server.privateMessageFrom(user: user) {
+                    user.isOnline = true
                     let onlineEvent = UserOnlineLogEvent(sender: user)
                     privateRoom.log.append(onlineEvent)
                     server.delegate?.recieved(logEvent: onlineEvent, for: privateRoom)
-                }
             }
         }
     }
@@ -106,9 +103,9 @@ class UserCache {
         }
         
         // If we have a private message room, we must mark it as not joined
-        if let privateRoom = server.roomFrom(name: user.nick) {
-            if privateRoom.isJoined {
-                privateRoom.isJoined = false
+        if let privateRoom = server.privateMessageFrom(user: user) {
+            if privateRoom.otherUser.isOnline {
+                privateRoom.otherUser.isOnline = false
                 
                 let offlineEvent = UserOfflineLogEvent(sender: user)
                 privateRoom.log.append(offlineEvent)
@@ -129,7 +126,7 @@ class UserCache {
         return user!
     }
     
-    func updateMetadata(user: User, room: Room, mode: User.Mode) {
+    func updateMetadata(user: User, room: Channel, mode: User.Mode) {
         if !user.isOn(channel: room.name) {
             user.channels.append((room.name, mode, false))
         } else {
@@ -138,7 +135,7 @@ class UserCache {
         }
     }
     
-    func handleJoin(user: User, channel: Room) {
+    func handleJoin(user: User, channel: Channel) {
         user.isOnline = true
         
         if me == user {
@@ -160,8 +157,8 @@ class UserCache {
         channel.log.append(logEvent)
         server.delegate?.recieved(logEvent: logEvent, for: channel)
         
-        if let privateRoom = server.roomFrom(name: user.nick) {
-            if !privateRoom.isJoined {
+        if let privateRoom = server.privateMessageFrom(user: user) {
+            if !privateRoom.otherUser.isOnline {
                 let onlineEvent = UserOnlineLogEvent(sender: user)
                 privateRoom.log.append(onlineEvent)
                 server.delegate?.recieved(logEvent: onlineEvent, for: privateRoom)
@@ -186,7 +183,7 @@ class UserCache {
         return (cleanNick, mode)
     }
     
-    func handleLeave(user: User, channel: Room) {
+    func handleLeave(user: User, channel: Channel) {
         if me == user {
             // We left
             channel.isJoined = false

@@ -9,11 +9,11 @@
 import Foundation
 import CocoaAsyncSocket
 
-let TIMEOUT_CONNECT = TimeInterval(30)
-let TIMEOUT_NONE = TimeInterval(-1)
-let CRLF = "\r\n"
-
 public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
+    
+    let TIMEOUT_CONNECT = TimeInterval(30)
+    let TIMEOUT_NONE = TimeInterval(-1)
+    let CRLF = "\r\n"
     
     // NSCoding keys extracted to here so to avoid typos causing bugs
     struct Coding {
@@ -27,7 +27,6 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         static let Rooms = "Rooms"
         static let NickServPassword = "NickServPassword"
         static let AutoJoin = "AutoJoin"
-        static let UUID = "UUID"
         
     }
     
@@ -35,7 +34,6 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     public var motd: String?
     
     public var log = [Message]()
-    public var rooms: [Room] = [Room]()
     
     public typealias ListChannel = (name: String, users: Int, topic: String?)
     // Call fetchChannelList() to populate
@@ -71,7 +69,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     public var password = ""
     public var nickservPassword = ""
     public var autoJoin = false
-    public var uuid: UUID
+    public var rooms = [Room]()
     // End saved data
     
     public var roomsFlaggedForAutoJoin = [String]()
@@ -95,7 +93,6 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.username = username
         self.realname = realname
         self.encoding = encoding
-        uuid = UUID()
         super.init()
         userCache.server = self
     }
@@ -126,10 +123,13 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.nickservPassword = nickservPassword
         self.autoJoin = coder.decodeBool(forKey: Coding.AutoJoin)
         
-        guard let uuid = coder.decodeObject(forKey: Coding.UUID) as? UUID else {
-            return nil
+        if let rooms = coder.decodeObject(forKey: Coding.Rooms) as? [Room] {
+            self.rooms = rooms
         }
-        self.uuid = uuid
+        
+        for room in self.rooms {
+            room.server = self
+        }
         
         alias = coder.decodeObject(forKey: Coding.Alias) as? String
     }
@@ -143,7 +143,7 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         aCoder.encode(realname, forKey: Coding.Realname)
         aCoder.encode(nickservPassword, forKey: Coding.NickServPassword)
         aCoder.encode(autoJoin, forKey: Coding.AutoJoin)
-        aCoder.encode(uuid, forKey: Coding.UUID)
+        aCoder.encode(rooms, forKey: Coding.Rooms)
     }
     
     public func connect() {
@@ -187,7 +187,9 @@ public class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.socket = nil
         
         for room in rooms {
-            room.isJoined = false
+            if let channel = room as? Channel {
+                channel.isJoined = false
+            }
         }
         
         

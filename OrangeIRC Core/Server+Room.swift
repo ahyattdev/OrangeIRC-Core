@@ -18,34 +18,51 @@ public extension Server {
         self.write(string: "\(Command.PART) \(channel)")
     }
     
-    public func alreadyExists(room: String) -> Bool {
+    public func alreadyExists(_ channelName: String) -> Bool {
         for existingRoom in self.rooms {
-            if room == existingRoom.name {
-                return true
+            if let channel = existingRoom as? Channel {
+                if channel.name == channelName {
+                    return true
+                }
             }
         }
         return false
     }
     
-    public func roomFrom(name: String) -> Room? {
+    public func channelFrom(name: String) -> Channel? {
         for room in self.rooms {
-            if room.name == name {
-                return room
+            if let channel = room as? Channel {
+                if channel.name == name {
+                    return channel
+                }
             }
         }
         return nil
     }
     
-    func getOrAddRoom(name: String, type: RoomType) -> Room {
+    public func privateMessageFrom(user: User) -> PrivateMessage? {
         for room in rooms {
-            if room.name == name && room.type == type {
-                return room
+            if let privateMessageRoom = room as? PrivateMessage {
+                if privateMessageRoom.otherUser == user {
+                    return privateMessageRoom
+                }
             }
         }
-        let room = Room(name: name, type: type, serverUUID: uuid)
-        room.server = self
-        rooms.append(room)
-        return room
+        return nil
+    }
+    
+    func getOrAddChannel(_ name: String) -> Channel {
+        for room in rooms {
+            if let channel = room as? Channel {
+                if channel.name == name {
+                    return channel
+                }
+            }
+        }
+        let channel = Channel(name)
+        channel.server = self
+        rooms.append(channel)
+        return channel
     }
     
     @discardableResult
@@ -60,17 +77,34 @@ public extension Server {
         // We started a new private message session
         let user = userCache.getOrCreateUser(nickname: otherNick)
         
-        let room = Room(name: otherNick, type: .PrivateMessage, serverUUID: uuid)
+        let room = PrivateMessage(user)
         room.server = self
-        room.otherUser = user
         rooms.append(room)
-        
-        room.isJoined = true
         
         // We won't create a join room log event, those aren't really a thing with private messages
         NotificationCenter.default.post(name: Notifications.RoomCreated, object: room)
         
         return room
+    }
+    
+    public func delete(room: Room) {
+        
+        // Leave gracefully
+        if let channel = room as? Channel {
+            if channel.isJoined {
+                leave(channel: channel.name)
+            }
+        }
+        
+        // Remove from the array of rooms of the server of this room
+        for i in 0 ..< rooms.count {
+            if rooms[i] == room {
+                rooms.remove(at: i)
+                break
+            }
+        }
+        
+        ServerManager.shared.saveData()
     }
     
 }
