@@ -63,14 +63,22 @@ class ServerOptionsActionSheet : UIAlertController {
         }
         
         if server.isConnected {
+            let joinAction = UIAlertAction(title: localized("JOIN_CHANNEL"), style: .default, handler: { a in
+                AppDelegate.showAlertGlobally(JoinChannelAlertFactory.make(server: server))
+            })
+            addAction(joinAction)
+            
             let chanlistAction = UIAlertAction(title: localized("CHANNEL_LIST"), style: .default, handler: { (action) in
                 let chanlistTVC = ChannelListTableViewController(server)
-                let nav = UINavigationController(rootViewController: chanlistTVC)
-                self.modalPresentationStyle = .formSheet
-                self.present(nav, animated: true, completion: nil)
+                AppDelegate.showModalGlobally(chanlistTVC, style: .pageSheet)
             })
             addAction(chanlistAction)
         }
+        
+        let deleteAction = UIAlertAction(title: localized("DELETE"), style: .destructive, handler: { a in
+            ServerManager.shared.delete(server: server)
+        })
+        addAction(deleteAction)
         
         let cancel = localized("CANCEL")
         let cancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil)

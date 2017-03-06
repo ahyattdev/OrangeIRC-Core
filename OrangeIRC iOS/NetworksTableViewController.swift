@@ -23,6 +23,11 @@ class NetworksTableViewController : UITableViewController {
         super.viewDidLoad()
         
         title = localized("NETWORKS")
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+        
+        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.ServerDataChanged, object: nil)
+        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.RoomDataChanged, object: nil)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -30,7 +35,7 @@ class NetworksTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ServerManager.shared.servers[section].rooms.count
+        return 1 + ServerManager.shared.servers[section].rooms.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -98,8 +98,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         let vc = UIViewController()
         alertWindow.windowLevel = UIWindowLevelAlert
         alertWindow.rootViewController = vc
+        alertWindow.tintColor = UIColor.orange
         alertWindow.makeKeyAndVisible()
         vc.present(alert, animated: true, completion: nil)
+    }
+    
+    static func showModalGlobally(_ modal: UIViewController, style: UIModalPresentationStyle) {
+        let modalWindow = UIWindow(frame: UIScreen.main.bounds)
+        let vc = UIViewController()
+        modalWindow.windowLevel = UIWindowLevelAlert
+        modalWindow.rootViewController = vc
+        modalWindow.tintColor = UIColor.orange
+        modalWindow.makeKeyAndVisible()
+        let nav = UINavigationController(rootViewController: modal)
+        nav.modalPresentationStyle = style
+        vc.present(nav, animated: true, completion: nil)
     }
     
     static func deleteWithConfirmation(server: Server) {
