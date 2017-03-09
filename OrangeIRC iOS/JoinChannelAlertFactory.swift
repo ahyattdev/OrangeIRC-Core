@@ -16,26 +16,35 @@ struct JoinChannelAlertFactory {
         
         var channelField: UITextField!
         
-        let cancel = UIAlertAction(title: localized("CANCEL"), style: .cancel, handler: nil)
+        var actionDisabler: ActionDisabler?
+        
+        let cancel = UIAlertAction(title: localized("CANCEL"), style: .cancel, handler: { action in
+            actionDisabler = nil
+        })
         alert.addAction(cancel)
         
         let join = UIAlertAction(title: localized("JOIN"), style: .default, handler: { action in
             if let text = channelField.text {
                 server.join(channel: text)
             }
+            actionDisabler = nil
         })
         alert.addAction(join)
         
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = localized("CHANNEL_NAME")
-            _ = ActionDisabler(action: join, textField: textField)
+            
+            // Just so the warning goes away. Yes, it is for a good reason
+            if actionDisabler == nil {
+                actionDisabler = ActionDisabler(action: join, textField: textField)
+            }
+            
             
             channelField = textField
         })
         
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = localized("CHANNEL_KEY")
-            
         })
         
         return alert

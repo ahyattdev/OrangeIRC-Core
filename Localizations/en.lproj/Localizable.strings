@@ -181,3 +181,21 @@ SEND = "Send";
 REQUIRED_FIELD_EMPTY = "Required Field Empty";
 
 THE_FIELD_IS_EMPTY = "The [NAME] field is empty.";
+
+ONLINE = "Online";
+
+OFFLINE = "Offline";
+
+CONNECTING = "Connecting";
+
+JOIN_CHANNEL = "Join Channel";
+
+JOIN_CHANNEL_DESCRIPTION = "Enter the channel name and an optional channel key";
+
+CHANNEL_LIST = "Channel List";
+
+CHANNELS_ON = "Channels on";
+
+CHANNELS = "Channels";
+
+NETWORKS = "Networks";

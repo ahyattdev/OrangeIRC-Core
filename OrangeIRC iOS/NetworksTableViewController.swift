@@ -80,6 +80,15 @@ class NetworksTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Open the room
+        let server = ServerManager.shared.servers[indexPath.section]
+        
+        if indexPath.row == 0 {
+            
+        } else {
+            let roomTVC = RoomTableViewController(server.rooms[indexPath.row - 1])
+            AppDelegate.splitView.showDetailViewController(UINavigationController(rootViewController: roomTVC), sender: nil)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
