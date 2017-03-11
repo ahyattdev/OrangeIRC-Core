@@ -34,6 +34,10 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
     }
     
     override func viewDidLoad() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 44
+        tableView.separatorStyle = .none
+        
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItems = [detailButton, composerButton]
@@ -93,58 +97,51 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let logEvent = room.log[indexPath.row]
-        
-        
-        if logEvent is UserLogEvent {
-            let regularCell = UITableViewCell(style: .default, reuseIdentifier: nil)
-            let userLogEvent = logEvent as! UserLogEvent
-            
-            var suffix = ""
-            
-            switch userLogEvent.self {
-            case is UserJoinLogEvent:
-                suffix = localized("JOINED_THE_ROOM")
-            case is UserPartLogEvent:
-                suffix = localized("LEFT_THE_ROOM")
-            case is UserQuitLogEvent:
-                suffix = localized("QUIT")
-            default:
-                print("Unknown UserLogEvent, no caption found")
-                break
-            }
-            
-            let coloredName = userLogEvent.sender.coloredName(for: room)
-            let attributedString = NSMutableAttributedString(attributedString: coloredName)
-            // Spacer
-            attributedString.append(NSAttributedString(string: " "))
-            attributedString.append(NSAttributedString(string: suffix))
-            regularCell.textLabel!.attributedText = attributedString
-            
-            return regularCell
-            
-        } else if let msgEvent = logEvent as? MessageLogEvent {
-            let msgCell = MessageCell(message: msgEvent, room: room, showLabel: true)
-            msgCell.delegate = self
-            return msgCell
-            
-        } else {
-            print("Unknown log event, could not be rendered")
-            return UITableViewCell()
-        }
+        let cell = LogEventCell(logEvent: logEvent, reuseIdentifier: nil)
+        return cell
+//        let logEvent = room.log[indexPath.row]
+//        
+//        
+//        if logEvent is UserLogEvent {
+//            let regularCell = UITableViewCell(style: .default, reuseIdentifier: nil)
+//            let userLogEvent = logEvent as! UserLogEvent
+//            
+//            var suffix = ""
+//            
+//            switch userLogEvent.self {
+//            case is UserJoinLogEvent:
+//                suffix = localized("JOINED_THE_ROOM")
+//            case is UserPartLogEvent:
+//                suffix = localized("LEFT_THE_ROOM")
+//            case is UserQuitLogEvent:
+//                suffix = localized("QUIT")
+//            default:
+//                print("Unknown UserLogEvent, no caption found")
+//                break
+//            }
+//            
+//            let coloredName = userLogEvent.sender.coloredName(for: room)
+//            let attributedString = NSMutableAttributedString(attributedString: coloredName)
+//            // Spacer
+//            attributedString.append(NSAttributedString(string: " "))
+//            attributedString.append(NSAttributedString(string: suffix))
+//            regularCell.textLabel!.attributedText = attributedString
+//            
+//            return regularCell
+//            
+//        } else if let msgEvent = logEvent as? MessageLogEvent {
+//            let msgCell = MessageCell(message: msgEvent, room: room, showLabel: true)
+//            msgCell.delegate = self
+//            return msgCell
+//            
+//        } else {
+//            print("Unknown log event, could not be rendered")
+//            return UITableViewCell()
+//        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let event = room.log[indexPath.row]
-        
-        if let msgEvent = event as? MessageLogEvent {
-            return TextViewCell.getHeight(msgEvent.contents, width: tableView.frame.width - 32, showLabel: true)
-        } else {
-            return super.tableView(tableView, heightForRowAt: indexPath)
-        }
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
