@@ -60,30 +60,5 @@
             </connections>
             <point key="canvasLocation" x="-178.5" y="-94"/>
         </tableViewCell>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="0kT-TR-AZb" imageView="cMj-WQ-IEh" style="IBUITableViewCellStyleDefault" id="gWa-lV-Blk">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gWa-lV-Blk" id="0D5-9R-yca">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0kT-TR-AZb">
-                        <rect key="frame" x="70" y="0.0" width="290" height="43"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Console" id="cMj-WQ-IEh">
-                        <rect key="frame" x="15" y="1" width="40" height="40"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </imageView>
-                </subviews>
-            </tableViewCellContentView>
-            <point key="canvasLocation" x="-73" y="257"/>
-        </tableViewCell>
     </objects>
-    <resources>
-        <image name="Console" width="40" height="40"/>
-    </resources>
 </document>
