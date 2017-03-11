@@ -47,6 +47,7 @@ extension ServerManager {
     
     open func recieved(logEvent: LogEvent, for room: Room) {
         NotificationCenter.default.post(name: Notifications.NewLogEventForRoom, object: room)
+        NotificationCenter.default.post(Notification(name: Notifications.RoomDataChanged))
         serverDelegate?.recieved(logEvent: logEvent, for: room)
     }
     
@@ -56,6 +57,7 @@ extension ServerManager {
     
     open func recieved(topic: String, for room: Room) {
         NotificationCenter.default.post(name: Notifications.TopicUpdatedForRoom, object: room)
+        NotificationCenter.default.post(Notification(name: Notifications.RoomDataChanged))
         serverDelegate?.recieved(topic: topic, for: room)
     }
     

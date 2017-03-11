@@ -69,6 +69,9 @@ class NetworksTableViewController : UITableViewController {
             } else {
                 cell.detailTextLabel?.text = localized("OFFLINE")
             }
+            
+            // Set icon
+            cell.imageView?.image = UIImage(named: "Console")
         } else {
             // A room
             let room = server.rooms[indexPath.row - 1]

@@ -199,3 +199,5 @@ CHANNELS_ON = "Channels on";
 CHANNELS = "Channels";
 
 NETWORKS = "Networks";
+
+CONSOLE = "Console";
