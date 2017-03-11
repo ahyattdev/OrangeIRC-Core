@@ -192,6 +192,10 @@ JOIN_CHANNEL = "Join Channel";
 
 JOIN_CHANNEL_DESCRIPTION = "Enter the channel name and an optional channel key";
 
+CHANNEL_NAME = "Channel Name";
+
+CHANNEL_KEY = "Channel Key (Optional)";
+
 CHANNEL_LIST = "Channel List";
 
 CHANNELS_ON = "Channels on";

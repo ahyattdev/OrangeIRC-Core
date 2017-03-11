@@ -66,7 +66,8 @@ open class Channel : Room {
     }
     
     open override func encode(with aCoder: NSCoder) {
-        
+        aCoder.encode(name, forKey: Coding.Name)
+        aCoder.encode(autoJoin, forKey: Coding.AutoJoin)
     }
     
     func contains(user: User) -> Bool {

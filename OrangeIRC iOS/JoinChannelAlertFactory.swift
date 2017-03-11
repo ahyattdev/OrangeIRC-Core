@@ -12,7 +12,7 @@ import OrangeIRCCore
 struct JoinChannelAlertFactory {
     
     static func make(server: Server) -> UIAlertController {
-        let alert = UIAlertController(title: localized("JOIN_CHANNEL"), message: "JOIN_CHANNEL_DESCRIPTION", preferredStyle: .alert)
+        let alert = UIAlertController(title: localized("JOIN_CHANNEL"), message: localized("JOIN_CHANNEL_DESCRIPTION"), preferredStyle: .alert)
         
         var channelField: UITextField!
         
