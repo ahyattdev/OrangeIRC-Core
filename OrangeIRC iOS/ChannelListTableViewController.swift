@@ -29,18 +29,17 @@ class ChannelListTableViewController : UITableViewController {
         
         channelList = server.channelListCache
         
-        title = localized("CHANNELS")
-        updatePrompt()
+        title = localized("PUBLIC_CHANNELS")
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
-        navigationItem.leftBarButtonItem!.isEnabled = false
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateList), name: Notifications.ListUpdatedForServer, object: server)
         NotificationCenter.default.addObserver(self, selector: #selector(finished), name: Notifications.ListFinishedForServer, object: server)
         
-        server.fetchChannelList()
+        refresh()
+        updatePrompt()
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
@@ -49,16 +48,19 @@ class ChannelListTableViewController : UITableViewController {
     func updateList() {
         // We need to keep our own copy of the channel list
         channelList = server.channelListCache
+        updatePrompt()
         tableView.reloadData()
     }
     
     func refresh() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         navigationItem.leftBarButtonItem!.isEnabled = false
         server.fetchChannelList()
         tableView.reloadData()
     }
     
     func finished() {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         navigationItem.leftBarButtonItem!.isEnabled = true
     }
     
@@ -67,7 +69,8 @@ class ChannelListTableViewController : UITableViewController {
     }
     
     func updatePrompt() {
-        navigationItem.prompt = "\(localized("CHANNELS_ON")) \(server.displayName)"
+        let channelsOn = channelList.count == 1 ? localized("CHANNELS_ON_SINGULAR") : localized("CHANNELS_ON_PLURAL")
+        navigationItem.prompt = "\(channelList.count) \(channelsOn) \(server.displayName)"
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

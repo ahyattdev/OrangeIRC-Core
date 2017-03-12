@@ -99,6 +99,8 @@ extension Server {
             
             room.sortUsers()
             
+            ServerManager.shared.saveData()
+            
             userCache.handleJoin(user: user, channel: room)
         
         case Command.PART:

@@ -33,9 +33,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         
         ServerManager.shared.loadData()
         
+        let placeholder = UITableViewController(style: .grouped)
+        let label = UILabel()
+        label.text = localized("CHOSE_ROOM")
+        label.textAlignment = .center
+        placeholder.tableView.backgroundView = label
+        placeholder.tableView.separatorStyle = .none
+        
         AppDelegate.splitView.viewControllers = [
             UINavigationController(rootViewController: NetworksTableViewController()),
-            UINavigationController(rootViewController: UITableViewController(style: .plain))
+            UINavigationController(rootViewController: placeholder)
         ]
         
         ServerManager.shared.serverDelegate = self
@@ -129,6 +136,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         confirmation.addAction(deleteAction)
         
         AppDelegate.showAlertGlobally(confirmation)
+    }
+    
+    func updateNetworkIndicator() {
+        for server in ServerManager.shared.servers {
+            if server.isConnectingOrRegistering {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                return
+            }
+        }
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
 }

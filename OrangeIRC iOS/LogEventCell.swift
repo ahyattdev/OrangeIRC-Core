@@ -52,7 +52,7 @@ class LogEventCell : UITableViewCell {
         contentView.addConstraint(NSLayoutConstraint(item: content, attribute: .trailing, relatedBy: .equal, toItem: content.superview, attribute: .trailing, multiplier: 1.0, constant: 5))
         
         // contentView.bottom
-        contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .equal, toItem: content, attribute: .bottom, multiplier: 1.0, constant: 3))
+        contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: content, attribute: .bottom, multiplier: 1.0, constant: 3))
         
         dateLabel.text = "1:23 PM"
         

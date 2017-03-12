@@ -16,22 +16,23 @@ extension AppDelegate {
         let alert = UIAlertController(title: localized("SERVER_DID_NOT_RESPOND"), message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: localized("OK"), style: .default, handler: nil))
         AppDelegate.showAlertGlobally(alert)
+        updateNetworkIndicator()
     }
     
     func stoppedResponding(_ server: Server) {
-        
+        updateNetworkIndicator()
     }
     
     func startedConnecting(_ server: Server) {
-        
+        updateNetworkIndicator()
     }
     
     func didDisconnect(_ server: Server) {
-        
+        updateNetworkIndicator()
     }
     
     func registeredSuccessfully(_ server: Server) {
-        
+        updateNetworkIndicator()
     }
     
     func recieved(notice: String, sender: String, on server: Server) {

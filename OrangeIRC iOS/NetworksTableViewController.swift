@@ -95,8 +95,6 @@ class NetworksTableViewController : UITableViewController {
             let roomTVC = RoomTableViewController(server.rooms[indexPath.row - 1])
             AppDelegate.splitView.showDetailViewController(UINavigationController(rootViewController: roomTVC), sender: nil)
         }
-        
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }

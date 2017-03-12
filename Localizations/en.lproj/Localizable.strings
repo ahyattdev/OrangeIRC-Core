@@ -198,10 +198,20 @@ CHANNEL_KEY = "Channel Key (Optional)";
 
 CHANNEL_LIST = "Channel List";
 
-CHANNELS_ON = "Channels on";
+CHANNELS_ON_SINGULAR = "public channel on";
+
+CHANNELS_ON_PLURAL = "public channels on";
 
 CHANNELS = "Channels";
 
 NETWORKS = "Networks";
 
 CONSOLE = "Console";
+
+CHOSE_ROOM = "No room selected";
+
+PUBLIC_CHANNELS = "Public Channels";
+
+NORMAL = "Normal";
+
+NOT_AWAY = "Not Away";
