@@ -9,5 +9,13 @@
 import Foundation
 
 internal func localized(_ string: String) -> String {
-    return NSLocalizedString(string, comment: "")
+    for framework in Bundle.allFrameworks {
+        if let id = framework.bundleIdentifier {
+            if id == "io.github.ahyattdev.OrangeIRCCore" {
+                return NSLocalizedString(string, tableName: "Localizations", bundle: framework, value: "", comment: "")
+            }
+        }
+    }
+    print("OrangeIRCCore: Failed to find localized string")
+    return string
 }

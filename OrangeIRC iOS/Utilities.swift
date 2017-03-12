@@ -9,5 +9,5 @@
 import Foundation
 
 internal func localized(_ string: String) -> String {
-    return NSLocalizedString(string, comment: "")
+    return NSLocalizedString(string, tableName: "Localizations", bundle: Bundle.main, value: "", comment: "")
 }

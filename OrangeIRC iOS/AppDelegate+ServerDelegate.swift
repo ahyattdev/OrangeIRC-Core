@@ -80,7 +80,7 @@ extension AppDelegate {
         let nicknamePasswordAlert = UIAlertController(title: nicknameRegistered, message: nicknameRegisteredDescription, preferredStyle: .alert)
         
         nicknamePasswordAlert.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = self.localized("NICKNAME_PASSWORD")
+            textField.placeholder = localized("NICKNAME_PASSWORD")
             textField.isSecureTextEntry = true
             self.nickservPasswordField = textField
             textField.delegate = self
@@ -119,7 +119,7 @@ extension AppDelegate {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         alert.addTextField(configurationHandler: { (textField) in
-            textField.placeholder = self.localized("NICKNAME_PASSWORD")
+            textField.placeholder = localized("NICKNAME_PASSWORD")
             textField.isSecureTextEntry = true
             self.nickservPasswordField = textField
             textField.delegate = self
