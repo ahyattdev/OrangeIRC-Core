@@ -286,13 +286,13 @@ extension Server {
                     } else {
                         privateRoom = startPrivateMessageSession(message.prefix!.nickname!)
                     }
-                    let logEvent = MessageLogEvent(contents, sender: userCache.getOrCreateUser(nickname: message.prefix!.nickname!), userCache: userCache)
+                    let logEvent = MessageLogEvent(contents: contents, sender: userCache.getOrCreateUser(nickname: message.prefix!.nickname!), room: privateRoom)
                     privateRoom.log.append(logEvent)
                     delegate?.recieved(logEvent: logEvent, for: privateRoom)
                 } else {
                     if let sender = userCache.getUser(by: message.prefix!.nickname!) {
                         if let room = channelFrom(name: roomName) {
-                            let logEvent = MessageLogEvent(contents, sender: sender, userCache: userCache)
+                            let logEvent = MessageLogEvent(contents: contents, sender: sender, room: room)
                             room.log.append(logEvent)
                             delegate?.recieved(logEvent: logEvent, for: room)
                         }

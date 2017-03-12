@@ -10,10 +10,11 @@ import Foundation
 
 open class RoomLogEvent: LogEvent {
     
-    let room: Room
+    open var room: Room
     
-    private init(room: Room) {
+    internal init(room: Room) {
         self.room = room
+        super.init()
     }
     
 }

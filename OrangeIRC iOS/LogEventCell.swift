@@ -61,9 +61,7 @@ class LogEventCell : UITableViewCell {
         
         dateLabel.text = df.string(from: logEvent.date)
         
-        if let messageLogEvent = logEvent as? MessageLogEvent {
-            //content.text = messageLogEvent.sender.coloredName(for: <#T##Room#>)
-        }
+        content.attributedText = logEvent.attributedDescription
     }
     
     

@@ -13,4 +13,11 @@ open class LogEvent : NSObject {
     
     open var date: Date = Date()
     
+    // No reason to construct this one
+    internal override init() { }
+    
+    open var attributedDescription: NSAttributedString {
+        return NSAttributedString()
+    }
+    
 }

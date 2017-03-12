@@ -112,7 +112,7 @@ open class Channel : Room {
             for part in messageParts {
                 server!.write(string: "\(commandPrefix)\(part)")
                 
-                let logEvent = MessageLogEvent(part, sender: server!.userCache.me, userCache: server!.userCache)
+                let logEvent = MessageLogEvent(contents: part, sender: server!.userCache.me, room: self)
                 log.append(logEvent)
                 server!.delegate?.recieved(logEvent: logEvent, for: self)
             }

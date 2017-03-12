@@ -9,7 +9,7 @@
 import UIKit
 import OrangeIRCCore
 
-class RoomTableViewController : UITableViewController, MessageCellDelegate {
+class RoomTableViewController : UITableViewController {
     
     let room: Room
     
@@ -47,12 +47,6 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
         
         title = room.displayName
         navigationItem.prompt = room.server!.displayName
-        
-        let replyToSender = UIMenuItem(title: localized("REPLY"), action: #selector(reply(sender:message:)))
-        let replyToRecipient = UIMenuItem(title: localized("REPLY_TO_RECIPIENT"), action: #selector(reply(recipient:message:)))
-        
-        UIMenuController.shared.menuItems = [replyToSender, replyToRecipient]
-        UIMenuController.shared.update()
     }
     
     func roomDataChanged(_ notification: NSNotification) {
@@ -78,10 +72,7 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
     }
     
     func showMessageComposer() {
-        let composer = ComposerTableViewController(room: room, mode: .Composer)
-        let nav = UINavigationController(rootViewController: composer)
-        nav.modalPresentationStyle = .formSheet
-        present(nav, animated: true, completion: nil)
+        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -151,11 +142,7 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
         let event = room.log[indexPath.row]
         
         if let msgEvent = event as? MessageLogEvent {
-            if action == #selector(copy(_:)) || action == #selector(reply(sender:message:)){
-                return true
-            } else if action == #selector(reply(recipient:message:)), msgEvent.replyTo != nil {
-                return true
-            }
+            return action == #selector(copy(_:))
         }
         
         return false
@@ -170,12 +157,6 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
                 let pasteBoard = UIPasteboard.general
                 pasteBoard.string = msgEvent.contents
                 
-            case #selector(reply(sender:message:)):
-                reply(sender: msgEvent.sender, message: msgEvent)
-                
-            case #selector(reply(recipient:message:)):
-                reply(recipient: msgEvent.replyTo!, message: msgEvent)
-                
             default:
                 break
             }
@@ -187,20 +168,6 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
         let event = room.log[indexPath.row]
         
         return event is MessageLogEvent
-    }
-    
-    func reply(sender: User, message: MessageLogEvent) {
-        let composer = ComposerTableViewController(message: message, room: room, mode: .ReplyToSender)
-        let nav = UINavigationController(rootViewController: composer)
-        nav.modalPresentationStyle = .formSheet
-        present(nav, animated: true, completion: nil)
-    }
-    
-    func reply(recipient: User, message: MessageLogEvent) {
-        let composer = ComposerTableViewController(message: message, room: room, mode: .ReplyToRecipient)
-        let nav = UINavigationController(rootViewController: composer)
-        nav.modalPresentationStyle = .formSheet
-        present(nav, animated: true, completion: nil)
     }
     
     func showInfo(_ user: User) {

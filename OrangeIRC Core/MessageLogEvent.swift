@@ -8,27 +8,22 @@
 
 import Foundation
 
-open class MessageLogEvent : LogEvent {
+open class MessageLogEvent : RoomLogEvent {
     
     open var contents: String
     open var sender: User
-    open var replyTo: User?
     
-    init(_ contents: String, sender: User, userCache: UserCache) {
+    init(contents: String, sender: User, room: Room) {
         self.contents = contents
         self.sender = sender
-        
-        // See if this message is a reply
-        if let colonSpace = contents.range(of: ": "), let space = contents.range(of: " ")?.lowerBound {
-            if colonSpace.lowerBound < space {
-                // There is a nickname at the front of this message
-                let nick = contents[contents.startIndex ..< colonSpace.lowerBound]
-                if !nick.isEmpty {
-                    replyTo = userCache.getOrCreateUser(nickname: nick)
-                    self.contents = contents[colonSpace.upperBound ..< contents.endIndex]
-                }
-            }
-        }
+        super.init(room: room)
     }
     
+    open override var attributedDescription: NSAttributedString {
+        let nick = sender.coloredName(for: room)
+        let str = NSMutableAttributedString()
+        str.append(nick)
+        str.append(NSAttributedString(string: ": \(contents)"))
+        return str
+    }
 }
