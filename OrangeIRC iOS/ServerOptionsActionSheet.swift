@@ -70,7 +70,7 @@ class ServerOptionsActionSheet : UIAlertController {
             
             let chanlistAction = UIAlertAction(title: localized("CHANNEL_LIST"), style: .default, handler: { (action) in
                 let chanlistTVC = ChannelListTableViewController(server)
-                AppDelegate.showModalGlobally(chanlistTVC, style: .pageSheet)
+                AppDelegate.showModalGlobally(chanlistTVC, style: .formSheet)
             })
             addAction(chanlistAction)
         }

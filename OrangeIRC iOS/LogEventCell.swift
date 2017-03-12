@@ -32,7 +32,7 @@ class LogEventCell : UITableViewCell {
         content.isScrollEnabled = false
         content.isSelectable = false
         
-        let font = UIFont(name: "Courier", size: 17)
+        let font = UIFont(name: "Menlo-Regular", size: 16)
         dateLabel.font = font
         content.font = font
         

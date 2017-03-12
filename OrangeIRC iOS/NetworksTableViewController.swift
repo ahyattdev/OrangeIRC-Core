@@ -76,6 +76,10 @@ class NetworksTableViewController : UITableViewController {
             // A room
             let room = server.rooms[indexPath.row - 1]
             cell.textLabel?.text = room.displayName
+            
+            if let channel = room as? Channel {
+                cell.imageView?.image = channel.isJoined ? UIImage(named: "ChannelOnline") : UIImage(named: "ChannelOffline")
+            }
         }
         
         return cell

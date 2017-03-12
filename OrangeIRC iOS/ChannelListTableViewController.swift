@@ -13,6 +13,8 @@ class ChannelListTableViewController : UITableViewController {
     
     let server: Server
     
+    var channelList: [Server.ListChannel]!
+    
     init(_ server: Server) {
         self.server = server
         super.init(style: .plain)
@@ -25,6 +27,8 @@ class ChannelListTableViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        channelList = server.channelListCache
+        
         title = localized("CHANNELS")
         updatePrompt()
         
@@ -33,13 +37,19 @@ class ChannelListTableViewController : UITableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
-        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.ListUpdatedForServer, object: server)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateList), name: Notifications.ListUpdatedForServer, object: server)
         NotificationCenter.default.addObserver(self, selector: #selector(finished), name: Notifications.ListFinishedForServer, object: server)
         
         server.fetchChannelList()
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
+    }
+    
+    func updateList() {
+        // We need to keep our own copy of the channel list
+        channelList = server.channelListCache
+        tableView.reloadData()
     }
     
     func refresh() {
@@ -65,7 +75,7 @@ class ChannelListTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return server.channelListCache.count
+        return channelList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,9 +87,11 @@ class ChannelListTableViewController : UITableViewController {
             cell = Bundle.main.loadNibNamed(ID, owner: self, options: nil)!.first as! RightDetailTextViewCell
         }
         
-        let channelData = server.channelListCache[indexPath.row]
+        let channelData = channelList[indexPath.row]
         
         cell.title.text = channelData.name
+        
+        cell.accessoryType = .disclosureIndicator
         
         // Plurals
         var usersWord: String!
@@ -93,6 +105,13 @@ class ChannelListTableViewController : UITableViewController {
         cell.textView.text = channelData.topic
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let channelData = channelList[indexPath.row]
+        dismiss(animated: true, completion: {
+            self.server.join(channel: channelData.name)
+        })
     }
     
 }
