@@ -141,7 +141,7 @@ class RoomTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         let event = room.log[indexPath.row]
         
-        if let msgEvent = event as? MessageLogEvent {
+        if event is MessageLogEvent {
             return action == #selector(copy(_:))
         }
         
