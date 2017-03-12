@@ -25,9 +25,30 @@ class NetworksTableViewController : UITableViewController {
         title = localized("NETWORKS")
         
         navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addServerButton))
         
-        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.ServerDataChanged, object: nil)
-        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.RoomDataChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTableView), name: Notifications.ServerDataChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTableView), name: Notifications.RoomDataChanged, object: nil)
+        
+        updateTableView()
+    }
+    
+    func updateTableView() {
+        if ServerManager.shared.servers.count == 0 {
+            let label = UILabel()
+            label.text = localized("TAP_TO_ADD_SERVER")
+            label.textAlignment = .center
+            tableView.backgroundView = label
+        } else {
+            tableView.backgroundView = nil
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func addServerButton() {
+        let tvc = ServerSettingsTableViewController(style: .grouped)
+        AppDelegate.showModalGlobally(tvc, style: .formSheet)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -49,15 +49,21 @@ class LogEventCell : UITableViewCell {
         contentView.addConstraint(NSLayoutConstraint(item: content, attribute: .top, relatedBy: .equal, toItem: dateLabel, attribute: .top, multiplier: 1.0, constant: 0))
         
         // content.trailing
-        contentView.addConstraint(NSLayoutConstraint(item: content, attribute: .trailing, relatedBy: .equal, toItem: content.superview, attribute: .trailing, multiplier: 1.0, constant: 5))
+        contentView.addConstraint(NSLayoutConstraint(item: content, attribute: .trailing, relatedBy: .equal, toItem: content.superview, attribute: .trailingMargin, multiplier: 1.0, constant: 5))
         
         // contentView.bottom
         contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: content, attribute: .bottom, multiplier: 1.0, constant: 3))
         
-        dateLabel.text = "1:23 PM"
+        let df = DateFormatter()
         
-        content.text = "test message"
+        df.dateStyle = .none
+        df.timeStyle = .short
         
+        dateLabel.text = df.string(from: logEvent.date)
+        
+        if let messageLogEvent = logEvent as? MessageLogEvent {
+            //content.text = messageLogEvent.sender.coloredName(for: <#T##Room#>)
+        }
     }
     
     

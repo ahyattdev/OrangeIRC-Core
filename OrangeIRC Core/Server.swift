@@ -257,6 +257,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     }
     
     open func prepareForBackground() {
+        #if os(iOS) || os(tvOS)
         if let socket = socket {
             if socket.isConnected {
                 socket.perform {
@@ -266,6 +267,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
                 }
             }
         }
+        #endif
     }
     
 }

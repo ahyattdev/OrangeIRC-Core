@@ -16,8 +16,6 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
     let composerButton = UIBarButtonItem(barButtonSystemItem: .compose, target: nil, action: #selector(showMessageComposer))
     let detailButton = UIBarButtonItem(title: localized("DETAILS"), style: .plain, target: nil, action: #selector(showRoomInfo))
     
-    private var heights = [CGFloat]()
-    
     init(_ room: Room) {
         self.room = room
         
@@ -35,7 +33,6 @@ class RoomTableViewController : UITableViewController, MessageCellDelegate {
     
     override func viewDidLoad() {
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 44
         tableView.separatorStyle = .none
         
         super.viewDidLoad()

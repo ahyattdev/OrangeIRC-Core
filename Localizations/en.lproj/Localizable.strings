@@ -215,3 +215,5 @@ PUBLIC_CHANNELS = "Public Channels";
 NORMAL = "Normal";
 
 NOT_AWAY = "Not Away";
+
+TAP_TO_ADD_SERVER = "Tap the “+” button to add a server";

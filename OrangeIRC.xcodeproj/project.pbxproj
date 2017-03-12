@@ -82,6 +82,9 @@
 		6A43E6EE1DD6CBC0009DB1FC /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */; };
 		6A43E6EF1DD6CBC0009DB1FC /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */; };
 		6A4A5A731E74A55F005E064D /* LogEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A5A721E74A55F005E064D /* LogEventCell.swift */; };
+		6A4A5A751E75063E005E064D /* RoomLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A5A741E75063E005E064D /* RoomLogEvent.swift */; };
+		6A4A5A761E75063E005E064D /* RoomLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A5A741E75063E005E064D /* RoomLogEvent.swift */; };
+		6A4A5A771E75063E005E064D /* RoomLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A5A741E75063E005E064D /* RoomLogEvent.swift */; };
 		6A4BB74F1D25F1500032B5D0 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BB74D1D25F1500032B5D0 /* Tag.swift */; };
 		6A4BBD7E1E1A11B300987C45 /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BBD7D1E1A11B300987C45 /* ActivityIndicatorCell.swift */; };
 		6A59B7B11E73C58500BE9123 /* Icons in Resources */ = {isa = PBXBuildFile; fileRef = 6A59B7B01E73C58500BE9123 /* Icons */; };
@@ -233,6 +236,7 @@
 		6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomTableViewController.swift; sourceTree = "<group>"; };
 		6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
 		6A4A5A721E74A55F005E064D /* LogEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEventCell.swift; sourceTree = "<group>"; };
+		6A4A5A741E75063E005E064D /* RoomLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLogEvent.swift; sourceTree = "<group>"; };
 		6A4BB74D1D25F1500032B5D0 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		6A4BBD7D1E1A11B300987C45 /* ActivityIndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorCell.swift; sourceTree = "<group>"; };
 		6A558D351E16BF2F0077BBF4 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
@@ -506,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				66A75B2E1D23483C001161A3 /* LogEvent.swift */,
+				6A4A5A741E75063E005E064D /* RoomLogEvent.swift */,
 				6A25035F1D59511900C18750 /* MessageLogEvent.swift */,
 				66C8580A1D7B1781009E486F /* UserLogEvent.swift */,
 				66C8580D1D7B17F1009E486F /* UserJoinLogEvent.swift */,
@@ -876,6 +881,7 @@
 				66C858121D7B17FA009E486F /* UserPartLogEvent.swift in Sources */,
 				6AE6F90C1E2B29BC007CC0AE /* ServerManager.swift in Sources */,
 				669FCF221D289A96000117C5 /* Server+MessageHandler.swift in Sources */,
+				6A4A5A761E75063E005E064D /* RoomLogEvent.swift in Sources */,
 				6A6CBFDF1D3DBDC500EC6051 /* RoomType.swift in Sources */,
 				6A7A6A061D29D0850012D037 /* Room.swift in Sources */,
 				6A4BB74F1D25F1500032B5D0 /* Tag.swift in Sources */,
@@ -911,6 +917,7 @@
 				66C858111D7B17FA009E486F /* UserPartLogEvent.swift in Sources */,
 				6AE6F90B1E2B29BC007CC0AE /* ServerManager.swift in Sources */,
 				66EDD2F11D2963E60013E7CC /* Message.swift in Sources */,
+				6A4A5A751E75063E005E064D /* RoomLogEvent.swift in Sources */,
 				6A6CBFDE1D3DBDC500EC6051 /* RoomType.swift in Sources */,
 				6A7A6A051D29D0850012D037 /* Room.swift in Sources */,
 				66EDD2EE1D2963E60013E7CC /* LogEvent.swift in Sources */,
@@ -962,6 +969,7 @@
 				6A2672BA1E105D180087B331 /* Command.swift in Sources */,
 				6AE6F90D1E2B29BC007CC0AE /* ServerManager.swift in Sources */,
 				6A2672B31E105D180087B331 /* UserPartLogEvent.swift in Sources */,
+				6A4A5A771E75063E005E064D /* RoomLogEvent.swift in Sources */,
 				6A2672BD1E1084FB0087B331 /* Message.swift in Sources */,
 				6A2672A91E105D180087B331 /* Server.swift in Sources */,
 				6A2672B51E105D180087B331 /* Room.swift in Sources */,
