@@ -10,4 +10,13 @@ import Foundation
 
 open class UserJoinLogEvent : UserLogEvent {
     
+    open override var attributedDescription: NSAttributedString {
+        let str = NSMutableAttributedString()
+        let nick = sender.coloredName(for: room)
+        str.append(nick)
+        str.append(NSAttributedString(string: " \(localized("JOINED"))"))
+        str.addAttributes(LogEvent.italicAttributes, range: NSRange(location: 0, length: str.length))
+        return str
+    }
+    
 }

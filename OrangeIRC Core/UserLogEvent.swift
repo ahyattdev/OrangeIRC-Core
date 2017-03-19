@@ -6,14 +6,19 @@
 //
 //
 
-import Foundation
+#if os(iOS) || os(tvOS)
+    import UIKit
+#else
+    import Foundation
+#endif
 
-open class UserLogEvent : LogEvent {
+open class UserLogEvent : RoomLogEvent {
     
     open var sender: User
     
-    public init(sender: User) {
+    public init(sender: User, room: Room) {
         self.sender = sender
+        super.init(room: room)
     }
     
 }

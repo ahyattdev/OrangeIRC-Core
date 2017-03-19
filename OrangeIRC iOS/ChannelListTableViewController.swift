@@ -62,6 +62,9 @@ class ChannelListTableViewController : UITableViewController {
     func finished() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         navigationItem.leftBarButtonItem!.isEnabled = true
+        channelList = server.channelListCache
+        updatePrompt()
+        tableView.reloadData()
     }
     
     func done() {

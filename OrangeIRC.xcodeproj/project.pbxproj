@@ -78,6 +78,7 @@
 		6A2CF2DD1E6CC6F00092C414 /* NetworkHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A2CF2DC1E6CC6F00092C414 /* NetworkHeaderView.xib */; };
 		6A2F810D1E6D0C2D003A68F9 /* ActionDisabler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F810C1E6D0C2D003A68F9 /* ActionDisabler.swift */; };
 		6A2F810F1E6D0D40003A68F9 /* JoinChannelAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F810E1E6D0D40003A68F9 /* JoinChannelAlertFactory.swift */; };
+		6A3538561E76083A00E64B7D /* RoomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3538551E76083A00E64B7D /* RoomToolbar.swift */; };
 		6A3B389D1DA359860004E868 /* AddRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */; };
 		6A43E6EE1DD6CBC0009DB1FC /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */; };
 		6A43E6EF1DD6CBC0009DB1FC /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */; };
@@ -231,6 +232,7 @@
 		6A2CF2DC1E6CC6F00092C414 /* NetworkHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkHeaderView.xib; sourceTree = "<group>"; };
 		6A2F810C1E6D0C2D003A68F9 /* ActionDisabler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionDisabler.swift; sourceTree = "<group>"; };
 		6A2F810E1E6D0D40003A68F9 /* JoinChannelAlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinChannelAlertFactory.swift; sourceTree = "<group>"; };
+		6A3538551E76083A00E64B7D /* RoomToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomToolbar.swift; sourceTree = "<group>"; };
 		6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomTableViewController.swift; sourceTree = "<group>"; };
 		6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
 		6A4A5A721E74A55F005E064D /* LogEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEventCell.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 				669DF7011D7CE96B007F82DB /* MOTDViewController.swift */,
 				6A765F3B1E6BD004005E4152 /* NetworksTableViewController.swift */,
 				6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */,
+				6A3538551E76083A00E64B7D /* RoomToolbar.swift */,
 				6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */,
 				6605688D1D7901C400A2502B /* RoomInfoTableViewController.swift */,
 				6A1EECF11E142A5800A67C35 /* UsersSearchResultsController.swift */,
@@ -843,6 +846,7 @@
 				6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */,
 				6A91CA551E622305004D38E1 /* ChannelListTableViewController.swift in Sources */,
 				6A2F810F1E6D0D40003A68F9 /* JoinChannelAlertFactory.swift in Sources */,
+				6A3538561E76083A00E64B7D /* RoomToolbar.swift in Sources */,
 				6AF88FA11E174E1C00FD9A9D /* RightDetailSubtitleCell.swift in Sources */,
 				661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */,
 				6AF5329A1E6CCA16002C3D14 /* ServerOptionsActionSheet.swift in Sources */,

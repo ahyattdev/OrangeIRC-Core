@@ -78,7 +78,7 @@ class UserCache {
             // If we have a private message room, we must mark it as not joined
             if let privateRoom = server.privateMessageFrom(user: user) {
                     user.isOnline = true
-                    let onlineEvent = UserOnlineLogEvent(sender: user)
+                let onlineEvent = UserOnlineLogEvent(sender: user, room: room)
                     privateRoom.log.append(onlineEvent)
                     server.delegate?.recieved(logEvent: onlineEvent, for: privateRoom)
             }
@@ -96,8 +96,8 @@ class UserCache {
     
     func handleQuit(user: User) {
         user.isOnline = false
-        let quitMessage = UserQuitLogEvent(sender: user)
         for channel in channelsFor(user: user) {
+            let quitMessage = UserQuitLogEvent(sender: user, room: channel)
             channel.log.append(quitMessage)
             server.delegate?.recieved(logEvent: quitMessage, for: channel)
         }
@@ -107,7 +107,7 @@ class UserCache {
             if privateRoom.otherUser.isOnline {
                 privateRoom.otherUser.isOnline = false
                 
-                let offlineEvent = UserOfflineLogEvent(sender: user)
+                let offlineEvent = UserOfflineLogEvent(sender: user, room: privateRoom)
                 privateRoom.log.append(offlineEvent)
                 server.delegate?.recieved(logEvent: offlineEvent, for: privateRoom)
             }
@@ -154,13 +154,13 @@ class UserCache {
         
         updateMetadata(user: user, room: channel, mode: .None)
         
-        let logEvent = UserJoinLogEvent(sender: user)
+        let logEvent = UserJoinLogEvent(sender: user, room: channel)
         channel.log.append(logEvent)
         server.delegate?.recieved(logEvent: logEvent, for: channel)
         
         if let privateRoom = server.privateMessageFrom(user: user) {
             if !privateRoom.otherUser.isOnline {
-                let onlineEvent = UserOnlineLogEvent(sender: user)
+                let onlineEvent = UserOnlineLogEvent(sender: user, room: privateRoom)
                 privateRoom.log.append(onlineEvent)
                 server.delegate?.recieved(logEvent: onlineEvent, for: privateRoom)
             }
@@ -202,7 +202,7 @@ class UserCache {
             }
         }
         
-        let logEvent = UserPartLogEvent(sender: user)
+        let logEvent = UserPartLogEvent(sender: user, room: channel)
         channel.log.append(logEvent)
         server.delegate?.recieved(logEvent: logEvent, for: channel)
         

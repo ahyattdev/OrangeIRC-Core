@@ -6,7 +6,11 @@
 //
 //
 
+#if os(iOS) || os(tvOS)
+import UIKit
+#else
 import Foundation
+#endif
 
 open class MessageLogEvent : RoomLogEvent {
     
@@ -24,6 +28,7 @@ open class MessageLogEvent : RoomLogEvent {
         let str = NSMutableAttributedString()
         str.append(nick)
         str.append(NSAttributedString(string: ": \(contents)"))
+        str.addAttributes(LogEvent.attributes, range: NSRange(location: 0, length: str.length))
         return str
     }
 }

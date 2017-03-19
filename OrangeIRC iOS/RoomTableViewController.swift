@@ -9,22 +9,39 @@
 import UIKit
 import OrangeIRCCore
 
-class RoomTableViewController : UITableViewController {
+class RoomTableViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let room: Room
     
-    let composerButton = UIBarButtonItem(barButtonSystemItem: .compose, target: nil, action: #selector(showMessageComposer))
     let detailButton = UIBarButtonItem(title: localized("DETAILS"), style: .plain, target: nil, action: #selector(showRoomInfo))
+    
+    let toolbar: RoomToolbar
+    
+    let tableView: UITableView
     
     init(_ room: Room) {
         self.room = room
         
-        super.init(style: .plain)
+        toolbar = RoomToolbar(room: room)
+        
+        tableView = UITableView(frame: CGRect.zero, style: .plain)
+        
+        super.init(nibName: nil, bundle: nil)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         // Can't use self before super.init, thanks Swift!
-        composerButton.target = self
         detailButton.target = self
         
+        view.addSubview(tableView)
+        view.addSubview(toolbar)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        
+        tableView.setNeedsUpdateConstraints()
+        toolbar.setNeedsUpdateConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,7 +54,7 @@ class RoomTableViewController : UITableViewController {
         
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItems = [detailButton, composerButton]
+        navigationItem.rightBarButtonItem = detailButton
         
         updateButtons()
         
@@ -49,13 +66,32 @@ class RoomTableViewController : UITableViewController {
         navigationItem.prompt = room.server!.displayName
     }
     
+    override func updateViewConstraints() {
+        // tableView
+        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0))
+        
+        // toolbar.leading
+        view.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0))
+        
+        // toolbar.trailing
+        view.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0))
+        
+        // toolbar.bottom
+        view.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0))
+        
+        super.updateViewConstraints()
+    }
+    
     func roomDataChanged(_ notification: NSNotification) {
         updateButtons()
     }
     
     func updateButtons() {
         // Only enable the composer button when a message can be sent
-        composerButton.isEnabled = room.canSendMessage
+        //composerButton.isEnabled = room.canSendMessage
         detailButton.isEnabled = true
     }
     
@@ -75,15 +111,15 @@ class RoomTableViewController : UITableViewController {
         
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return room.log.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let logEvent = room.log[indexPath.row]
         let cell = LogEventCell(logEvent: logEvent, reuseIdentifier: nil)
         return cell
@@ -128,17 +164,17 @@ class RoomTableViewController : UITableViewController {
 //        }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
         let event = room.log[indexPath.row]
         
         return event is MessageLogEvent
     }
     
-    override func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+    func tableView(_ tableView: UITableView, canPerformAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
         let event = room.log[indexPath.row]
         
         if event is MessageLogEvent {
@@ -148,7 +184,7 @@ class RoomTableViewController : UITableViewController {
         return false
     }
     
-    override func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
+    func tableView(_ tableView: UITableView, performAction action: Selector, forRowAt indexPath: IndexPath, withSender sender: Any?) {
         if let msgEvent = room.log[indexPath.row] as? MessageLogEvent {
             
             switch action {
@@ -164,13 +200,10 @@ class RoomTableViewController : UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, shouldShowMenuForRowAt indexPath: IndexPath) -> Bool {
         let event = room.log[indexPath.row]
         
         return event is MessageLogEvent
     }
     
-    func showInfo(_ user: User) {
-        
-    }
 }

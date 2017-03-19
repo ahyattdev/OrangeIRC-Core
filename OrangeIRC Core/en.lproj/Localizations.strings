@@ -5,3 +5,7 @@
   Created by Andrew Hyatt on 3/12/17.
 
 */
+
+JOINED = "joined";
+LEFT = "left";
+QUIT = "quit";
