@@ -11,11 +11,13 @@ import OrangeIRCCore
 
 class RoomToolbar : UIToolbar, UITextViewDelegate {
     
+    var toolbarDelegate: RoomToolbarDelegate?
+    
     let room: Room
     
     let contentView = UIView()
     let textView = UITextView()
-    let sendButton = UIBarButtonItem()
+    let sendButton = UIButton(type: UIButtonType.roundedRect)
     
     var bottom: NSLayoutConstraint!
     var textViewHeight: NSLayoutConstraint!
@@ -29,6 +31,7 @@ class RoomToolbar : UIToolbar, UITextViewDelegate {
         
         textView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
         
         textView.isUserInteractionEnabled = true
         textView.isScrollEnabled = true
@@ -37,6 +40,11 @@ class RoomToolbar : UIToolbar, UITextViewDelegate {
         textView.delegate = self
         
         contentView.addSubview(textView)
+        contentView.addSubview(sendButton)
+        
+        sendButton.isEnabled = false
+        sendButton.setTitle(localized("SEND"), for: .normal)
+        sendButton.addTarget(self, action: #selector(self.send), for: .touchUpInside)
         
         items =  [UIBarButtonItem(customView: contentView)]
         
@@ -52,7 +60,7 @@ class RoomToolbar : UIToolbar, UITextViewDelegate {
         textView.addConstraint(textViewHeight)
         
         let tvLeading = NSLayoutConstraint(item: textView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leadingMargin, multiplier: 1.0, constant: 0)
-        let tvTrailing = NSLayoutConstraint(item: textView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailingMargin, multiplier: 1.0, constant: 0)
+        let tvTrailing = NSLayoutConstraint(item: textView, attribute: .trailing, relatedBy: .equal, toItem: sendButton, attribute: .leading, multiplier: 1.0, constant: -8)
         let tvBottom = NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottomMargin, multiplier: 1.0, constant: 0)
         contentView.addConstraints([tvLeading, tvTrailing, tvBottom])
         
@@ -61,6 +69,10 @@ class RoomToolbar : UIToolbar, UITextViewDelegate {
         let cvHeight = NSLayoutConstraint(item: contentView, attribute: .height, relatedBy: .equal, toItem: textView, attribute: .height, multiplier: 1.0, constant: 14)
         let cvBottom = NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0)
         addConstraints([cvLeading, cvTrailing, cvHeight, cvBottom])
+        
+        let sbTrailing = NSLayoutConstraint(item: sendButton, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailingMargin, multiplier: 1.0, constant: 0)
+        let sbCenterY = NSLayoutConstraint(item: sendButton, attribute: .centerYWithinMargins, relatedBy: .equal, toItem: contentView, attribute: .centerYWithinMargins, multiplier: 1.0, constant: 0)
+        contentView.addConstraints([sbTrailing, sbCenterY])
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -87,6 +99,12 @@ class RoomToolbar : UIToolbar, UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         textViewHeight.constant = textView.contentSize.height
         superview?.setNeedsLayout()
+        
+        sendButton.isEnabled = textView.text.utf8.count > 0 && room.canSendMessage
+    }
+    
+    func send() {
+        toolbarDelegate?.sendButtonPressed(self)
     }
     
 }
