@@ -185,9 +185,9 @@ extension AppDelegate {
     }
     
     public func noSuch(nick: String, _ server: Server) {
-        let message = localized("NO_SUCH_NICK_OR_CHAN_MESSAGE").replacingOccurrences(of: "@NICK@", with: nick)
+        let message = localized("NO_SUCH_NICK_OR_CHAN").replacingOccurrences(of: "@NICK@", with: nick)
         
-        let alert = UIAlertController(title: localized("NO_SUCH_NICK_OR_CHAN"), message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: server.displayName, message: message, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: localized("OK"), style: .default, handler: nil))
         
@@ -195,9 +195,9 @@ extension AppDelegate {
     }
     
     public func noSuch(server: String, _ onServer: Server) {
-        let message = localized("NO_SUCH_SERVER_MESSAGE").replacingOccurrences(of: "@SERVER@", with: server)
+        let message = localized("NO_SUCH_SERVER").replacingOccurrences(of: "@SERVER@", with: server)
         
-        let alert = UIAlertController(title: localized("NO_SUCH_SERVER"), message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: onServer.displayName, message: message, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: localized("OK"), style: .default, handler: nil))
         
@@ -205,9 +205,9 @@ extension AppDelegate {
     }
     
     public func noSuch(channel: String, _ server: Server) {
-        let message = localized("NO_SUCH_CHANNEL_MESSAGE").replacingOccurrences(of: "@CHANNEL@", with: channel)
+        let message = localized("NO_SUCH_CHANNEL").replacingOccurrences(of: "@CHANNEL@", with: channel)
         
-        let alert = UIAlertController(title: localized("NO_SUCH_CHANNEL"), message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: server.displayName, message: message, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: localized("OK"), style: .default, handler: nil))
         
@@ -215,9 +215,9 @@ extension AppDelegate {
     }
     
     public func cannotSendTo(channel: String, _ server: Server) {
-        let message = localized("CANNOT_SEND_TO_CHANNEL_MESSAGE").replacingOccurrences(of: "@CHANNEL@", with: channel)
+        let message = localized("CANNOT_SEND_TO_CHANNEL").replacingOccurrences(of: "@CHANNEL@", with: channel)
         
-        let alert = UIAlertController(title: localized("CANNOT_SEND_TO_CHANNEL"), message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: server.displayName, message: message, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: localized("OK"), style: .default, handler: nil))
         
@@ -225,7 +225,7 @@ extension AppDelegate {
     }
     
     public func tooManyChannels(_ server: Server) {
-        let alert = UIAlertController(title: localized("TOO_MANY_CHANNELS"), message: localized("TOO_MANY_CHANNELS_MESSAGE"), preferredStyle: .alert)
+        let alert = UIAlertController(title: server.displayName, message: localized("TOO_MANY_CHANNELS"), preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: localized("OK"), style: .default, handler: nil))
         

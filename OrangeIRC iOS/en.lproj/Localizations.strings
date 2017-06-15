@@ -219,3 +219,5 @@ NOT_AWAY = "Not Away";
 TAP_TO_ADD_SERVER = "Tap the “+” button to add a server";
 
 MESSAGE_TO = "Message to @ROOMNAME@";
+
+NO_SUCH_CHANNEL = "The channel “@CHANNEL@” does not exist on the server.";

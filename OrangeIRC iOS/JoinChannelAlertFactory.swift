@@ -39,12 +39,14 @@ struct JoinChannelAlertFactory {
                 actionDisabler = ActionDisabler(action: join, textField: textField)
             }
             
+            textField.returnKeyType = .next
             
             channelField = textField
         })
         
         alert.addTextField(configurationHandler: { textField in
             textField.placeholder = localized("CHANNEL_KEY")
+            textField.returnKeyType = .join
         })
         
         return alert

@@ -11,11 +11,18 @@ import Foundation
 public extension Server {
     
     public func join(channel: String) {
-        self.write(string: "\(Command.JOIN) \(channel)")
+        // Append "#" if no other prefixes are detected
+        if let first = channel.utf16.first {
+            if !Channel.CHANNEL_PREFIXES.characterIsMember(first) {
+                write(string: "\(Command.JOIN) #\(channel)")
+            }
+        }
+
+        write(string: "\(Command.JOIN) \(channel)")
     }
     
     public func leave(channel: String) {
-        self.write(string: "\(Command.PART) \(channel)")
+        write(string: "\(Command.PART) \(channel)")
     }
     
     public func alreadyExists(_ channelName: String) -> Bool {
@@ -104,6 +111,8 @@ public extension Server {
         }
         
         ServerManager.shared.saveData()
+        
+        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
     }
     
 }

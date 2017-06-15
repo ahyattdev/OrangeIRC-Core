@@ -30,6 +30,10 @@ class ActionDisabler: NSObject, UITextFieldDelegate {
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Ugly Foundation code
         var newString = (textField.text! as NSString).replacingCharacters(in: range, with: string) as String
@@ -41,7 +45,4 @@ class ActionDisabler: NSObject, UITextFieldDelegate {
         
         return true
     }
-    
-    
-    
 }

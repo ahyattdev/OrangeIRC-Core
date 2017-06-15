@@ -118,4 +118,17 @@ class NetworksTableViewController : UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // The console cell is always the first row
+        return indexPath.row != 0
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let server = ServerManager.shared.servers[indexPath.section]
+            let room = server.rooms[indexPath.row - 1]
+            server.delete(room: room)
+        }
+    }
+    
 }
