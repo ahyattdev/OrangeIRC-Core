@@ -65,7 +65,6 @@ public extension Server {
         return channel
     }
     
-    @discardableResult
     public func startPrivateMessageSession(_ otherNick: String, with message: String) {
         startPrivateMessageSession(otherNick)
         write(string: "\(Command.PRIVMSG) \(otherNick) :\(message)")

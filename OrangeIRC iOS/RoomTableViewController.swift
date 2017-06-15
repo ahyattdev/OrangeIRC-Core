@@ -17,6 +17,8 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
     
     let toolbar: RoomToolbar
     
+    let textView: UITextView
+    
     let tableView: UITableView
     
     init(_ room: Room) {
@@ -24,12 +26,15 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
         
         toolbar = RoomToolbar(room: room)
         
+        textView = UITextView()
+        
         tableView = UITableView(frame: CGRect.zero, style: .plain)
         
         super.init(nibName: nil, bundle: nil)
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.keyboardDismissMode = .onDrag
         
         // Can't use self before super.init, thanks Swift!
         detailButton.target = self
@@ -38,10 +43,6 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
         view.addSubview(toolbar)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        toolbar.translatesAutoresizingMaskIntoConstraints = false
-        
-        tableView.setNeedsUpdateConstraints()
-        toolbar.setNeedsUpdateConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,23 +67,22 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
         navigationItem.prompt = room.server!.displayName
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        toolbar.updateConstraints()
+        toolbar.becomeFirstResponder()
+    }
+    
     override func updateViewConstraints() {
         // tableView
-        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0))
-        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0))
-        
-        // toolbar.leading
-        view.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0))
-        
-        // toolbar.trailing
-        view.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0))
-        
-        // toolbar.bottom
-        view.addConstraint(NSLayoutConstraint(item: toolbar, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0))
-        
         super.updateViewConstraints()
+        
+        let top = NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0)
+        let bottom = NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
+        let leading = NSLayoutConstraint(item: tableView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0)
+        let trailing = NSLayoutConstraint(item: tableView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0)
+        
+        view.addConstraints([top, bottom, leading, trailing])
     }
     
     func roomDataChanged(_ notification: NSNotification) {
