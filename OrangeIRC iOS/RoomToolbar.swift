@@ -9,7 +9,7 @@
 import UIKit
 import OrangeIRCCore
 
-class RoomToolbar : UIToolbar {
+class RoomToolbar : UIToolbar, UITextViewDelegate {
     
     let room: Room
     
@@ -18,6 +18,7 @@ class RoomToolbar : UIToolbar {
     let sendButton = UIBarButtonItem()
     
     var bottom: NSLayoutConstraint!
+    var textViewHeight: NSLayoutConstraint!
     
     init(room: Room) {
         self.room = room
@@ -26,10 +27,14 @@ class RoomToolbar : UIToolbar {
         
         translatesAutoresizingMaskIntoConstraints = false
         
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
         textView.isUserInteractionEnabled = true
         textView.isScrollEnabled = true
         textView.scrollsToTop = false
         textView.layer.cornerRadius = 6.0
+        textView.delegate = self
         
         contentView.addSubview(textView)
         
@@ -37,22 +42,29 @@ class RoomToolbar : UIToolbar {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        
+        let height = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: contentView, attribute: .height, multiplier: 1.0, constant: 0)
+        
+        addConstraints([height])
+        
+        textViewHeight = NSLayoutConstraint(item: textView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 30)
+        textView.addConstraint(textViewHeight)
+        
+        let tvLeading = NSLayoutConstraint(item: textView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leadingMargin, multiplier: 1.0, constant: 0)
+        let tvTrailing = NSLayoutConstraint(item: textView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailingMargin, multiplier: 1.0, constant: 0)
+        let tvBottom = NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottomMargin, multiplier: 1.0, constant: 0)
+        contentView.addConstraints([tvLeading, tvTrailing, tvBottom])
+        
+        let cvLeading = NSLayoutConstraint(item: contentView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leadingMargin, multiplier: 1.0, constant: 0)
+        let cvTrailing = NSLayoutConstraint(item: contentView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailingMargin, multiplier: 1.0, constant: 0)
+        let cvHeight = NSLayoutConstraint(item: contentView, attribute: .height, relatedBy: .equal, toItem: textView, attribute: .height, multiplier: 1.0, constant: 14)
+        let cvBottom = NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0)
+        addConstraints([cvLeading, cvTrailing, cvHeight, cvBottom])
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func updateConstraints() {
-        super.updateConstraints()
-        
-        let leading = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: superview, attribute: .leading, multiplier: 1.0, constant: 0)
-        
-        let trailing = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: superview, attribute: .trailing, multiplier: 1.0, constant: 0)
-        
-        bottom = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: superview, attribute: .bottom, multiplier: 1.0, constant: 0)
-        
-        superview?.addConstraints([leading, trailing, bottom])
     }
     
     func keyboardWillShow(notification: Notification) {
@@ -70,6 +82,11 @@ class RoomToolbar : UIToolbar {
     @discardableResult
     override func becomeFirstResponder() -> Bool {
         return textView.becomeFirstResponder()
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        textViewHeight.constant = textView.contentSize.height
+        superview?.setNeedsLayout()
     }
     
 }
