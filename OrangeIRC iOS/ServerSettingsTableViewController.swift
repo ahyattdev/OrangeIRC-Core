@@ -9,7 +9,7 @@
 import UIKit
 import OrangeIRCCore
 
-class ServerSettingsTableViewController : UITableViewController {
+class ServerSettingsTableViewController : UITableViewController, UITextFieldDelegate {
     
     enum Mode {
         
@@ -91,6 +91,8 @@ class ServerSettingsTableViewController : UITableViewController {
         
         textFieldCell.textField.autocorrectionType = .no
         textFieldCell.textField.autocapitalizationType = .none
+        textFieldCell.textField.returnKeyType = .next
+        textFieldCell.textField.delegate = self
         
         switch indexPath.section {
         case 0:
@@ -109,6 +111,7 @@ class ServerSettingsTableViewController : UITableViewController {
                 textFieldCell.textLabel!.text = localized("PORT")
                 textFieldCell.textField.placeholder = "6667"
                 textFieldCell.textField.keyboardType = .numberPad
+                textFieldCell.textField.tag = 1
                 self.portCell = textFieldCell
                 
                 if mode == .Edit {
@@ -119,6 +122,7 @@ class ServerSettingsTableViewController : UITableViewController {
                 textFieldCell.textLabel!.text = localized("PASSWORD")
                 textFieldCell.textField.placeholder = OPTIONAL
                 textFieldCell.textField.isSecureTextEntry = true
+                textFieldCell.textField.tag = 2
                 self.passwordCell = textFieldCell
                 
                 if mode == .Edit {
@@ -143,6 +147,7 @@ class ServerSettingsTableViewController : UITableViewController {
             case 0:
                 textFieldCell.textLabel!.text = localized("NICKNAME")
                 textFieldCell.textField.placeholder = REQUIRED
+                textFieldCell.textField.tag = 3
                 self.nicknameCell = textFieldCell
                 
                 if mode == .Edit {
@@ -152,6 +157,7 @@ class ServerSettingsTableViewController : UITableViewController {
             case 1:
                 textFieldCell.textLabel!.text = localized("USERNAME")
                 textFieldCell.textField.placeholder = REQUIRED
+                textFieldCell.textField.tag = 4
                 self.usernameCell = textFieldCell
                 
                 if mode == .Edit {
@@ -162,6 +168,8 @@ class ServerSettingsTableViewController : UITableViewController {
                 textFieldCell.textLabel!.text = localized("REAL_NAME")
                 textFieldCell.textField.placeholder = REQUIRED
                 textFieldCell.textField.autocapitalizationType = .words
+                textFieldCell.textField.returnKeyType = .done
+                textFieldCell.textField.tag = 5
                 self.realnameCell = textFieldCell
                 
                 if mode == .Edit {
@@ -186,6 +194,7 @@ class ServerSettingsTableViewController : UITableViewController {
     }
     
     func cancelButton() {
+        view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
     
@@ -233,6 +242,7 @@ class ServerSettingsTableViewController : UITableViewController {
             
             server.autoJoin = autoJoinCell!.switch.isOn
             
+            view.endEditing(true)
             dismiss(animated: true, completion: nil)
             
         case .Edit:
@@ -280,9 +290,23 @@ class ServerSettingsTableViewController : UITableViewController {
                 
                 present(reconnectPrompt, animated: true, completion: nil)
             } else {
+                view.endEditing(true)
                 dismiss(animated: true, completion: nil)
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.tag == 5 {
+            // Done
+            doneButton()
+        } else {
+            // Next
+            if let nextField = view.viewWithTag(textField.tag + 1) {
+                nextField.becomeFirstResponder()
+            }
+        }
+        return false
     }
     
 }

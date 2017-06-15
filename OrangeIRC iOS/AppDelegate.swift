@@ -113,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
     static func showModalGlobally(_ modal: UIViewController, style: UIModalPresentationStyle) {
         let modalWindow = UIWindow(frame: UIScreen.main.bounds)
         let vc = UIViewController()
-        modalWindow.windowLevel = UIWindowLevelAlert
+        modalWindow.windowLevel = UIWindowLevelNormal
         modalWindow.rootViewController = vc
         modalWindow.tintColor = UIColor.orange
         modalWindow.makeKeyAndVisible()

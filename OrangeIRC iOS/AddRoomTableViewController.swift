@@ -188,6 +188,7 @@ class AddRoomTableViewController : UITableViewController {
     }
     
     func cancel() {
+        resignFirstResponder()
         dismiss(animated: true, completion: nil)
     }
     
@@ -227,6 +228,7 @@ class AddRoomTableViewController : UITableViewController {
             break
         }
         
+        resignFirstResponder()
         dismiss(animated: true, completion: nil)
     }
 }
