@@ -105,6 +105,10 @@ class RoomToolbar : UIToolbar, UITextViewDelegate {
     
     func send() {
         toolbarDelegate?.sendButtonPressed(self)
+        
+        room.send(message: textView.text)
+        
+        textView.text = ""
     }
     
 }

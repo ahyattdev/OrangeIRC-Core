@@ -35,4 +35,8 @@ open class Room : NSObject, NSCoding {
 
     }
     
+    open func send(message: String) {
+        fatalError("This should be overriden by subclasses")
+    }
+    
 }

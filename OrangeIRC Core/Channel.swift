@@ -85,7 +85,7 @@ open class Channel : Room {
         })
     }
     
-    open func send(message: String) {
+    override open func send(message: String) {
         // Splits the message up into 512 byte chunks
         var message = message
         var messageParts = [String]()

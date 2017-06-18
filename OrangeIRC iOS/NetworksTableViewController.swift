@@ -111,7 +111,8 @@ class NetworksTableViewController : UITableViewController {
         let server = ServerManager.shared.servers[indexPath.section]
         
         if indexPath.row == 0 {
-            
+            let console = ConsoleTableViewController(server: server)
+            AppDelegate.splitView.showDetailViewController(console, sender: nil)
         } else {
             let roomTVC = RoomTableViewController(server.rooms[indexPath.row - 1])
             AppDelegate.splitView.showDetailViewController(UINavigationController(rootViewController: roomTVC), sender: nil)

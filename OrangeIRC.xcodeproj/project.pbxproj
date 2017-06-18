@@ -89,6 +89,10 @@
 		6A4A5A771E75063E005E064D /* RoomLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A5A741E75063E005E064D /* RoomLogEvent.swift */; };
 		6A4BB74F1D25F1500032B5D0 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BB74D1D25F1500032B5D0 /* Tag.swift */; };
 		6A4BBD7E1E1A11B300987C45 /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BBD7D1E1A11B300987C45 /* ActivityIndicatorCell.swift */; };
+		6A597BF11EF33CBF0073E4AE /* ConsoleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A597BF01EF33CBF0073E4AE /* ConsoleTableViewController.swift */; };
+		6A597BF31EF375050073E4AE /* ConsoleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A597BF21EF375050073E4AE /* ConsoleEntry.swift */; };
+		6A597BF41EF375050073E4AE /* ConsoleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A597BF21EF375050073E4AE /* ConsoleEntry.swift */; };
+		6A597BF51EF375050073E4AE /* ConsoleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A597BF21EF375050073E4AE /* ConsoleEntry.swift */; };
 		6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */; };
 		6A6CBFDE1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
 		6A6CBFDF1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
@@ -243,6 +247,8 @@
 		6A4BBD7D1E1A11B300987C45 /* ActivityIndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorCell.swift; sourceTree = "<group>"; };
 		6A558D351E16BF2F0077BBF4 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		6A558D361E16C01B0077BBF4 /* OrangeIRC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrangeIRC.png; sourceTree = "<group>"; };
+		6A597BF01EF33CBF0073E4AE /* ConsoleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleTableViewController.swift; sourceTree = "<group>"; };
+		6A597BF21EF375050073E4AE /* ConsoleEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleEntry.swift; sourceTree = "<group>"; };
 		6A59B7B01E73C58500BE9123 /* Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Icons; sourceTree = "<group>"; };
 		6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
@@ -427,6 +433,7 @@
 				661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */,
 				669DF7011D7CE96B007F82DB /* MOTDViewController.swift */,
 				6A765F3B1E6BD004005E4152 /* NetworksTableViewController.swift */,
+				6A597BF01EF33CBF0073E4AE /* ConsoleTableViewController.swift */,
 				6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */,
 				6A3538551E76083A00E64B7D /* RoomToolbar.swift */,
 				6A2F58C01EF31A9200076BD9 /* RoomToolbarDelegate.swift */,
@@ -503,6 +510,7 @@
 				669FCF201D289A96000117C5 /* Server+MessageHandler.swift */,
 				669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */,
 				6A73250F1E11C06C00AFCC0B /* Server+NickServ.swift */,
+				6A597BF21EF375050073E4AE /* ConsoleEntry.swift */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -849,6 +857,7 @@
 				6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */,
 				6A91CA551E622305004D38E1 /* ChannelListTableViewController.swift in Sources */,
 				6A2F58C11EF31A9200076BD9 /* RoomToolbarDelegate.swift in Sources */,
+				6A597BF11EF33CBF0073E4AE /* ConsoleTableViewController.swift in Sources */,
 				6A2F810F1E6D0D40003A68F9 /* JoinChannelAlertFactory.swift in Sources */,
 				6A3538561E76083A00E64B7D /* RoomToolbar.swift in Sources */,
 				6AF88FA11E174E1C00FD9A9D /* RightDetailSubtitleCell.swift in Sources */,
@@ -893,6 +902,7 @@
 				6A7A6A031D29CDC60012D037 /* User.swift in Sources */,
 				66A75B341D23486F001161A3 /* LogEvent.swift in Sources */,
 				66C8580C1D7B1781009E486F /* UserLogEvent.swift in Sources */,
+				6A597BF41EF375050073E4AE /* ConsoleEntry.swift in Sources */,
 				6A7325111E11C06C00AFCC0B /* Server+NickServ.swift in Sources */,
 				66A75B371D234885001161A3 /* Server.swift in Sources */,
 				6A43E6EF1DD6CBC0009DB1FC /* UserCache.swift in Sources */,
@@ -929,6 +939,7 @@
 				6A7A6A021D29CDC60012D037 /* User.swift in Sources */,
 				66EDD2F41D2963E60013E7CC /* ServerDelegate.swift in Sources */,
 				66C8580B1D7B1781009E486F /* UserLogEvent.swift in Sources */,
+				6A597BF31EF375050073E4AE /* ConsoleEntry.swift in Sources */,
 				6A7325101E11C06C00AFCC0B /* Server+NickServ.swift in Sources */,
 				66EDD2F01D2963E60013E7CC /* Server+MessageHandler.swift in Sources */,
 				6A43E6EE1DD6CBC0009DB1FC /* UserCache.swift in Sources */,
@@ -981,6 +992,7 @@
 				6A2672B71E105D180087B331 /* User.swift in Sources */,
 				6A2672B61E105D180087B331 /* RoomType.swift in Sources */,
 				6A2672AA1E105D180087B331 /* ServerDelegate.swift in Sources */,
+				6A597BF51EF375050073E4AE /* ConsoleEntry.swift in Sources */,
 				6A2672AD1E105D180087B331 /* Server+MessageHandler.swift in Sources */,
 				6A7325121E11C06C00AFCC0B /* Server+NickServ.swift in Sources */,
 				6A2672B11E105D180087B331 /* UserLogEvent.swift in Sources */,

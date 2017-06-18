@@ -38,4 +38,6 @@ public struct Notifications {
     public static let ListUpdatedForServer      = NSNotification.Name(rawValue: "ListUpdatedForServer")
     public static let ListFinishedForServer     = NSNotification.Name(rawValue: "ListFinishedForServer")
     
+    public static let ConsoleLogUpdated         = NSNotification.Name(rawValue: "ConsoleLogUpdated")
+    
 }

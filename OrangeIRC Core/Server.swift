@@ -33,7 +33,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     // MOTD support
     open var motd: String?
     
-    open var log = [Message]()
+    open var console = [ConsoleEntry]()
     
     public typealias ListChannel = (name: String, users: Int, topic: String?)
     // Call fetchChannelList() to populate
@@ -236,12 +236,16 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     func write(string: String, with tag: Int) {
         var appendedString = "\(string)\(CRLF)"
         let bytes = [UInt8](appendedString.utf8)
+        let entry = ConsoleEntry(text: string, sender: .Client)
+        add(consoleEntry: entry)
         self.socket?.write(Data(bytes: bytes), withTimeout: TIMEOUT_NONE, tag: tag)
     }
     
     func write(string: String) {
         var appendedString = "\(string)\(CRLF)"
         let bytes = [UInt8](appendedString.utf8)
+        let entry = ConsoleEntry(text: string, sender: .Client)
+        add(consoleEntry: entry)
         self.socket?.write(Data(bytes: bytes), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
     }
     
@@ -268,6 +272,11 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
             }
         }
         #endif
+    }
+    
+    open func add(consoleEntry: ConsoleEntry) {
+        console.append(consoleEntry)
+        NotificationCenter.default.post(name: Notifications.ConsoleLogUpdated, object: self)
     }
     
 }

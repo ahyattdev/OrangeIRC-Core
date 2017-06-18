@@ -43,7 +43,9 @@ extension Server {
             return
         }
         
-        log.append(message)
+        let entry = ConsoleEntry(text: string, sender: .Server)
+        add(consoleEntry: entry)
+        
         handle(message: message)
     }
     
