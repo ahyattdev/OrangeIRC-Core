@@ -30,6 +30,7 @@ open class Channel : Room {
     open var users = [User]()
     
     open var topic: String?
+    open var url: URL?
     
     open var hasTopic = false
     

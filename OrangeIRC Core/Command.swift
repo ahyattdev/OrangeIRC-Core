@@ -33,6 +33,8 @@ public struct Command {
     
     static let LIST = "LIST"
     
+    static let MODE = "MODE"
+    
     struct Reply {
         
         static let WELCOME = "001"
@@ -76,6 +78,8 @@ public struct Command {
         
         static let UNIQOPIS = "325"
         static let CHANNELMODEIS = "324"
+        
+        static let CHANNEL_URL = "328"
         
         static let WHOISACCOUNT = "330"
         

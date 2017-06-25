@@ -169,6 +169,15 @@ extension Server {
         case Command.PING:
             self.write(string: "\(Command.PONG) :\(message.parameters!)")
         
+        case Command.MODE:
+            guard let modeString = message.parameters, message.target.count == 1 else {
+                break
+            }
+            
+            if message.target[0] == nickname {
+                mode.update(with: modeString)
+            }
+            
         case Command.Reply.YOURID:
             // Useless
             break
@@ -501,6 +510,15 @@ extension Server {
             
         case Command.Reply.LISTEND:
             delegate?.finishedReadingChanlist(self)
+        
+        case Command.Reply.CHANNEL_URL:
+            guard message.target.count == 0, let urlString = message.parameters else {
+                break
+            }
+            
+            if let channel = channelFrom(name: message.target[0]) {
+                channel.url = URL(string: urlString)
+            }
             
         case Command.Error.TOOMANYTARGETS, Command.Error.NOSUCHSERVICE, Command.Error.NOORIGIN, Command.Error.NORECIPIENT, Command.Error.NOTEXTTOSEND, Command.Error.NOTOPLEVEL, Command.Error.WILDTOPLEVEL, Command.Error.BADMASK:
             // We likely won't be encountering these

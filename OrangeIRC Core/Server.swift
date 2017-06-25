@@ -86,6 +86,8 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     var userCache: UserCache = UserCache()
     
+    var mode = UserMode()
+    
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
         self.host = host
         self.port = port
@@ -180,11 +182,12 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     func reset() {
         let notifyDelegate = isConnectingOrRegistering || isRegistered
         
-        self.isConnectingOrRegistering = false
-        self.isRegistered = false
-        self.motd = nil
-        self.socket?.setDelegate(nil, delegateQueue: nil)
-        self.socket = nil
+        isConnectingOrRegistering = false
+        isRegistered = false
+        motd = nil
+        socket?.setDelegate(nil, delegateQueue: nil)
+        socket = nil
+        mode = UserMode()
         
         for room in rooms {
             if let channel = room as? Channel {
@@ -195,7 +198,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         
         if notifyDelegate {
             // Only tell the delegate that we disconnected if we were connected
-            self.delegate?.didDisconnect(self)
+            delegate?.didDisconnect(self)
         }
         
         if connectOnDisconnect {
