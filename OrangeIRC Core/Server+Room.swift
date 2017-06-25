@@ -10,15 +10,20 @@ import Foundation
 
 public extension Server {
     
-    public func join(channel: String) {
+    public func join(channel: String, key: String? = nil) {
+        var stringToWrite = "\(Command.JOIN) \(channel)"
         // Append "#" if no other prefixes are detected
         if let first = channel.utf16.first {
             if !Channel.CHANNEL_PREFIXES.characterIsMember(first) {
-                write(string: "\(Command.JOIN) #\(channel)")
+                stringToWrite = "\(Command.JOIN) #\(channel)"
             }
         }
-
-        write(string: "\(Command.JOIN) \(channel)")
+        
+        if key != nil {
+            stringToWrite = "\(stringToWrite) \(key!)"
+        }
+        
+        write(string: stringToWrite)
     }
     
     public func leave(channel: String) {

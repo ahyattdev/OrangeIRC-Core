@@ -221,3 +221,13 @@ TAP_TO_ADD_SERVER = "Tap the “+” button to add a server";
 MESSAGE_TO = "Message to @ROOMNAME@";
 
 NO_SUCH_CHANNEL = "The channel “@CHANNEL@” does not exist on the server.";
+
+KEY_NEEDED = "Channel Key Needed";
+
+KEY_NEEDED_MESSAGE = "A key is required in order to join “@CHANNEL@“ on “@SERVER@“.";
+
+CHANNEL_KEY = "Channel Key";
+
+KEY_INCORRECT = "Channel Key Incorrect";
+
+KEY_INCORRECT_MESSAGE = "The key for “@CHANNEL@“ on “@SERVER@“ is incorrect.";

@@ -74,8 +74,6 @@ open class ServerManager : ServerDelegate {
         NSKeyedArchiver.archiveRootObject(servers, toFile: dataPaths.servers.path)
     }
     
-
-    
     open func delete(server: Server) {
         server.disconnect()
         server.delegate = nil

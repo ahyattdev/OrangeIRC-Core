@@ -22,11 +22,11 @@ extension Server {
                 if let channel = room as? Channel {
                     if channel.joinOnConnect {
                         // Completes the feature of the Connect and Join button
-                        join(channel: channel.name)
+                        join(channel: channel.name, key: channel.key)
                         channel.joinOnConnect = false
                     } else if channel.autoJoin && !channel.isJoined {
                         // Completes the room autojoin feature
-                        join(channel: channel.name)
+                        join(channel: channel.name, key: channel.key)
                     }
                 }
 
@@ -557,6 +557,19 @@ extension Server {
         case Command.Error.NICKNAMEINUSE:
             break
             //write(string: "NICK \(nickname)_")
+        
+        case Command.Error.BADCHANNELKEY:
+            guard message.target.count == 1 else {
+                break
+            }
+            
+            if let channel = channelFrom(name: message.target[0]) {
+                if channel.key == nil {
+                    delegate?.keyNeeded(channel: channel, on: self)
+                } else {
+                    delegate?.keyIncorrect(channel: channel, on: self)
+                }
+            }
             
         default:
             print(message.message)

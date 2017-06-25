@@ -237,4 +237,41 @@ extension AppDelegate {
         AppDelegate.showAlertGlobally(alert)
     }
     
+    public func keyNeeded(channel: Channel, on server: Server) {
+        let title = localized("KEY_NEEDED")
+        let message = localized("KEY_NEEDED_MESSAGE").replacingOccurrences(of: "@CHANNEL@", with: channel.name).replacingOccurrences(of: "@SERVER@", with: server.displayName)
+        
+        channelKey(title: title, message: message, channel: channel, server: server)
+    }
+    
+    public func keyIncorrect(channel: Channel, on server: Server) {
+        let title = localized("KEY_INCORRECT")
+        let message = localized("KEY_INCORRECT_MESSAGE").replacingOccurrences(of: "@CHANNEL@", with: channel.name).replacingOccurrences(of: "@SERVER@", with: server.displayName)
+        
+        channelKey(title: title, message: message, channel: channel, server: server)
+    }
+    
+    func channelKey(title: String, message: String, channel: Channel, server: Server) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let authenticate = UIAlertAction(title: localized("AUTHENTICATE"), style: .default, handler: { a in
+            guard let textField = alert.textFields?.first else {
+                return
+            }
+            
+            channel.key = textField.text
+            server.join(channel: channel.name, key: channel.key)
+        })
+        alert.addAction(authenticate)
+        
+        let cancel = UIAlertAction(title: localized("CANCEL"), style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        
+        alert.addTextField(configurationHandler: { tf in
+            tf.isSecureTextEntry = true
+            tf.placeholder = localized("CHANNEL_KEY")
+        })
+        AppDelegate.showAlertGlobally(alert)
+    }
+    
 }

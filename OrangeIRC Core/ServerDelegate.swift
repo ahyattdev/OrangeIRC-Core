@@ -40,4 +40,7 @@ public protocol ServerDelegate {
     func tooManyChannels(_ server: Server)
     func serverPaswordNeeed(_ server: Server)
     
+    func keyNeeded(channel: Channel, on server: Server)
+    func keyIncorrect(channel: Channel, on server: Server)
+    
 }

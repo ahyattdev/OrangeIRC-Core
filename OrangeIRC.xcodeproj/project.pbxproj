@@ -512,9 +512,9 @@
 			isa = PBXGroup;
 			children = (
 				66A75B351D234885001161A3 /* Server.swift */,
+				66A75B3E1D23496C001161A3 /* ServerDelegate.swift */,
 				6AE6F90A1E2B29BC007CC0AE /* ServerManager.swift */,
 				6A8389061E33F3A8006ED94B /* ServerManager+ServerDelegate.swift */,
-				66A75B3E1D23496C001161A3 /* ServerDelegate.swift */,
 				667BB2EB1D29C2F60029AB2D /* Server+Room.swift */,
 				669FCF201D289A96000117C5 /* Server+MessageHandler.swift */,
 				669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */,

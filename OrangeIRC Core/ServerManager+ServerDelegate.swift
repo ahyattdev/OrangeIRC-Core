@@ -122,4 +122,12 @@ extension ServerManager {
         serverDelegate?.serverPaswordNeeed(server)
     }
     
+    open func keyNeeded(channel: Channel, on server: Server) {
+        serverDelegate?.keyNeeded(channel: channel, on: server)
+    }
+    
+    open func keyIncorrect(channel: Channel, on server: Server) {
+        serverDelegate?.keyIncorrect(channel: channel, on: server)
+    }
+    
 }

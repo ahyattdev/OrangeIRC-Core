@@ -19,12 +19,14 @@ open class Channel : Room {
         private init() { }
         
         static let Name = "Name"
+        static let Key = "Key"
         static let AutoJoin = "AutoJoin"
         
     }
     
     // Preserved variables
     open var name: String
+    open var key: String?
     open var autoJoin = false // Only does something if this is a channel
     
     open var users = [User]()
@@ -63,11 +65,13 @@ open class Channel : Room {
         
         self.init(name)
         
-        self.autoJoin = coder.decodeBool(forKey: Coding.AutoJoin)
+        key = coder.decodeObject(forKey: Coding.Key) as? String
+        autoJoin = coder.decodeBool(forKey: Coding.AutoJoin)
     }
     
     open override func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: Coding.Name)
+        aCoder.encode(key, forKey: Coding.Key)
         aCoder.encode(autoJoin, forKey: Coding.AutoJoin)
     }
     
