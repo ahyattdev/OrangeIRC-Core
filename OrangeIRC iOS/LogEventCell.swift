@@ -36,24 +36,6 @@ class LogEventCell : UITableViewCell {
         dateLabel.font = font
         content.font = font
         
-        // dateLabel.trailing
-        contentView.addConstraint(NSLayoutConstraint(item: dateLabel, attribute: .trailing, relatedBy: .equal, toItem: dateLabel.superview, attribute: .leading, multiplier: 1.0, constant: 100))
-        
-        // dateLabel.top
-        contentView.addConstraint(NSLayoutConstraint(item: dateLabel, attribute: .top, relatedBy: .equal, toItem: dateLabel.superview, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 3))
-        
-        // content.leading
-        contentView.addConstraint(NSLayoutConstraint(item: content, attribute: .leading, relatedBy: .equal, toItem: dateLabel, attribute: .trailing, multiplier: 1.0, constant: 10))
-        
-        // content.top
-        contentView.addConstraint(NSLayoutConstraint(item: content, attribute: .top, relatedBy: .equal, toItem: dateLabel, attribute: .top, multiplier: 1.0, constant: 0))
-        
-        // content.trailing
-        contentView.addConstraint(NSLayoutConstraint(item: content, attribute: .trailing, relatedBy: .equal, toItem: content.superview, attribute: .trailingMargin, multiplier: 1.0, constant: 5))
-        
-        // contentView.bottom
-        contentView.addConstraint(NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: content, attribute: .bottom, multiplier: 1.0, constant: 3))
-        
         let df = DateFormatter()
         
         df.dateStyle = .none
@@ -62,6 +44,16 @@ class LogEventCell : UITableViewCell {
         dateLabel.text = df.string(from: logEvent.date)
         
         content.attributedText = logEvent.attributedDescription
+        
+        let dlTop = NSLayoutConstraint(item: dateLabel, attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .topMargin, multiplier: 1.0, constant: 0)
+        let dlWidth = NSLayoutConstraint(item: dateLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 70)
+        let dlLeading = NSLayoutConstraint(item: dateLabel, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leadingMargin, multiplier: 1.0, constant: 0)
+        contentView.addConstraints([dlTop, dlWidth, dlLeading])
+        
+        let contentFirstBaseline = NSLayoutConstraint(item: content, attribute: .firstBaseline, relatedBy: .equal, toItem: dateLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 0)
+        let contentLeading = NSLayoutConstraint(item: content, attribute: .leading, relatedBy: .equal, toItem: dateLabel, attribute: .trailing, multiplier: 1.0, constant: 8)
+        let contentTrailing = NSLayoutConstraint(item: content, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailingMargin, multiplier: 1.0, constant: 0)
+        contentView.addConstraints([contentFirstBaseline, contentLeading, contentTrailing])
     }
     
     

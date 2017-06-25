@@ -57,6 +57,7 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 44
         
         view.addSubview(tableView)
         view.addSubview(toolbar)

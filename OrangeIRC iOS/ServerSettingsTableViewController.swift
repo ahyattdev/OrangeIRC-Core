@@ -53,7 +53,11 @@ class ServerSettingsTableViewController : UITableViewController, UITextFieldDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = localized("ADD_SERVER")
+        if mode == .Add {
+            title = localized("ADD_SERVER")
+        } else {
+            title = localized("EDIT_SERVER")
+        }
         
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancelButton))
         navigationItem.leftBarButtonItem = cancelButton

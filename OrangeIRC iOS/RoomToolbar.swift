@@ -17,7 +17,7 @@ class RoomToolbar : UIToolbar, UITextViewDelegate {
     
     let contentView = UIView()
     let textView = UITextView()
-    let sendButton = UIButton(type: UIButtonType.roundedRect)
+    let sendButton = UIButton(type: UIButtonType.system)
     
     var bottom: NSLayoutConstraint!
     var textViewHeight: NSLayoutConstraint!
@@ -44,6 +44,7 @@ class RoomToolbar : UIToolbar, UITextViewDelegate {
         
         sendButton.isEnabled = false
         sendButton.setTitle(localized("SEND"), for: .normal)
+        
         sendButton.addTarget(self, action: #selector(self.send), for: .touchUpInside)
         
         items =  [UIBarButtonItem(customView: contentView)]

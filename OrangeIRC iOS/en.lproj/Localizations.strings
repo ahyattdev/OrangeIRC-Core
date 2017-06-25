@@ -231,3 +231,5 @@ CHANNEL_KEY = "Channel Key";
 KEY_INCORRECT = "Channel Key Incorrect";
 
 KEY_INCORRECT_MESSAGE = "The key for “@CHANNEL@“ on “@SERVER@“ is incorrect.";
+
+EDIT_SERVER = "Edit Server";
