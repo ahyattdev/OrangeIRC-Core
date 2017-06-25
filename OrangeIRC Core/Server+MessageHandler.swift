@@ -517,6 +517,9 @@ extension Server {
         case Command.Error.PASSWDMISMATCH:
             // We need a password
             delegate?.serverPaswordNeeed(self)
+        
+        case Command.Error.NICKNAMEINUSE:
+            write(string: "NICK \(nickname)_")
             
         default:
             print(message.message)

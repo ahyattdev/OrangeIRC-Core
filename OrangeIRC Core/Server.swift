@@ -279,4 +279,8 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         NotificationCenter.default.post(name: Notifications.ConsoleLogUpdated, object: self)
     }
     
+    open func reclaimNickname() {
+        
+    }
+    
 }

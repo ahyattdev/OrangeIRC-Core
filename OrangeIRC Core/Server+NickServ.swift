@@ -27,6 +27,8 @@ extension Server{
         if notice.contains(NickServ.NICK_REGISTERED) {
             if nickservPassword.isEmpty {
                 delegate?.nickservPasswordNeeded(self)
+            } else {
+                sendNickServPassword()
             }
         } else if notice.contains(NickServ.AUTH_SUCCESS) {
             // This is good and no action is necessary

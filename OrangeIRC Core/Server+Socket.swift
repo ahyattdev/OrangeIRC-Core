@@ -57,10 +57,6 @@ extension Server {
             self.sendNickMessage()
         case Tag.Nick:
             self.sendUserMessage()
-        case Tag.User:
-            if !self.nickservPassword.isEmpty {
-                self.sendNickServPassword()
-            }
         default:
             break
         }
