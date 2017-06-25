@@ -64,7 +64,7 @@ open class ServerManager : ServerDelegate {
         
         for server in servers {
             server.delegate = self
-            if server.autoJoin {
+            if server.autoJoin && !server.isConnectingOrRegistering && !server.isConnected {
                 server.connect()
             }
         }

@@ -155,6 +155,7 @@ class UserInfoTableViewController : UITableViewController {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
             cell.textLabel?.text = rowNames[indexPath.section][indexPath.row]
             cell.detailTextLabel?.text = data
+            cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
             return cell
         } else {
             let cell = ActivityIndicatorCell(style: .default, reuseIdentifier: nil)

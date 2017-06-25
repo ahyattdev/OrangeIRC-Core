@@ -48,6 +48,24 @@ extension Server {
             // According to RFC 2812, this is a bounce message
             // But Freenode sends various server variables
             break
+        
+        case Command.NICK:
+            // Nickname change
+            guard let oldNick = message.prefix?.nickname, let newNick = message.parameters else {
+                break
+            }
+            
+            if let user = userCache.getUser(by: oldNick) {
+                user.nick = newNick
+                
+                for channelData in user.channels {
+                    if let chan = channelFrom(name: channelData.name) {
+                        let logEvent = UserNickChangeLogEvent(sender: user, room: chan, oldNick: oldNick, newNick: newNick)
+                        chan.log.append(logEvent)
+                        delegate?.recieved(logEvent: logEvent, for: chan)
+                    }
+                }
+            }
             
         case Command.ERROR:
             guard let errorMessage = message.parameters else {
@@ -57,7 +75,7 @@ extension Server {
             }
             
             // Hide the ERROR some servers send when the client sends QUIT
-            if errorMessage.contains("Quit: ") {
+            if errorMessage.contains("Quit: ") || errorMessage.contains(":Closing Link:") {
                 break
             }
             
@@ -519,7 +537,8 @@ extension Server {
             delegate?.serverPaswordNeeed(self)
         
         case Command.Error.NICKNAMEINUSE:
-            write(string: "NICK \(nickname)_")
+            break
+            //write(string: "NICK \(nickname)_")
             
         default:
             print(message.message)

@@ -31,8 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ServerDelegate, UITextFie
         
         window!.tintColor = UIColor.orange
         
-        ServerManager.shared.loadData()
-        
         let placeholder = UITableViewController(style: .grouped)
         let label = UILabel()
         label.text = localized("CHOSE_ROOM")

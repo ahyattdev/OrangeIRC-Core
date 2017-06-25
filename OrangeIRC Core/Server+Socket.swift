@@ -27,8 +27,24 @@ extension Server {
     open func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
         // FIXME: Doesn't call all the delegate functions
         if err != nil {
-            delegate?.didNotRespond(self)
+            let error = err! as NSError
+            if let asyncSocketError = GCDAsyncSocketError(rawValue: error.code) {
+                switch asyncSocketError {
+                case .noError: break
+                case .badConfigError: break
+                case .badParamError: break
+                case .connectTimeoutError: break
+                    delegate?.didNotRespond(self)
+                case .readTimeoutError:
+                    delegate?.stoppedResponding(self)
+                case .writeTimeoutError: break
+                case .readMaxedOutError: break
+                case .closedError: break
+                case .otherError: break
+                }
+            }
         }
+        
         
         // We need to wait after QUIT is sent, as things are sent asyncronously
         reset()
