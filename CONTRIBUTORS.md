@@ -4,7 +4,7 @@
   * Main developer
 
 * **[Rajiv Govindjee](https://github.com/rgovindjee)**
-  * Help with Spanish localizations
+  * Helped with Spanish localizations
 
 * **Jonah Kallen**
   * Designed the icon
