@@ -82,6 +82,12 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
         super.viewWillAppear(animated)
         toolbar.updateConstraints()
         toolbar.becomeFirstResponder()
+        registerKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unregisterKeyboardNotifications()
     }
     
     func roomDataChanged(_ notification: NSNotification) {
@@ -122,45 +128,6 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
         let logEvent = room.log[indexPath.row]
         let cell = LogEventCell(logEvent: logEvent, reuseIdentifier: nil)
         return cell
-//        let logEvent = room.log[indexPath.row]
-//        
-//        
-//        if logEvent is UserLogEvent {
-//            let regularCell = UITableViewCell(style: .default, reuseIdentifier: nil)
-//            let userLogEvent = logEvent as! UserLogEvent
-//            
-//            var suffix = ""
-//            
-//            switch userLogEvent.self {
-//            case is UserJoinLogEvent:
-//                suffix = localized("JOINED_THE_ROOM")
-//            case is UserPartLogEvent:
-//                suffix = localized("LEFT_THE_ROOM")
-//            case is UserQuitLogEvent:
-//                suffix = localized("QUIT")
-//            default:
-//                print("Unknown UserLogEvent, no caption found")
-//                break
-//            }
-//            
-//            let coloredName = userLogEvent.sender.coloredName(for: room)
-//            let attributedString = NSMutableAttributedString(attributedString: coloredName)
-//            // Spacer
-//            attributedString.append(NSAttributedString(string: " "))
-//            attributedString.append(NSAttributedString(string: suffix))
-//            regularCell.textLabel!.attributedText = attributedString
-//            
-//            return regularCell
-//            
-//        } else if let msgEvent = logEvent as? MessageLogEvent {
-//            let msgCell = MessageCell(message: msgEvent, room: room, showLabel: true)
-//            msgCell.delegate = self
-//            return msgCell
-//            
-//        } else {
-//            print("Unknown log event, could not be rendered")
-//            return UITableViewCell()
-//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -204,5 +171,37 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
         
         return event is MessageLogEvent
     }
+    
+    // https://stackoverflow.com/a/32353069/2892777
+    func registerKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(RoomTableViewController.keyboardDidShow(notification:)),
+                                               name: NSNotification.Name.UIKeyboardDidShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(RoomTableViewController.keyboardWillHide(notification:)),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
+    }
+    
+    func unregisterKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func keyboardDidShow(notification: NSNotification) {
+        let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+        let keyboardInfo = userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue
+        let keyboardSize = keyboardInfo.cgRectValue.size
+        //let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: , right: 0)
+        //tableView.contentInset = contentInsets
+        tableView.contentInset.bottom = keyboardSize.height
+        tableView.scrollIndicatorInsets = tableView.contentInset
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        tableView.contentInset.bottom = toolbar.frame.height
+        tableView.scrollIndicatorInsets = tableView.contentInset
+    }
+
     
 }

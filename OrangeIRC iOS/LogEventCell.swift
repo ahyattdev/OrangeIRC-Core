@@ -31,6 +31,7 @@ class LogEventCell : UITableViewCell {
         content.isEditable = false
         content.isScrollEnabled = false
         content.isSelectable = false
+        content.dataDetectorTypes = .all
         
         let font = UIFont(name: "Menlo-Regular", size: 16)
         dateLabel.font = font
@@ -53,7 +54,8 @@ class LogEventCell : UITableViewCell {
         let contentFirstBaseline = NSLayoutConstraint(item: content, attribute: .firstBaseline, relatedBy: .equal, toItem: dateLabel, attribute: .firstBaseline, multiplier: 1.0, constant: 0)
         let contentLeading = NSLayoutConstraint(item: content, attribute: .leading, relatedBy: .equal, toItem: dateLabel, attribute: .trailing, multiplier: 1.0, constant: 8)
         let contentTrailing = NSLayoutConstraint(item: content, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailingMargin, multiplier: 1.0, constant: 0)
-        contentView.addConstraints([contentFirstBaseline, contentLeading, contentTrailing])
+        let contentBottom = NSLayoutConstraint(item: content, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottomMargin, multiplier: 1.0, constant: 0)
+        contentView.addConstraints([contentFirstBaseline, contentLeading, contentTrailing, contentBottom])
     }
     
     

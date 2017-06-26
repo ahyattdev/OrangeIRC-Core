@@ -42,6 +42,9 @@ class ConsoleTableViewController: UITableViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = entry.text
+        if entry.sender == .Client {
+            label.textColor = UIColor.orange
+        }
         label.translatesAutoresizingMaskIntoConstraints = false
         cell.contentView.addSubview(label)
         

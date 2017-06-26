@@ -9,3 +9,4 @@
 JOINED = "joined";
 LEFT = "left";
 QUIT = "quit";
+CHANGED_NICKNAME_TO = "changed their nickname to";

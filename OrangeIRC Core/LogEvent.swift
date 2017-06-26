@@ -25,7 +25,7 @@ open class LogEvent : NSObject {
     open static var italicAttributes = [NSFontAttributeName : UIFont(name: "Menlo-Italic", size: 16) as Any]
     
     open var attributedDescription: NSAttributedString {
-        return NSAttributedString(string: "", attributes: LogEvent.attributes)
+        return NSAttributedString(string: String(describing: self), attributes: LogEvent.attributes)
     }
     
 }
