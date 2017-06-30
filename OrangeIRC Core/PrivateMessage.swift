@@ -44,4 +44,11 @@ open class PrivateMessage : Room {
         aCoder.encode(otherUser, forKey: Coding.OtherUser)
     }
     
+    open override func send(message: String) {
+        server.write(string: "\(Command.PRIVMSG) \(otherUser.nick) :\(message)")
+        let logEvent = MessageLogEvent(contents: message, sender: server.userCache.me, room: self)
+        log.append(logEvent)
+        server.delegate?.recieved(logEvent: logEvent, for: self)
+    }
+    
 }
