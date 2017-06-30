@@ -44,5 +44,6 @@ public protocol ServerDelegate {
     func keyIncorrect(channel: Channel, on server: Server)
     
     func kicked(server: Server, room: Room, sender: User)
+    func banned(server: Server, channel: Channel)
     
 }

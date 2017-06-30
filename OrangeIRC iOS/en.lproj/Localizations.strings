@@ -234,6 +234,8 @@ KEY_INCORRECT_MESSAGE = "The key for “@CHANNEL@“ on “@SERVER@“ is incorr
 
 EDIT_SERVER = "Edit Server";
 
-CANNOT_SEND_TO_CHANNEL = "You can't send a message to “@CHANNEL@“.";
+CANNOT_SEND_TO_CHANNEL = "You can’t send a message to “@CHANNEL@“.";
 
 YOU_WERE_KICKED = "You were kicked from “@CHANNEL@“ by “@SENDER@“";
+
+CANNOT_JOIN_CHANNEL_BANNED = "You can’t join “@CHANNEL@“ because you are banned from it.";

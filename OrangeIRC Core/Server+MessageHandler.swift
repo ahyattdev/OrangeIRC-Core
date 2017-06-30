@@ -599,6 +599,17 @@ extension Server {
                     delegate?.keyIncorrect(channel: channel, on: self)
                 }
             }
+        
+        case Command.Error.BANNEDFROMCHAN:
+            guard message.target.count == 1 else {
+                break
+            }
+            
+            guard let channel = channelFrom(name: message.target[0]) else {
+                break
+            }
+            
+            delegate?.banned(server: self, channel: channel)
             
         default:
             print(message.message)
