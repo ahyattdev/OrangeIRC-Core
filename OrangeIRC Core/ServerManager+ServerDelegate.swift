@@ -130,4 +130,8 @@ extension ServerManager {
         serverDelegate?.keyIncorrect(channel: channel, on: server)
     }
     
+    open func kicked(server: Server, room: Room, sender: User) {
+        serverDelegate?.kicked(server: server, room: room, sender: sender)
+    }
+
 }

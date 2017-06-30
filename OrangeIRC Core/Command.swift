@@ -35,6 +35,8 @@ public struct Command {
     
     static let MODE = "MODE"
     
+    static let KICK = "KICK"
+    
     struct Reply {
         
         static let WELCOME = "001"

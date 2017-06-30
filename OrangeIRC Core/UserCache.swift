@@ -115,6 +115,10 @@ class UserCache {
     }
     
     func getOrCreateUser(nickname: String) -> User {
+        if nickname == server.nickname {
+            return me
+        }
+        
         // See if we already have the user in the cache
         var user = getUser(by: nickname)
         

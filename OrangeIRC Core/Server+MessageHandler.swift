@@ -182,6 +182,35 @@ extension Server {
             // Useless
             break
         
+        case Command.KICK:
+            guard message.target.count == 2 else {
+                break
+            }
+            
+            guard let senderNick = message.prefix?.nickname else {
+                print("Couldn't identify the sender of a KICK")
+                break
+            }
+            
+            guard let room = channelFrom(name: message.target[0]) else {
+                print("Couldn't find channel for KICK")
+                break
+            }
+            
+            let sender = userCache.getOrCreateUser(nickname: senderNick)
+            let receiver = userCache.getOrCreateUser(nickname: message.target[1])
+            
+            let logEvent = KickLogEvent(sender: sender, receiver: receiver, room: room)
+            room.log.append(logEvent)
+            delegate?.recieved(logEvent: logEvent, for: room)
+            
+            // Set the room as left if we were kicked
+            if receiver == userCache.me {
+                room.isJoined = false
+                NotificationCenter.default.post(name: Notifications.UserInfoDidChange, object: room)
+                delegate?.kicked(server: self, room: room, sender: sender)
+            }
+            
         case Command.Reply.STATSDLINE, Command.Reply.LUSERCLIENT, Command.Reply.LUSEROP, Command.Reply.LUSERUNKNOWN, Command.Reply.LUSERCHANNELS, Command.Reply.LUSERME, Command.Reply.ADMINME, Command.Reply.LOCALUSERS, Command.Reply.GLOBALUSERS:
             // These stats are not useful
             break

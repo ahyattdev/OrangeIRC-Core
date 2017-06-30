@@ -233,3 +233,7 @@ KEY_INCORRECT = "Channel Key Incorrect";
 KEY_INCORRECT_MESSAGE = "The key for “@CHANNEL@“ on “@SERVER@“ is incorrect.";
 
 EDIT_SERVER = "Edit Server";
+
+CANNOT_SEND_TO_CHANNEL = "You can't send a message to “@CHANNEL@“.";
+
+YOU_WERE_KICKED = "You were kicked from “@CHANNEL@“ by “@SENDER@“";

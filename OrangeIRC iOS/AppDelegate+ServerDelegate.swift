@@ -274,4 +274,15 @@ extension AppDelegate {
         AppDelegate.showAlertGlobally(alert)
     }
     
+    func kicked(server: Server, room: Room, sender: User) {
+        let title = server.displayName
+        let message = localized("YOU_WERE_KICKED").replacingOccurrences(of: "@CHANNEL@", with: room.displayName).replacingOccurrences(of: "@SENDER@", with: sender.nick)
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: localized("OK"), style: .default, handler: nil)
+        alert.addAction(ok)
+        
+        AppDelegate.showAlertGlobally(alert)
+    }
 }
