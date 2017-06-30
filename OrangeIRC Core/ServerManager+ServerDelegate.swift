@@ -134,9 +134,12 @@ extension ServerManager {
         serverDelegate?.kicked(server: server, room: room, sender: sender)
     }
     
-    
     open func banned(server: Server, channel: Channel) {
         serverDelegate?.banned(server: server, channel: channel)
+    }
+    
+    open func inviteOnly(server: Server, channel: Channel) {
+        serverDelegate?.inviteOnly(server: server, channel: channel)
     }
 
 }

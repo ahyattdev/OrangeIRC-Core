@@ -45,5 +45,6 @@ public protocol ServerDelegate {
     
     func kicked(server: Server, room: Room, sender: User)
     func banned(server: Server, channel: Channel)
+    func inviteOnly(server: Server, channel: Channel)
     
 }

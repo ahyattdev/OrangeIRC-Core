@@ -298,4 +298,16 @@ extension AppDelegate {
         
         AppDelegate.showAlertGlobally(alert)
     }
+    
+    func inviteOnly(server: Server, channel: Channel) {
+        let title = server.displayName
+        let message = localized("CANNOT_JOIN_INVITE_ONLY").replacingOccurrences(of: "@CHANNEL@", with: channel.displayName)
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: localized("OK"), style: .default, handler: nil)
+        alert.addAction(ok)
+        
+        AppDelegate.showAlertGlobally(alert)
+    }
 }

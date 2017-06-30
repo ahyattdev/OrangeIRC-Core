@@ -600,6 +600,17 @@ extension Server {
                 }
             }
         
+        case Command.Error.INVITEONLYCHAN:
+            guard message.target.count == 1 else {
+                break
+            }
+            
+            guard let channel = channelFrom(name: message.target[0]) else {
+                break
+            }
+            
+            delegate?.inviteOnly(server: self, channel: channel)
+            
         case Command.Error.BANNEDFROMCHAN:
             guard message.target.count == 1 else {
                 break
