@@ -36,6 +36,7 @@ class MOTDViewController : UIViewController {
         textView.isEditable = false
         textView.dataDetectorTypes = .all
         textView.text = server.motd
+        textView.font = UIFont.systemFont(ofSize: 17)
         
         view = textView
         

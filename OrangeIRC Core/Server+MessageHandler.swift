@@ -32,6 +32,13 @@ extension Server {
 
             }
             
+            // Start the reclaim timer if necessary
+            if nickname != preferredNickname {
+                reclaimTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: { t in
+                    self.write(string: "\(Command.NICK) \(self.preferredNickname)")
+                })
+            }
+            
         case Command.Reply.YOURHOST:
             // Not useful
             break
@@ -53,6 +60,18 @@ extension Server {
             // Nickname change
             guard let oldNick = message.prefix?.nickname, let newNick = message.parameters else {
                 break
+            }
+            
+            if oldNick == nickname {
+                if newNick == preferredNickname && reclaimTimer != nil {
+                    // Our nickname change request was accepted
+                    reclaimTimer!.invalidate()
+                    reclaimTimer = nil
+                }
+                // The server gave us a different nickname we didn't ask for
+                // Or because we authenticated with NickServ
+                nickname = newNick
+                userCache.me.nick = nickname
             }
             
             if let user = userCache.getUser(by: oldNick) {
@@ -583,10 +602,6 @@ extension Server {
             // We need a password
             delegate?.serverPaswordNeeed(self)
         
-        case Command.Error.NICKNAMEINUSE:
-            break
-            //write(string: "NICK \(nickname)_")
-        
         case Command.Error.BADCHANNELKEY:
             guard message.target.count == 1 else {
                 break
@@ -621,7 +636,18 @@ extension Server {
             }
             
             delegate?.banned(server: self, channel: channel)
-            
+        
+        case Command.Error.NICKNAMEINUSE:
+            if isConnectingOrRegistering {
+                // Use an alternate nickname and try again in 30 seconds
+                if appendedUnderscoreCount < 5 {
+                    appendedUnderscoreCount += 1
+                    nickname = "\(nickname)_"
+                    userCache.me.nick = nickname
+                    write(string: "\(Command.NICK) \(nickname)")
+                }
+            }
+
         default:
             print(message.message)
             print("Unimplemented command handle: \(message.command)")

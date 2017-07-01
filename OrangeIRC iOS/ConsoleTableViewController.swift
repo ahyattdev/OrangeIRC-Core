@@ -24,6 +24,12 @@ class ConsoleTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 44
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.scrollToRow(at: IndexPath(row: server.console.count - 1, section: 0), at: .bottom, animated: false)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

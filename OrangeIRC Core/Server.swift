@@ -47,6 +47,8 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     var socket: GCDAsyncSocket?
     
+    var reclaimTimer: Timer?
+    
     open var isConnected: Bool {
         if let socket = socket {
             return socket.isConnected
@@ -63,7 +65,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     open var host: String
     open var alias: String?
     open var port: Int
-    open var nickname: String
+    open var preferredNickname: String
     open var username: String
     open var realname: String
     open var password = ""
@@ -71,6 +73,9 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     open var autoJoin = false
     open var rooms = [Room]()
     // End saved data
+    
+    open var nickname: String
+    var appendedUnderscoreCount = 0
     
     open var roomsFlaggedForAutoJoin = [String]()
     
@@ -91,11 +96,14 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
         self.host = host
         self.port = port
-        self.nickname = nickname
+        self.preferredNickname = nickname
+        self.nickname = preferredNickname
         self.username = username
         self.realname = realname
         self.encoding = encoding
+        
         super.init()
+        
         userCache.server = self
     }
     
@@ -106,7 +114,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     public required convenience init?(coder: NSCoder) {
         guard let host = coder.decodeObject(forKey: Coding.Host) as? String,
-            let nickname = coder.decodeObject(forKey: Coding.Nickname) as? String,
+            let preferredNickname = coder.decodeObject(forKey: Coding.Nickname) as? String,
             let username = coder.decodeObject(forKey: Coding.Username) as? String,
             let realname = coder.decodeObject(forKey: Coding.Realname) as? String,
             let nickservPassword = coder.decodeObject(forKey: Coding.NickServPassword) as? String else {
@@ -115,7 +123,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         // According to the compiler, this will always succeed
         let port = coder.decodeInteger(forKey: Coding.Port)
         
-        self.init(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: String.Encoding.utf8)
+        self.init(host: host, port: port, nickname: preferredNickname, username: username, realname: realname, encoding: String.Encoding.utf8)
         
         // This property is not restored by NSCoding
         for room in self.rooms {
@@ -140,7 +148,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         aCoder.encode(host, forKey: Coding.Host)
         aCoder.encode(alias, forKey: Coding.Alias)
         aCoder.encode(port, forKey: Coding.Port)
-        aCoder.encode(nickname, forKey: Coding.Nickname)
+        aCoder.encode(preferredNickname, forKey: Coding.Nickname)
         aCoder.encode(username, forKey: Coding.Username)
         aCoder.encode(realname, forKey: Coding.Realname)
         aCoder.encode(nickservPassword, forKey: Coding.NickServPassword)
@@ -188,6 +196,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         socket?.setDelegate(nil, delegateQueue: nil)
         socket = nil
         mode = UserMode()
+        appendedUnderscoreCount = 0
         
         for room in rooms {
             if let channel = room as? Channel {
@@ -224,6 +233,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     func sendNickMessage() {
         print("Sent NICK message: \(self.host)")
+        nickname = preferredNickname
         self.write(string: "\(Command.NICK) \(self.nickname)", with: Tag.Nick)
     }
     
@@ -277,13 +287,9 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         #endif
     }
     
-    open func add(consoleEntry: ConsoleEntry) {
+    func add(consoleEntry: ConsoleEntry) {
         console.append(consoleEntry)
         NotificationCenter.default.post(name: Notifications.ConsoleLogUpdated, object: self)
-    }
-    
-    open func reclaimNickname() {
-        
     }
     
 }
