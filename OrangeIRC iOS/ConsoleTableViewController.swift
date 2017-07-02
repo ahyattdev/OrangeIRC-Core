@@ -9,7 +9,7 @@
 import UIKit
 import OrangeIRCCore
 
-class ConsoleTableViewController: UITableViewController {
+class ConsoleTableViewController: UITableViewController, ConsoleDelegate {
     
     let server: Server
     
@@ -17,17 +17,23 @@ class ConsoleTableViewController: UITableViewController {
         self.server = server
         
         super.init(style: .plain)
+        
+        server.consoleDelegate = self
     }
     
     override func viewDidLoad() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
+        
+        title = server.displayName
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.scrollToRow(at: IndexPath(row: server.console.count - 1, section: 0), at: .bottom, animated: false)
+        if server.console.count > 0 {
+            tableView.scrollToRow(at: IndexPath(row: server.console.count - 1, section: 0), at: .bottom, animated: false)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,15 +66,19 @@ class ConsoleTableViewController: UITableViewController {
         let trailing = NSLayoutConstraint(item: label, attribute: .trailing, relatedBy: .equal, toItem: cell.contentView, attribute: .trailingMargin, multiplier: 1.0, constant: 0)
         let bottom = NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: cell.contentView, attribute: .bottomMargin, multiplier: 1.0, constant: 0)
         
-        let width = NSLayoutConstraint(item: label, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: cell.contentView.frame.width - cell.contentView.layoutMargins.left - cell.contentView.layoutMargins.right)
-        
         bottom.priority = 500
         
-        cell.contentView.addConstraints([top, bottom, leading, trailing, width])
+        cell.contentView.addConstraints([top, bottom, leading, trailing])
         
         label.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
         
         return cell;
+    }
+    
+    func newConsoleEntry(server: Server, entry: ConsoleEntry) {
+        let lastRow = IndexPath(row: server.console.count - 1, section: 0)
+        tableView.insertRows(at: [lastRow], with: .top)
+        tableView.scrollToRow(at: lastRow, at: .bottom, animated: false)
     }
     
 }

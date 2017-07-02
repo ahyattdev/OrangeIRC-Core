@@ -119,17 +119,50 @@ class NetworksTableViewController : UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // The console cell is always the first row
-        return indexPath.row != 0
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let server = ServerManager.shared.servers[indexPath.section]
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var actions = [UITableViewRowAction]()
+        
+        let server = ServerManager.shared.servers[indexPath.section]
+        
+        if indexPath.row == 0 {
+            // Console
+            if server.isConnected {
+                // Disconnect
+                actions.append(UITableViewRowAction(style: .normal, title: localized("DISCONNECT"), handler: { a, i in
+                    server.disconnect()
+                }))
+            } else {
+                // Connect
+                actions.append(UITableViewRowAction(style: .normal, title: localized("CONNECT"), handler: { a, i in
+                    server.connect()
+                }))
+            }
+        } else {
+            // Room
             let room = server.rooms[indexPath.row - 1]
-            server.delete(room: room)
+            
+            // Delete
+            actions.append(UITableViewRowAction(style: .destructive, title: localized("DELETE"), handler: { a, i in
+                server.delete(room: room)
+            }))
+            
+            if let channel = room as? Channel {
+                if server.isConnected {
+                    if channel.isJoined {
+                        // Leave
+                        actions.append(UITableViewRowAction(style: .normal, title: localized("LEAVE"), handler: { a, i in
+                            server.leave(channel: channel.name)
+                        }))
+                    } else {
+                        // Join
+                        actions.append(UITableViewRowAction(style: .normal, title: localized("JOIN"), handler: { a, i in
+                            server.join(channel: channel.name, key: channel.key)
+                        }))
+                    }
+                }
+            }
         }
+        
+        return actions
     }
-    
 }

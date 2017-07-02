@@ -129,7 +129,7 @@ public struct Command {
         static let NOTOPLEVEL = "413"
         static let WILDTOPLEVEL = "414"
         static let BADMASK = "415"
-        static let UNKNOWNCOMMAND = "412"
+        static let UNKNOWNCOMMAND = "421"
         static let NOMOTD = "422"
         static let NOADMININFO = "423"
         static let FILERROR = "424"

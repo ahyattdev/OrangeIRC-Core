@@ -34,6 +34,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     open var motd: String?
     
     open var console = [ConsoleEntry]()
+    open var consoleDelegate: ConsoleDelegate?
     
     public typealias ListChannel = (name: String, users: Int, topic: String?)
     // Call fetchChannelList() to populate
@@ -289,7 +290,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     func add(consoleEntry: ConsoleEntry) {
         console.append(consoleEntry)
-        NotificationCenter.default.post(name: Notifications.ConsoleLogUpdated, object: self)
+        consoleDelegate?.newConsoleEntry(server: self, entry: consoleEntry)
     }
     
 }

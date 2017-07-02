@@ -568,7 +568,15 @@ extension Server {
                 channel.url = URL(string: urlString)
             }
             
-        case Command.Error.TOOMANYTARGETS, Command.Error.NOSUCHSERVICE, Command.Error.NOORIGIN, Command.Error.NORECIPIENT, Command.Error.NOTEXTTOSEND, Command.Error.NOTOPLEVEL, Command.Error.WILDTOPLEVEL, Command.Error.BADMASK:
+        case Command.Error.TOOMANYTARGETS,
+             Command.Error.NOSUCHSERVICE,
+             Command.Error.NOORIGIN,
+             Command.Error.NORECIPIENT,
+             Command.Error.NOTEXTTOSEND,
+             Command.Error.NOTOPLEVEL,
+             Command.Error.WILDTOPLEVEL,
+             Command.Error.BADMASK,
+             Command.Error.UNKNOWNCOMMAND:
             // We likely won't be encountering these
             break
         
@@ -647,7 +655,10 @@ extension Server {
                     write(string: "\(Command.NICK) \(nickname)")
                 }
             }
-
+            
+        case Command.Error.NONICKNAMEGIVEN:
+            print("NNONICKNAMEGIVEN: Is preferredNickname nil?")
+            
         default:
             print(message.message)
             print("Unimplemented command handle: \(message.command)")

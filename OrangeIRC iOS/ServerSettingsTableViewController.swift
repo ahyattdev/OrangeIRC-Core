@@ -254,17 +254,19 @@ class ServerSettingsTableViewController : UITableViewController, UITextFieldDele
             // Reassign every setting
             
             // This boolean will be whether or not a setting was changed
-            let shouldDisplayReconnectPrompt = server!.host != hostCell!.textField.text! ||
+            let shouldDisplayReconnectPrompt = (server!.host != hostCell!.textField.text! ||
                 server!.port != Int(portCell!.textField.text!)! ||
                 server!.nickname != nicknameCell!.textField.text! ||
                 server!.username != usernameCell!.textField.text! ||
                 server!.realname != realnameCell!.textField.text! ||
                 server!.password != passwordCell!.textField.text! ||
-                server!.autoJoin != autoJoinCell!.switch.isOn
+                server!.autoJoin != autoJoinCell!.switch.isOn)
+                && (server!.isConnectingOrRegistering
+                || server!.isConnected)
             
             server!.host = hostCell!.textField.text!
             server!.port = Int(portCell!.textField.text!)!
-            server!.nickname = nicknameCell!.textField.text!
+            server!.preferredNickname = nicknameCell!.textField.text!
             server!.username = usernameCell!.textField.text!
             server!.realname = realnameCell!.textField.text!
             server!.password = passwordCell!.textField.text!

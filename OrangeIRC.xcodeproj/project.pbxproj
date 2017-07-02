@@ -16,6 +16,9 @@
 		6605688E1D7901C400A2502B /* RoomInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605688D1D7901C400A2502B /* RoomInfoTableViewController.swift */; };
 		661AF5021D2C809E00CFC190 /* ServerSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */; };
 		661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5051D2C89E900CFC190 /* TextFieldCell.swift */; };
+		66260FA31F083E390028FD71 /* ConsoleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66260FA21F083E390028FD71 /* ConsoleDelegate.swift */; };
+		66260FA41F083E390028FD71 /* ConsoleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66260FA21F083E390028FD71 /* ConsoleDelegate.swift */; };
+		66260FA51F083E390028FD71 /* ConsoleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66260FA21F083E390028FD71 /* ConsoleDelegate.swift */; };
 		667BB2EC1D29C2F60029AB2D /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
 		667BB2ED1D29C2F60029AB2D /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
 		66837D991D25E4A900F85410 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
@@ -216,6 +219,7 @@
 		661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSettingsTableViewController.swift; sourceTree = "<group>"; };
 		661AF5031D2C833700CFC190 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = "../OrangeIRC iOS/Notifications.swift"; sourceTree = "<group>"; };
 		661AF5051D2C89E900CFC190 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		66260FA21F083E390028FD71 /* ConsoleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleDelegate.swift; sourceTree = "<group>"; };
 		667BB2EB1D29C2F60029AB2D /* Server+Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Room.swift"; sourceTree = "<group>"; };
 		66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		66837D9F1D25E51100F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/Mac/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
@@ -528,6 +532,7 @@
 				669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */,
 				6A73250F1E11C06C00AFCC0B /* Server+NickServ.swift */,
 				6A597BF21EF375050073E4AE /* ConsoleEntry.swift */,
+				66260FA21F083E390028FD71 /* ConsoleDelegate.swift */,
 			);
 			name = Server;
 			sourceTree = "<group>";
@@ -922,6 +927,7 @@
 				6A83890B1E33F3E0006ED94B /* Notifications.swift in Sources */,
 				667BB2ED1D29C2F60029AB2D /* Server+Room.swift in Sources */,
 				6604F5D31F06D18900FF1E3F /* KickLogEvent.swift in Sources */,
+				66260FA41F083E390028FD71 /* ConsoleDelegate.swift in Sources */,
 				6AFDA8C51E6C69E2003A30C5 /* PrivateMessage.swift in Sources */,
 				6A7A6A031D29CDC60012D037 /* User.swift in Sources */,
 				66A75B341D23486F001161A3 /* LogEvent.swift in Sources */,
@@ -963,6 +969,7 @@
 				6A83890A1E33F3E0006ED94B /* Notifications.swift in Sources */,
 				667BB2EC1D29C2F60029AB2D /* Server+Room.swift in Sources */,
 				6604F5D21F06D18900FF1E3F /* KickLogEvent.swift in Sources */,
+				66260FA31F083E390028FD71 /* ConsoleDelegate.swift in Sources */,
 				6AFDA8C41E6C69E2003A30C5 /* PrivateMessage.swift in Sources */,
 				6A7A6A021D29CDC60012D037 /* User.swift in Sources */,
 				66EDD2F41D2963E60013E7CC /* ServerDelegate.swift in Sources */,
@@ -1020,6 +1027,7 @@
 				6A73250A1E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */,
 				6A83890C1E33F3E1006ED94B /* Notifications.swift in Sources */,
 				6604F5D41F06D18900FF1E3F /* KickLogEvent.swift in Sources */,
+				66260FA51F083E390028FD71 /* ConsoleDelegate.swift in Sources */,
 				6AFDA8C61E6C69E2003A30C5 /* PrivateMessage.swift in Sources */,
 				6A2672B71E105D180087B331 /* User.swift in Sources */,
 				6A2672B61E105D180087B331 /* RoomType.swift in Sources */,
