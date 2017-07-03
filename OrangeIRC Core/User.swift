@@ -6,10 +6,10 @@
 //
 //
 
-import Foundation
-
 #if os(iOS) || os(tvOS)
 import UIKit
+#else
+import AppKit
 #endif
 
 open class User: NSObject, NSCoding {
@@ -142,7 +142,8 @@ open class User: NSObject, NSCoding {
         }
     }
     
-#if os(iOS) || os(tvOS)
+    
+    #if os(iOS) || os(tvOS)
     
     open func color(room: Room) -> UIColor {
         if let channel = room as? Channel {
@@ -186,13 +187,57 @@ open class User: NSObject, NSCoding {
         }
     }
     
+    #else
+    
+    open func color(room: Room) -> NSColor {
+        if let channel = room as? Channel {
+            guard let mode = getMode(for: channel.name) else {
+                // The user is not in the room
+                // Not really an error, this is just how users who leave are rendered
+                return NSColor.lightGray
+            }
+            
+            var color = NSColor.black
+            switch mode {
+            case .Operator:
+                color = NSColor.red
+            case .Voice:
+                color = NSColor.blue
+            case .Invisible:
+                color = NSColor.gray
+            case .Deaf:
+                color = NSColor.lightGray
+            case .Zombie:
+                color = NSColor.gray
+            case .None:
+                // Default text color
+                break
+            }
+            
+            if !channel.isJoined {
+                color = NSColor.lightGray
+            }
+            
+            if room.server!.userCache.me == self {
+                color = NSColor.orange
+            }
+            
+            return color
+        } else if room is PrivateMessage {
+            return NSColor.black
+        } else {
+            // So we know that there was an issue
+            return NSColor.purple
+        }
+    }
+
+    #endif
+    
     open func coloredName(for room: Room) -> NSAttributedString {
         // The properly colored attributes
         let attributes = [NSForegroundColorAttributeName : color(room: room)]
         return NSAttributedString(string: nick, attributes: attributes)
     }
-    
-#endif
     
     open static func ==(lhs: User, rhs: User) -> Bool {
         return lhs.nick == rhs.nick
