@@ -217,8 +217,11 @@
 		6604F5D11F06D18900FF1E3F /* KickLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KickLogEvent.swift; sourceTree = "<group>"; };
 		6605688D1D7901C400A2502B /* RoomInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomInfoTableViewController.swift; sourceTree = "<group>"; };
 		661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSettingsTableViewController.swift; sourceTree = "<group>"; };
-		661AF5031D2C833700CFC190 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = "../OrangeIRC iOS/Notifications.swift"; sourceTree = "<group>"; };
+		661AF5031D2C833700CFC190 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		661AF5051D2C89E900CFC190 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		661D52B71F183BE9006F8E06 /* OrangeIRC.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = OrangeIRC.podspec; sourceTree = "<group>"; };
+		661D52B81F183BFB006F8E06 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
+		661D52B91F183C04006F8E06 /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
 		66260FA21F083E390028FD71 /* ConsoleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleDelegate.swift; sourceTree = "<group>"; };
 		667BB2EB1D29C2F60029AB2D /* Server+Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Room.swift"; sourceTree = "<group>"; };
 		66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/iOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
@@ -416,8 +419,11 @@
 				6ABAD44A1DD70C8100D1B689 /* LICENSE */,
 				6ABAD4491DD70C2500D1B689 /* README.md */,
 				6A7325161E11F7EB00AFCC0B /* CONTRIBUTORS.md */,
+				661D52B81F183BFB006F8E06 /* CONTRIBUTING.md */,
+				661D52B91F183C04006F8E06 /* CODE_OF_CONDUCT.md */,
 				6A558D351E16BF2F0077BBF4 /* TODO.md */,
 				6A558D361E16C01B0077BBF4 /* OrangeIRC.png */,
+				661D52B71F183BE9006F8E06 /* OrangeIRC.podspec */,
 				6A59B7B01E73C58500BE9123 /* Icons */,
 				6ABAD4481DD70A4400D1B689 /* docs */,
 				6AF88F9E1E17388100FD9A9D /* Screenshots */,
@@ -1723,7 +1729,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1769,7 +1774,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
