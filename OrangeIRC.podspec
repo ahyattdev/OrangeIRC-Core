@@ -117,7 +117,10 @@ s.homepage     = "https://ahyattdev.github.io/OrangeIRC"
   #  the lib prefix of their name.
   #
 
-  s.framework  = "CocoaAsyncSocket"
+  s.ios.frameworks = 'UIKit', 'CocoaAsyncSocket'
+  s.tvos.frameworks = 'UIKit', 'CocoaAsyncSocket'
+  s.osx.frameworks = 'Cocoa', 'CocoaAsyncSocket'
+
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
   # s.library   = "iconv"
