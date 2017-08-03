@@ -4,3 +4,7 @@ xcuserdata
 Build
 .DS_Store
 DerivedData
+Pods
+Podfile.lock
+*.swp
+*.xcworkspace

@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
 	s.source_files = "OrangeIRC Core/**/*.swift"
   s.resources = [ "OrangeIRC Core/*.lproj" ]
   
-  s.dependency = "CocoaAsyncSocket", "~> 7.6.1"
+  s.dependency "CocoaAsyncSocket", "~> 7.6.1"
   
-	s.requires_arc = true
+  s.requires_arc = true
   
   s.ios.deployment_target = "10.0"
   s.osx.deployment_target = "10.12"
