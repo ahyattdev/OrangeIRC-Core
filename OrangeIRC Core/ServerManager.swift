@@ -8,7 +8,9 @@
 
 import Foundation
 
-open class ServerManager : ServerDelegate {
+open class ServerManager {
+    
+    
     
     // Singleton
     open static let shared = ServerManager()
@@ -25,7 +27,13 @@ open class ServerManager : ServerDelegate {
                                                  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("rooms.plist"))
     
     // Set by whatever uses this framework
-    open var serverDelegate: ServerDelegate?
+    open var serverDelegate: ServerDelegate? {
+        didSet {
+            servers.forEach{
+                $0.delegate = self.serverDelegate
+            }
+        }
+    }
     
     // Dynamic variables
     open var registeredServers: [Server] {
@@ -41,7 +49,7 @@ open class ServerManager : ServerDelegate {
     open func addServer(host: String, port: Int, nickname: String, username: String, realname: String, password: String) -> Server {
         let server = Server(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: String.Encoding.utf8)
         servers.append(server)
-        server.delegate = self
+        server.delegate = self.serverDelegate
         server.connect()
         saveData()
         
@@ -63,7 +71,7 @@ open class ServerManager : ServerDelegate {
         servers = loadedServers as! [Server]
         
         for server in servers {
-            server.delegate = self
+            server.delegate = self.serverDelegate
             if server.autoJoin && !server.isConnectingOrRegistering && !server.isConnected {
                 server.connect()
             }
@@ -94,5 +102,7 @@ open class ServerManager : ServerDelegate {
         
         saveData()
     }
+    
+    
     
 }

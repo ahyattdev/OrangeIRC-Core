@@ -80,7 +80,7 @@ class UserCache {
                     user.isOnline = true
                 let onlineEvent = UserOnlineLogEvent(sender: user, room: room)
                     privateRoom.log.append(onlineEvent)
-                    server.delegate?.recieved(logEvent: onlineEvent, for: privateRoom)
+                    server.delegate?.received(logEvent: onlineEvent, for: privateRoom)
             }
         }
     }
@@ -99,7 +99,7 @@ class UserCache {
         for channel in channelsFor(user: user) {
             let quitMessage = UserQuitLogEvent(sender: user, room: channel)
             channel.log.append(quitMessage)
-            server.delegate?.recieved(logEvent: quitMessage, for: channel)
+            server.delegate?.received(logEvent: quitMessage, for: channel)
         }
         
         // If we have a private message room, we must mark it as not joined
@@ -109,7 +109,7 @@ class UserCache {
                 
                 let offlineEvent = UserOfflineLogEvent(sender: user, room: privateRoom)
                 privateRoom.log.append(offlineEvent)
-                server.delegate?.recieved(logEvent: offlineEvent, for: privateRoom)
+                server.delegate?.received(logEvent: offlineEvent, for: privateRoom)
             }
         }
     }
@@ -160,13 +160,13 @@ class UserCache {
         
         let logEvent = UserJoinLogEvent(sender: user, room: channel)
         channel.log.append(logEvent)
-        server.delegate?.recieved(logEvent: logEvent, for: channel)
+        server.delegate?.received(logEvent: logEvent, for: channel)
         
         if let privateRoom = server.privateMessageFrom(user: user) {
             if !privateRoom.otherUser.isOnline {
                 let onlineEvent = UserOnlineLogEvent(sender: user, room: privateRoom)
                 privateRoom.log.append(onlineEvent)
-                server.delegate?.recieved(logEvent: onlineEvent, for: privateRoom)
+                server.delegate?.received(logEvent: onlineEvent, for: privateRoom)
             }
         }
     }
@@ -208,7 +208,7 @@ class UserCache {
         
         let logEvent = UserPartLogEvent(sender: user, room: channel)
         channel.log.append(logEvent)
-        server.delegate?.recieved(logEvent: logEvent, for: channel)
+        server.delegate?.received(logEvent: logEvent, for: channel)
         
         // Remove this room from the channels of the user
         user.removeFrom(channel: channel.name)

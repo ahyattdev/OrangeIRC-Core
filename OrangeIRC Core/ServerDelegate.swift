@@ -16,10 +16,10 @@ public protocol ServerDelegate {
     func didDisconnect(_ server: Server)
     func registeredSuccessfully(_ server: Server)
     
-    func recieved(notice: String, sender: String, on server: Server)
-    func recieved(logEvent: LogEvent, for room: Room)
-    func recieved(error: String, on server: Server)
-    func recieved(topic: String, for room: Room)
+    func received(notice: String, sender: String, on server: Server)
+    func received(logEvent: LogEvent, for room: Room)
+    func received(error: String, on server: Server)
+    func received(topic: String, for room: Room)
     
     func finishedReadingUserList(_ room: Room)
     func motdUpdated(_ server: Server)
@@ -38,7 +38,7 @@ public protocol ServerDelegate {
     func noSuch(channel: String, _ server: Server)
     func cannotSendTo(channel: String, _ server: Server)
     func tooManyChannels(_ server: Server)
-    func serverPaswordNeeed(_ server: Server)
+    func serverPasswordNeeded(_ server: Server)
     
     func keyNeeded(channel: Channel, on server: Server)
     func keyIncorrect(channel: Channel, on server: Server)

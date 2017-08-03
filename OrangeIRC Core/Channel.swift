@@ -119,7 +119,7 @@ open class Channel : Room {
                 
                 let logEvent = MessageLogEvent(contents: part, sender: server!.userCache.me, room: self)
                 log.append(logEvent)
-                server!.delegate?.recieved(logEvent: logEvent, for: self)
+                server!.delegate?.received(logEvent: logEvent, for: self)
             }
         }
     }

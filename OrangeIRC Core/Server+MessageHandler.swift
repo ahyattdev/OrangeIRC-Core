@@ -11,6 +11,10 @@ import CocoaAsyncSocket
 
 extension Server {
     
+    func reclaimTimerDelegate(aTimer: Timer) {
+        self.write(string: "\(Command.NICK) \(self.preferredNickname)")
+    }
+    
     func handle(message: Message) {
         
         switch message.command {
@@ -34,9 +38,8 @@ extension Server {
             
             // Start the reclaim timer if necessary
             if nickname != preferredNickname {
-                reclaimTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: { t in
-                    self.write(string: "\(Command.NICK) \(self.preferredNickname)")
-                })
+                
+                reclaimTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(reclaimTimerDelegate(aTimer:)), userInfo: nil, repeats: true)
             }
             
         case Command.Reply.YOURHOST:
@@ -81,7 +84,7 @@ extension Server {
                     if let chan = channelFrom(name: channelData.name) {
                         let logEvent = UserNickChangeLogEvent(sender: user, room: chan, oldNick: oldNick, newNick: newNick)
                         chan.log.append(logEvent)
-                        delegate?.recieved(logEvent: logEvent, for: chan)
+                        delegate?.received(logEvent: logEvent, for: chan)
                     }
                 }
             }
@@ -89,7 +92,7 @@ extension Server {
         case Command.ERROR:
             guard let errorMessage = message.parameters else {
                 print("Failed to get an ERROR message")
-                delegate?.recieved(error: localized("UNKNOWN_ERROR"), on: self)
+                delegate?.received(error: localized("UNKNOWN_ERROR"), on: self)
                 break
             }
             
@@ -98,7 +101,7 @@ extension Server {
                 break
             }
             
-            delegate?.recieved(error: errorMessage, on: self)
+            delegate?.received(error: errorMessage, on: self)
             
         case Command.JOIN:
             guard let nick = message.prefix?.nickname else {
@@ -168,7 +171,7 @@ extension Server {
             if message.target[0] == self.nickname {
                 if let servername = message.prefix?.servername, let message = message.parameters {
                     // Notice from the server, not a user
-                    delegate?.recieved(notice: message, sender: servername, on: self)
+                    delegate?.received(notice: message, sender: servername, on: self)
                     break
                 }
                 
@@ -181,7 +184,7 @@ extension Server {
                     // We take care of these
                     handleNickServ(noticeMessage)
                 } else {
-                    self.delegate?.recieved(notice: noticeMessage, sender: sender, on: self)
+                    self.delegate?.received(notice: noticeMessage, sender: sender, on: self)
                 }
             }
             
@@ -221,7 +224,7 @@ extension Server {
             
             let logEvent = KickLogEvent(sender: sender, receiver: receiver, room: room)
             room.log.append(logEvent)
-            delegate?.recieved(logEvent: logEvent, for: room)
+            delegate?.received(logEvent: logEvent, for: room)
             
             // Set the room as left if we were kicked
             if receiver == userCache.me {
@@ -363,13 +366,13 @@ extension Server {
                     }
                     let logEvent = MessageLogEvent(contents: contents, sender: userCache.getOrCreateUser(nickname: message.prefix!.nickname!), room: privateRoom)
                     privateRoom.log.append(logEvent)
-                    delegate?.recieved(logEvent: logEvent, for: privateRoom)
+                    delegate?.received(logEvent: logEvent, for: privateRoom)
                 } else {
                     if let sender = userCache.getUser(by: message.prefix!.nickname!) {
                         if let room = channelFrom(name: roomName) {
                             let logEvent = MessageLogEvent(contents: contents, sender: sender, room: room)
                             room.log.append(logEvent)
-                            delegate?.recieved(logEvent: logEvent, for: room)
+                            delegate?.received(logEvent: logEvent, for: room)
                         }
                     }
                 }
@@ -608,7 +611,7 @@ extension Server {
             
         case Command.Error.PASSWDMISMATCH:
             // We need a password
-            delegate?.serverPaswordNeeed(self)
+            delegate?.serverPasswordNeeded(self)
         
         case Command.Error.BADCHANNELKEY:
             guard message.target.count == 1 else {

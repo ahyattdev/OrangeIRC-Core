@@ -42,23 +42,23 @@ extension ServerManager {
     }
     
     open func recieved(notice: String, sender: String, on server: Server) {
-        serverDelegate?.recieved(notice: notice, sender: sender, on: server)
+        serverDelegate?.received(notice: notice, sender: sender, on: server)
     }
     
     open func recieved(logEvent: LogEvent, for room: Room) {
         NotificationCenter.default.post(name: Notifications.NewLogEventForRoom, object: room)
         NotificationCenter.default.post(Notification(name: Notifications.RoomDataChanged))
-        serverDelegate?.recieved(logEvent: logEvent, for: room)
+        serverDelegate?.received(logEvent: logEvent, for: room)
     }
     
     open func recieved(error: String, on server: Server) {
-        serverDelegate?.recieved(error: error, on: server)
+        serverDelegate?.received(error: error, on: server)
     }
     
     open func recieved(topic: String, for room: Room) {
         NotificationCenter.default.post(name: Notifications.TopicUpdatedForRoom, object: room)
         NotificationCenter.default.post(Notification(name: Notifications.RoomDataChanged))
-        serverDelegate?.recieved(topic: topic, for: room)
+        serverDelegate?.received(topic: topic, for: room)
     }
     
     open func finishedReadingUserList(_ room: Room) {
@@ -119,7 +119,7 @@ extension ServerManager {
     }
     
     open func serverPaswordNeeed(_ server: Server) {
-        serverDelegate?.serverPaswordNeeed(server)
+        serverDelegate?.serverPasswordNeeded(server)
     }
     
     open func keyNeeded(channel: Channel, on server: Server) {
