@@ -173,7 +173,10 @@ class UserCache {
     
     func split(nickname: String) -> (nickname: String, mode: User.Mode) {
         var cleanNick = nickname
-        let prefix = nickname.substring(to: nickname.index(after: nickname.startIndex))
+        guard let prefix = nickname.unicodeScalars.first else {
+            print("split: nickname too short")
+            return ("ERROR", .None)
+        }
         let uchar = unichar(prefix.utf16[prefix.utf16.startIndex])
         if User.Mode.PREFIX_CHARACTER_SET.characterIsMember(uchar) {
             cleanNick.remove(at: cleanNick.startIndex)
@@ -181,7 +184,7 @@ class UserCache {
         
         var mode: User.Mode = .None
         
-        if let derivedMode = User.Mode(rawValue: prefix) {
+        if let derivedMode = User.Mode(rawValue: String(prefix)) {
             mode = derivedMode
         }
         

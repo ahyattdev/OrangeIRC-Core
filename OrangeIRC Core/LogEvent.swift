@@ -22,9 +22,9 @@ open class LogEvent : NSObject {
 
     #if os(iOS) || os(tvOS)
     
-    open static var attributes = [NSFontAttributeName : UIFont(name: "Menlo-Regular", size: 16) as Any]
+    open static var attributes = [NSAttributedStringKey.font : UIFont(name: "Menlo-Regular", size: 16) as Any]
     
-    open static var italicAttributes = [NSFontAttributeName : UIFont(name: "Menlo-Italic", size: 16) as Any]
+    open static var italicAttributes = [NSAttributedStringKey.font : UIFont(name: "Menlo-Italic", size: 16) as Any]
     
     #else
     

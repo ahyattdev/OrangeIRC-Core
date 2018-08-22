@@ -80,14 +80,14 @@ class RoomToolbar : UIToolbar, UITextViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func keyboardWillShow(notification: Notification) {
+    @objc func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             bottom.constant = -1 * keyboardSize.height
             superview?.setNeedsLayout()
         }
     }
     
-    func keyboardWillHide(notification: Notification) {
+    @objc func keyboardWillHide(notification: Notification) {
         bottom.constant = 0
         superview?.setNeedsLayout()
     }
@@ -104,7 +104,7 @@ class RoomToolbar : UIToolbar, UITextViewDelegate {
         sendButton.isEnabled = textView.text.utf8.count > 0 && room.canSendMessage
     }
     
-    func send() {
+    @objc func send() {
         toolbarDelegate?.sendButtonPressed(self)
         
         room.send(message: textView.text)

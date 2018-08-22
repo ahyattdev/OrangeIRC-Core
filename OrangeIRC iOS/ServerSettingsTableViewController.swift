@@ -197,7 +197,7 @@ class ServerSettingsTableViewController : UITableViewController, UITextFieldDele
         return false
     }
     
-    func cancelButton() {
+    @objc func cancelButton() {
         view.endEditing(true)
         dismiss(animated: true, completion: nil)
     }
@@ -211,7 +211,7 @@ class ServerSettingsTableViewController : UITableViewController, UITextFieldDele
         present(alert, animated: true, completion: nil)
     }
     
-    func doneButton() {
+    @objc func doneButton() {
         // TODO: Implement sanity checks
         
         switch mode {

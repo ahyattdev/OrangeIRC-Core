@@ -101,7 +101,7 @@ class UserInfoTableViewController : UITableViewController {
                 roomStr.append("\(room) ")
             }
             if !roomStr.isEmpty {
-                roomStr = roomStr[roomStr.startIndex ..< roomStr.index(before: roomStr.endIndex)]
+                roomStr = String(roomStr[roomStr.startIndex ..< roomStr.index(before: roomStr.endIndex)])
             }
             rowData[2][1] = roomStr
         }
@@ -123,7 +123,7 @@ class UserInfoTableViewController : UITableViewController {
         }
     }
     
-    func handle(_ notification: NSNotification) {
+    @objc func handle(_ notification: NSNotification) {
         if notification.name == Notifications.UserInfoDidChange {
             updateData()
             tableView.reloadData()

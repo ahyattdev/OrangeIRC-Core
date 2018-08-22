@@ -183,16 +183,16 @@ class AddRoomTableViewController : UITableViewController {
         }
     }
     
-    func autojoinSwitchFlip(sender: UISwitch, event: UIControlEvents) {
+    @objc func autojoinSwitchFlip(sender: UISwitch, event: UIControlEvents) {
         autoJoinSetting = sender.isOn
     }
     
-    func cancel() {
+    @objc func cancel() {
         resignFirstResponder()
         dismiss(animated: true, completion: nil)
     }
     
-    func done() {
+    @objc func done() {
         guard roomNameField != nil && roomNameField!.text != nil && !roomNameField!.text!.isEmpty else {
             let title = localized("INVALID_ROOM_NAME")
             let message = localized("INVALID_ROOM_NAME_MESSAGE")

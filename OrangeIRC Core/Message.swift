@@ -35,9 +35,9 @@ open class Message {
                 // One of the msgto formats
                 let exclamationMark = string.range(of: EXCLAMATION_MARK)!
                 let atSymbol = string.range(of: AT_SYMBOL)!
-                self.nickname = string.substring(to: exclamationMark.lowerBound)
-                self.user = string.substring(with: exclamationMark.upperBound ..< atSymbol.lowerBound)
-                self.host = string.substring(from: atSymbol.upperBound)
+                self.nickname = String(string[string.startIndex ..< exclamationMark.lowerBound])
+                self.user = String(string[exclamationMark.upperBound ..< atSymbol.lowerBound])
+                self.host = String(string[atSymbol.upperBound ..< string.endIndex])
             } else {
                 self.servername = prefix
             }
@@ -87,11 +87,11 @@ open class Message {
                 if key.contains("/") {
                     // A vendor is present
                     let slash = key.range(of: "/")!.lowerBound
-                    vendor = key[key.startIndex ..< slash]
+                    vendor = String(key[key.startIndex ..< slash])
                     key = key[key.index(after: slash) ..< key.endIndex]
                 }
                 
-                var value: String? = tag[tag.index(after: equalSignIndex) ..< tag.endIndex]
+                var value: String? = String(tag[tag.index(after: equalSignIndex) ..< tag.endIndex])
                 
                 if value!.isEmpty {
                     value = nil
@@ -102,7 +102,7 @@ open class Message {
                     continue
                 }
                 
-                tags.append((key: key, value: value, vendor: vendor))
+                tags.append((key: String(key), value: value, vendor: vendor))
             }
             
             // Remove the tags so the old code works
@@ -114,14 +114,14 @@ open class Message {
             let indexAfterColon = trimmedString.index(after: trimmedString.startIndex)
             let indexOfSpace = trimmedString.range(of: SPACE)!.lowerBound
             let prefixString = trimmedString[indexAfterColon ..< indexOfSpace]
-            guard let prefix = Prefix(prefixString) else {
+            guard let prefix = Prefix(String(prefixString)) else {
                 // Present but invalid prefix.
                 // The whole message may be corrupt, so let's give up 🤡.
                 return nil
             }
             self.prefix = prefix
             // Trim off the prefix
-            trimmedString = trimmedString.substring(from: trimmedString.index(after: indexOfSpace))
+            trimmedString = String(trimmedString[trimmedString.index(after: indexOfSpace) ..< trimmedString.endIndex])
         }
         
         if let colonSpaceRange = trimmedString.range(of: " :") {
@@ -144,7 +144,7 @@ open class Message {
                 var parametersStart = trimmedString.index(after: colonSpaceRange.upperBound)
                 // Fixes a bug where the first character of the parameters is cut off
                 parametersStart = trimmedString.index(before: parametersStart)
-                self.parameters = trimmedString[parametersStart ..< trimmedString.endIndex]
+                self.parameters = String(trimmedString[parametersStart ..< trimmedString.endIndex])
             }
         } else {
             // There are no parameters

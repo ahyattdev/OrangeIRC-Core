@@ -90,7 +90,7 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
         unregisterKeyboardNotifications()
     }
     
-    func roomDataChanged(_ notification: NSNotification) {
+    @objc func roomDataChanged(_ notification: NSNotification) {
         updateButtons()
     }
     
@@ -100,14 +100,14 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
         detailButton.isEnabled = true
     }
     
-    func reloadLog() {
+    @objc func reloadLog() {
         // New messages are on the log, reload display
         tableView.reloadData()
         // Scroll to bottom
         tableView.scrollToRow(at: IndexPath(row: room.log.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
     }
     
-    func showRoomInfo() {
+    @objc func showRoomInfo() {
         let roomInfoViewController = RoomInfoTableViewController(room)
         show(roomInfoViewController, sender: nil)
     }
@@ -188,7 +188,7 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
         NotificationCenter.default.removeObserver(self)
     }
     
-    func keyboardDidShow(notification: NSNotification) {
+    @objc func keyboardDidShow(notification: NSNotification) {
         let userInfo: NSDictionary = notification.userInfo! as NSDictionary
         let keyboardInfo = userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue
         let keyboardSize = keyboardInfo.cgRectValue.size
@@ -198,7 +198,7 @@ class RoomTableViewController : UIViewController, UITableViewDelegate, UITableVi
         tableView.scrollIndicatorInsets = tableView.contentInset
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         tableView.contentInset.bottom = toolbar.frame.height
         tableView.scrollIndicatorInsets = tableView.contentInset
     }

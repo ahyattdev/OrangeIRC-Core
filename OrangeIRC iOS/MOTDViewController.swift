@@ -44,7 +44,7 @@ class MOTDViewController : UIViewController {
         textView.scrollRangeToVisible(NSRange(location: 0, length: 0))
     }
     
-    func done() {
+    @objc func done() {
         dismiss(animated: true, completion: nil)
     }
     

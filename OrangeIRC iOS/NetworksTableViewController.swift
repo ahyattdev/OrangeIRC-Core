@@ -33,7 +33,7 @@ class NetworksTableViewController : UITableViewController {
         updateTableView()
     }
     
-    func updateTableView() {
+    @objc func updateTableView() {
         if ServerManager.shared.servers.count == 0 {
             let label = UILabel()
             label.text = localized("TAP_TO_ADD_SERVER")
@@ -46,7 +46,7 @@ class NetworksTableViewController : UITableViewController {
         tableView.reloadData()
     }
     
-    func addServerButton() {
+    @objc func addServerButton() {
         let tvc = ServerSettingsTableViewController(style: .grouped)
         AppDelegate.showModalGlobally(tvc, style: .formSheet)
     }

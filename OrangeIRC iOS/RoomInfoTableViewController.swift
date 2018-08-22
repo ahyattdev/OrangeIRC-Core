@@ -208,7 +208,7 @@ class RoomInfoTableViewController : UITableViewController {
         }
     }
     
-    func autojoinPress(sender: UISwitch, event: UIControlEvents) {
+    @objc func autojoinPress(sender: UISwitch, event: UIControlEvents) {
         if let channel = room as? Channel {
             channel.autoJoin = sender.isOn
             ServerManager.shared.saveData()

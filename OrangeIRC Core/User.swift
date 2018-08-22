@@ -235,7 +235,7 @@ open class User: NSObject, NSCoding {
     
     open func coloredName(for room: Room) -> NSAttributedString {
         // The properly colored attributes
-        let attributes = [NSForegroundColorAttributeName : color(room: room)]
+        let attributes = [NSAttributedStringKey.foregroundColor : color(room: room)]
         return NSAttributedString(string: nick, attributes: attributes)
     }
     

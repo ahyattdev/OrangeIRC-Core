@@ -11,7 +11,7 @@ import CocoaAsyncSocket
 
 extension Server {
     
-    func reclaimTimerDelegate(aTimer: Timer) {
+    @objc func reclaimTimerDelegate(aTimer: Timer) {
         self.write(string: "\(Command.NICK) \(self.preferredNickname)")
     }
     
@@ -319,7 +319,7 @@ extension Server {
                 // This is a command
                 // Get rid of the first and last characters
                 
-                param = param[param.index(after: param.startIndex) ..< param.index(before: param.endIndex)]
+                param = String(param[param.index(after: param.startIndex) ..< param.index(before: param.endIndex)])
                 
                 var response: String?
                 var shouldReply = true
@@ -495,7 +495,7 @@ extension Server {
                 break
             }
             
-            param = param[asteriskIndex ..< param.endIndex]
+            param = String(param[asteriskIndex ..< param.endIndex])
             
             let comp = param.components(separatedBy: " ")
             

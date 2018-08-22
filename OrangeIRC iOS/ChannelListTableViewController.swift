@@ -45,21 +45,21 @@ class ChannelListTableViewController : UITableViewController {
         tableView.estimatedRowHeight = 150
     }
     
-    func updateList() {
+    @objc func updateList() {
         // We need to keep our own copy of the channel list
         channelList = server.channelListCache
         updatePrompt()
         tableView.reloadData()
     }
     
-    func refresh() {
+    @objc func refresh() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         navigationItem.leftBarButtonItem!.isEnabled = false
         server.fetchChannelList()
         tableView.reloadData()
     }
     
-    func finished() {
+    @objc func finished() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         navigationItem.leftBarButtonItem!.isEnabled = true
         channelList = server.channelListCache
@@ -67,7 +67,7 @@ class ChannelListTableViewController : UITableViewController {
         tableView.reloadData()
     }
     
-    func done() {
+    @objc func done() {
         dismiss(animated: true, completion: nil)
     }
     

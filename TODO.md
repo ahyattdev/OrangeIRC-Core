@@ -5,3 +5,4 @@
 * Add ping, local time, and client info data to user info
 * Make reply detection more intelligent
 * Handle MODE messages
+* Still says ONLINE after link closed (failed to install identd)

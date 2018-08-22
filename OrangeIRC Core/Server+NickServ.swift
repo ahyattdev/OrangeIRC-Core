@@ -53,7 +53,7 @@ extension Server{
             
             let prefixString = afterIndicator[afterIndicator.startIndex ..< secondIndicator]
             
-            guard let prefix = Message.Prefix(prefixString) else {
+            guard let prefix = Message.Prefix(String(prefixString)) else {
                 return
             }
             
@@ -63,7 +63,7 @@ extension Server{
             
             let date = notice[dateStart ..< notice.index(before: notice.endIndex)]
             
-            delegate?.nickservFailedAttemptsWarning(self, count: lastSentNickServFailedAttempts, lastPrefix: prefix, date: date)
+            delegate?.nickservFailedAttemptsWarning(self, count: lastSentNickServFailedAttempts, lastPrefix: prefix, date: String(date))
         }
         else {
             print("Unknown NickServ message: \(notice)")

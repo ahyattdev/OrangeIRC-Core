@@ -66,11 +66,11 @@ class ConsoleTableViewController: UITableViewController, ConsoleDelegate {
         let trailing = NSLayoutConstraint(item: label, attribute: .trailing, relatedBy: .equal, toItem: cell.contentView, attribute: .trailingMargin, multiplier: 1.0, constant: 0)
         let bottom = NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: cell.contentView, attribute: .bottomMargin, multiplier: 1.0, constant: 0)
         
-        bottom.priority = 500
+        bottom.priority = UILayoutPriority(rawValue: 500)
         
         cell.contentView.addConstraints([top, bottom, leading, trailing])
         
-        label.setContentCompressionResistancePriority(UILayoutPriorityRequired, for: .vertical)
+        label.setContentCompressionResistancePriority(UILayoutPriority.required, for: .vertical)
         
         return cell;
     }
