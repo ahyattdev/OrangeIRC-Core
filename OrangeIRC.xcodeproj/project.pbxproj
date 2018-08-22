@@ -7,25 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01085B482EB748886ED8F2E3 /* Pods_OrangeIRC_Core__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF08CE85F65F579CADA6954 /* Pods_OrangeIRC_Core__macOS_.framework */; };
-		56F1E1D51F221B7F00DCB61C /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F1E1D41F221B7F00DCB61C /* Notifications.swift */; };
 		6604F5CE1F06D0DF00FF1E3F /* ModerationLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6604F5CD1F06D0DF00FF1E3F /* ModerationLogEvent.swift */; };
 		6604F5CF1F06D0DF00FF1E3F /* ModerationLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6604F5CD1F06D0DF00FF1E3F /* ModerationLogEvent.swift */; };
 		6604F5D01F06D0DF00FF1E3F /* ModerationLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6604F5CD1F06D0DF00FF1E3F /* ModerationLogEvent.swift */; };
 		6604F5D21F06D18900FF1E3F /* KickLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6604F5D11F06D18900FF1E3F /* KickLogEvent.swift */; };
 		6604F5D31F06D18900FF1E3F /* KickLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6604F5D11F06D18900FF1E3F /* KickLogEvent.swift */; };
 		6604F5D41F06D18900FF1E3F /* KickLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6604F5D11F06D18900FF1E3F /* KickLogEvent.swift */; };
+		6605688E1D7901C400A2502B /* RoomInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6605688D1D7901C400A2502B /* RoomInfoTableViewController.swift */; };
+		661AF5021D2C809E00CFC190 /* ServerSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */; };
+		661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5051D2C89E900CFC190 /* TextFieldCell.swift */; };
 		66260FA31F083E390028FD71 /* ConsoleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66260FA21F083E390028FD71 /* ConsoleDelegate.swift */; };
 		66260FA41F083E390028FD71 /* ConsoleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66260FA21F083E390028FD71 /* ConsoleDelegate.swift */; };
 		66260FA51F083E390028FD71 /* ConsoleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66260FA21F083E390028FD71 /* ConsoleDelegate.swift */; };
 		667BB2EC1D29C2F60029AB2D /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
 		667BB2ED1D29C2F60029AB2D /* Server+Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB2EB1D29C2F60029AB2D /* Server+Room.swift */; };
+		66837D991D25E4A900F85410 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
+		66837D9A1D25E4A900F85410 /* CocoaAsyncSocket.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		669DF6FF1D7CDCD0007F82DB /* Server+Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */; };
 		669DF7001D7CDCD0007F82DB /* Server+Socket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */; };
+		669DF7021D7CE96B007F82DB /* MOTDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF7011D7CE96B007F82DB /* MOTDViewController.swift */; };
 		669DF7061D7CFBEB007F82DB /* UserQuitLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF7051D7CFBEB007F82DB /* UserQuitLogEvent.swift */; };
 		669DF7071D7CFBEB007F82DB /* UserQuitLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669DF7051D7CFBEB007F82DB /* UserQuitLogEvent.swift */; };
 		669FCF1F1D2891B6000117C5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF1D1D2891B6000117C5 /* Message.swift */; };
 		669FCF221D289A96000117C5 /* Server+MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF201D289A96000117C5 /* Server+MessageHandler.swift */; };
+		66A75AFF1D234694001161A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75AFE1D234694001161A3 /* AppDelegate.swift */; };
 		66A75B341D23486F001161A3 /* LogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B2E1D23483C001161A3 /* LogEvent.swift */; };
 		66A75B371D234885001161A3 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B351D234885001161A3 /* Server.swift */; };
 		66A75B401D23496C001161A3 /* ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3E1D23496C001161A3 /* ServerDelegate.swift */; };
@@ -43,6 +48,10 @@
 		66EDD2F41D2963E60013E7CC /* ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3E1D23496C001161A3 /* ServerDelegate.swift */; };
 		66EDD2F51D2963E60013E7CC /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A07D1D24332A00F81A1B /* Command.swift */; };
 		66EDD2F91D29669D0013E7CC /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
+		66EDD2FA1D2966AA0013E7CC /* OrangeIRCCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66A75B251D234737001161A3 /* OrangeIRCCore.framework */; };
+		66EDD2FB1D2966AA0013E7CC /* OrangeIRCCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 66A75B251D234737001161A3 /* OrangeIRCCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6A18EAE81D5BC66C00AF1EF9 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A18EAE71D5BC66C00AF1EF9 /* SwitchCell.swift */; };
+		6A1EECF21E142A5800A67C35 /* UsersSearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1EECF11E142A5800A67C35 /* UsersSearchResultsController.swift */; };
 		6A212F8F1E104D4E006739B4 /* MessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A212F8E1E104D4E006739B4 /* MessageTests.swift */; };
 		6A212F931E1050DE006739B4 /* OrangeIRCCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EDD2E11D29621B0013E7CC /* OrangeIRCCore.framework */; };
 		6A212F941E10510F006739B4 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66837D981D25E4A800F85410 /* CocoaAsyncSocket.framework */; };
@@ -74,15 +83,26 @@
 		6A2672BB1E105D180087B331 /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */; };
 		6A2672BC1E105D7F0087B331 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A2672A51E105CC50087B331 /* CocoaAsyncSocket.framework */; };
 		6A2672BD1E1084FB0087B331 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669FCF1D1D2891B6000117C5 /* Message.swift */; };
+		6A2CF2DB1E6CC5B40092C414 /* NetworkHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2CF2DA1E6CC5B40092C414 /* NetworkHeaderView.swift */; };
+		6A2CF2DD1E6CC6F00092C414 /* NetworkHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A2CF2DC1E6CC6F00092C414 /* NetworkHeaderView.xib */; };
+		6A2F58C11EF31A9200076BD9 /* RoomToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F58C01EF31A9200076BD9 /* RoomToolbarDelegate.swift */; };
+		6A2F810D1E6D0C2D003A68F9 /* ActionDisabler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F810C1E6D0C2D003A68F9 /* ActionDisabler.swift */; };
+		6A2F810F1E6D0D40003A68F9 /* JoinChannelAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F810E1E6D0D40003A68F9 /* JoinChannelAlertFactory.swift */; };
+		6A3538561E76083A00E64B7D /* RoomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3538551E76083A00E64B7D /* RoomToolbar.swift */; };
+		6A3B389D1DA359860004E868 /* AddRoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */; };
 		6A43E6EE1DD6CBC0009DB1FC /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */; };
 		6A43E6EF1DD6CBC0009DB1FC /* UserCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */; };
+		6A4A5A731E74A55F005E064D /* LogEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A5A721E74A55F005E064D /* LogEventCell.swift */; };
 		6A4A5A751E75063E005E064D /* RoomLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A5A741E75063E005E064D /* RoomLogEvent.swift */; };
 		6A4A5A761E75063E005E064D /* RoomLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A5A741E75063E005E064D /* RoomLogEvent.swift */; };
 		6A4A5A771E75063E005E064D /* RoomLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4A5A741E75063E005E064D /* RoomLogEvent.swift */; };
 		6A4BB74F1D25F1500032B5D0 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BB74D1D25F1500032B5D0 /* Tag.swift */; };
+		6A4BBD7E1E1A11B300987C45 /* ActivityIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4BBD7D1E1A11B300987C45 /* ActivityIndicatorCell.swift */; };
+		6A597BF11EF33CBF0073E4AE /* ConsoleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A597BF01EF33CBF0073E4AE /* ConsoleTableViewController.swift */; };
 		6A597BF31EF375050073E4AE /* ConsoleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A597BF21EF375050073E4AE /* ConsoleEntry.swift */; };
 		6A597BF41EF375050073E4AE /* ConsoleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A597BF21EF375050073E4AE /* ConsoleEntry.swift */; };
 		6A597BF51EF375050073E4AE /* ConsoleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A597BF21EF375050073E4AE /* ConsoleEntry.swift */; };
+		6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */; };
 		6A6CBFDE1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
 		6A6CBFDF1D3DBDC500EC6051 /* RoomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */; };
 		6A7325081E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7325071E11A9F000AFCC0B /* UserOnlineLogEvent.swift */; };
@@ -94,6 +114,10 @@
 		6A7325101E11C06C00AFCC0B /* Server+NickServ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A73250F1E11C06C00AFCC0B /* Server+NickServ.swift */; };
 		6A7325111E11C06C00AFCC0B /* Server+NickServ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A73250F1E11C06C00AFCC0B /* Server+NickServ.swift */; };
 		6A7325121E11C06C00AFCC0B /* Server+NickServ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A73250F1E11C06C00AFCC0B /* Server+NickServ.swift */; };
+		6A7325151E11E30300AFCC0B /* UserInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7325141E11E30300AFCC0B /* UserInfoTableViewController.swift */; };
+		6A765F381E6B8B28005E4152 /* ServerPasswordAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A765F371E6B8B28005E4152 /* ServerPasswordAlert.swift */; };
+		6A765F3A1E6BAC6D005E4152 /* RightDetailTextViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A765F391E6BAC6D005E4152 /* RightDetailTextViewCell.xib */; };
+		6A765F3C1E6BD004005E4152 /* NetworksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A765F3B1E6BD004005E4152 /* NetworksTableViewController.swift */; };
 		6A7A6A021D29CDC60012D037 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A011D29CDC60012D037 /* User.swift */; };
 		6A7A6A031D29CDC60012D037 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A011D29CDC60012D037 /* User.swift */; };
 		6A7A6A051D29D0850012D037 /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A6A041D29D0850012D037 /* Room.swift */; };
@@ -101,33 +125,45 @@
 		6A7AE41A1E75C7C90032D6FE /* Localizations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A7AE41E1E75C7C90032D6FE /* Localizations.strings */; };
 		6A7AE41B1E75C7C90032D6FE /* Localizations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A7AE41E1E75C7C90032D6FE /* Localizations.strings */; };
 		6A7AE41C1E75C7C90032D6FE /* Localizations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A7AE41E1E75C7C90032D6FE /* Localizations.strings */; };
+		6A7AE4211E75C8F10032D6FE /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7AE4201E75C8F10032D6FE /* Utilities.swift */; };
+		6A7AE4281E75CA580032D6FE /* Localizations.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6A7AE42A1E75CA580032D6FE /* Localizations.strings */; };
 		6A82A07F1D24332A00F81A1B /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A82A07D1D24332A00F81A1B /* Command.swift */; };
 		6A8389071E33F3A8006ED94B /* ServerManager+ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8389061E33F3A8006ED94B /* ServerManager+ServerDelegate.swift */; };
 		6A8389081E33F3A8006ED94B /* ServerManager+ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8389061E33F3A8006ED94B /* ServerManager+ServerDelegate.swift */; };
 		6A8389091E33F3A8006ED94B /* ServerManager+ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8389061E33F3A8006ED94B /* ServerManager+ServerDelegate.swift */; };
+		6A83890A1E33F3E0006ED94B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5031D2C833700CFC190 /* Notifications.swift */; };
+		6A83890B1E33F3E0006ED94B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5031D2C833700CFC190 /* Notifications.swift */; };
+		6A83890C1E33F3E1006ED94B /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661AF5031D2C833700CFC190 /* Notifications.swift */; };
+		6A83890E1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A83890D1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift */; };
 		6A8389101E343896006ED94B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A83890F1E343896006ED94B /* Settings.swift */; };
 		6A8389111E343896006ED94B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A83890F1E343896006ED94B /* Settings.swift */; };
 		6A8389121E343896006ED94B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A83890F1E343896006ED94B /* Settings.swift */; };
+		6A91CA551E622305004D38E1 /* ChannelListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A91CA541E622305004D38E1 /* ChannelListTableViewController.swift */; };
+		6A91CA571E623435004D38E1 /* RightDetailTextViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A91CA561E623435004D38E1 /* RightDetailTextViewCell.swift */; };
 		6A91CA591E623F85004D38E1 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A91CA581E623F85004D38E1 /* Utilities.swift */; };
 		6A91CA5A1E623F85004D38E1 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A91CA581E623F85004D38E1 /* Utilities.swift */; };
 		6A91CA5B1E623F85004D38E1 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A91CA581E623F85004D38E1 /* Utilities.swift */; };
+		6A9FEB621E15E49700F5CF4D /* SegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */; };
+		6A9FEB641E15F13500F5CF4D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A9FEB631E15F13500F5CF4D /* Launch Screen.storyboard */; };
+		6A9FEB8D1E161B4E00F5CF4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A9FEB8C1E161B4E00F5CF4D /* Assets.xcassets */; };
 		6AAA09E91F00007D00ECF97A /* UserNickChangeLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA09E81F00007D00ECF97A /* UserNickChangeLogEvent.swift */; };
 		6AAA09EA1F00007D00ECF97A /* UserNickChangeLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA09E81F00007D00ECF97A /* UserNickChangeLogEvent.swift */; };
 		6AAA09EB1F00007D00ECF97A /* UserNickChangeLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA09E81F00007D00ECF97A /* UserNickChangeLogEvent.swift */; };
 		6AAA09ED1F0004F200ECF97A /* UserMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA09EC1F0004F200ECF97A /* UserMode.swift */; };
 		6AAA09EE1F0004F200ECF97A /* UserMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA09EC1F0004F200ECF97A /* UserMode.swift */; };
 		6AAA09EF1F0004F200ECF97A /* UserMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAA09EC1F0004F200ECF97A /* UserMode.swift */; };
+		6ADD58E31D29E4890051DB28 /* RoomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */; };
 		6AE6F90B1E2B29BC007CC0AE /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE6F90A1E2B29BC007CC0AE /* ServerManager.swift */; };
 		6AE6F90C1E2B29BC007CC0AE /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE6F90A1E2B29BC007CC0AE /* ServerManager.swift */; };
 		6AE6F90D1E2B29BC007CC0AE /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE6F90A1E2B29BC007CC0AE /* ServerManager.swift */; };
+		6AF5329A1E6CCA16002C3D14 /* ServerOptionsActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF532991E6CCA16002C3D14 /* ServerOptionsActionSheet.swift */; };
+		6AF88FA11E174E1C00FD9A9D /* RightDetailSubtitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF88FA01E174E1C00FD9A9D /* RightDetailSubtitleCell.swift */; };
 		6AFDA8C01E6C69D3003A30C5 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8BF1E6C69D3003A30C5 /* Channel.swift */; };
 		6AFDA8C11E6C69D3003A30C5 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8BF1E6C69D3003A30C5 /* Channel.swift */; };
 		6AFDA8C21E6C69D3003A30C5 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8BF1E6C69D3003A30C5 /* Channel.swift */; };
 		6AFDA8C41E6C69E2003A30C5 /* PrivateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8C31E6C69E2003A30C5 /* PrivateMessage.swift */; };
 		6AFDA8C51E6C69E2003A30C5 /* PrivateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8C31E6C69E2003A30C5 /* PrivateMessage.swift */; };
 		6AFDA8C61E6C69E2003A30C5 /* PrivateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDA8C31E6C69E2003A30C5 /* PrivateMessage.swift */; };
-		8435503C6902A782619A387F /* Pods_OrangeIRC_Core__tvOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 241873B7B5B25B8F24F3C3EC /* Pods_OrangeIRC_Core__tvOS_.framework */; };
-		A7F5D4415975AAF7926FF684 /* Pods_OrangeIRC_Core__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92271B17A5D1676A76D4BC8B /* Pods_OrangeIRC_Core__iOS_.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,18 +188,37 @@
 			remoteGlobalIDString = 6A26728D1E105C230087B331;
 			remoteInfo = "OrangeIRC Core (tvOS)";
 		};
+		6A7A69F91D29CBE30012D037 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66A75AF11D234628001161A3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66EDD2E01D29621B0013E7CC;
+			remoteInfo = "OrangeIRC Core (iOS)";
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		66A75B1F1D2346EE001161A3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				66EDD2FB1D2966AA0013E7CC /* OrangeIRCCore.framework in Embed Frameworks */,
+				66837D9A1D25E4A900F85410 /* CocoaAsyncSocket.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		17DD1E3B7DA5B96317B02BB4 /* Pods-OrangeIRC Core (tvOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeIRC Core (tvOS).release.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeIRC Core (tvOS)/Pods-OrangeIRC Core (tvOS).release.xcconfig"; sourceTree = "<group>"; };
-		1D12880370793F21A512C956 /* Pods-OrangeIRC Core (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeIRC Core (macOS).debug.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeIRC Core (macOS)/Pods-OrangeIRC Core (macOS).debug.xcconfig"; sourceTree = "<group>"; };
-		241873B7B5B25B8F24F3C3EC /* Pods_OrangeIRC_Core__tvOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrangeIRC_Core__tvOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AACF7B34E8B48BD6D359E8E /* Pods-OrangeIRC Core (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeIRC Core (iOS).release.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeIRC Core (iOS)/Pods-OrangeIRC Core (iOS).release.xcconfig"; sourceTree = "<group>"; };
-		56F1E1D41F221B7F00DCB61C /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		6604F5CD1F06D0DF00FF1E3F /* ModerationLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModerationLogEvent.swift; sourceTree = "<group>"; };
 		6604F5D11F06D18900FF1E3F /* KickLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KickLogEvent.swift; sourceTree = "<group>"; };
+		6605688D1D7901C400A2502B /* RoomInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomInfoTableViewController.swift; sourceTree = "<group>"; };
+		661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerSettingsTableViewController.swift; sourceTree = "<group>"; };
 		661AF5031D2C833700CFC190 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
-		661D52B71F183BE9006F8E06 /* OrangeIRC.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = OrangeIRC.podspec; sourceTree = "<group>"; };
+		661AF5051D2C89E900CFC190 /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		661D52B81F183BFB006F8E06 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTING.md; sourceTree = "<group>"; };
 		661D52B91F183C04006F8E06 /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
 		66260FA21F083E390028FD71 /* ConsoleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleDelegate.swift; sourceTree = "<group>"; };
@@ -172,9 +227,13 @@
 		66837D9F1D25E51100F85410 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/Mac/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		66837DA11D25E59900F85410 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		669DF6FE1D7CDCD0007F82DB /* Server+Socket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+Socket.swift"; sourceTree = "<group>"; };
+		669DF7011D7CE96B007F82DB /* MOTDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MOTDViewController.swift; sourceTree = "<group>"; };
 		669DF7051D7CFBEB007F82DB /* UserQuitLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserQuitLogEvent.swift; sourceTree = "<group>"; };
 		669FCF1D1D2891B6000117C5 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		669FCF201D289A96000117C5 /* Server+MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Server+MessageHandler.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		669FCF201D289A96000117C5 /* Server+MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+MessageHandler.swift"; sourceTree = "<group>"; };
+		66A75AFB1D234694001161A3 /* OrangeIRC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrangeIRC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66A75AFE1D234694001161A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		66A75B0A1D234694001161A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66A75B171D2346ED001161A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66A75B251D234737001161A3 /* OrangeIRCCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OrangeIRCCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66A75B2E1D23483C001161A3 /* LogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEvent.swift; sourceTree = "<group>"; };
@@ -184,6 +243,8 @@
 		66C8580D1D7B17F1009E486F /* UserJoinLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserJoinLogEvent.swift; sourceTree = "<group>"; };
 		66C858101D7B17FA009E486F /* UserPartLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPartLogEvent.swift; sourceTree = "<group>"; };
 		66EDD2E11D29621B0013E7CC /* OrangeIRCCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OrangeIRCCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A18EAE71D5BC66C00AF1EF9 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		6A1EECF11E142A5800A67C35 /* UsersSearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersSearchResultsController.swift; sourceTree = "<group>"; };
 		6A212F831E104C7B006739B4 /* OrangeIRCCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrangeIRCCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A212F871E104C7C006739B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A212F8E1E104D4E006739B4 /* MessageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTests.swift; sourceTree = "<group>"; };
@@ -192,51 +253,79 @@
 		6A26728E1E105C230087B331 /* OrangeIRCCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OrangeIRCCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2672961E105C230087B331 /* OrangeIRCCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrangeIRCCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2672A51E105CC50087B331 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaAsyncSocket.framework; path = Carthage/Build/tvOS/CocoaAsyncSocket.framework; sourceTree = "<group>"; };
-		6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = UserCache.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		6A2CF2DA1E6CC5B40092C414 /* NetworkHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHeaderView.swift; sourceTree = "<group>"; };
+		6A2CF2DC1E6CC6F00092C414 /* NetworkHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NetworkHeaderView.xib; sourceTree = "<group>"; };
+		6A2F58C01EF31A9200076BD9 /* RoomToolbarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomToolbarDelegate.swift; sourceTree = "<group>"; };
+		6A2F810C1E6D0C2D003A68F9 /* ActionDisabler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionDisabler.swift; sourceTree = "<group>"; };
+		6A2F810E1E6D0D40003A68F9 /* JoinChannelAlertFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinChannelAlertFactory.swift; sourceTree = "<group>"; };
+		6A3538551E76083A00E64B7D /* RoomToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomToolbar.swift; sourceTree = "<group>"; };
+		6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRoomTableViewController.swift; sourceTree = "<group>"; };
+		6A43E6ED1DD6CBC0009DB1FC /* UserCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCache.swift; sourceTree = "<group>"; };
+		6A4A5A721E74A55F005E064D /* LogEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEventCell.swift; sourceTree = "<group>"; };
 		6A4A5A741E75063E005E064D /* RoomLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomLogEvent.swift; sourceTree = "<group>"; };
 		6A4BB74D1D25F1500032B5D0 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		6A4BBD7D1E1A11B300987C45 /* ActivityIndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorCell.swift; sourceTree = "<group>"; };
 		6A558D351E16BF2F0077BBF4 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		6A558D361E16C01B0077BBF4 /* OrangeIRC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrangeIRC.png; sourceTree = "<group>"; };
+		6A597BF01EF33CBF0073E4AE /* ConsoleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleTableViewController.swift; sourceTree = "<group>"; };
 		6A597BF21EF375050073E4AE /* ConsoleEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleEntry.swift; sourceTree = "<group>"; };
 		6A59B7B01E73C58500BE9123 /* Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Icons; sourceTree = "<group>"; };
+		6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewCell.swift; sourceTree = "<group>"; };
 		6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomType.swift; sourceTree = "<group>"; };
 		6A7325071E11A9F000AFCC0B /* UserOnlineLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserOnlineLogEvent.swift; sourceTree = "<group>"; };
 		6A73250B1E11AA0700AFCC0B /* UserOfflineLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserOfflineLogEvent.swift; sourceTree = "<group>"; };
 		6A73250F1E11C06C00AFCC0B /* Server+NickServ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Server+NickServ.swift"; sourceTree = "<group>"; };
+		6A7325141E11E30300AFCC0B /* UserInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewController.swift; sourceTree = "<group>"; };
 		6A7325161E11F7EB00AFCC0B /* CONTRIBUTORS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONTRIBUTORS.md; sourceTree = "<group>"; };
+		6A765F371E6B8B28005E4152 /* ServerPasswordAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerPasswordAlert.swift; sourceTree = "<group>"; };
+		6A765F391E6BAC6D005E4152 /* RightDetailTextViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RightDetailTextViewCell.xib; sourceTree = "<group>"; };
+		6A765F3B1E6BD004005E4152 /* NetworksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworksTableViewController.swift; sourceTree = "<group>"; };
 		6A7A6A011D29CDC60012D037 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6A7A6A041D29D0850012D037 /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		6A7AE41D1E75C7C90032D6FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizations.strings; sourceTree = "<group>"; };
 		6A7AE41F1E75C7CE0032D6FE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizations.strings; sourceTree = "<group>"; };
+		6A7AE4201E75C8F10032D6FE /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		6A7AE4291E75CA580032D6FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizations.strings; sourceTree = "<group>"; };
+		6A7AE42B1E75CA590032D6FE /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizations.strings; sourceTree = "<group>"; };
 		6A82A07D1D24332A00F81A1B /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
-		6A8389061E33F3A8006ED94B /* ServerManager+ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "ServerManager+ServerDelegate.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		6A8389061E33F3A8006ED94B /* ServerManager+ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ServerManager+ServerDelegate.swift"; sourceTree = "<group>"; };
+		6A83890D1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+ServerDelegate.swift"; sourceTree = "<group>"; };
 		6A83890F1E343896006ED94B /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		6A91CA541E622305004D38E1 /* ChannelListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelListTableViewController.swift; sourceTree = "<group>"; };
+		6A91CA561E623435004D38E1 /* RightDetailTextViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailTextViewCell.swift; sourceTree = "<group>"; };
 		6A91CA581E623F85004D38E1 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControlCell.swift; sourceTree = "<group>"; };
+		6A9FEB631E15F13500F5CF4D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		6A9FEB8C1E161B4E00F5CF4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AAA09E81F00007D00ECF97A /* UserNickChangeLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNickChangeLogEvent.swift; sourceTree = "<group>"; };
 		6AAA09EC1F0004F200ECF97A /* UserMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMode.swift; sourceTree = "<group>"; };
 		6ABAD4481DD70A4400D1B689 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		6ABAD4491DD70C2500D1B689 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6ABAD44A1DD70C8100D1B689 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
 		6AE6F90A1E2B29BC007CC0AE /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
-		6AF08CE85F65F579CADA6954 /* Pods_OrangeIRC_Core__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrangeIRC_Core__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6AFDA8BF1E6C69D3003A30C5 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Channel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		6AFDA8C31E6C69E2003A30C5 /* PrivateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PrivateMessage.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		8281EA731418E1213876DF04 /* Pods-OrangeIRC Core (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeIRC Core (macOS).release.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeIRC Core (macOS)/Pods-OrangeIRC Core (macOS).release.xcconfig"; sourceTree = "<group>"; };
-		92271B17A5D1676A76D4BC8B /* Pods_OrangeIRC_Core__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrangeIRC_Core__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B5C820291064C3CCE0CE1FD /* Pods-OrangeIRC (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeIRC (iOS).debug.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeIRC (iOS)/Pods-OrangeIRC (iOS).debug.xcconfig"; sourceTree = "<group>"; };
-		9CB853A060E558DC5B084D90 /* Pods-OrangeIRC (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeIRC (iOS).release.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeIRC (iOS)/Pods-OrangeIRC (iOS).release.xcconfig"; sourceTree = "<group>"; };
-		DDDF67E25A4726C01ABD778A /* Pods-OrangeIRC Core (tvOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeIRC Core (tvOS).debug.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeIRC Core (tvOS)/Pods-OrangeIRC Core (tvOS).debug.xcconfig"; sourceTree = "<group>"; };
-		E106F0766B8F2BB53D4DAF02 /* Pods-OrangeIRC Core (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeIRC Core (iOS).debug.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeIRC Core (iOS)/Pods-OrangeIRC Core (iOS).debug.xcconfig"; sourceTree = "<group>"; };
-		EAA0B3889EEB0F84BA539375 /* Pods_OrangeIRC__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OrangeIRC__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AF532991E6CCA16002C3D14 /* ServerOptionsActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerOptionsActionSheet.swift; sourceTree = "<group>"; };
+		6AF88F9E1E17388100FD9A9D /* Screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screenshots; sourceTree = "<group>"; };
+		6AF88FA01E174E1C00FD9A9D /* RightDetailSubtitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightDetailSubtitleCell.swift; sourceTree = "<group>"; };
+		6AFDA8BF1E6C69D3003A30C5 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		6AFDA8C31E6C69E2003A30C5 /* PrivateMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivateMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		66A75AF81D234692001161A3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66EDD2FA1D2966AA0013E7CC /* OrangeIRCCore.framework in Frameworks */,
+				66837D991D25E4A900F85410 /* CocoaAsyncSocket.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66A75B211D234737001161A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6A2672861E1059390087B331 /* CocoaAsyncSocket.framework in Frameworks */,
-				01085B482EB748886ED8F2E3 /* Pods_OrangeIRC_Core__macOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +334,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				66EDD2F91D29669D0013E7CC /* CocoaAsyncSocket.framework in Frameworks */,
-				A7F5D4415975AAF7926FF684 /* Pods_OrangeIRC_Core__iOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +360,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A2672BC1E105D7F0087B331 /* CocoaAsyncSocket.framework in Frameworks */,
-				8435503C6902A782619A387F /* Pods_OrangeIRC_Core__tvOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,19 +375,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		27B1CBE6BABF785B0A0CBD31 /* Pods */ = {
+		660568871D78ED1C00A2502B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9B5C820291064C3CCE0CE1FD /* Pods-OrangeIRC (iOS).debug.xcconfig */,
-				9CB853A060E558DC5B084D90 /* Pods-OrangeIRC (iOS).release.xcconfig */,
-				E106F0766B8F2BB53D4DAF02 /* Pods-OrangeIRC Core (iOS).debug.xcconfig */,
-				4AACF7B34E8B48BD6D359E8E /* Pods-OrangeIRC Core (iOS).release.xcconfig */,
-				1D12880370793F21A512C956 /* Pods-OrangeIRC Core (macOS).debug.xcconfig */,
-				8281EA731418E1213876DF04 /* Pods-OrangeIRC Core (macOS).release.xcconfig */,
-				DDDF67E25A4726C01ABD778A /* Pods-OrangeIRC Core (tvOS).debug.xcconfig */,
-				17DD1E3B7DA5B96317B02BB4 /* Pods-OrangeIRC Core (tvOS).release.xcconfig */,
+				66A75B0A1D234694001161A3 /* Info.plist */,
+				6A9FEB8C1E161B4E00F5CF4D /* Assets.xcassets */,
+				6A9FEB631E15F13500F5CF4D /* Launch Screen.storyboard */,
 			);
-			name = Pods;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		66837D9B1D25E4B800F85410 /* Frameworks */ = {
@@ -309,10 +391,6 @@
 				66837D9D1D25E4F600F85410 /* iOS */,
 				66837D9E1D25E4FC00F85410 /* macOS */,
 				6A2672A71E105CD10087B331 /* tvOS */,
-				EAA0B3889EEB0F84BA539375 /* Pods_OrangeIRC__iOS_.framework */,
-				92271B17A5D1676A76D4BC8B /* Pods_OrangeIRC_Core__iOS_.framework */,
-				6AF08CE85F65F579CADA6954 /* Pods_OrangeIRC_Core__macOS_.framework */,
-				241873B7B5B25B8F24F3C3EC /* Pods_OrangeIRC_Core__tvOS_.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -344,20 +422,21 @@
 				661D52B91F183C04006F8E06 /* CODE_OF_CONDUCT.md */,
 				6A558D351E16BF2F0077BBF4 /* TODO.md */,
 				6A558D361E16C01B0077BBF4 /* OrangeIRC.png */,
-				661D52B71F183BE9006F8E06 /* OrangeIRC.podspec */,
 				6A59B7B01E73C58500BE9123 /* Icons */,
 				6ABAD4481DD70A4400D1B689 /* docs */,
+				6AF88F9E1E17388100FD9A9D /* Screenshots */,
+				66A75AFD1D234694001161A3 /* OrangeIRC iOS */,
 				66A75B141D2346ED001161A3 /* OrangeIRC Core */,
 				6A212F841E104C7C006739B4 /* OrangeIRC Core Tests */,
 				66837D9B1D25E4B800F85410 /* Frameworks */,
 				66A75AFC1D234694001161A3 /* Products */,
-				27B1CBE6BABF785B0A0CBD31 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
 		66A75AFC1D234694001161A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				66A75AFB1D234694001161A3 /* OrangeIRC.app */,
 				66A75B251D234737001161A3 /* OrangeIRCCore.framework */,
 				66EDD2E11D29621B0013E7CC /* OrangeIRCCore.framework */,
 				6A212F831E104C7B006739B4 /* OrangeIRCCoreTests.xctest */,
@@ -366,6 +445,34 @@
 				6A2672961E105C230087B331 /* OrangeIRCCoreTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		66A75AFD1D234694001161A3 /* OrangeIRC iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6A7AE4201E75C8F10032D6FE /* Utilities.swift */,
+				66A75AFE1D234694001161A3 /* AppDelegate.swift */,
+				6A83890D1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift */,
+				6A91CA541E622305004D38E1 /* ChannelListTableViewController.swift */,
+				661AF5011D2C809E00CFC190 /* ServerSettingsTableViewController.swift */,
+				669DF7011D7CE96B007F82DB /* MOTDViewController.swift */,
+				6A765F3B1E6BD004005E4152 /* NetworksTableViewController.swift */,
+				6A597BF01EF33CBF0073E4AE /* ConsoleTableViewController.swift */,
+				6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */,
+				6A3538551E76083A00E64B7D /* RoomToolbar.swift */,
+				6A2F58C01EF31A9200076BD9 /* RoomToolbarDelegate.swift */,
+				6A3B389C1DA359860004E868 /* AddRoomTableViewController.swift */,
+				6605688D1D7901C400A2502B /* RoomInfoTableViewController.swift */,
+				6A1EECF11E142A5800A67C35 /* UsersSearchResultsController.swift */,
+				6A7325141E11E30300AFCC0B /* UserInfoTableViewController.swift */,
+				6A2CF2DA1E6CC5B40092C414 /* NetworkHeaderView.swift */,
+				6A2CF2DC1E6CC6F00092C414 /* NetworkHeaderView.xib */,
+				6A765F361E6B8B16005E4152 /* Alert Controllers */,
+				6A2081C21D5999C4006CD605 /* Cells */,
+				660568871D78ED1C00A2502B /* Resources */,
+				6A7AE42A1E75CA580032D6FE /* Localizations.strings */,
+			);
+			path = "OrangeIRC iOS";
 			sourceTree = "<group>";
 		};
 		66A75B141D2346ED001161A3 /* OrangeIRC Core */ = {
@@ -377,11 +484,11 @@
 				6A91CA581E623F85004D38E1 /* Utilities.swift */,
 				6A25035D1D5950E300C18750 /* Server */,
 				6A25035E1D5950FB00C18750 /* Log */,
+				661AF5031D2C833700CFC190 /* Notifications.swift */,
 				6A7A6A041D29D0850012D037 /* Room.swift */,
 				6AFDA8BF1E6C69D3003A30C5 /* Channel.swift */,
 				6AFDA8C31E6C69E2003A30C5 /* PrivateMessage.swift */,
 				6A6CBFDD1D3DBDC500EC6051 /* RoomType.swift */,
-				56F1E1D41F221B7F00DCB61C /* Notifications.swift */,
 				6A7A6A011D29CDC60012D037 /* User.swift */,
 				669FCF1D1D2891B6000117C5 /* Message.swift */,
 				6A4BB74D1D25F1500032B5D0 /* Tag.swift */,
@@ -390,6 +497,22 @@
 				6AAA09EC1F0004F200ECF97A /* UserMode.swift */,
 			);
 			path = "OrangeIRC Core";
+			sourceTree = "<group>";
+		};
+		6A2081C21D5999C4006CD605 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6A18EAE71D5BC66C00AF1EF9 /* SwitchCell.swift */,
+				661AF5051D2C89E900CFC190 /* TextFieldCell.swift */,
+				6A66A10E1DB1ABAE00252A8D /* TextViewCell.swift */,
+				6A9FEB611E15E49700F5CF4D /* SegmentedControlCell.swift */,
+				6AF88FA01E174E1C00FD9A9D /* RightDetailSubtitleCell.swift */,
+				6A91CA561E623435004D38E1 /* RightDetailTextViewCell.swift */,
+				6A765F391E6BAC6D005E4152 /* RightDetailTextViewCell.xib */,
+				6A4BBD7D1E1A11B300987C45 /* ActivityIndicatorCell.swift */,
+				6A4A5A721E74A55F005E064D /* LogEventCell.swift */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		6A212F841E104C7C006739B4 /* OrangeIRC Core Tests */ = {
@@ -445,6 +568,17 @@
 			name = tvOS;
 			sourceTree = "<group>";
 		};
+		6A765F361E6B8B16005E4152 /* Alert Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6A2F810C1E6D0C2D003A68F9 /* ActionDisabler.swift */,
+				6A765F371E6B8B28005E4152 /* ServerPasswordAlert.swift */,
+				6AF532991E6CCA16002C3D14 /* ServerOptionsActionSheet.swift */,
+				6A2F810E1E6D0D40003A68F9 /* JoinChannelAlertFactory.swift */,
+			);
+			name = "Alert Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -472,16 +606,33 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		66A75AFA1D234692001161A3 /* OrangeIRC (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66A75B0B1D234694001161A3 /* Build configuration list for PBXNativeTarget "OrangeIRC (iOS)" */;
+			buildPhases = (
+				66A75AF71D234692001161A3 /* Sources */,
+				66A75AF81D234692001161A3 /* Frameworks */,
+				66A75AF91D234692001161A3 /* Resources */,
+				66A75B1F1D2346EE001161A3 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6A7A69FA1D29CBE30012D037 /* PBXTargetDependency */,
+			);
+			name = "OrangeIRC (iOS)";
+			productName = "OrangeIRC iOS";
+			productReference = 66A75AFB1D234694001161A3 /* OrangeIRC.app */;
+			productType = "com.apple.product-type.application";
+		};
 		66A75B241D234737001161A3 /* OrangeIRC Core (macOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66A75B2A1D234737001161A3 /* Build configuration list for PBXNativeTarget "OrangeIRC Core (macOS)" */;
 			buildPhases = (
-				292F42419B1DEAA6694EDD0C /* [CP] Check Pods Manifest.lock */,
 				66A75B201D234737001161A3 /* Sources */,
 				66A75B211D234737001161A3 /* Frameworks */,
 				66A75B221D234737001161A3 /* Headers */,
 				66A75B231D234737001161A3 /* Resources */,
-				B918580B67A0F6CDF9A4AC4E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -496,12 +647,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 66EDD2EC1D29621D0013E7CC /* Build configuration list for PBXNativeTarget "OrangeIRC Core (iOS)" */;
 			buildPhases = (
-				740AD712A388CD851395833E /* [CP] Check Pods Manifest.lock */,
 				66EDD2DC1D29621B0013E7CC /* Sources */,
 				66EDD2DD1D29621B0013E7CC /* Frameworks */,
 				66EDD2DE1D29621B0013E7CC /* Headers */,
 				66EDD2DF1D29621B0013E7CC /* Resources */,
-				6DF35A41A11B327E017DB3F5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -552,12 +701,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A26729F1E105C230087B331 /* Build configuration list for PBXNativeTarget "OrangeIRC Core (tvOS)" */;
 			buildPhases = (
-				2C9AEDAF1D00E17D996F93BE /* [CP] Check Pods Manifest.lock */,
 				6A2672891E105C230087B331 /* Sources */,
 				6A26728A1E105C230087B331 /* Frameworks */,
 				6A26728B1E105C230087B331 /* Headers */,
 				6A26728C1E105C230087B331 /* Resources */,
-				AF8F184C79CF8DFD42CC5E78 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -593,8 +740,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 0810;
 				TargetAttributes = {
+					66A75AFA1D234692001161A3 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeamName = "Andrew Hyatt (Personal Team)";
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+						};
+					};
 					66A75B241D234737001161A3 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = TGZ526AV87;
@@ -639,6 +796,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				66A75AFA1D234692001161A3 /* OrangeIRC (iOS) */,
 				66EDD2E01D29621B0013E7CC /* OrangeIRC Core (iOS) */,
 				6A212F821E104C7B006739B4 /* OrangeIRC Core Tests (iOS) */,
 				66A75B241D234737001161A3 /* OrangeIRC Core (macOS) */,
@@ -650,6 +808,18 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		66A75AF91D234692001161A3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A7AE4281E75CA580032D6FE /* Localizations.strings in Resources */,
+				6A2CF2DD1E6CC6F00092C414 /* NetworkHeaderView.xib in Resources */,
+				6A765F3A1E6BAC6D005E4152 /* RightDetailTextViewCell.xib in Resources */,
+				6A9FEB641E15F13500F5CF4D /* Launch Screen.storyboard in Resources */,
+				6A9FEB8D1E161B4E00F5CF4D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66A75B231D234737001161A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -697,100 +867,42 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		292F42419B1DEAA6694EDD0C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		2C9AEDAF1D00E17D996F93BE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		6DF35A41A11B327E017DB3F5 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OrangeIRC Core (iOS)/Pods-OrangeIRC Core (iOS)-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		740AD712A388CD851395833E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		AF8F184C79CF8DFD42CC5E78 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OrangeIRC Core (tvOS)/Pods-OrangeIRC Core (tvOS)-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B918580B67A0F6CDF9A4AC4E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OrangeIRC Core (macOS)/Pods-OrangeIRC Core (macOS)-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
+		66A75AF71D234692001161A3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A9FEB621E15E49700F5CF4D /* SegmentedControlCell.swift in Sources */,
+				6A1EECF21E142A5800A67C35 /* UsersSearchResultsController.swift in Sources */,
+				6A2F810D1E6D0C2D003A68F9 /* ActionDisabler.swift in Sources */,
+				6605688E1D7901C400A2502B /* RoomInfoTableViewController.swift in Sources */,
+				6A7AE4211E75C8F10032D6FE /* Utilities.swift in Sources */,
+				661AF5021D2C809E00CFC190 /* ServerSettingsTableViewController.swift in Sources */,
+				66A75AFF1D234694001161A3 /* AppDelegate.swift in Sources */,
+				6A4BBD7E1E1A11B300987C45 /* ActivityIndicatorCell.swift in Sources */,
+				6A765F3C1E6BD004005E4152 /* NetworksTableViewController.swift in Sources */,
+				6A83890E1E33FBE6006ED94B /* AppDelegate+ServerDelegate.swift in Sources */,
+				6A91CA571E623435004D38E1 /* RightDetailTextViewCell.swift in Sources */,
+				6A66A10F1DB1ABAE00252A8D /* TextViewCell.swift in Sources */,
+				6A91CA551E622305004D38E1 /* ChannelListTableViewController.swift in Sources */,
+				6A2F58C11EF31A9200076BD9 /* RoomToolbarDelegate.swift in Sources */,
+				6A597BF11EF33CBF0073E4AE /* ConsoleTableViewController.swift in Sources */,
+				6A2F810F1E6D0D40003A68F9 /* JoinChannelAlertFactory.swift in Sources */,
+				6A3538561E76083A00E64B7D /* RoomToolbar.swift in Sources */,
+				6AF88FA11E174E1C00FD9A9D /* RightDetailSubtitleCell.swift in Sources */,
+				661AF5061D2C89E900CFC190 /* TextFieldCell.swift in Sources */,
+				6AF5329A1E6CCA16002C3D14 /* ServerOptionsActionSheet.swift in Sources */,
+				6A2CF2DB1E6CC5B40092C414 /* NetworkHeaderView.swift in Sources */,
+				6A18EAE81D5BC66C00AF1EF9 /* SwitchCell.swift in Sources */,
+				6A4A5A731E74A55F005E064D /* LogEventCell.swift in Sources */,
+				6A7325151E11E30300AFCC0B /* UserInfoTableViewController.swift in Sources */,
+				6ADD58E31D29E4890051DB28 /* RoomTableViewController.swift in Sources */,
+				6A3B389D1DA359860004E868 /* AddRoomTableViewController.swift in Sources */,
+				669DF7021D7CE96B007F82DB /* MOTDViewController.swift in Sources */,
+				6A765F381E6B8B28005E4152 /* ServerPasswordAlert.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		66A75B201D234737001161A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -816,6 +928,7 @@
 				6A7A6A061D29D0850012D037 /* Room.swift in Sources */,
 				6A4BB74F1D25F1500032B5D0 /* Tag.swift in Sources */,
 				6A7325091E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */,
+				6A83890B1E33F3E0006ED94B /* Notifications.swift in Sources */,
 				667BB2ED1D29C2F60029AB2D /* Server+Room.swift in Sources */,
 				6604F5D31F06D18900FF1E3F /* KickLogEvent.swift in Sources */,
 				66260FA41F083E390028FD71 /* ConsoleDelegate.swift in Sources */,
@@ -857,6 +970,7 @@
 				6A7A6A051D29D0850012D037 /* Room.swift in Sources */,
 				66EDD2EE1D2963E60013E7CC /* LogEvent.swift in Sources */,
 				6A7325081E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */,
+				6A83890A1E33F3E0006ED94B /* Notifications.swift in Sources */,
 				667BB2EC1D29C2F60029AB2D /* Server+Room.swift in Sources */,
 				6604F5D21F06D18900FF1E3F /* KickLogEvent.swift in Sources */,
 				66260FA31F083E390028FD71 /* ConsoleDelegate.swift in Sources */,
@@ -867,7 +981,6 @@
 				6A597BF31EF375050073E4AE /* ConsoleEntry.swift in Sources */,
 				6A7325101E11C06C00AFCC0B /* Server+NickServ.swift in Sources */,
 				66EDD2F01D2963E60013E7CC /* Server+MessageHandler.swift in Sources */,
-				56F1E1D51F221B7F00DCB61C /* Notifications.swift in Sources */,
 				6A43E6EE1DD6CBC0009DB1FC /* UserCache.swift in Sources */,
 				66EDD2F51D2963E60013E7CC /* Command.swift in Sources */,
 				669DF6FF1D7CDCD0007F82DB /* Server+Socket.swift in Sources */,
@@ -916,6 +1029,7 @@
 				6A2672B51E105D180087B331 /* Room.swift in Sources */,
 				6A2672AB1E105D180087B331 /* Server+Room.swift in Sources */,
 				6A73250A1E11A9F000AFCC0B /* UserOnlineLogEvent.swift in Sources */,
+				6A83890C1E33F3E1006ED94B /* Notifications.swift in Sources */,
 				6604F5D41F06D18900FF1E3F /* KickLogEvent.swift in Sources */,
 				66260FA51F083E390028FD71 /* ConsoleDelegate.swift in Sources */,
 				6AFDA8C61E6C69E2003A30C5 /* PrivateMessage.swift in Sources */,
@@ -957,6 +1071,11 @@
 			target = 6A26728D1E105C230087B331 /* OrangeIRC Core (tvOS) */;
 			targetProxy = 6A2672981E105C230087B331 /* PBXContainerItemProxy */;
 		};
+		6A7A69FA1D29CBE30012D037 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66EDD2E01D29621B0013E7CC /* OrangeIRC Core (iOS) */;
+			targetProxy = 6A7A69F91D29CBE30012D037 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -969,6 +1088,15 @@
 			name = Localizations.strings;
 			sourceTree = "<group>";
 		};
+		6A7AE42A1E75CA580032D6FE /* Localizations.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6A7AE4291E75CA580032D6FE /* en */,
+				6A7AE42B1E75CA590032D6FE /* es */,
+			);
+			name = Localizations.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -976,20 +1104,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1012,20 +1132,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1042,9 +1154,121 @@
 			};
 			name = Release;
 		};
+		66A75B0C1D234694001161A3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = TGZ526AV87;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "OrangeIRC iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ahyattdev.OrangeIRC;
+				PRODUCT_NAME = OrangeIRC;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		66A75B0D1D234694001161A3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = TGZ526AV87;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "OrangeIRC iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.ahyattdev.OrangeIRC;
+				PRODUCT_NAME = OrangeIRC;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		66A75B2B1D234737001161A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D12880370793F21A512C956 /* Pods-OrangeIRC Core (macOS).debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1095,7 +1319,6 @@
 				INFOPLIST_FILE = "$(SRCROOT)/OrangeIRC Core/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ahyattdev.OrangeIRCCore;
@@ -1112,7 +1335,6 @@
 		};
 		66A75B2C1D234737001161A3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8281EA731418E1213876DF04 /* Pods-OrangeIRC Core (macOS).release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1157,7 +1379,6 @@
 				INFOPLIST_FILE = "$(SRCROOT)/OrangeIRC Core/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ahyattdev.OrangeIRCCore;
 				PRODUCT_NAME = OrangeIRCCore;
@@ -1172,7 +1393,6 @@
 		};
 		66EDD2EA1D29621D0013E7CC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E106F0766B8F2BB53D4DAF02 /* Pods-OrangeIRC Core (iOS).debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1200,7 +1420,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.framework *.gch *.xcode* *.xcassets (*) .DS_Store CVS .svn .git .hg *.pbproj *.pbxproj OrangeIRC";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1221,7 +1440,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/OrangeIRC Core/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1240,7 +1458,6 @@
 		};
 		66EDD2EB1D29621D0013E7CC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4AACF7B34E8B48BD6D359E8E /* Pods-OrangeIRC Core (iOS).release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1268,7 +1485,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.framework *.gch *.xcode* *.xcassets (*) .DS_Store CVS .svn .git .hg *.pbproj *.pbxproj OrangeIRC";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1283,7 +1499,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/OrangeIRC Core/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.ahyattdev.OrangeIRCCore;
@@ -1468,7 +1683,6 @@
 		};
 		6A2672A01E105C230087B331 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDDF67E25A4726C01ABD778A /* Pods-OrangeIRC Core (tvOS).debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1520,7 +1734,6 @@
 		};
 		6A2672A11E105C230087B331 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17DD1E3B7DA5B96317B02BB4 /* Pods-OrangeIRC Core (tvOS).release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1652,6 +1865,15 @@
 			buildConfigurations = (
 				66A75AF51D234628001161A3 /* Debug */,
 				66A75AF61D234628001161A3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66A75B0B1D234694001161A3 /* Build configuration list for PBXNativeTarget "OrangeIRC (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66A75B0C1D234694001161A3 /* Debug */,
+				66A75B0D1D234694001161A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
