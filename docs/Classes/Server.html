@@ -14,7 +14,7 @@
     <a title="Server Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">OrangeIRCCore Docs</a> (1% documented)</p>
+        <p><a href="../index.html">OrangeIRCCore Docs</a> (11% documented)</p>
         <p class="header-right"><a href="https://github.com/ahyattdev/OrangeIRC"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fahyattdev%2Egithub%2Eio%2Fdocsets%2FOrangeIRCCore%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -148,12 +148,66 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>An all-capable IRC server client</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC17connectionTimeoutSdvp"></a>
+                    <a name="//apple_ref/swift/Property/connectionTimeout" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC17connectionTimeoutSdvp">connectionTimeout</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Server connection timeout</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">connectionTimeout</span> <span class="o">=</span> <span class="kt">TimeInterval</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC9noTimeoutSdvp"></a>
+                    <a name="//apple_ref/swift/Property/noTimeout" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC9noTimeoutSdvp">noTimeout</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Timeout value representing no timeout</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">let</span> <span class="nv">noTimeout</span> <span class="o">=</span> <span class="kt">TimeInterval</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -167,7 +221,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Message Of The Day string
+Populated once the server sends it</p>
 
                       </div>
                       <div class="declaration">
@@ -194,7 +249,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The client console log</p>
 
                       </div>
                       <div class="declaration">
@@ -221,7 +276,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Client console log delegate</p>
 
                       </div>
                       <div class="declaration">
@@ -248,7 +303,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Wrapper type for data returned by LIST</p>
 
                       </div>
                       <div class="declaration">
@@ -275,7 +330,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Cache of IRC channel list.
+Call fetchChannelList() to populate.</p>
 
                       </div>
                       <div class="declaration">
@@ -302,7 +358,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The delegate of this server client</p>
 
                       </div>
                       <div class="declaration">
@@ -329,14 +385,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>When the client has attempted to connect but isn&rsquo;t fully connected yet.
+In other words, it is still connecting.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">isConnectingOrRegistering</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">isConnectingOrRegistering</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>
@@ -356,14 +413,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The IRC user bitmask</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">userBitmask</span><span class="p">:</span> <span class="kt">UInt8</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">userBitmask</span><span class="p">:</span> <span class="kt">UInt8</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
 
                         </div>
                       </div>
@@ -383,7 +440,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>IRC client connection status</p>
 
                       </div>
                       <div class="declaration">
@@ -410,7 +467,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A human friendly name of the server</p>
 
                       </div>
                       <div class="declaration">
@@ -437,7 +494,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Server hostname</p>
+
+<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
 
                       </div>
                       <div class="declaration">
@@ -464,7 +523,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Server alias, usually a user-defined name for the server</p>
+
+<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
 
                       </div>
                       <div class="declaration">
@@ -491,7 +552,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Server port, optional</p>
+
+<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
 
                       </div>
                       <div class="declaration">
@@ -518,7 +581,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The user’s prefered nickname, not necessarily the one given
+by the server.</p>
+
+<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
 
                       </div>
                       <div class="declaration">
@@ -545,7 +611,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Client username</p>
+
+<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
 
                       </div>
                       <div class="declaration">
@@ -572,7 +640,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Client realname</p>
+
+<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
 
                       </div>
                       <div class="declaration">
@@ -599,7 +669,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Server password, optional</p>
+
+<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
 
                       </div>
                       <div class="declaration">
@@ -626,7 +698,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Nickname password, optional</p>
+
+<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
 
                       </div>
                       <div class="declaration">
@@ -653,7 +727,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Automatically join rooms on connection</p>
+
+<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
 
                       </div>
                       <div class="declaration">
@@ -680,7 +756,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Rooms that this client is in</p>
+
+<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
 
                       </div>
                       <div class="declaration">
@@ -707,14 +785,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The nickname of the client</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">nickname</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">nickname</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -734,7 +812,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Rooms that will automatically be joined</p>
 
                       </div>
                       <div class="declaration">
@@ -761,7 +839,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Server encoding, defaults to UTF-8</p>
 
                       </div>
                       <div class="declaration">
@@ -788,14 +866,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Client registration status</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">isRegistered</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">isRegistered</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>

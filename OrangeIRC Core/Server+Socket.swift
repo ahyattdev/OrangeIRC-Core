@@ -12,7 +12,7 @@ import CocoaAsyncSocket
 extension Server {
     
     open func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
-        socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
+        socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: noTimeout, tag: Tag.Normal)
         print("Connected to host: \(host)")
         // Send the NICK message
         if sock == self.socket {
@@ -55,7 +55,7 @@ extension Server {
         
         guard let string = String(bytes: strData, encoding: self.encoding), let message = Message(string) else {
             print("Failed to parse message: \(data)")
-            socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
+            socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: noTimeout, tag: Tag.Normal)
             return
         }
         

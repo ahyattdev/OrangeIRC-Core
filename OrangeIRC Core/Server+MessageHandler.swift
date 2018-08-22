@@ -669,7 +669,7 @@ extension Server {
             print("Unimplemented command handle: \(message.command)")
         }
         
-        socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
+        socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: noTimeout, tag: Tag.Normal)
     }
     
 }

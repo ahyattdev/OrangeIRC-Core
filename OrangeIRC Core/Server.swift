@@ -9,14 +9,17 @@
 import Foundation
 import CocoaAsyncSocket
 
+/// An all-capable IRC server client
 open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
-    let TIMEOUT_CONNECT = TimeInterval(30)
-    let TIMEOUT_NONE = TimeInterval(-1)
-    let CRLF = "\r\n"
+    /// Server connection timeout
+    open var connectionTimeout = TimeInterval(30)
+    /// Timeout value representing no timeout
+    open let noTimeout = TimeInterval(-1)
+    internal let crlf = "\r\n"
     
     // NSCoding keys extracted to here so to avoid typos causing bugs
-    struct Coding {
+    fileprivate struct Coding {
         
         static let Host = "Host"
         static let Alias = "Alias"
@@ -30,26 +33,37 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         
     }
     
-    // MOTD support
+    /// Message Of The Day string
+    /// Populated once the server sends it
     open var motd: String?
     
+    /// The client console log
     open var console = [ConsoleEntry]()
+    /// Client console log delegate
     open var consoleDelegate: ConsoleDelegate?
     
+    /// Wrapper type for data returned by LIST
     public typealias ListChannel = (name: String, users: Int, topic: String?)
-    // Call fetchChannelList() to populate
+    
+    /// Cache of IRC channel list.
+    /// Call fetchChannelList() to populate.
     open var channelListCache = [ListChannel]()
     
+    /// The delegate of this server client
     open var delegate: ServerDelegate?
     
-    open var isConnectingOrRegistering = false
+    /// When the client has attempted to connect but isn't fully connected yet.
+    /// In other words, it is still connecting.
+    internal(set) open var isConnectingOrRegistering = false
     
-    open var userBitmask: UInt8 = 0
+    /// The IRC user bitmask
+    internal(set) open var userBitmask: UInt8 = 0
     
-    var socket: GCDAsyncSocket?
+    internal var socket: GCDAsyncSocket?
     
-    var reclaimTimer: Timer?
+    internal var reclaimTimer: Timer?
     
+    /// IRC client connection status
     open var isConnected: Bool {
         if let socket = socket {
             return socket.isConnected
@@ -58,41 +72,80 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         }
     }
     
+    /// A human friendly name of the server
     open var displayName: String {
         return alias == nil ? host : alias!
     }
     
     // Saved data
+    
+    /// Server hostname
+    ///
+    /// **This is saved by `NSCoding`***.
     open var host: String
+    /// Server alias, usually a user-defined name for the server
+    ///
+    /// **This is saved by `NSCoding`***.
     open var alias: String?
+    /// Server port, optional
+    ///
+    /// **This is saved by `NSCoding`***.
     open var port: Int
+    /// The user’s prefered nickname, not necessarily the one given
+    /// by the server.
+    ///
+    /// **This is saved by `NSCoding`***.
     open var preferredNickname: String
+    /// Client username
+    ///
+    /// **This is saved by `NSCoding`***.
     open var username: String
+    /// Client realname
+    ///
+    /// **This is saved by `NSCoding`***.
     open var realname: String
+    /// Server password, optional
+    ///
+    /// **This is saved by `NSCoding`***.
     open var password = ""
+    /// Nickname password, optional
+    ///
+    /// **This is saved by `NSCoding`***.
     open var nickservPassword = ""
+    /// Automatically join rooms on connection
+    ///
+    /// **This is saved by `NSCoding`***.
     open var autoJoin = false
+    /// Rooms that this client is in
+    ///
+    /// **This is saved by `NSCoding`***.
     open var rooms = [Room]()
+    
     // End saved data
     
-    open var nickname: String
-    var appendedUnderscoreCount = 0
+    /// The nickname of the client
+    internal(set) open var nickname: String
     
+    internal var appendedUnderscoreCount = 0
+    
+    /// Rooms that will automatically be joined
     open var roomsFlaggedForAutoJoin = [String]()
     
+    /// Server encoding, defaults to UTF-8
     open var encoding: String.Encoding
     
-    open var isRegistered = false
+    /// Client registration status
+    internal(set) open var isRegistered = false
     
     // Used for reconnect functionality
     private var connectOnDisconnect = false
     
     // Used because the NickServ failed attempts notice comes in two NOTICEs
-    var lastSentNickServFailedAttempts = -1
+    internal var lastSentNickServFailedAttempts = -1
     
-    var userCache: UserCache = UserCache()
+    internal var userCache: UserCache = UserCache()
     
-    var mode = UserMode()
+    internal var mode = UserMode()
     
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
         self.host = host
@@ -164,7 +217,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.socket!.isIPv4PreferredOverIPv6 = false
         
         do {
-            try self.socket?.connect(toHost: self.host, onPort: UInt16(self.port), withTimeout: TIMEOUT_CONNECT)
+            try self.socket?.connect(toHost: self.host, onPort: UInt16(self.port), withTimeout: connectionTimeout)
             self.isConnectingOrRegistering = true
             self.delegate?.startedConnecting(self)
         } catch {
@@ -188,7 +241,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         disconnect()
     }
     
-    func reset() {
+    internal func reset() {
         let notifyDelegate = isConnectingOrRegistering || isRegistered
         
         isConnectingOrRegistering = false
@@ -217,7 +270,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         }
     }
     
-    func sendPassMessage() {
+    internal func sendPassMessage() {
         print("Sent PASS message: \(self.host)")
         self.write(string: "\(Command.PASS) \(self.password)", with: Tag.Pass)
     }
@@ -232,13 +285,13 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         write(string: "\(Command.NICK) \(nickname)")
     }
     
-    func sendNickMessage() {
+    internal func sendNickMessage() {
         print("Sent NICK message: \(self.host)")
         nickname = preferredNickname
         self.write(string: "\(Command.NICK) \(self.nickname)", with: Tag.Nick)
     }
     
-    func sendUserMessage() {
+    internal func sendUserMessage() {
         print("Sent USER message: \(self.host)")
         self.write(string: "\(Command.USER) \(self.username) \(self.userBitmask) * :\(self.realname)", with: Tag.User)
     }
@@ -247,20 +300,20 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.write(string: "\(Command.PRIVMSG) \(Command.Services.NickServ) :\(Command.IDENTIFY) \(self.nickservPassword)", with: Tag.NickServPassword)
     }
     
-    func write(string: String, with tag: Int) {
-        var appendedString = "\(string)\(CRLF)"
+    internal func write(string: String, with tag: Int) {
+        var appendedString = "\(string)\(crlf)"
         let bytes = [UInt8](appendedString.utf8)
         let entry = ConsoleEntry(text: string, sender: .Client)
         add(consoleEntry: entry)
-        self.socket?.write(Data(bytes: bytes), withTimeout: TIMEOUT_NONE, tag: tag)
+        self.socket?.write(Data(bytes: bytes), withTimeout: noTimeout, tag: tag)
     }
     
-    func write(string: String) {
-        var appendedString = "\(string)\(CRLF)"
+    internal func write(string: String) {
+        var appendedString = "\(string)\(crlf)"
         let bytes = [UInt8](appendedString.utf8)
         let entry = ConsoleEntry(text: string, sender: .Client)
         add(consoleEntry: entry)
-        self.socket?.write(Data(bytes: bytes), withTimeout: TIMEOUT_NONE, tag: Tag.Normal)
+        self.socket?.write(Data(bytes: bytes), withTimeout: noTimeout, tag: Tag.Normal)
     }
     
     open func fetchInfo(_ user: User) {
@@ -288,7 +341,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         #endif
     }
     
-    func add(consoleEntry: ConsoleEntry) {
+    internal func add(consoleEntry: ConsoleEntry) {
         console.append(consoleEntry)
         consoleDelegate?.newConsoleEntry(server: self, entry: consoleEntry)
     }
