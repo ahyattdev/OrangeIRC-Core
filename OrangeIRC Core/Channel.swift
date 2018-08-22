@@ -99,28 +99,25 @@ open class Channel : Room {
         
         while !message.isEmpty {
             if message.utf8.count > MAX {
+                // Split this part of the message up
                 let range = message.utf8.startIndex ..< message.utf8.index(message.utf8.startIndex, offsetBy: MAX)
                 let part = message.utf8[range]
                 messageParts.append(String(describing: part))
                 
-                // For some reason, we cant remove range in the UTF8View
-                for _ in 0 ..< MAX {
-                    _ = message.utf8.popFirst()
-                }
+                message = String(message.utf8.dropFirst(MAX))!
             } else {
-                let range = message.utf8.startIndex ..< message.utf8.endIndex
-                let part = String(message.utf8[range])
-                messageParts.append(part!)
+                // It is OK to send the message as it is
+                messageParts.append(message)
                 message = ""
             }
+        }
+        
+        for part in messageParts {
+            server!.write(string: "\(commandPrefix)\(part)")
             
-            for part in messageParts {
-                server!.write(string: "\(commandPrefix)\(part)")
-                
-                let logEvent = MessageLogEvent(contents: part, sender: server!.userCache.me, room: self)
-                log.append(logEvent)
-                server!.delegate?.received(logEvent: logEvent, for: self)
-            }
+            let logEvent = MessageLogEvent(contents: part, sender: server!.userCache.me, room: self)
+            log.append(logEvent)
+            server!.delegate?.received(logEvent: logEvent, for: self)
         }
     }
     
