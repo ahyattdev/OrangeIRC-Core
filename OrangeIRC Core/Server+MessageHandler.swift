@@ -306,7 +306,7 @@ extension Server {
             }
             
             
-            let isPrivate = !Channel.CHANNEL_PREFIXES.characterIsMember(roomName.utf16.first!)
+            let isPrivate = !Channel.channelPrefixes.characterIsMember(roomName.utf16.first!)
             
             if isPrivate {
                 // The IRC protocol puts our nickname as the roomname

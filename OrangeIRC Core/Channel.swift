@@ -8,10 +8,13 @@
 
 import Foundation
 
+/// An IRC channel
 open class Channel : Room {
     
-    // https://www.alien.net.au/irc/chantypes.html
-    open static let CHANNEL_PREFIXES = NSCharacterSet(charactersIn: "#&!+.~")
+    /// Valid IRC channel prefixes
+    ///
+    /// - Note: The source is https://www.alien.net.au/irc/chantypes.html
+    open static let channelPrefixes = NSCharacterSet(charactersIn: "#&!+.~")
     
     fileprivate struct Coding {
         
@@ -25,39 +28,70 @@ open class Channel : Room {
     }
     
     // Preserved variables
+    
+    /// The channel name
+    ///
+    /// *Preserved on save*
     open var name: String
+    
+    /// The channel key
+    ///
+    /// *Preserved on save*
     open var key: String?
-    open var autoJoin = false // Only does something if this is a channel
     
-    open var users = [User]()
+    /// Automatically join the room.
+    ///
+    /// *Preserved on save*
+    open var autoJoin = false
     
-    open var topic: String?
-    open var url: URL?
+    // End preserved variables
     
-    open var hasTopic = false
+    /// The users in this channel
+    internal(set) open var users = [User]()
     
+    /// The channel topic
+    internal(set) open var topic: String?
+    
+    /// Channel URL
+    internal(set) open var url: URL?
+    
+    /// If the channel has a topic
+    internal(set) open var hasTopic = false
+    
+    /// Channel join status
     // If this is a private message room, this will be if both us and the recipient are on the server
-    open var isJoined = false
+    internal(set) open var isJoined = false
     
+    /// Is the client allowed to send a message on the channel
     open override var canSendMessage: Bool {
+        // FIX ME: Check for permissions such as mute
         return isJoined && server.isRegistered
     }
     
+    /// Join this channel when the server connects
     // Set for the connect and join button
     open var joinOnConnect = false
     
+    /// Is the users list complete yet
     // Don't display the users list while it is still being populated
-    open var hasCompleteUsersList = false
+    internal(set) open var hasCompleteUsersList = false
     
+    /// The display name of the channel
     open override var displayName: String {
         return name
     }
     
-    public init(_ name: String) {
+    /// Create a channel
+    ///
+    /// - Parameter name: Channel name
+    internal init(_ name: String) {
         self.name = name
         super.init()
     }
     
+    /// Initialize using `NSCoding` APIs
+    ///
+    /// - Parameter coder: Coder
     public required convenience init?(coder: NSCoder) {
         guard let name = coder.decodeObject(forKey: Coding.Name) as? String else {
             return nil
@@ -69,12 +103,19 @@ open class Channel : Room {
         autoJoin = coder.decodeBool(forKey: Coding.AutoJoin)
     }
     
+    /// Encodes using `NSCoding` APIs
+    ///
+    /// - Parameter aCoder: The coder
     open override func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: Coding.Name)
         aCoder.encode(key, forKey: Coding.Key)
         aCoder.encode(autoJoin, forKey: Coding.AutoJoin)
     }
     
+    /// Checks if the channel contains a user
+    ///
+    /// - Parameter user: The user to check for
+    /// - Returns: If the user is in the channel
     func contains(user: User) -> Bool {
         for testUser in users {
             if testUser === user {
@@ -84,12 +125,16 @@ open class Channel : Room {
         return false
     }
     
+    /// Sort the channel user list
     func sortUsers() {
         users.sort(by: { (a: User, b: User) -> Bool in
             return a.nick < b.nick
         })
     }
     
+    /// Send a message on the Channel
+    ///
+    /// - Parameter message: Message to send
     override open func send(message: String) {
         // Splits the message up into 512 byte chunks
         var message = message

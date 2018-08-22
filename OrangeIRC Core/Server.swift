@@ -328,7 +328,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         var stringToWrite = "\(Command.JOIN) \(channel)"
         // Append "#" if no other prefixes are detected
         if let first = channel.utf16.first {
-            if !Channel.CHANNEL_PREFIXES.characterIsMember(first) {
+            if !Channel.channelPrefixes.characterIsMember(first) {
                 stringToWrite = "\(Command.JOIN) #\(channel)"
             }
         }
