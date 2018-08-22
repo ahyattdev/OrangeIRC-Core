@@ -11,7 +11,9 @@ import CocoaAsyncSocket
 
 extension Server {
     
-    internal func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+    /// Must be declared public for `GCDAsyncSocketDelegate`.
+    /// You can ignore this 🙂.
+    public func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
         socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: noTimeout, tag: Tag.Normal)
         print("Connected to host: \(host)")
         // Send the NICK message
@@ -24,7 +26,9 @@ extension Server {
         }
     }
     
-    internal func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
+    /// Must be declared public for `GCDAsyncSocketDelegate`.
+    /// You can ignore this 🙂.
+    public func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
         // FIXME: Doesn't call all the delegate functions
         if err != nil {
             let error = err! as NSError
@@ -50,7 +54,9 @@ extension Server {
         reset()
     }
     
-    @objc(socket:didReadData:withTag:) internal func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
+    /// Must be declared public for `GCDAsyncSocketDelegate`.
+    /// You can ignore this 🙂.
+    @objc(socket:didReadData:withTag:) public func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         let strData = data.subdata(in: (0 ..< data.count))
         
         guard let string = String(bytes: strData, encoding: self.encoding), let message = Message(string) else {
@@ -65,7 +71,9 @@ extension Server {
         handle(message: message)
     }
     
-    internal func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
+    /// Must be declared public for `GCDAsyncSocketDelegate`.
+    /// You can ignore this 🙂.
+    public func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         switch tag {
         case Tag.Normal:
             break

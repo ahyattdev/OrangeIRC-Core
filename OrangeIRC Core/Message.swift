@@ -16,19 +16,19 @@ let AT_SYMBOL = "@"
 let CARRIAGE_RETURN = "\r\n"
 let EMPTY = ""
 
-open class Message {
+internal class Message {
     
-    public typealias Tag = (key: String, value: String?, vendor: String?)
+    internal typealias Tag = (key: String, value: String?, vendor: String?)
     
-    public struct Prefix {
+    internal struct Prefix {
         
-        public var prefix: String
-        public var servername: String?
-        public var nickname: String?
-        public var user: String?
-        public var host: String?
+        internal var prefix: String
+        internal var servername: String?
+        internal var nickname: String?
+        internal var user: String?
+        internal var host: String?
         
-        public init?(_ string: String) {
+        internal init?(_ string: String) {
             self.prefix = string
             
             if string.contains(EXCLAMATION_MARK) && string.contains(AT_SYMBOL) {
@@ -43,17 +43,28 @@ open class Message {
             }
         }
         
+        internal func toString() -> String {
+            if let nickname = self.nickname, let user = self.user, let host = self.host {
+                return nickname + EXCLAMATION_MARK + user + AT_SYMBOL + host
+            } else {
+                guard let servername = self.servername else {
+                    return "PREFIX UNKNOWN"
+                }
+                return servername
+            }
+        }
+        
     }
     
-    open var message: String
-    open var prefix: Prefix?
-    open var command: String
-    open var target: [String]
-    open var parameters: String?
+    internal var message: String
+    internal var prefix: Prefix?
+    internal var command: String
+    internal var target: [String]
+    internal var parameters: String?
     
-    open var tags = [Tag]()
+    internal var tags = [Tag]()
     
-    public init?(_ string: String) {
+    internal init?(_ string: String) {
         
         var trimmedString = string.replacingOccurrences(of: CARRIAGE_RETURN, with: EMPTY)
         

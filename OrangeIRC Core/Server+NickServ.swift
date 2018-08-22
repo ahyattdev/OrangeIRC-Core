@@ -63,7 +63,7 @@ extension Server{
             
             let date = notice[dateStart ..< notice.index(before: notice.endIndex)]
             
-            delegate?.nickservFailedAttemptsWarning(self, count: lastSentNickServFailedAttempts, lastPrefix: prefix, date: String(date))
+            delegate?.nickservFailedAttemptsWarning(self, count: lastSentNickServFailedAttempts, lastPrefix: prefix.toString(), date: String(date))
         }
         else {
             print("Unknown NickServ message: \(notice)")

@@ -14,7 +14,7 @@
     <a title="Server Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">OrangeIRCCore Docs</a> (22% documented)</p>
+        <p><a href="../index.html">OrangeIRCCore Docs</a> (46% documented)</p>
         <p class="header-right"><a href="https://github.com/ahyattdev/OrangeIRC"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fahyattdev%2Egithub%2Eio%2Fdocsets%2FOrangeIRCCore%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -37,12 +37,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/LogEvent.html">LogEvent</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/Message.html">Message</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/Message/Prefix.html">– Prefix</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/MessageLogEvent.html">MessageLogEvent</a>
@@ -1710,6 +1704,122 @@ password.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">prepareForBackground</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@OrangeIRCCore@objc(cs)Server(im)socket:didConnectToHost:port:"></a>
+                    <a name="//apple_ref/swift/Method/socket(_:didConnectToHost:port:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@OrangeIRCCore@objc(cs)Server(im)socket:didConnectToHost:port:">socket(_:didConnectToHost:port:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Must be declared public for <code>GCDAsyncSocketDelegate</code>.
+You can ignore this 🙂.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">socket</span><span class="p">(</span><span class="n">_</span> <span class="nv">sock</span><span class="p">:</span> <span class="kt">GCDAsyncSocket</span><span class="p">,</span> <span class="n">didConnectToHost</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">UInt16</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@OrangeIRCCore@objc(cs)Server(im)socketDidDisconnect:withError:"></a>
+                    <a name="//apple_ref/swift/Method/socketDidDisconnect(_:withError:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@OrangeIRCCore@objc(cs)Server(im)socketDidDisconnect:withError:">socketDidDisconnect(_:withError:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Must be declared public for <code>GCDAsyncSocketDelegate</code>.
+You can ignore this 🙂.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">socketDidDisconnect</span><span class="p">(</span><span class="n">_</span> <span class="nv">sock</span><span class="p">:</span> <span class="kt">GCDAsyncSocket</span><span class="p">,</span> <span class="n">withError</span> <span class="nv">err</span><span class="p">:</span> <span class="kt">Error</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@OrangeIRCCore@objc(cs)Server(im)socket:didReadData:withTag:"></a>
+                    <a name="//apple_ref/swift/Method/socket(_:didRead:withTag:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@OrangeIRCCore@objc(cs)Server(im)socket:didReadData:withTag:">socket(_:didRead:withTag:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Must be declared public for <code>GCDAsyncSocketDelegate</code>.
+You can ignore this 🙂.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(socket:didReadData:withTag:)</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">socket</span><span class="p">(</span><span class="n">_</span> <span class="nv">sock</span><span class="p">:</span> <span class="kt">GCDAsyncSocket</span><span class="p">,</span> <span class="n">didRead</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span><span class="p">,</span> <span class="n">withTag</span> <span class="nv">tag</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@OrangeIRCCore@objc(cs)Server(im)socket:didWriteDataWithTag:"></a>
+                    <a name="//apple_ref/swift/Method/socket(_:didWriteDataWithTag:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@OrangeIRCCore@objc(cs)Server(im)socket:didWriteDataWithTag:">socket(_:didWriteDataWithTag:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Must be declared public for <code>GCDAsyncSocketDelegate</code>.
+You can ignore this 🙂.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">socket</span><span class="p">(</span><span class="n">_</span> <span class="nv">sock</span><span class="p">:</span> <span class="kt">GCDAsyncSocket</span><span class="p">,</span> <span class="n">didWriteDataWithTag</span> <span class="nv">tag</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

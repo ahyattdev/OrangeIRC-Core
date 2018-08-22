@@ -148,21 +148,19 @@ extension AppDelegate {
         AppDelegate.showAlertGlobally(alert)
     }
     
-    func nickservFailedAttemptsWarning(_ server: Server, count: Int, lastPrefix: Message.Prefix, date: String) {
-        guard let nickname = lastPrefix.nickname,
-            let username = lastPrefix.user,
-            let hostname = lastPrefix.host else {
-                return
-        }
+    func nickservFailedAttemptsWarning(_ server: Server, count: Int, lastPrefix: String, date: String) {
         
         let title = localized("FAILED_ATTEMPTS_NICKSERV")
         var message = localized("FAILED_ATTEMPTS_NICKSERV_MESSAGE")
         message = message.replacingOccurrences(of: "[NUM]", with: "\(count)")
         message = message.replacingOccurrences(of: "[MYNICK]", with: server.nickname)
         message = message.replacingOccurrences(of: "[SERVERNAME]", with: server.displayName)
+        // FIXME: Needs localizations updated to use lastPrefix
+        /*
         message = message.replacingOccurrences(of: "[NICKNAME]", with: nickname)
         message = message.replacingOccurrences(of: "[USERNAME]", with: username)
         message = message.replacingOccurrences(of: "[HOSTNAME]", with: hostname)
+        */
         message = message.replacingOccurrences(of: "[DATE]", with: date)
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
