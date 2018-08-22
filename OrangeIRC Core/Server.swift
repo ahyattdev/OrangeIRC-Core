@@ -9,14 +9,14 @@
 import Foundation
 import CocoaAsyncSocket
 
-/// An all-capable IRC server client
+/// Wrapper type for data returned by LIST.
+public typealias ListChannel = (name: String, users: Int, topic: String?)
+
+/// An all-capable IRC server client.
+///
+/// To handle events, such as a successful connection or a channel join, see
+/// `ServerDelegate` and `Server.delegate`.
 open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
-    
-    /// Server connection timeout
-    open var connectionTimeout = TimeInterval(30)
-    /// Timeout value representing no timeout
-    open let noTimeout = TimeInterval(-1)
-    internal let crlf = "\r\n"
     
     // NSCoding keys extracted to here so to avoid typos causing bugs
     fileprivate struct Coding {
@@ -33,37 +33,85 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         
     }
     
-    /// Message Of The Day string
-    /// Populated once the server sends it
-    open var motd: String?
+    /*
+     Constants
+     */
     
-    /// The client console log
-    open var console = [ConsoleEntry]()
-    /// Client console log delegate
-    open var consoleDelegate: ConsoleDelegate?
+    /// Timeout value representing no timeout.
+    open let noTimeout = TimeInterval(-1)
     
-    /// Wrapper type for data returned by LIST
-    public typealias ListChannel = (name: String, users: Int, topic: String?)
+    internal let crlf = "\r\n"
     
-    /// Cache of IRC channel list.
-    /// Call fetchChannelList() to populate.
-    open var channelListCache = [ListChannel]()
+    /*
+     Client settings
+     */
     
-    /// The delegate of this server client
+    // Saved data
+    
+    /// Server hostname.
+    ///
+    /// *This is saved by `NSCoding`*.
+    open var host: String
+    /// Server alias, usually a user-defined name for the server.
+    ///
+    /// *This is saved by `NSCoding`*.
+    open var alias: String?
+    /// Server port, optional.
+    ///
+    /// *This is saved by `NSCoding`*.
+    open var port: Int
+    /// The user’s prefered nickname, not necessarily the one given
+    /// by the server.
+    ///
+    /// *This is saved by `NSCoding`*.
+    open var preferredNickname: String
+    /// Client username.
+    ///
+    /// *This is saved by `NSCoding`*.
+    open var username: String
+    /// Client realname.
+    ///
+    /// *This is saved by `NSCoding`*.
+    open var realname: String
+    /// Server password, optional.
+    ///
+    /// *This is saved by `NSCoding`*.
+    open var password = ""
+    /// Nickname password, optional
+    ///
+    /// *This is saved by `NSCoding`*.
+    open var nickservPassword = ""
+    /// Automatically join rooms on connection.
+    ///
+    /// *This is saved by `NSCoding`*.
+    open var autoJoin = false
+    /// Rooms that this client is in.
+    ///
+    /// *This is saved by `NSCoding`*.
+    open var rooms = [Room]()
+    
+    // End saved data
+    
+    /// The delegate of this server client.
     open var delegate: ServerDelegate?
     
-    /// When the client has attempted to connect but isn't fully connected yet.
-    /// In other words, it is still connecting.
-    internal(set) open var isConnectingOrRegistering = false
+    /// Client console log delegate.
+    open var consoleDelegate: ConsoleDelegate?
     
-    /// The IRC user bitmask
-    internal(set) open var userBitmask: UInt8 = 0
+    /// Server connection timeout.
+    open var connectionTimeout = TimeInterval(30)
     
-    internal var socket: GCDAsyncSocket?
+    /// Rooms that will automatically be joined.
+    open var roomsFlaggedForAutoJoin = [String]()
     
-    internal var reclaimTimer: Timer?
+    /// Server encoding, defaults to UTF-8.
+    open var encoding: String.Encoding
     
-    /// IRC client connection status
+    /*
+     Session data
+     */
+    
+    /// IRC client connection status.
     open var isConnected: Bool {
         if let socket = socket {
             return socket.isConnected
@@ -72,81 +120,64 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         }
     }
     
-    /// A human friendly name of the server
+    /// A human friendly name of the server.
     open var displayName: String {
         return alias == nil ? host : alias!
     }
     
-    // Saved data
-    
-    /// Server hostname
-    ///
-    /// **This is saved by `NSCoding`***.
-    open var host: String
-    /// Server alias, usually a user-defined name for the server
-    ///
-    /// **This is saved by `NSCoding`***.
-    open var alias: String?
-    /// Server port, optional
-    ///
-    /// **This is saved by `NSCoding`***.
-    open var port: Int
-    /// The user’s prefered nickname, not necessarily the one given
-    /// by the server.
-    ///
-    /// **This is saved by `NSCoding`***.
-    open var preferredNickname: String
-    /// Client username
-    ///
-    /// **This is saved by `NSCoding`***.
-    open var username: String
-    /// Client realname
-    ///
-    /// **This is saved by `NSCoding`***.
-    open var realname: String
-    /// Server password, optional
-    ///
-    /// **This is saved by `NSCoding`***.
-    open var password = ""
-    /// Nickname password, optional
-    ///
-    /// **This is saved by `NSCoding`***.
-    open var nickservPassword = ""
-    /// Automatically join rooms on connection
-    ///
-    /// **This is saved by `NSCoding`***.
-    open var autoJoin = false
-    /// Rooms that this client is in
-    ///
-    /// **This is saved by `NSCoding`***.
-    open var rooms = [Room]()
-    
-    // End saved data
-    
-    /// The nickname of the client
+    /// The nickname of the client.
     internal(set) open var nickname: String
     
-    internal var appendedUnderscoreCount = 0
+    /// Message Of The Day string, populated once the server sends it.
+    internal(set) open var motd: String?
     
-    /// Rooms that will automatically be joined
-    open var roomsFlaggedForAutoJoin = [String]()
+    /// The client console log.
+    internal(set) open var console = [ConsoleEntry]()
     
-    /// Server encoding, defaults to UTF-8
-    open var encoding: String.Encoding
+    /// Cache of IRC channel list.
+    /// Call fetchChannelList() to populate.
+    internal(set) open var channelListCache = [ListChannel]()
     
-    /// Client registration status
+    /// When the client has attempted to connect but isn't fully connected yet.
+    /// In other words, it is still connecting.
+    internal(set) open var isConnectingOrRegistering = false
+    
+    /// The IRC user bitmask.
+    internal(set) open var userBitmask: UInt8 = 0
+    
+    /// Client registration status.
     internal(set) open var isRegistered = false
     
-    // Used for reconnect functionality
-    private var connectOnDisconnect = false
     
-    // Used because the NickServ failed attempts notice comes in two NOTICEs
+    // Used because the NickServ failed attempts notice comes in two NOTICEs.
     internal var lastSentNickServFailedAttempts = -1
     
     internal var userCache: UserCache = UserCache()
     
     internal var mode = UserMode()
     
+    // Used for reconnect functionality.
+    internal var connectOnDisconnect = false
+    
+    internal var socket: GCDAsyncSocket?
+    
+    internal var reclaimTimer: Timer?
+    
+    internal var appendedUnderscoreCount = 0
+    
+    /*
+     Creating an IRC server client
+     */
+    
+    /// Create a client for an IRC server with the essential settings.
+    ///
+    /// - Parameters:
+    ///   - host: Server hostname
+    ///   - port: Server port
+    ///   - nickname: Client preferred nickname
+    ///   - username: Client username
+    ///   - realname: Client real name
+    ///   - encoding: Server connection encoding, defaults to UTF-8
     public init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding) {
         self.host = host
         self.port = port
@@ -161,11 +192,25 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         userCache.server = self
     }
     
+    /// Create a client for an IRC server with the essential settings and a
+    /// password.
+    ///
+    /// - Parameters:
+    ///   - host: Server hostname
+    ///   - port: Server port
+    ///   - nickname: Client preferred nickname
+    ///   - username: Client username
+    ///   - realname: Client real name
+    ///   - encoding: Server connection encoding, defaults to UTF-8
+    ///   - password: Server password
     public convenience init(host: String, port: Int, nickname: String, username: String, realname: String, encoding: String.Encoding, password: String) {
         self.init(host: host, port: port, nickname: nickname, username: username, realname: realname, encoding: encoding)
         self.password = password
     }
     
+    /// Create a client for an IRC server using the `NSCoding` APIs.
+    ///
+    /// - Parameter coder: Has a client for an IRC server encoded
     public required convenience init?(coder: NSCoder) {
         guard let host = coder.decodeObject(forKey: Coding.Host) as? String,
             let preferredNickname = coder.decodeObject(forKey: Coding.Nickname) as? String,
@@ -198,6 +243,9 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         alias = coder.decodeObject(forKey: Coding.Alias) as? String
     }
     
+    /// Encode a client for an IRC server using the `NSCoding` APIs.
+    ///
+    /// - Parameter aCoder: The coder to encode the client in
     open func encode(with aCoder: NSCoder) {
         aCoder.encode(host, forKey: Coding.Host)
         aCoder.encode(alias, forKey: Coding.Alias)
@@ -210,6 +258,11 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         aCoder.encode(rooms, forKey: Coding.Rooms)
     }
     
+    /*
+     Connection state
+     */
+    
+    /// Initiates connection from the client to the server.
     open func connect() {
         self.socket = GCDAsyncSocket(delegate: self, delegateQueue: DispatchQueue.main)
         
@@ -225,20 +278,80 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         }
     }
     
+    /// Initiates graceful disconnection between the client and server.
     open func disconnect() {
         write(string: Command.QUIT)
     }
     
-    /*
- 
-      FIXME: This should be done with blocks instead of booleans.
- 
-      Example: disconnect(completion: <closure>)
- 
-    */
+    /// Disconnects and reconnects from the server.
     open func reconnect() {
+        // FIXME: This should be done with blocks instead of booleans
+        // Example: disconnect(completion: <closure>)
         connectOnDisconnect = true
         disconnect()
+    }
+    
+    /* User identity and authentication */
+    
+    /// Sends the server password.
+    open func sendPassword() {
+        // Doesn't send with a tag, part of the API
+        write(string: "\(Command.PASS) \(password)")
+    }
+    
+    /// Sends the user nickname (not preferred).
+    open func sendNick() {
+        // FIXME: Might need changes to work with preferred nickname
+        write(string: "\(Command.NICK) \(nickname)")
+    }
+    
+    /// Sends the NickServ nickname password.
+    open func sendNickServPassword() {
+        self.write(string: "\(Command.PRIVMSG) \(Command.Services.NickServ) :\(Command.IDENTIFY) \(self.nickservPassword)", with: Tag.NickServPassword)
+    }
+    
+    /*
+     User data
+     */
+    
+    /// Fetches information on a user from the server.
+    ///
+    /// - Parameter user: The user to fetch information for.
+    open func fetchInfo(_ user: User) {
+        user.awayMessage = nil
+        user.away = nil
+        write(string: "\(Command.WHOIS) \(user.nick)")
+    }
+    
+    /*
+     Channel data
+     */
+    
+    /// Starts fetching the channel list from the server.
+    open func fetchChannelList() {
+        channelListCache.removeAll()
+        write(string: "\(Command.LIST)")
+    }
+    
+    /*
+     Utility
+     */
+    
+    /// Prepare this server for the app to enter the background.
+    ///
+    /// Does nothing on macOS.
+    open func prepareForBackground() {
+        #if os(iOS) || os(tvOS)
+        if let socket = socket {
+            if socket.isConnected {
+                socket.perform {
+                    if !socket.enableBackgroundingOnSocket() {
+                        print("Failed to enable backgrounding for server: \(self.host)")
+                    }
+                }
+            }
+        }
+        #endif
     }
     
     internal func reset() {
@@ -258,7 +371,6 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
             }
         }
         
-        
         if notifyDelegate {
             // Only tell the delegate that we disconnected if we were connected
             delegate?.didDisconnect(self)
@@ -275,15 +387,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.write(string: "\(Command.PASS) \(self.password)", with: Tag.Pass)
     }
     
-    // Doesn't send with a tag, part of the API
-    open func sendPassword() {
-        write(string: "\(Command.PASS) \(password)")
-    }
-    
     // Same as above
-    open func sendNick() {
-        write(string: "\(Command.NICK) \(nickname)")
-    }
     
     internal func sendNickMessage() {
         print("Sent NICK message: \(self.host)")
@@ -294,10 +398,6 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     internal func sendUserMessage() {
         print("Sent USER message: \(self.host)")
         self.write(string: "\(Command.USER) \(self.username) \(self.userBitmask) * :\(self.realname)", with: Tag.User)
-    }
-    
-    open func sendNickServPassword() {
-        self.write(string: "\(Command.PRIVMSG) \(Command.Services.NickServ) :\(Command.IDENTIFY) \(self.nickservPassword)", with: Tag.NickServPassword)
     }
     
     internal func write(string: String, with tag: Int) {
@@ -314,31 +414,6 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         let entry = ConsoleEntry(text: string, sender: .Client)
         add(consoleEntry: entry)
         self.socket?.write(Data(bytes: bytes), withTimeout: noTimeout, tag: Tag.Normal)
-    }
-    
-    open func fetchInfo(_ user: User) {
-        user.awayMessage = nil
-        user.away = nil
-        write(string: "\(Command.WHOIS) \(user.nick)")
-    }
-    
-    open func fetchChannelList() {
-        channelListCache.removeAll()
-        write(string: "\(Command.LIST)")
-    }
-    
-    open func prepareForBackground() {
-        #if os(iOS) || os(tvOS)
-        if let socket = socket {
-            if socket.isConnected {
-                socket.perform {
-                    if !socket.enableBackgroundingOnSocket() {
-                        print("Failed to enable backgrounding for server: \(self.host)")
-                    }
-                }
-            }
-        }
-        #endif
     }
     
     internal func add(consoleEntry: ConsoleEntry) {

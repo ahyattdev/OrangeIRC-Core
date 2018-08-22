@@ -14,7 +14,7 @@
     <a title="Server Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">OrangeIRCCore Docs</a> (11% documented)</p>
+        <p><a href="../index.html">OrangeIRCCore Docs</a> (16% documented)</p>
         <p class="header-right"><a href="https://github.com/ahyattdev/OrangeIRC"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fahyattdev%2Egithub%2Eio%2Fdocsets%2FOrangeIRCCore%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -136,6 +136,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:13OrangeIRCCore11ListChannela">ListChannel</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -148,39 +156,15 @@
 
                 </div>
               </div>
-            <p>An all-capable IRC server client</p>
+            <p>An all-capable IRC server client.</p>
+
+<p>To handle events, such as a successful connection or a channel join, see
+<code><a href="../Protocols/ServerDelegate.html">ServerDelegate</a></code> and <code><a href="../Classes/Server.html#/s:13OrangeIRCCore6ServerC8delegateAA0C8Delegate_pSgvp">Server.delegate</a></code>.</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC17connectionTimeoutSdvp"></a>
-                    <a name="//apple_ref/swift/Property/connectionTimeout" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC17connectionTimeoutSdvp">connectionTimeout</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Server connection timeout</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">connectionTimeout</span> <span class="o">=</span> <span class="kt">TimeInterval</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -194,7 +178,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Timeout value representing no timeout</p>
+                        <p>Timeout value representing no timeout.</p>
 
                       </div>
                       <div class="declaration">
@@ -211,9 +195,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13OrangeIRCCore6ServerC4motdSSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/motd" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC4motdSSSgvp">motd</a>
+                    <a name="/s:13OrangeIRCCore6ServerC4hostSSvp"></a>
+                    <a name="//apple_ref/swift/Property/host" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC4hostSSvp">host</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -221,15 +205,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Message Of The Day string
-Populated once the server sends it</p>
+                        <p>Server hostname.</p>
+
+<p><em>This is saved by <code>NSCoding</code></em>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">motd</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
@@ -239,9 +224,9 @@ Populated once the server sends it</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13OrangeIRCCore6ServerC7consoleSayAA12ConsoleEntryVGvp"></a>
-                    <a name="//apple_ref/swift/Property/console" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC7consoleSayAA12ConsoleEntryVGvp">console</a>
+                    <a name="/s:13OrangeIRCCore6ServerC5aliasSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/alias" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC5aliasSSSgvp">alias</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -249,14 +234,276 @@ Populated once the server sends it</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The client console log</p>
+                        <p>Server alias, usually a user-defined name for the server.</p>
+
+<p><em>This is saved by <code>NSCoding</code></em>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">console</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Structs/ConsoleEntry.html">ConsoleEntry</a></span><span class="p">]()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">alias</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC4portSivp"></a>
+                    <a name="//apple_ref/swift/Property/port" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC4portSivp">port</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Server port, optional.</p>
+
+<p><em>This is saved by <code>NSCoding</code></em>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC17preferredNicknameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/preferredNickname" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC17preferredNicknameSSvp">preferredNickname</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The user’s prefered nickname, not necessarily the one given
+by the server.</p>
+
+<p><em>This is saved by <code>NSCoding</code></em>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">preferredNickname</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC8usernameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/username" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8usernameSSvp">username</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Client username.</p>
+
+<p><em>This is saved by <code>NSCoding</code></em>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC8realnameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/realname" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8realnameSSvp">realname</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Client realname.</p>
+
+<p><em>This is saved by <code>NSCoding</code></em>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">realname</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC8passwordSSvp"></a>
+                    <a name="//apple_ref/swift/Property/password" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8passwordSSvp">password</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Server password, optional.</p>
+
+<p><em>This is saved by <code>NSCoding</code></em>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">password</span> <span class="o">=</span> <span class="s">""</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC16nickservPasswordSSvp"></a>
+                    <a name="//apple_ref/swift/Property/nickservPassword" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC16nickservPasswordSSvp">nickservPassword</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Nickname password, optional</p>
+
+<p><em>This is saved by <code>NSCoding</code></em>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">nickservPassword</span> <span class="o">=</span> <span class="s">""</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC8autoJoinSbvp"></a>
+                    <a name="//apple_ref/swift/Property/autoJoin" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8autoJoinSbvp">autoJoin</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Automatically join rooms on connection.</p>
+
+<p><em>This is saved by <code>NSCoding</code></em>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">autoJoin</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC5roomsSayAA4RoomCGvp"></a>
+                    <a name="//apple_ref/swift/Property/rooms" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC5roomsSayAA4RoomCGvp">rooms</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Rooms that this client is in.</p>
+
+<p><em>This is saved by <code>NSCoding</code></em>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">rooms</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">]()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC8delegateAA0C8Delegate_pSgvp"></a>
+                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8delegateAA0C8Delegate_pSgvp">delegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The delegate of this server client.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ServerDelegate.html">ServerDelegate</a></span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -276,7 +523,7 @@ Populated once the server sends it</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Client console log delegate</p>
+                        <p>Client console log delegate.</p>
 
                       </div>
                       <div class="declaration">
@@ -293,9 +540,9 @@ Populated once the server sends it</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13OrangeIRCCore6ServerC11ListChannela"></a>
-                    <a name="//apple_ref/swift/Alias/ListChannel" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC11ListChannela">ListChannel</a>
+                    <a name="/s:13OrangeIRCCore6ServerC17connectionTimeoutSdvp"></a>
+                    <a name="//apple_ref/swift/Property/connectionTimeout" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC17connectionTimeoutSdvp">connectionTimeout</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -303,14 +550,203 @@ Populated once the server sends it</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Wrapper type for data returned by LIST</p>
+                        <p>Server connection timeout.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">ListChannel</span> <span class="o">=</span> <span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">users</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">topic</span><span class="p">:</span> <span class="kt">String</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">connectionTimeout</span> <span class="o">=</span> <span class="kt">TimeInterval</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC23roomsFlaggedForAutoJoinSaySSGvp"></a>
+                    <a name="//apple_ref/swift/Property/roomsFlaggedForAutoJoin" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC23roomsFlaggedForAutoJoinSaySSGvp">roomsFlaggedForAutoJoin</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Rooms that will automatically be joined.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">roomsFlaggedForAutoJoin</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">]()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC8encodingSS10FoundationE8EncodingVvp"></a>
+                    <a name="//apple_ref/swift/Property/encoding" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8encodingSS10FoundationE8EncodingVvp">encoding</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Server encoding, defaults to UTF-8.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC11isConnectedSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isConnected" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC11isConnectedSbvp">isConnected</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>IRC client connection status.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">isConnected</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC11displayNameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/displayName" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC11displayNameSSvp">displayName</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A human friendly name of the server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">displayName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC8nicknameSSvp"></a>
+                    <a name="//apple_ref/swift/Property/nickname" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8nicknameSSvp">nickname</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The nickname of the client.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">nickname</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC4motdSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/motd" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC4motdSSSgvp">motd</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Message Of The Day string, populated once the server sends it.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">motd</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore6ServerC7consoleSayAA12ConsoleEntryVGvp"></a>
+                    <a name="//apple_ref/swift/Property/console" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore6ServerC7consoleSayAA12ConsoleEntryVGvp">console</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The client console log.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">console</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Structs/ConsoleEntry.html">ConsoleEntry</a></span><span class="p">]()</span></code></pre>
 
                         </div>
                       </div>
@@ -338,34 +774,7 @@ Call fetchChannelList() to populate.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">channelListCache</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Classes/Server.html#/s:13OrangeIRCCore6ServerC11ListChannela">ListChannel</a></span><span class="p">]()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC8delegateAA0C8Delegate_pSgvp"></a>
-                    <a name="//apple_ref/swift/Property/delegate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8delegateAA0C8Delegate_pSgvp">delegate</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The delegate of this server client</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ServerDelegate.html">ServerDelegate</a></span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">channelListCache</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Typealiases.html#/s:13OrangeIRCCore11ListChannela">ListChannel</a></span><span class="p">]()</span></code></pre>
 
                         </div>
                       </div>
@@ -413,7 +822,7 @@ In other words, it is still connecting.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The IRC user bitmask</p>
+                        <p>The IRC user bitmask.</p>
 
                       </div>
                       <div class="declaration">
@@ -421,432 +830,6 @@ In other words, it is still connecting.</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">userBitmask</span><span class="p">:</span> <span class="kt">UInt8</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC11isConnectedSbvp"></a>
-                    <a name="//apple_ref/swift/Property/isConnected" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC11isConnectedSbvp">isConnected</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>IRC client connection status</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">isConnected</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC11displayNameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/displayName" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC11displayNameSSvp">displayName</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A human friendly name of the server</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">displayName</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC4hostSSvp"></a>
-                    <a name="//apple_ref/swift/Property/host" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC4hostSSvp">host</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Server hostname</p>
-
-<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC5aliasSSSgvp"></a>
-                    <a name="//apple_ref/swift/Property/alias" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC5aliasSSSgvp">alias</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Server alias, usually a user-defined name for the server</p>
-
-<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">alias</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC4portSivp"></a>
-                    <a name="//apple_ref/swift/Property/port" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC4portSivp">port</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Server port, optional</p>
-
-<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC17preferredNicknameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/preferredNickname" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC17preferredNicknameSSvp">preferredNickname</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The user’s prefered nickname, not necessarily the one given
-by the server.</p>
-
-<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">preferredNickname</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC8usernameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/username" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8usernameSSvp">username</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Client username</p>
-
-<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC8realnameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/realname" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8realnameSSvp">realname</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Client realname</p>
-
-<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">realname</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC8passwordSSvp"></a>
-                    <a name="//apple_ref/swift/Property/password" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8passwordSSvp">password</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Server password, optional</p>
-
-<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">password</span> <span class="o">=</span> <span class="s">""</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC16nickservPasswordSSvp"></a>
-                    <a name="//apple_ref/swift/Property/nickservPassword" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC16nickservPasswordSSvp">nickservPassword</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Nickname password, optional</p>
-
-<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">nickservPassword</span> <span class="o">=</span> <span class="s">""</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC8autoJoinSbvp"></a>
-                    <a name="//apple_ref/swift/Property/autoJoin" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8autoJoinSbvp">autoJoin</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Automatically join rooms on connection</p>
-
-<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">autoJoin</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC5roomsSayAA4RoomCGvp"></a>
-                    <a name="//apple_ref/swift/Property/rooms" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC5roomsSayAA4RoomCGvp">rooms</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Rooms that this client is in</p>
-
-<p><strong>This is saved by <code>NSCoding</code></strong>*.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">rooms</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">]()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC8nicknameSSvp"></a>
-                    <a name="//apple_ref/swift/Property/nickname" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8nicknameSSvp">nickname</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The nickname of the client</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">nickname</span><span class="p">:</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC23roomsFlaggedForAutoJoinSaySSGvp"></a>
-                    <a name="//apple_ref/swift/Property/roomsFlaggedForAutoJoin" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC23roomsFlaggedForAutoJoinSaySSGvp">roomsFlaggedForAutoJoin</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Rooms that will automatically be joined</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">roomsFlaggedForAutoJoin</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">]()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore6ServerC8encodingSS10FoundationE8EncodingVvp"></a>
-                    <a name="//apple_ref/swift/Property/encoding" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore6ServerC8encodingSS10FoundationE8EncodingVvp">encoding</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Server encoding, defaults to UTF-8</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span></code></pre>
 
                         </div>
                       </div>
@@ -866,7 +849,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Client registration status</p>
+                        <p>Client registration status.</p>
 
                       </div>
                       <div class="declaration">
@@ -893,7 +876,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create a client for an IRC server with the essential settings.</p>
 
                       </div>
                       <div class="declaration">
@@ -903,6 +886,85 @@ by the server.</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">nickname</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">realname</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>host</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Server hostname</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>port</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Server port</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>nickname</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Client preferred nickname</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Client username</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>realname</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Client real name</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>encoding</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Server connection encoding, defaults to UTF-8</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -920,7 +982,8 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create a client for an IRC server with the essential settings and a
+password.</p>
 
                       </div>
                       <div class="declaration">
@@ -930,6 +993,97 @@ by the server.</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">port</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">nickname</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">realname</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>host</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Server hostname</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>port</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Server port</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>nickname</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Client preferred nickname</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Client username</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>realname</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Client real name</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>encoding</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Server connection encoding, defaults to UTF-8</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>password</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Server password</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -947,7 +1101,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Create a client for an IRC server using the <code>NSCoding</code> APIs.</p>
 
                       </div>
                       <div class="declaration">
@@ -957,6 +1111,25 @@ by the server.</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">required</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">?(</span><span class="nv">coder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>coder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Has a client for an IRC server encoded</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -974,7 +1147,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Encode a client for an IRC server using the <code>NSCoding</code> APIs.</p>
 
                       </div>
                       <div class="declaration">
@@ -984,6 +1157,25 @@ by the server.</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">encode</span><span class="p">(</span><span class="n">with</span> <span class="nv">aCoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>aCoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The coder to encode the client in</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -1001,7 +1193,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initiates connection from the client to the server.</p>
 
                       </div>
                       <div class="declaration">
@@ -1028,7 +1220,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initiates graceful disconnection between the client and server.</p>
 
                       </div>
                       <div class="declaration">
@@ -1042,17 +1234,6 @@ by the server.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/FIXME:%20This%20should%20be%20done%20with%20blocks%20instead%20of%20booleans."></a>
-                <a name="//apple_ref/swift/Section/FIXME: This should be done with blocks instead of booleans." class="dashAnchor"></a>
-                <a href="#/FIXME:%20This%20should%20be%20done%20with%20blocks%20instead%20of%20booleans.">
-                  <h3 class="section-name">FIXME: This should be done with blocks instead of booleans.</h3>
-                </a>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -1066,7 +1247,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Disconnects and reconnects from the server.</p>
 
                       </div>
                       <div class="declaration">
@@ -1093,7 +1274,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Sends the server password.</p>
 
                       </div>
                       <div class="declaration">
@@ -1120,7 +1301,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Sends the user nickname (not preferred).</p>
 
                       </div>
                       <div class="declaration">
@@ -1147,7 +1328,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Sends the NickServ nickname password.</p>
 
                       </div>
                       <div class="declaration">
@@ -1174,7 +1355,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Fetches information on a user from the server.</p>
 
                       </div>
                       <div class="declaration">
@@ -1184,6 +1365,25 @@ by the server.</p>
                           <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">func</span> <span class="nf">fetchInfo</span><span class="p">(</span><span class="n">_</span> <span class="nv">user</span><span class="p">:</span> <span class="kt"><a href="../Classes/User.html">User</a></span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>user</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The user to fetch information for.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -1201,7 +1401,7 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Starts fetching the channel list from the server.</p>
 
                       </div>
                       <div class="declaration">
@@ -1228,7 +1428,9 @@ by the server.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Prepare this server for the app to enter the background.</p>
+
+<p>Does nothing on macOS.</p>
 
                       </div>
                       <div class="declaration">

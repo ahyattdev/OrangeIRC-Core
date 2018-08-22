@@ -13,7 +13,7 @@ class ChannelListTableViewController : UITableViewController {
     
     let server: Server
     
-    var channelList: [Server.ListChannel]!
+    var channelList: [ListChannel]!
     
     init(_ server: Server) {
         self.server = server
