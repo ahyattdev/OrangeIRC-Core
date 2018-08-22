@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ServerDelegate Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/ServerDelegate" class="dashAnchor"></a>
+    <a title="ServerDelegate Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (0% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ServerDelegate Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Channel.html">Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/LogEvent.html">LogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Message.html">Message</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Message/Prefix.html">– Prefix</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MessageLogEvent.html">MessageLogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ModerationLogEvent.html">ModerationLogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/PrivateMessage.html">PrivateMessage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Room.html">Room</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RoomLogEvent.html">RoomLogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Server.html">Server</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ServerManager.html">ServerManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Settings.html">Settings</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/User.html">User</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/User/Mode.html">– Mode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/User/Class.html">– Class</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UserJoinLogEvent.html">UserJoinLogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UserLogEvent.html">UserLogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/c:@M@OrangeIRCCore@objc(cs)UserOfflineLogEvent">UserOfflineLogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/c:@M@OrangeIRCCore@objc(cs)UserOnlineLogEvent">UserOnlineLogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UserPartLogEvent.html">UserPartLogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UserQuitLogEvent.html">UserQuitLogEvent</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/RoomType.html">RoomType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ConsoleDelegate.html">ConsoleDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ServerDelegate.html">ServerDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs.html#/s:13OrangeIRCCore7CommandV">Command</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ConsoleEntry.html">ConsoleEntry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ConsoleEntry/Sender.html">– Sender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Notifications.html">Notifications</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/UserMode.html">UserMode</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ServerDelegate</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ServerDelegate</span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP13didNotRespondyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/didNotRespond(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP13didNotRespondyAA0C0CF">didNotRespond(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">didNotRespond</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP17stoppedRespondingyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/stoppedResponding(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP17stoppedRespondingyAA0C0CF">stoppedResponding(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">stoppedResponding</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP17startedConnectingyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/startedConnecting(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP17startedConnectingyAA0C0CF">startedConnecting(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">startedConnecting</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP13didDisconnectyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/didDisconnect(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP13didDisconnectyAA0C0CF">didDisconnect(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">didDisconnect</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP22registeredSuccessfullyyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/registeredSuccessfully(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP22registeredSuccessfullyyAA0C0CF">registeredSuccessfully(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">registeredSuccessfully</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP8receivedySS6notice_SS6senderAA0C0C2ontF"></a>
+                    <a name="//apple_ref/swift/Method/received(notice:sender:on:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP8receivedySS6notice_SS6senderAA0C0C2ontF">received(notice:sender:on:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">received</span><span class="p">(</span><span class="nv">notice</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">on</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP8receivedyAA8LogEventC03logG0_AA4RoomC3fortF"></a>
+                    <a name="//apple_ref/swift/Method/received(logEvent:for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP8receivedyAA8LogEventC03logG0_AA4RoomC3fortF">received(logEvent:for:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">received</span><span class="p">(</span><span class="nv">logEvent</span><span class="p">:</span> <span class="kt"><a href="../Classes/LogEvent.html">LogEvent</a></span><span class="p">,</span> <span class="k">for</span> <span class="nv">room</span><span class="p">:</span> <span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP8receivedySS5error_AA0C0C2ontF"></a>
+                    <a name="//apple_ref/swift/Method/received(error:on:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP8receivedySS5error_AA0C0C2ontF">received(error:on:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">received</span><span class="p">(</span><span class="nv">error</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">on</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP8receivedySS5topic_AA4RoomC3fortF"></a>
+                    <a name="//apple_ref/swift/Method/received(topic:for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP8receivedySS5topic_AA4RoomC3fortF">received(topic:for:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">received</span><span class="p">(</span><span class="nv">topic</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="k">for</span> <span class="nv">room</span><span class="p">:</span> <span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP23finishedReadingUserListyAA4RoomCF"></a>
+                    <a name="//apple_ref/swift/Method/finishedReadingUserList(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP23finishedReadingUserListyAA4RoomCF">finishedReadingUserList(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">finishedReadingUserList</span><span class="p">(</span><span class="n">_</span> <span class="nv">room</span><span class="p">:</span> <span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP11motdUpdatedyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/motdUpdated(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP11motdUpdatedyAA0C0CF">motdUpdated(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">motdUpdated</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP22nickservPasswordNeededyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/nickservPasswordNeeded(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP22nickservPasswordNeededyAA0C0CF">nickservPasswordNeeded(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">nickservPasswordNeeded</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP25nickservPasswordIncorrectyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/nickservPasswordIncorrect(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP25nickservPasswordIncorrectyAA0C0CF">nickservPasswordIncorrect(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">nickservPasswordIncorrect</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP29nickservFailedAttemptsWarningyAA0C0C_Si5countAA7MessageC6PrefixV04lastK0SS4datetF"></a>
+                    <a name="//apple_ref/swift/Method/nickservFailedAttemptsWarning(_:count:lastPrefix:date:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP29nickservFailedAttemptsWarningyAA0C0C_Si5countAA7MessageC6PrefixV04lastK0SS4datetF">nickservFailedAttemptsWarning(_:count:lastPrefix:date:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">nickservFailedAttemptsWarning</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">,</span> <span class="nv">count</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">lastPrefix</span><span class="p">:</span> <span class="kt"><a href="../Classes/Message.html">Message</a></span><span class="o">.</span><span class="kt">Prefix</span><span class="p">,</span> <span class="nv">date</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP14infoWasUpdatedyAA4UserCF"></a>
+                    <a name="//apple_ref/swift/Method/infoWasUpdated(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP14infoWasUpdatedyAA4UserCF">infoWasUpdated(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">infoWasUpdated</span><span class="p">(</span><span class="n">_</span> <span class="nv">user</span><span class="p">:</span> <span class="kt"><a href="../Classes/User.html">User</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP15chanlistUpdatedyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/chanlistUpdated(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP15chanlistUpdatedyAA0C0CF">chanlistUpdated(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">chanlistUpdated</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP23finishedReadingChanlistyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/finishedReadingChanlist(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP23finishedReadingChanlistyAA0C0CF">finishedReadingChanlist(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">finishedReadingChanlist</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP6noSuchySS4nick_AA0C0CtF"></a>
+                    <a name="//apple_ref/swift/Method/noSuch(nick:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP6noSuchySS4nick_AA0C0CtF">noSuch(nick:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">noSuch</span><span class="p">(</span><span class="nv">nick</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP6noSuchySS6server_AA0C0CtF"></a>
+                    <a name="//apple_ref/swift/Method/noSuch(server:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP6noSuchySS6server_AA0C0CtF">noSuch(server:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">noSuch</span><span class="p">(</span><span class="nv">server</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">onServer</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP6noSuchySS7channel_AA0C0CtF"></a>
+                    <a name="//apple_ref/swift/Method/noSuch(channel:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP6noSuchySS7channel_AA0C0CtF">noSuch(channel:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">noSuch</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP12cannotSendToySS7channel_AA0C0CtF"></a>
+                    <a name="//apple_ref/swift/Method/cannotSendTo(channel:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP12cannotSendToySS7channel_AA0C0CtF">cannotSendTo(channel:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">cannotSendTo</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP15tooManyChannelsyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/tooManyChannels(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP15tooManyChannelsyAA0C0CF">tooManyChannels(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">tooManyChannels</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP20serverPasswordNeededyAA0C0CF"></a>
+                    <a name="//apple_ref/swift/Method/serverPasswordNeeded(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP20serverPasswordNeededyAA0C0CF">serverPasswordNeeded(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">serverPasswordNeeded</span><span class="p">(</span><span class="n">_</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP9keyNeededyAA7ChannelC7channel_AA0C0C2ontF"></a>
+                    <a name="//apple_ref/swift/Method/keyNeeded(channel:on:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP9keyNeededyAA7ChannelC7channel_AA0C0C2ontF">keyNeeded(channel:on:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">keyNeeded</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt"><a href="../Classes/Channel.html">Channel</a></span><span class="p">,</span> <span class="n">on</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP12keyIncorrectyAA7ChannelC7channel_AA0C0C2ontF"></a>
+                    <a name="//apple_ref/swift/Method/keyIncorrect(channel:on:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP12keyIncorrectyAA7ChannelC7channel_AA0C0C2ontF">keyIncorrect(channel:on:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">keyIncorrect</span><span class="p">(</span><span class="nv">channel</span><span class="p">:</span> <span class="kt"><a href="../Classes/Channel.html">Channel</a></span><span class="p">,</span> <span class="n">on</span> <span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP6kickedyAA0C0C6server_AA4RoomC4roomAA4UserC6sendertF"></a>
+                    <a name="//apple_ref/swift/Method/kicked(server:room:sender:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP6kickedyAA0C0C6server_AA4RoomC4roomAA4UserC6sendertF">kicked(server:room:sender:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">kicked</span><span class="p">(</span><span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">,</span> <span class="nv">room</span><span class="p">:</span> <span class="kt"><a href="../Classes/Room.html">Room</a></span><span class="p">,</span> <span class="nv">sender</span><span class="p">:</span> <span class="kt"><a href="../Classes/User.html">User</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP6bannedyAA0C0C6server_AA7ChannelC7channeltF"></a>
+                    <a name="//apple_ref/swift/Method/banned(server:channel:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP6bannedyAA0C0C6server_AA7ChannelC7channeltF">banned(server:channel:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">banned</span><span class="p">(</span><span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">,</span> <span class="nv">channel</span><span class="p">:</span> <span class="kt"><a href="../Classes/Channel.html">Channel</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore14ServerDelegateP10inviteOnlyyAA0C0C6server_AA7ChannelC7channeltF"></a>
+                    <a name="//apple_ref/swift/Method/inviteOnly(server:channel:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore14ServerDelegateP10inviteOnlyyAA0C0C6server_AA7ChannelC7channeltF">inviteOnly(server:channel:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">inviteOnly</span><span class="p">(</span><span class="nv">server</span><span class="p">:</span> <span class="kt"><a href="../Classes/Server.html">Server</a></span><span class="p">,</span> <span class="nv">channel</span><span class="p">:</span> <span class="kt"><a href="../Classes/Channel.html">Channel</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2018-08-22)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

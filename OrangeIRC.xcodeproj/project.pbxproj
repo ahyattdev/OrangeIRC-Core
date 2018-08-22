@@ -244,6 +244,7 @@
 		66C858101D7B17FA009E486F /* UserPartLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPartLogEvent.swift; sourceTree = "<group>"; };
 		66EDD2E11D29621B0013E7CC /* OrangeIRCCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OrangeIRCCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EDE1A6212DAFE900514A87 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		66EDE1A7212DB30C00514A87 /* docs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = docs.sh; sourceTree = "<group>"; };
 		6A18EAE71D5BC66C00AF1EF9 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		6A1EECF11E142A5800A67C35 /* UsersSearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersSearchResultsController.swift; sourceTree = "<group>"; };
 		6A212F831E104C7B006739B4 /* OrangeIRCCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrangeIRCCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -416,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				66837DA11D25E59900F85410 /* .gitignore */,
+				66EDE1A7212DB30C00514A87 /* docs.sh */,
 				6ABAD44A1DD70C8100D1B689 /* LICENSE */,
 				66EDE1A6212DAFE900514A87 /* Cartfile */,
 				6ABAD4491DD70C2500D1B689 /* README.md */,
