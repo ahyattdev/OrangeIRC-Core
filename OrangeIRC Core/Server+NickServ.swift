@@ -10,7 +10,7 @@ import Foundation
 
 extension Server{
     
-    struct NickServ {
+    internal struct NickServ {
         
         private init() { }
         
@@ -23,7 +23,7 @@ extension Server{
         
     }
     
-    func handleNickServ(_ notice: String) {
+    internal func handleNickServ(_ notice: String) {
         if notice.contains(NickServ.NICK_REGISTERED) {
             if nickservPassword.isEmpty {
                 delegate?.nickservPasswordNeeded(self)

@@ -646,63 +646,63 @@
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Server+Room.swift",
-      "line": 13,
+      "line": 14,
       "symbol": "Server.join(channel:key:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Server+Room.swift",
-      "line": 29,
+      "line": 30,
       "symbol": "Server.leave(channel:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Server+Room.swift",
-      "line": 33,
+      "line": 34,
       "symbol": "Server.alreadyExists(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Server+Room.swift",
-      "line": 44,
+      "line": 45,
       "symbol": "Server.channelFrom(name:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Server+Room.swift",
-      "line": 55,
+      "line": 56,
       "symbol": "Server.privateMessageFrom(user:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Server+Room.swift",
-      "line": 66,
+      "line": 67,
       "symbol": "Server.getOrAddChannel(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Server+Room.swift",
-      "line": 80,
+      "line": 81,
       "symbol": "Server.startPrivateMessageSession(_:with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Server+Room.swift",
-      "line": 86,
+      "line": 87,
       "symbol": "Server.startPrivateMessageSession(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Server+Room.swift",
-      "line": 101,
+      "line": 102,
       "symbol": "Server.delete(room:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

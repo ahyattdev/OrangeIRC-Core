@@ -11,7 +11,7 @@ import CocoaAsyncSocket
 
 extension Server {
     
-    open func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
+    internal func socket(_ sock: GCDAsyncSocket, didConnectToHost host: String, port: UInt16) {
         socket?.readData(to: GCDAsyncSocket.crlfData(), withTimeout: noTimeout, tag: Tag.Normal)
         print("Connected to host: \(host)")
         // Send the NICK message
@@ -24,7 +24,7 @@ extension Server {
         }
     }
     
-    open func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
+    internal func socketDidDisconnect(_ sock: GCDAsyncSocket, withError err: Error?) {
         // FIXME: Doesn't call all the delegate functions
         if err != nil {
             let error = err! as NSError
@@ -50,7 +50,7 @@ extension Server {
         reset()
     }
     
-    @objc(socket:didReadData:withTag:) open func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
+    @objc(socket:didReadData:withTag:) internal func socket(_ sock: GCDAsyncSocket, didRead data: Data, withTag tag: Int) {
         let strData = data.subdata(in: (0 ..< data.count))
         
         guard let string = String(bytes: strData, encoding: self.encoding), let message = Message(string) else {
@@ -65,7 +65,7 @@ extension Server {
         handle(message: message)
     }
     
-    open func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
+    internal func socket(_ sock: GCDAsyncSocket, didWriteDataWithTag tag: Int) {
         switch tag {
         case Tag.Normal:
             break

@@ -33,18 +33,14 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         
     }
     
-    /*
-     Constants
-     */
+    // MARK: Constants
     
     /// Timeout value representing no timeout.
     open let noTimeout = TimeInterval(-1)
     
     internal let crlf = "\r\n"
     
-    /*
-     Client settings
-     */
+    // MARK: Client settings
     
     // Saved data
     
@@ -107,9 +103,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     /// Server encoding, defaults to UTF-8.
     open var encoding: String.Encoding
     
-    /*
-     Session data
-     */
+    // MARK: Session data
     
     /// IRC client connection status.
     open var isConnected: Bool {
@@ -165,9 +159,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     internal var appendedUnderscoreCount = 0
     
-    /*
-     Creating an IRC server client
-     */
+    // MARK: Creating an IRC server client
     
     /// Create a client for an IRC server with the essential settings.
     ///
@@ -258,9 +250,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         aCoder.encode(rooms, forKey: Coding.Rooms)
     }
     
-    /*
-     Connection state
-     */
+    // MARK: Connection state
     
     /// Initiates connection from the client to the server.
     open func connect() {
@@ -291,7 +281,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         disconnect()
     }
     
-    /* User identity and authentication */
+    // MARK: User identity and authentication
     
     /// Sends the server password.
     open func sendPassword() {
@@ -310,9 +300,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         self.write(string: "\(Command.PRIVMSG) \(Command.Services.NickServ) :\(Command.IDENTIFY) \(self.nickservPassword)", with: Tag.NickServPassword)
     }
     
-    /*
-     User data
-     */
+    // MARK: User data
     
     /// Fetches information on a user from the server.
     ///
@@ -323,9 +311,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         write(string: "\(Command.WHOIS) \(user.nick)")
     }
     
-    /*
-     Channel data
-     */
+    // MARK: IRC channels
     
     /// Starts fetching the channel list from the server.
     open func fetchChannelList() {
@@ -333,9 +319,159 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         write(string: "\(Command.LIST)")
     }
     
-    /*
-     Utility
-     */
+    /// Join an IRC channel.
+    ///
+    /// - Parameters:
+    ///   - channel: Channel name
+    ///   - key: Channel key, optional
+    open func join(channel: String, key: String? = nil) {
+        var stringToWrite = "\(Command.JOIN) \(channel)"
+        // Append "#" if no other prefixes are detected
+        if let first = channel.utf16.first {
+            if !Channel.CHANNEL_PREFIXES.characterIsMember(first) {
+                stringToWrite = "\(Command.JOIN) #\(channel)"
+            }
+        }
+        
+        if key != nil {
+            stringToWrite = "\(stringToWrite) \(key!)"
+        }
+        
+        write(string: stringToWrite)
+    }
+    
+    /// Leave a channel.
+    ///
+    /// - Parameter channel: Channel name.
+    open func leave(channel: String) {
+        write(string: "\(Command.PART) \(channel)")
+    }
+    
+    /// Check if a channel already exists in the client.
+    ///
+    /// - Parameter channelName: Channel name
+    /// - Returns: Value indicating existence of channel
+    internal func alreadyExists(_ channelName: String) -> Bool {
+        for existingRoom in self.rooms {
+            if let channel = existingRoom as? Channel {
+                if channel.name == channelName {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    /// Create a `Channel` from a channel name
+    ///
+    /// - Parameter name: Channel name
+    /// - Returns: `Channel`
+    internal func channelFrom(name: String) -> Channel? {
+        for room in self.rooms {
+            if let channel = room as? Channel {
+                if channel.name == name {
+                    return channel
+                }
+            }
+        }
+        return nil
+    }
+    
+    /// Creates a private message room to a user
+    ///
+    /// - Parameter user: User to message
+    /// - Returns: Private message room
+    internal func privateMessageFrom(user: User) -> PrivateMessage? {
+        for room in rooms {
+            if let privateMessageRoom = room as? PrivateMessage {
+                if privateMessageRoom.otherUser == user {
+                    return privateMessageRoom
+                }
+            }
+        }
+        return nil
+    }
+    
+    /// Gets a channel from a channel name. Creates it if it doesn’t exist
+    /// already.
+    ///
+    /// - Parameter name: Channel name
+    /// - Returns: `Channel`
+    internal func getOrAddChannel(_ name: String) -> Channel {
+        for room in rooms {
+            if let channel = room as? Channel {
+                if channel.name == name {
+                    return channel
+                }
+            }
+        }
+        let channel = Channel(name)
+        channel.server = self
+        rooms.append(channel)
+        return channel
+    }
+    
+    /// Starts a private message session with another user and message.
+    ///
+    /// The message is necessary because you can't start a private message
+    /// session without a message, unlike creating channels.
+    ///
+    /// - Parameters:
+    ///   - otherNick: The user to message
+    ///   - message: The message to send
+    internal func startPrivateMessageSession(_ otherNick: String, with message: String) {
+        startPrivateMessageSession(otherNick)
+        write(string: "\(Command.PRIVMSG) \(otherNick) :\(message)")
+    }
+    
+    @discardableResult
+    /// Starts a private message session with another user and message.
+    ///
+    /// - Parameter otherNick: The user to message
+    /// - Returns: The resulting Room
+    open func startPrivateMessageSession(_ otherNick: String) -> Room {
+        // FIXME: Return PrivateMessage instead of Room?
+        
+        // Should handle everything from creating the room to telling the delegate about it
+        // We started a new private message session
+        let user = userCache.getOrCreateUser(nickname: otherNick)
+        
+        let room = PrivateMessage(user)
+        room.server = self
+        rooms.append(room)
+        
+        // We won't create a join room log event, those aren't really a thing with private messages
+        NotificationCenter.default.post(name: Notifications.RoomCreated, object: room)
+        
+        return room
+    }
+    
+    /// Deletes a room. If it is a `Channel` the client will also leave it.
+    ///
+    /// - Parameter room: The room to delete
+    open func delete(room: Room) {
+        
+        // Leave gracefully
+        if let channel = room as? Channel {
+            if channel.isJoined {
+                leave(channel: channel.name)
+            }
+        }
+        
+        // Remove from the array of rooms of the server of this room
+        for i in 0 ..< rooms.count {
+            if rooms[i] == room {
+                rooms.remove(at: i)
+                break
+            }
+        }
+        
+        ServerManager.shared.saveData()
+        
+        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
+    }
+    
+    // MARK: Utility
     
     /// Prepare this server for the app to enter the background.
     ///
