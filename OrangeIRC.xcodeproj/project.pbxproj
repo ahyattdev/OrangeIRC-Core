@@ -245,6 +245,7 @@
 		66EDD2E11D29621B0013E7CC /* OrangeIRCCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OrangeIRCCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		66EDE1A6212DAFE900514A87 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		66EDE1A7212DB30C00514A87 /* docs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = docs.sh; sourceTree = "<group>"; };
+		66EDE1A8212DBC5100514A87 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		6A18EAE71D5BC66C00AF1EF9 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		6A1EECF11E142A5800A67C35 /* UsersSearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersSearchResultsController.swift; sourceTree = "<group>"; };
 		6A212F831E104C7B006739B4 /* OrangeIRCCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrangeIRCCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,7 +302,6 @@
 		6A9FEB8C1E161B4E00F5CF4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AAA09E81F00007D00ECF97A /* UserNickChangeLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNickChangeLogEvent.swift; sourceTree = "<group>"; };
 		6AAA09EC1F0004F200ECF97A /* UserMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMode.swift; sourceTree = "<group>"; };
-		6ABAD4481DD70A4400D1B689 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
 		6ABAD4491DD70C2500D1B689 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6ABAD44A1DD70C8100D1B689 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6ADD58E21D29E4890051DB28 /* RoomTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomTableViewController.swift; sourceTree = "<group>"; };
@@ -426,8 +426,8 @@
 				661D52B91F183C04006F8E06 /* CODE_OF_CONDUCT.md */,
 				6A558D351E16BF2F0077BBF4 /* TODO.md */,
 				6A558D361E16C01B0077BBF4 /* OrangeIRC.png */,
+				66EDE1A8212DBC5100514A87 /* docs */,
 				6A59B7B01E73C58500BE9123 /* Icons */,
-				6ABAD4481DD70A4400D1B689 /* docs */,
 				6AF88F9E1E17388100FD9A9D /* Screenshots */,
 				66A75AFD1D234694001161A3 /* OrangeIRC iOS */,
 				66A75B141D2346ED001161A3 /* OrangeIRC Core */,

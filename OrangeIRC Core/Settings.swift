@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// IRC server settings that apply to all serves
 open class Settings {
     
     fileprivate struct Keys {
@@ -18,12 +19,17 @@ open class Settings {
         
     }
     
-    open static let shared = Settings()
+    /// The global instance
+    public static let shared = Settings()
     private init() { }
     
-    var autoReconnect = UserDefaults.standard.bool(forKey: Keys.AutoReconnect) {
-        didSet {
+    /// Automatically reconnect when a connection to a server is lost
+    public var autoReconnect: Bool {
+        set {
             UserDefaults.standard.set(autoReconnect, forKey: Keys.AutoReconnect)
+        }
+        get {
+            return UserDefaults.standard.bool(forKey: Keys.AutoReconnect)
         }
     }
     

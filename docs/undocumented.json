@@ -1492,20 +1492,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Settings.swift",
-      "line": 11,
-      "symbol": "Settings",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Settings.swift",
-      "line": 21,
-      "symbol": "Settings.shared",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
       "line": 15,
       "symbol": "User",

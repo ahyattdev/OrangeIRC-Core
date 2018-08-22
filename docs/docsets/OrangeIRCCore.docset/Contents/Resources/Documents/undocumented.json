@@ -1493,16 +1493,9 @@
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Settings.swift",
-      "line": 11,
-      "symbol": "Settings",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Settings.swift",
-      "line": 21,
-      "symbol": "Settings.shared",
-      "symbol_kind": "source.lang.swift.decl.var.static",
+      "line": 27,
+      "symbol": "Settings.autoReconnect",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
