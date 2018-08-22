@@ -6,3 +6,4 @@
 * Make reply detection more intelligent
 * Handle MODE messages
 * Still says ONLINE after link closed (failed to install identd)
+* No gap between first network in list and navigation bar
