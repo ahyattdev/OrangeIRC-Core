@@ -295,11 +295,13 @@ extension Server {
             
             var roomName = message.target[0]
             
-            guard roomName.characters.count > 1 else {
+            guard roomName.utf8.count > 0 else {
+                print("PRIVMSG: Invalid room name")
                 break
             }
             
             guard var param = message.parameters else {
+                print("PRIVMSG: No parameters")
                 break
             }
             
@@ -311,7 +313,7 @@ extension Server {
                 roomName = message.prefix!.nickname!
             }
             
-            let isCommand = param.characters.first == "\u{01}" && param.characters.last == "\u{01}"
+            let isCommand = param.unicodeScalars.first == "\u{01}" && param.unicodeScalars.last == "\u{01}"
             
             if isPrivate && isCommand {
                 // This is a command
@@ -440,7 +442,7 @@ extension Server {
             let hostname = message.target[2]
             
             // Take the tilde off the username
-            if username.characters.first == "~" {
+            if username.unicodeScalars.first == "~" {
                 username.remove(at: username.startIndex)
             }
             
