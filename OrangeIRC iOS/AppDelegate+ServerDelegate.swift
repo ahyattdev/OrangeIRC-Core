@@ -35,7 +35,7 @@ extension AppDelegate {
         updateNetworkIndicator()
     }
     
-    func recieved(notice: String, sender: String, on server: Server) {
+    func received(notice: String, sender: String, on server: Server) {
         var title = localized("NOTICE_FROM_ON")
         title = title.replacingOccurrences(of: "[USERNAME]", with: sender)
         title = title.replacingOccurrences(of: "[SERVERNAME]", with: server.displayName)
@@ -46,11 +46,11 @@ extension AppDelegate {
         AppDelegate.showAlertGlobally(alert)
     }
     
-    func recieved(logEvent: LogEvent, for room: Room) {
+    func received(logEvent: LogEvent, for room: Room) {
         
     }
     
-    func recieved(error: String, on server: Server) {
+    func received(error: String, on server: Server) {
         let fullError = "\(localized("ERROR_DISCONNECT_MESSAGE")):\n\n\(error)"
         
         let alert = UIAlertController(title: server.displayName, message: fullError, preferredStyle: .alert)
@@ -61,7 +61,7 @@ extension AppDelegate {
         AppDelegate.showAlertGlobally(alert)
     }
     
-    func recieved(topic: String, for room: Room) {
+    func received(topic: String, for room: Room) {
         
     }
     
@@ -232,7 +232,7 @@ extension AppDelegate {
         AppDelegate.showAlertGlobally(alert)
     }
     
-    public func serverPaswordNeeed(_ server: Server) {
+    public func serverPasswordNeeded(_ server: Server) {
         let alert = ServerPasswordAlert(server)
         AppDelegate.showAlertGlobally(alert)
     }
