@@ -13,7 +13,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">OrangeIRCCore Docs</a> (46% documented)</p>
+        <p><a href="index.html">OrangeIRCCore Docs</a> (89% documented)</p>
         <p class="header-right"><a href="https://github.com/ahyattdev/OrangeIRC"><img src="img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fahyattdev%2Egithub%2Eio%2Fdocsets%2FOrangeIRCCore%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -33,6 +33,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Classes/Channel.html">Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/KickLogEvent.html">KickLogEvent</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/LogEvent.html">LogEvent</a>
@@ -75,6 +78,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/UserLogEvent.html">UserLogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/UserNickChangeLogEvent.html">UserNickChangeLogEvent</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes.html#/c:@M@OrangeIRCCore@objc(cs)UserOfflineLogEvent">UserOfflineLogEvent</a>
@@ -133,6 +139,9 @@
             <a href="Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Typealiases.html#/s:13OrangeIRCCore11ChannelDataa">ChannelData</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Typealiases.html#/s:13OrangeIRCCore11ListChannela">ListChannel</a>
               </li>
             </ul>
@@ -162,7 +171,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Log event with a text message</p>
 
                         <a href="Classes/MessageLogEvent.html" class="slightly-smaller">See more</a>
                       </div>
@@ -170,7 +179,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">MessageLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/RoomLogEvent.html">RoomLogEvent</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">MessageLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/RoomLogEvent.html">RoomLogEvent</a></span></code></pre>
 
                         </div>
                       </div>
@@ -251,6 +260,38 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/c:@M@OrangeIRCCore@objc(cs)UserNickChangeLogEvent"></a>
+                    <a name="//apple_ref/swift/Class/UserNickChangeLogEvent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@OrangeIRCCore@objc(cs)UserNickChangeLogEvent">UserNickChangeLogEvent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>When a user changes their nickname</p>
+
+                        <a href="Classes/UserNickChangeLogEvent.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UserNickChangeLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/c:@M@OrangeIRCCore@objc(cs)UserQuitLogEvent"></a>
                     <a name="//apple_ref/swift/Class/UserQuitLogEvent" class="dashAnchor"></a>
                     <a class="token" href="#/c:@M@OrangeIRCCore@objc(cs)UserQuitLogEvent">UserQuitLogEvent</a>
@@ -261,7 +302,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>When a user quits from the server</p>
 
                         <a href="Classes/UserQuitLogEvent.html" class="slightly-smaller">See more</a>
                       </div>
@@ -269,7 +310,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">UserQuitLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UserQuitLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
 
                         </div>
                       </div>
@@ -325,14 +366,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>When a user is offline</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">UserOfflineLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UserOfflineLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
 
                         </div>
                       </div>
@@ -356,7 +397,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>When a user joins a channel</p>
 
                         <a href="Classes/UserJoinLogEvent.html" class="slightly-smaller">See more</a>
                       </div>
@@ -364,7 +405,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">UserJoinLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UserJoinLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
 
                         </div>
                       </div>
@@ -388,7 +429,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>When a user leaves a channel</p>
 
                         <a href="Classes/UserPartLogEvent.html" class="slightly-smaller">See more</a>
                       </div>
@@ -396,7 +437,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">UserPartLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UserPartLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
 
                         </div>
                       </div>
@@ -457,7 +498,7 @@ initialized.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Parent class for log events relating to channel moderation</p>
 
                         <a href="Classes/ModerationLogEvent.html" class="slightly-smaller">See more</a>
                       </div>
@@ -465,7 +506,7 @@ initialized.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">ModerationLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ModerationLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
 
                         </div>
                       </div>
@@ -489,7 +530,7 @@ initialized.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Parent class for log events relating to rooms</p>
 
                         <a href="Classes/RoomLogEvent.html" class="slightly-smaller">See more</a>
                       </div>
@@ -497,7 +538,7 @@ initialized.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">RoomLogEvent</span><span class="p">:</span> <span class="kt"><a href="Classes/LogEvent.html">LogEvent</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RoomLogEvent</span><span class="p">:</span> <span class="kt"><a href="Classes/LogEvent.html">LogEvent</a></span></code></pre>
 
                         </div>
                       </div>
@@ -521,7 +562,7 @@ initialized.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>An IRC room. It is either a <code><a href="Classes/Channel.html">Channel</a></code> or <code><a href="Classes/PrivateMessage.html">PrivateMessage</a></code> at runtime.</p>
 
                         <a href="Classes/Room.html" class="slightly-smaller">See more</a>
                       </div>
@@ -553,7 +594,8 @@ initialized.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>An event in a room log. More detail is given in it’s subtypes. This class is
+sort of like a Java abstract class inthe way it’s used.</p>
 
                         <a href="Classes/LogEvent.html" class="slightly-smaller">See more</a>
                       </div>
@@ -561,7 +603,7 @@ initialized.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">LogEvent</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">LogEvent</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
 
                         </div>
                       </div>
@@ -585,14 +627,46 @@ initialized.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>When a user went from away to online</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">UserOnlineLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UserOnlineLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@OrangeIRCCore@objc(cs)KickLogEvent"></a>
+                    <a name="//apple_ref/swift/Class/KickLogEvent" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@OrangeIRCCore@objc(cs)KickLogEvent">KickLogEvent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>When a user is kicked from a channel</p>
+
+                        <a href="Classes/KickLogEvent.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">KickLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/ModerationLogEvent.html">ModerationLogEvent</a></span></code></pre>
 
                         </div>
                       </div>
@@ -616,7 +690,7 @@ initialized.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A private message session with another user</p>
 
                         <a href="Classes/PrivateMessage.html" class="slightly-smaller">See more</a>
                       </div>
@@ -648,7 +722,7 @@ initialized.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>An IRC user</p>
 
                         <a href="Classes/User.html" class="slightly-smaller">See more</a>
                       </div>
@@ -680,7 +754,7 @@ initialized.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Parent class for log events relating to users</p>
 
                         <a href="Classes/UserLogEvent.html" class="slightly-smaller">See more</a>
                       </div>
@@ -688,7 +762,7 @@ initialized.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">UserLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/RoomLogEvent.html">RoomLogEvent</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UserLogEvent</span> <span class="p">:</span> <span class="kt"><a href="Classes/RoomLogEvent.html">RoomLogEvent</a></span></code></pre>
 
                         </div>
                       </div>

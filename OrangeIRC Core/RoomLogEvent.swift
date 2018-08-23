@@ -8,9 +8,11 @@
 
 import Foundation
 
-open class RoomLogEvent: LogEvent {
+/// Parent class for log events relating to rooms
+public class RoomLogEvent: LogEvent {
     
-    open var room: Room
+    /// The log event relating to the room
+    public var room: Room
     
     internal init(room: Room) {
         self.room = room

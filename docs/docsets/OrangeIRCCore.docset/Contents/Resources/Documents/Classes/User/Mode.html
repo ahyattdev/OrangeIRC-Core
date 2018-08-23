@@ -14,7 +14,7 @@
     <a title="Mode Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../../index.html">OrangeIRCCore Docs</a> (46% documented)</p>
+        <p><a href="../../index.html">OrangeIRCCore Docs</a> (89% documented)</p>
         <p class="header-right"><a href="https://github.com/ahyattdev/OrangeIRC"><img src="../../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fahyattdev%2Egithub%2Eio%2Fdocsets%2FOrangeIRCCore%2Exml"><img src="../../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -34,6 +34,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../../Classes/Channel.html">Channel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/KickLogEvent.html">KickLogEvent</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Classes/LogEvent.html">LogEvent</a>
@@ -76,6 +79,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../../Classes/UserLogEvent.html">UserLogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../../Classes/UserNickChangeLogEvent.html">UserNickChangeLogEvent</a>
               </li>
               <li class="nav-group-task">
                 <a href="../../Classes.html#/c:@M@OrangeIRCCore@objc(cs)UserOfflineLogEvent">UserOfflineLogEvent</a>
@@ -134,6 +140,9 @@
             <a href="../../Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../../Typealiases.html#/s:13OrangeIRCCore11ChannelDataa">ChannelData</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../../Typealiases.html#/s:13OrangeIRCCore11ListChannela">ListChannel</a>
               </li>
             </ul>
@@ -150,41 +159,19 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>The user mode on the server</p>
+
+<ul>
+<li>Operator: Operator</li>
+<li>Voice: Voice</li>
+<li>Invisible: Invisible</li>
+<li>Deaf: Deaf</li>
+<li>Zombie: Zombie</li>
+<li>None: None</li>
+</ul>
 
           </section>
           <section class="section task-group-section">
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore4UserC4ModeO20PREFIX_CHARACTER_SETSo14NSCharacterSetCvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/PREFIX_CHARACTER_SET" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore4UserC4ModeO20PREFIX_CHARACTER_SETSo14NSCharacterSetCvpZ">PREFIX_CHARACTER_SET</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">PREFIX_CHARACTER_SET</span> <span class="o">=</span> <span class="kt">NSCharacterSet</span><span class="p">(</span><span class="nv">charactersIn</span><span class="p">:</span> <span class="s">"@+&lt;-!"</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
             <div class="task-group">
               <ul>
                 <li class="item">
@@ -363,6 +350,37 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">None</span> <span class="o">=</span> <span class="s">""</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13OrangeIRCCore4UserC4ModeO13validPrefixesSo14NSCharacterSetCvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/validPrefixes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore4UserC4ModeO13validPrefixesSo14NSCharacterSetCvpZ">validPrefixes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Valid user mode prefixes</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">validPrefixes</span> <span class="o">=</span> <span class="kt">NSCharacterSet</span><span class="p">(</span><span class="nv">charactersIn</span><span class="p">:</span> <span class="s">"@+&lt;-!"</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

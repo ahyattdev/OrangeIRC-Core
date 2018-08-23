@@ -441,7 +441,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         rooms.append(room)
         
         // We won't create a join room log event, those aren't really a thing with private messages
-        NotificationCenter.default.post(name: Notifications.RoomCreated, object: room)
+        NotificationCenter.default.post(name: Notifications.roomCreated, object: room)
         
         return room
     }
@@ -468,7 +468,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         
         ServerManager.shared.saveData()
         
-        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
+        NotificationCenter.default.post(name: Notifications.serverDataChanged, object: nil)
     }
     
     // MARK: Utility

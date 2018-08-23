@@ -8,11 +8,13 @@
 
 import Foundation
 
-open class ModerationLogEvent : UserLogEvent {
+/// Parent class for log events relating to channel moderation
+public class ModerationLogEvent : UserLogEvent {
     
-    open var receiver: User
+    /// The user receiving the moderation event
+    public var receiver: User
     
-    public init(sender: User, receiver: User, room: Room) {
+    internal init(sender: User, receiver: User, room: Room) {
         self.receiver = receiver
         super.init(sender: sender, room: room)
     }

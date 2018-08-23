@@ -12,6 +12,10 @@ import UIKit
 import AppKit
 #endif
 
+/// Named tuple of types for channel data
+public typealias ChannelData = (name: String, mode: User.Mode, away: Bool)
+
+/// An IRC user
 open class User: NSObject, NSCoding {
     
     private struct Coding {
@@ -22,9 +26,15 @@ open class User: NSObject, NSCoding {
         
     }
     
+    /// The user mode on the server
+    ///
+    /// - Operator: Operator
+    /// - Voice: Voice
+    /// - Invisible: Invisible
+    /// - Deaf: Deaf
+    /// - Zombie: Zombie
+    /// - None: None
     public enum Mode : String {
-        
-        public static let PREFIX_CHARACTER_SET = NSCharacterSet(charactersIn: "@+<-!")
         
         case Operator = "@"
         case Voice = "+"
@@ -33,8 +43,15 @@ open class User: NSObject, NSCoding {
         case Zombie = "!"
         case None = ""
         
+        /// Valid user mode prefixes
+        public static let validPrefixes = NSCharacterSet(charactersIn: "@+<-!")
+
     }
     
+    /// User class, different than MODE
+    ///
+    /// - Normal: Normal user
+    /// - Operator: Server operator
     public enum Class {
         
         case Normal
@@ -42,32 +59,46 @@ open class User: NSObject, NSCoding {
         
     }
     
-    public typealias ChannelData = (name: String, mode: Mode, away: Bool)
+    /// The channels the user is on
+    internal(set) public var channels = [ChannelData]()
     
-    open var channels = [ChannelData]()
+    /// Nickname
+    internal(set) public var nick: String
     
-    // Nickname
-    open var nick: String
-    
-    open var isOnline = true
+    /// User online status
+    internal(set) public var isOnline = true
     
     // Begin WHOIS data
-    open var username: String?
-    open var host: String?
-    open var ip: String?
-    open var servername: String?
-    open var realname: String?
-    open var onlineTime: Date?
-    open var idleTime: Date?
-    open var channelList: [String]?
-    open var `class`: Class?
-    open var awayMessage: String?
-    open var away: Bool?
+    /// Username
+    internal(set) public var username: String?
+    /// Hostname
+    internal(set) public var host: String?
+    /// User IP
+    internal(set) public var ip: String?
+    /// Server name
+    internal(set) public var servername: String?
+    /// Real name
+    internal(set) public var realname: String?
+    /// Online time
+    internal(set) public var onlineTime: Date?
+    /// Idle time
+    internal(set) public var idleTime: Date?
+    /// User channel list
+    internal(set) public var channelList: [String]?
+    /// User class
+    internal(set) public var `class`: Class?
+    /// User away message
+    internal(set) public var awayMessage: String?
+    /// User away status
+    internal(set) public var away: Bool?
     
-    public init(_ nick: String) {
+    internal init(_ nick: String) {
         self.nick = nick
     }
     
+    /// Initialize using `NSCoding` APIs
+    ///
+    /// - Parameter coder: The coder
     public required convenience init?(coder aDecoder: NSCoder) {
         guard let nick = aDecoder.decodeObject(forKey: Coding.Nick) as? String else {
             return nil
@@ -76,10 +107,17 @@ open class User: NSObject, NSCoding {
         self.init(nick)
     }
     
+    /// Encode using `NSCoding` APIs
+    ///
+    /// - Parameter aCoder: The coder
     open func encode(with aCoder: NSCoder) {
         aCoder.encode(nick, forKey: Coding.Nick)
     }
     
+    /// Gets the MODE of a user on a `Channel`
+    ///
+    /// - Parameter channel: Channel
+    /// - Returns: User `Mode`
     open func getMode(for channel: String) -> Mode? {
         // Search through the list of channels this user is on to get the one we want and return it
         for channelNode in channels {
@@ -91,7 +129,7 @@ open class User: NSObject, NSCoding {
         return nil
     }
     
-    open func set(mode: Mode, for channel: String) {
+    internal func set(mode: Mode, for channel: String) {
         // Search through the list of channels this user is on to get the one we want and set it
         for var channelNode in channels {
             if channelNode.name == channel {
@@ -102,7 +140,12 @@ open class User: NSObject, NSCoding {
         print("This user is not on the specified channel")
     }
     
+    /// Gets the away status of a user for a `Channel`
+    ///
+    /// - Parameter channel: Channel
+    /// - Returns: Away status
     open func getAway(for channel: String) -> Bool? {
+        // FIXME: Is away per channel?
         // Search through the list of channels this user is on to get the one we want and return it
         for channelNode in channels {
             if channelNode.name == channel {
@@ -113,7 +156,12 @@ open class User: NSObject, NSCoding {
         return nil
     }
     
-    open func set(away: Bool, for channel: String) {
+    /// Sets the away status of a user on a channel
+    ///
+    /// - Parameters:
+    ///   - away: Away status
+    ///   - channel: Channel
+    internal func set(away: Bool, for channel: String) {
         // Search through the list of channels this user is on to get the one we want and set it
         for var channelNode in channels {
             if channelNode.name == channel {
@@ -124,6 +172,10 @@ open class User: NSObject, NSCoding {
         print("This user is not on the specified channel")
     }
     
+    /// Gets if a user is on a `Channel`
+    ///
+    /// - Parameter channel: Channel
+    /// - Returns: If the user is on the channel
     open func isOn(channel: String) -> Bool {
         for channelNode in channels {
             if channelNode.name == channel {
@@ -133,7 +185,7 @@ open class User: NSObject, NSCoding {
         return false
     }
     
-    open func removeFrom(channel: String) {
+    internal func removeFrom(channel: String) {
         for i in 0 ..< channels.count {
             if channels[i].name == channel {
                 channels.remove(at: i)
@@ -145,6 +197,10 @@ open class User: NSObject, NSCoding {
     
     #if os(iOS) || os(tvOS)
     
+    /// The color of an IRC user, on a per room basis.
+    ///
+    /// - Parameter room: The room
+    /// - Returns: The color for the user in the room
     open func color(room: Room) -> UIColor {
         if let channel = room as? Channel {
             guard let mode = getMode(for: channel.name) else {
@@ -189,6 +245,10 @@ open class User: NSObject, NSCoding {
     
     #else
     
+    /// The color of an IRC user, on a per room basis.
+    ///
+    /// - Parameter room: The room
+    /// - Returns: The color for the user in the room
     open func color(room: Room) -> NSColor {
         if let channel = room as? Channel {
             guard let mode = getMode(for: channel.name) else {
@@ -233,12 +293,17 @@ open class User: NSObject, NSCoding {
 
     #endif
     
+    /// The colored name for the user
+    ///
+    /// - Parameter room: The room to determine the color for
+    /// - Returns: The color the the user
     open func coloredName(for room: Room) -> NSAttributedString {
         // The properly colored attributes
         let attributes = [NSAttributedStringKey.foregroundColor : color(room: room)]
         return NSAttributedString(string: nick, attributes: attributes)
     }
     
+    /// Compares two `User` instances
     open static func ==(lhs: User, rhs: User) -> Bool {
         return lhs.nick == rhs.nick
     }

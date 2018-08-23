@@ -8,9 +8,11 @@
 
 import Foundation
 
-open class UserPartLogEvent : UserLogEvent {
+/// When a user leaves a channel
+public class UserPartLogEvent : UserLogEvent {
     
-    open override var attributedDescription: NSAttributedString {
+    /// Attributed description
+    public override var attributedDescription: NSAttributedString {
         let str = NSMutableAttributedString()
         let nick = sender.coloredName(for: room)
         str.append(nick)

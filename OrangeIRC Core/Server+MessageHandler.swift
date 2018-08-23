@@ -229,7 +229,7 @@ extension Server {
             // Set the room as left if we were kicked
             if receiver == userCache.me {
                 room.isJoined = false
-                NotificationCenter.default.post(name: Notifications.UserInfoDidChange, object: room)
+                NotificationCenter.default.post(name: Notifications.userInfoDidChange, object: room)
                 delegate?.kicked(server: self, room: room, sender: sender)
             }
             

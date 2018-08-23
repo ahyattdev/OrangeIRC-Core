@@ -75,8 +75,8 @@ open class ServerManager {
         server.connect()
         saveData()
         
-        NotificationCenter.default.post(name: Notifications.ServerCreated, object: server)
-        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
+        NotificationCenter.default.post(name: Notifications.serverCreated, object: server)
+        NotificationCenter.default.post(name: Notifications.serverDataChanged, object: nil)
         
         // Returned so additional configuration can be done
         return server
@@ -121,12 +121,12 @@ open class ServerManager {
         }
         
         for room in server.rooms {
-            NotificationCenter.default.post(name: Notifications.RoomDeleted, object: room)
-            NotificationCenter.default.post(name: Notifications.RoomDataChanged, object: nil)
+            NotificationCenter.default.post(name: Notifications.roomDeleted, object: room)
+            NotificationCenter.default.post(name: Notifications.roomDataChanged, object: nil)
         }
         
-        NotificationCenter.default.post(name: Notifications.ServerDeleted, object: server)
-        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
+        NotificationCenter.default.post(name: Notifications.serverDeleted, object: server)
+        NotificationCenter.default.post(name: Notifications.serverDataChanged, object: nil)
         
         saveData()
     }

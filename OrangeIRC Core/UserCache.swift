@@ -144,8 +144,8 @@ class UserCache {
         
         if me == user {
             channel.isJoined = true
-            NotificationCenter.default.post(name: Notifications.RoomStateUpdated, object: channel)
-            NotificationCenter.default.post(Notification(name: Notifications.RoomDataChanged))
+            NotificationCenter.default.post(name: Notifications.roomStateUpdated, object: channel)
+            NotificationCenter.default.post(Notification(name: Notifications.roomDataChanged))
             // Do autojoin
             for i in 0 ..< server.roomsFlaggedForAutoJoin.count {
                 let roomName = server.roomsFlaggedForAutoJoin[i]
@@ -178,7 +178,7 @@ class UserCache {
             return ("ERROR", .None)
         }
         let uchar = unichar(prefix.utf16[prefix.utf16.startIndex])
-        if User.Mode.PREFIX_CHARACTER_SET.characterIsMember(uchar) {
+        if User.Mode.validPrefixes.characterIsMember(uchar) {
             cleanNick.remove(at: cleanNick.startIndex)
         }
         
@@ -197,8 +197,8 @@ class UserCache {
             channel.isJoined = false
             // Reset the users on this channel
             channel.users.removeAll()
-            NotificationCenter.default.post(name: Notifications.RoomStateUpdated, object: channel)
-            NotificationCenter.default.post(Notification(name: Notifications.RoomDataChanged))
+            NotificationCenter.default.post(name: Notifications.roomStateUpdated, object: channel)
+            NotificationCenter.default.post(Notification(name: Notifications.roomDataChanged))
         } else {
             // Remove the user object from the room
             for i in 0 ..< channel.users.count {

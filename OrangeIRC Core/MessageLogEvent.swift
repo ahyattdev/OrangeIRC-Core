@@ -12,18 +12,22 @@ import UIKit
 import Foundation
 #endif
 
-open class MessageLogEvent : RoomLogEvent {
+/// Log event with a text message
+public class MessageLogEvent : RoomLogEvent {
     
-    open var contents: String
-    open var sender: User
+    /// Message contents
+    public var contents: String
+    /// Message sender
+    public var sender: User
     
-    init(contents: String, sender: User, room: Room) {
+    internal init(contents: String, sender: User, room: Room) {
         self.contents = contents
         self.sender = sender
         super.init(room: room)
     }
     
-    open override var attributedDescription: NSAttributedString {
+    /// Description of the log event
+    public override var attributedDescription: NSAttributedString {
         let nick = sender.coloredName(for: room)
         let str = NSMutableAttributedString()
         str.append(nick)

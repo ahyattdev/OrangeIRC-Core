@@ -8,34 +8,51 @@
 
 import Foundation
 
+/// `NSNotification` constants used by `ServerManager. You can listen for them
+/// in your own app.
 public struct Notifications {
     
     private init() { }
     
-    // Posted every time something notable related to any server in ServerManager.shared.servers changes,
-    // Examples: Servers created, servers deleted, servers disconnecting
-    // Never has an object
-    public static let ServerDataChanged         = NSNotification.Name(rawValue: "ServerDataChanged")
+    // Fix Me: Document what the objects of the notifications may be.
     
-    public static let ServerStateDidChange      = NSNotification.Name(rawValue: "ServerStateDidChange")
-    public static let UserInfoDidChange         = NSNotification.Name(rawValue: "UserInfoDidChange")
+    /// Posted every time something notable related to any server in ServerManager.shared.servers changes.
+    /// Examples: Servers created, servers deleted, servers disconnecting
+    public static let serverDataChanged         = NSNotification.Name(rawValue: "ServerDataChanged")
     
-    public static let ServerCreated             = NSNotification.Name(rawValue: "ServerCreated")
-    public static let ServerDeleted             = NSNotification.Name(rawValue: "ServerDeleted")
+    /// The state of the server changed
+    public static let serverStateDidChange      = NSNotification.Name(rawValue: "ServerStateDidChange")
+    /// Information for a user has changed
+    public static let userInfoDidChange         = NSNotification.Name(rawValue: "UserInfoDidChange")
     
-    public static let RoomDataChanged           = NSNotification.Name(rawValue: "RoomDataChanged")
-    public static let RoomDeleted               = NSNotification.Name(rawValue: "RoomDeleted")
-    public static let RoomCreated               = NSNotification.Name(rawValue: "RoomCreated")
+    /// A server was created
+    public static let serverCreated             = NSNotification.Name(rawValue: "ServerCreated")
+    /// A server was deleted
+    public static let serverDeleted             = NSNotification.Name(rawValue: "ServerDeleted")
     
-    public static let RoomStateUpdated          = NSNotification.Name(rawValue: "RoomStateUpdated")
+    /// The data for a room changed
+    public static let roomDataChanged           = NSNotification.Name(rawValue: "RoomDataChanged")
+    /// A room was deleted
+    public static let roomDeleted               = NSNotification.Name(rawValue: "RoomDeleted")
+    /// A room was created
+    public static let roomCreated               = NSNotification.Name(rawValue: "RoomCreated")
     
-    public static let NewLogEventForRoom        = NSNotification.Name(rawValue: "NewLogEventForRoom")
-    public static let TopicUpdatedForRoom       = NSNotification.Name(rawValue: "TopicUpdatedForRoom")
-    public static let UserListUpdatedForRoom    = NSNotification.Name(rawValue: "UserListUpdatedForRoom")
+    /// The state of a room changed
+    public static let roomStateUpdated          = NSNotification.Name(rawValue: "RoomStateUpdated")
     
-    public static let MOTDUpdatedForServer      = NSNotification.Name(rawValue: "MOTDUpdatedForServer")
+    /// A new log event is in the log for a room
+    public static let newLogEventForRoom        = NSNotification.Name(rawValue: "NewLogEventForRoom")
+    /// Topic changed for room
+    public static let topicUpdatedForRoom       = NSNotification.Name(rawValue: "TopicUpdatedForRoom")
+    /// User list updated for room
+    public static let userListUpdatedForRoom    = NSNotification.Name(rawValue: "UserListUpdatedForRoom")
     
-    public static let ListUpdatedForServer      = NSNotification.Name(rawValue: "ListUpdatedForServer")
-    public static let ListFinishedForServer     = NSNotification.Name(rawValue: "ListFinishedForServer")
+    /// Message Of The Day updated for server
+    public static let motdUpdatedForServer      = NSNotification.Name(rawValue: "MOTDUpdatedForServer")
+    
+    /// Channel list updated for server
+    public static let listUpdatedForServer      = NSNotification.Name(rawValue: "ListUpdatedForServer")
+    /// Channel list fetch completed for server
+    public static let listFinishedForServer     = NSNotification.Name(rawValue: "ListFinishedForServer")
         
 }

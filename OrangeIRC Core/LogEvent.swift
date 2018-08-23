@@ -6,35 +6,44 @@
 //
 //
 
+// Necessary because of UIFont and NSFont
 #if os(iOS) || os(tvOS)
     import UIKit
 #else
     import AppKit
 #endif
 
-// Sort of like a Java abstract class for now
-open class LogEvent : NSObject {
+/// An event in a room log. More detail is given in it’s subtypes. This class is
+/// sort of like a Java abstract class inthe way it’s used.
+public class LogEvent : NSObject {
     
-    open var date: Date = Date()
+    /// The `Date` for the log event
+    public var date: Date = Date()
     
     // No reason to construct this one
     internal override init() { }
 
+    // Necessary because of UIFont and NSFont
     #if os(iOS) || os(tvOS)
     
-    open static var attributes = [NSAttributedStringKey.font : UIFont(name: "Menlo-Regular", size: 16) as Any]
+    /// For default log event description text
+    public static var attributes = [NSAttributedStringKey.font : UIFont(name: "Menlo-Regular", size: 16) as Any]
     
-    open static var italicAttributes = [NSAttributedStringKey.font : UIFont(name: "Menlo-Italic", size: 16) as Any]
+    /// For italic log event description text
+    public static var italicAttributes = [NSAttributedStringKey.font : UIFont(name: "Menlo-Italic", size: 16) as Any]
     
     #else
     
-    open static var attributes = [NSFontAttributeName : NSFont(name: "Menlo-Regular", size: 16) as Any]
+    /// For default log event description text
+    public static var attributes = [NSFontAttributeName : NSFont(name: "Menlo-Regular", size: 16) as Any]
     
-    open static var italicAttributes = [NSFontAttributeName : NSFont(name: "Menlo-Italic", size: 16) as Any]
+    /// For italic log event description text
+    public static var italicAttributes = [NSFontAttributeName : NSFont(name: "Menlo-Italic", size: 16) as Any]
     
     #endif
     
-    open var attributedDescription: NSAttributedString {
+    /// A textual representation of the log event with string attributes.
+    public var attributedDescription: NSAttributedString {
         return NSAttributedString(string: String(describing: self), attributes: LogEvent.attributes)
     }
     

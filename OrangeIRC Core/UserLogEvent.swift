@@ -12,11 +12,13 @@
     import Foundation
 #endif
 
-open class UserLogEvent : RoomLogEvent {
+/// Parent class for log events relating to users
+public class UserLogEvent : RoomLogEvent {
     
-    open var sender: User
+    /// The user that did the action
+    public var sender: User
     
-    public init(sender: User, room: Room) {
+    internal init(sender: User, room: Room) {
         self.sender = sender
         super.init(room: room)
     }

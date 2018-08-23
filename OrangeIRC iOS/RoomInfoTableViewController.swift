@@ -37,9 +37,9 @@ class RoomInfoTableViewController : UITableViewController {
         title = "\(room.displayName) \(localized("DETAILS"))"
         navigationItem.prompt = room.server!.displayName
         
-        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.RoomStateUpdated, object: room)
-        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.TopicUpdatedForRoom, object: room)
-        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.UserListUpdatedForRoom, object: room)
+        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.roomStateUpdated, object: room)
+        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.topicUpdatedForRoom, object: room)
+        NotificationCenter.default.addObserver(tableView, selector: #selector(tableView.reloadData), name: Notifications.userListUpdatedForRoom, object: room)
 
     }
     

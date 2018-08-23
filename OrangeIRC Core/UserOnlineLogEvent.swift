@@ -8,6 +8,7 @@
 
 import Foundation
 
-open class UserOnlineLogEvent : UserLogEvent {
+/// When a user went from away to online
+public class UserOnlineLogEvent : UserLogEvent {
     
 }

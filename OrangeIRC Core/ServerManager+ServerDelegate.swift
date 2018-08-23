@@ -12,32 +12,32 @@ import Foundation
 extension ServerManager {
     
     private func didNotRespond(_ server: Server) {
-        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: server)
-        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
+        NotificationCenter.default.post(name: Notifications.serverStateDidChange, object: server)
+        NotificationCenter.default.post(name: Notifications.serverDataChanged, object: nil)
         serverDelegate?.didNotRespond(server)
     }
     
     private func stoppedResponding(_ server: Server) {
-        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: server)
-        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
+        NotificationCenter.default.post(name: Notifications.serverStateDidChange, object: server)
+        NotificationCenter.default.post(name: Notifications.serverDataChanged, object: nil)
         serverDelegate?.stoppedResponding(server)
     }
     
     private func startedConnecting(_ server: Server) {
-        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: server)
-        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
+        NotificationCenter.default.post(name: Notifications.serverStateDidChange, object: server)
+        NotificationCenter.default.post(name: Notifications.serverDataChanged, object: nil)
         serverDelegate?.startedConnecting(server)
     }
     
     private func didDisconnect(_ server: Server) {
-        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: server)
-        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
+        NotificationCenter.default.post(name: Notifications.serverStateDidChange, object: server)
+        NotificationCenter.default.post(name: Notifications.serverDataChanged, object: nil)
         serverDelegate?.didDisconnect(server)
     }
     
     private func registeredSuccessfully(_ server: Server) {
-        NotificationCenter.default.post(name: Notifications.ServerStateDidChange, object: server)
-        NotificationCenter.default.post(name: Notifications.ServerDataChanged, object: nil)
+        NotificationCenter.default.post(name: Notifications.serverStateDidChange, object: server)
+        NotificationCenter.default.post(name: Notifications.serverDataChanged, object: nil)
         serverDelegate?.registeredSuccessfully(server)
     }
     
@@ -46,8 +46,8 @@ extension ServerManager {
     }
     
     private func recieved(logEvent: LogEvent, for room: Room) {
-        NotificationCenter.default.post(name: Notifications.NewLogEventForRoom, object: room)
-        NotificationCenter.default.post(Notification(name: Notifications.RoomDataChanged))
+        NotificationCenter.default.post(name: Notifications.newLogEventForRoom, object: room)
+        NotificationCenter.default.post(Notification(name: Notifications.roomDataChanged))
         serverDelegate?.received(logEvent: logEvent, for: room)
     }
     
@@ -56,28 +56,28 @@ extension ServerManager {
     }
     
     private func recieved(topic: String, for room: Room) {
-        NotificationCenter.default.post(name: Notifications.TopicUpdatedForRoom, object: room)
-        NotificationCenter.default.post(Notification(name: Notifications.RoomDataChanged))
+        NotificationCenter.default.post(name: Notifications.topicUpdatedForRoom, object: room)
+        NotificationCenter.default.post(Notification(name: Notifications.roomDataChanged))
         serverDelegate?.received(topic: topic, for: room)
     }
     
     private func finishedReadingUserList(_ room: Room) {
-        NotificationCenter.default.post(name: Notifications.UserListUpdatedForRoom, object: room)
+        NotificationCenter.default.post(name: Notifications.userListUpdatedForRoom, object: room)
         serverDelegate?.finishedReadingUserList(room)
     }
     
     private func motdUpdated(_ server: Server) {
-        NotificationCenter.default.post(name: Notifications.MOTDUpdatedForServer, object: server)
+        NotificationCenter.default.post(name: Notifications.motdUpdatedForServer, object: server)
         serverDelegate?.motdUpdated(server)
     }
     
     private func chanlistUpdated(_ server: Server) {
-        NotificationCenter.default.post(name: Notifications.ListUpdatedForServer, object: server)
+        NotificationCenter.default.post(name: Notifications.listUpdatedForServer, object: server)
         serverDelegate?.chanlistUpdated(server)
     }
     
     private func finishedReadingChanlist(_ server: Server) {
-        NotificationCenter.default.post(name: Notifications.ListFinishedForServer, object: server)
+        NotificationCenter.default.post(name: Notifications.listFinishedForServer, object: server)
         serverDelegate?.finishedReadingChanlist(server)
     }
     
@@ -94,7 +94,7 @@ extension ServerManager {
     }
     
     private func infoWasUpdated(_ user: User) {
-        NotificationCenter.default.post(name: Notifications.UserInfoDidChange, object: user)
+        NotificationCenter.default.post(name: Notifications.userInfoDidChange, object: user)
         serverDelegate?.infoWasUpdated(user)
     }
     

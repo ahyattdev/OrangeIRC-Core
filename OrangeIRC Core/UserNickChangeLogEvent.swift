@@ -8,19 +8,24 @@
 
 import Foundation
 
-class UserNickChangeLogEvent : UserLogEvent {
+/// When a user changes their nickname
+public class UserNickChangeLogEvent : UserLogEvent {
     
-    let oldNick: String
-    let newNick: String
+    /// Old nickname
+    public let oldNick: String
     
-    open override var attributedDescription: NSAttributedString {
+    /// New nickname
+    public let newNick: String
+    
+    /// Attributed description
+    public override var attributedDescription: NSAttributedString {
         let str = NSMutableAttributedString()
         str.append(NSAttributedString(string: "\(oldNick) \(localized("CHANGED_NICKNAME_TO")) \(newNick)"))
         str.addAttributes(LogEvent.italicAttributes, range: NSRange(location: 0, length: str.length))
         return str
     }
     
-    init(sender: User, room: Room, oldNick: String, newNick: String) {
+    internal init(sender: User, room: Room, oldNick: String, newNick: String) {
         self.oldNick = oldNick
         self.newNick = newNick
         super.init(sender: sender, room: room)

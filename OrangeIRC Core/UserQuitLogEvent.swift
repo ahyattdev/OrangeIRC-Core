@@ -8,9 +8,11 @@
 
 import Foundation
 
-open class UserQuitLogEvent : UserLogEvent {
+/// When a user quits from the server
+public class UserQuitLogEvent : UserLogEvent {
     
-    open override var attributedDescription: NSAttributedString {
+    /// Attributed description
+    public override var attributedDescription: NSAttributedString {
         let str = NSMutableAttributedString()
         let nick = sender.coloredName(for: room)
         str.append(nick)

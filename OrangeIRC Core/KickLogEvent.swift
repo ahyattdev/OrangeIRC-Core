@@ -8,9 +8,11 @@
 
 import Foundation
 
-class KickLogEvent : ModerationLogEvent {
+/// When a user is kicked from a channel
+public class KickLogEvent : ModerationLogEvent {
     
-    open override var attributedDescription: NSAttributedString {
+    /// Attributed description
+    public override var attributedDescription: NSAttributedString {
         let str = NSMutableAttributedString()
         str.append(receiver.coloredName(for: room))
         str.append(NSAttributedString(string: " \(localized("WAS_KICKED_BY")) "))

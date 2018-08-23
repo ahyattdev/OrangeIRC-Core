@@ -52,7 +52,7 @@ class UserInfoTableViewController : UITableViewController {
         
         super.init(style: .grouped)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handle(_:)), name: Notifications.UserInfoDidChange, object: user)
+        NotificationCenter.default.addObserver(self, selector: #selector(handle(_:)), name: Notifications.userInfoDidChange, object: user)
         server.fetchInfo(user)
     }
     
@@ -124,7 +124,7 @@ class UserInfoTableViewController : UITableViewController {
     }
     
     @objc func handle(_ notification: NSNotification) {
-        if notification.name == Notifications.UserInfoDidChange {
+        if notification.name == Notifications.userInfoDidChange {
             updateData()
             tableView.reloadData()
         }

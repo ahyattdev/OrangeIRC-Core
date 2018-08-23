@@ -10,3 +10,5 @@
 - Handle join, etc call if not connected
 - Make sure all APIs have Server so we don’t have rooms with the same name being an issue.
 - Being kicked from server vs kicked from channel
+- Message in console saying we are connecting
+- Download RFCs and put them in repository, also other IRC resources

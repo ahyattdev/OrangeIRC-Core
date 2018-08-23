@@ -35,8 +35,8 @@ class ChannelListTableViewController : UITableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateList), name: Notifications.ListUpdatedForServer, object: server)
-        NotificationCenter.default.addObserver(self, selector: #selector(finished), name: Notifications.ListFinishedForServer, object: server)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateList), name: Notifications.listUpdatedForServer, object: server)
+        NotificationCenter.default.addObserver(self, selector: #selector(finished), name: Notifications.listFinishedForServer, object: server)
         
         refresh()
         updatePrompt()

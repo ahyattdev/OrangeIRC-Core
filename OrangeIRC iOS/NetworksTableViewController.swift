@@ -27,8 +27,8 @@ class NetworksTableViewController : UITableViewController {
         navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addServerButton))
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTableView), name: Notifications.ServerDataChanged, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTableView), name: Notifications.RoomDataChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTableView), name: Notifications.serverDataChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTableView), name: Notifications.roomDataChanged, object: nil)
         
         updateTableView()
     }

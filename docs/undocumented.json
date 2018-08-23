@@ -29,402 +29,17 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/ConsoleDelegate.swift",
-      "line": 11,
-      "symbol": "ConsoleDelegate",
-      "symbol_kind": "source.lang.swift.decl.protocol",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/ConsoleDelegate.swift",
-      "line": 13,
-      "symbol": "ConsoleDelegate.newConsoleEntry(server:entry:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/ConsoleEntry.swift",
-      "line": 11,
-      "symbol": "ConsoleEntry",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/ConsoleEntry.swift",
-      "line": 13,
-      "symbol": "ConsoleEntry.Sender",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/ConsoleEntry.swift",
-      "line": 14,
-      "symbol": "ConsoleEntry.Sender.Server",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/ConsoleEntry.swift",
-      "line": 15,
-      "symbol": "ConsoleEntry.Sender.Client",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/ConsoleEntry.swift",
-      "line": 18,
-      "symbol": "ConsoleEntry.text",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/ConsoleEntry.swift",
-      "line": 19,
-      "symbol": "ConsoleEntry.sender",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/LogEvent.swift",
-      "line": 16,
-      "symbol": "LogEvent",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/LogEvent.swift",
-      "line": 18,
-      "symbol": "LogEvent.date",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/LogEvent.swift",
-      "line": 25,
-      "symbol": "LogEvent.attributes",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/LogEvent.swift",
-      "line": 27,
-      "symbol": "LogEvent.italicAttributes",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/LogEvent.swift",
-      "line": 37,
-      "symbol": "LogEvent.attributedDescription",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/MessageLogEvent.swift",
-      "line": 15,
-      "symbol": "MessageLogEvent",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/MessageLogEvent.swift",
+      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/RoomType.swift",
       "line": 17,
-      "symbol": "MessageLogEvent.contents",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/MessageLogEvent.swift",
-      "line": 18,
-      "symbol": "MessageLogEvent.sender",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/MessageLogEvent.swift",
-      "line": 26,
-      "symbol": "MessageLogEvent.attributedDescription",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/ModerationLogEvent.swift",
-      "line": 11,
-      "symbol": "ModerationLogEvent",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/ModerationLogEvent.swift",
-      "line": 13,
-      "symbol": "ModerationLogEvent.receiver",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/ModerationLogEvent.swift",
-      "line": 15,
-      "symbol": "ModerationLogEvent.init(sender:receiver:room:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 11,
-      "symbol": "Notifications",
-      "symbol_kind": "source.lang.swift.decl.struct",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 18,
-      "symbol": "Notifications.ServerDataChanged",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 20,
-      "symbol": "Notifications.ServerStateDidChange",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 21,
-      "symbol": "Notifications.UserInfoDidChange",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 23,
-      "symbol": "Notifications.ServerCreated",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 24,
-      "symbol": "Notifications.ServerDeleted",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 26,
-      "symbol": "Notifications.RoomDataChanged",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 27,
-      "symbol": "Notifications.RoomDeleted",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 28,
-      "symbol": "Notifications.RoomCreated",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 30,
-      "symbol": "Notifications.RoomStateUpdated",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 32,
-      "symbol": "Notifications.NewLogEventForRoom",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 33,
-      "symbol": "Notifications.TopicUpdatedForRoom",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 34,
-      "symbol": "Notifications.UserListUpdatedForRoom",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 36,
-      "symbol": "Notifications.MOTDUpdatedForServer",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 38,
-      "symbol": "Notifications.ListUpdatedForServer",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Notifications.swift",
-      "line": 39,
-      "symbol": "Notifications.ListFinishedForServer",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/PrivateMessage.swift",
-      "line": 11,
-      "symbol": "PrivateMessage",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/PrivateMessage.swift",
-      "line": 22,
-      "symbol": "PrivateMessage.otherUser",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/PrivateMessage.swift",
-      "line": 24,
-      "symbol": "PrivateMessage.displayName",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/PrivateMessage.swift",
-      "line": 28,
-      "symbol": "PrivateMessage.canSendMessage",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/PrivateMessage.swift",
-      "line": 36,
-      "symbol": "PrivateMessage.init(coder:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/PrivateMessage.swift",
-      "line": 43,
-      "symbol": "PrivateMessage.encode(with:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/PrivateMessage.swift",
-      "line": 47,
-      "symbol": "PrivateMessage.send(message:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Room.swift",
-      "line": 11,
-      "symbol": "Room",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Room.swift",
-      "line": 14,
-      "symbol": "Room.server",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Room.swift",
-      "line": 16,
-      "symbol": "Room.log",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Room.swift",
-      "line": 18,
-      "symbol": "Room.displayName",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Room.swift",
-      "line": 23,
-      "symbol": "Room.canSendMessage",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Room.swift",
-      "line": 30,
-      "symbol": "Room.init(coder:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Room.swift",
-      "line": 34,
-      "symbol": "Room.encode(with:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/Room.swift",
-      "line": 38,
-      "symbol": "Room.send(message:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/RoomLogEvent.swift",
-      "line": 11,
-      "symbol": "RoomLogEvent",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/RoomLogEvent.swift",
-      "line": 13,
-      "symbol": "RoomLogEvent.room",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/RoomType.swift",
-      "line": 11,
-      "symbol": "RoomType",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/RoomType.swift",
-      "line": 13,
       "symbol": "RoomType.Channel",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/RoomType.swift",
-      "line": 14,
+      "line": 18,
       "symbol": "RoomType.PrivateMessage",
       "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/RoomType.swift",
-      "line": 16,
-      "symbol": "RoomType.localizedName()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -436,310 +51,58 @@
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 15,
-      "symbol": "User",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 25,
-      "symbol": "User.Mode",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 27,
-      "symbol": "User.Mode.PREFIX_CHARACTER_SET",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 29,
+      "line": 39,
       "symbol": "User.Mode.Operator",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 30,
+      "line": 40,
       "symbol": "User.Mode.Voice",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 31,
+      "line": 41,
       "symbol": "User.Mode.Invisible",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 32,
+      "line": 42,
       "symbol": "User.Mode.Deaf",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 33,
+      "line": 43,
       "symbol": "User.Mode.Zombie",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 34,
+      "line": 44,
       "symbol": "User.Mode.None",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 38,
-      "symbol": "User.Class",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 40,
+      "line": 57,
       "symbol": "User.Class.Normal",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 41,
+      "line": 58,
       "symbol": "User.Class.Operator",
       "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 45,
-      "symbol": "User.ChannelData",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 47,
-      "symbol": "User.channels",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 50,
-      "symbol": "User.nick",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 52,
-      "symbol": "User.isOnline",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 55,
-      "symbol": "User.username",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 56,
-      "symbol": "User.host",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 57,
-      "symbol": "User.ip",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 58,
-      "symbol": "User.servername",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 59,
-      "symbol": "User.realname",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 60,
-      "symbol": "User.onlineTime",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 61,
-      "symbol": "User.idleTime",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 62,
-      "symbol": "User.channelList",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 63,
-      "symbol": "User.class",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 64,
-      "symbol": "User.awayMessage",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 65,
-      "symbol": "User.away",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 67,
-      "symbol": "User.init(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 71,
-      "symbol": "User.init(coder:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 79,
-      "symbol": "User.encode(with:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 83,
-      "symbol": "User.getMode(for:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 94,
-      "symbol": "User.set(mode:for:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 105,
-      "symbol": "User.getAway(for:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 116,
-      "symbol": "User.set(away:for:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 127,
-      "symbol": "User.isOn(channel:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 136,
-      "symbol": "User.removeFrom(channel:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 148,
-      "symbol": "User.color(room:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 236,
-      "symbol": "User.coloredName(for:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/User.swift",
-      "line": 242,
-      "symbol": "User.==(_:_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/UserJoinLogEvent.swift",
-      "line": 11,
-      "symbol": "UserJoinLogEvent",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/UserJoinLogEvent.swift",
-      "line": 13,
-      "symbol": "UserJoinLogEvent.attributedDescription",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/UserLogEvent.swift",
-      "line": 15,
-      "symbol": "UserLogEvent",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/UserLogEvent.swift",
-      "line": 17,
-      "symbol": "UserLogEvent.sender",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/UserLogEvent.swift",
-      "line": 19,
-      "symbol": "UserLogEvent.init(sender:room:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -796,48 +159,6 @@
       "line": 26,
       "symbol": "UserMode.update(with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/UserOfflineLogEvent.swift",
-      "line": 11,
-      "symbol": "UserOfflineLogEvent",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/UserOnlineLogEvent.swift",
-      "line": 11,
-      "symbol": "UserOnlineLogEvent",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/UserPartLogEvent.swift",
-      "line": 11,
-      "symbol": "UserPartLogEvent",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/UserPartLogEvent.swift",
-      "line": 13,
-      "symbol": "UserPartLogEvent.attributedDescription",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/UserQuitLogEvent.swift",
-      "line": 11,
-      "symbol": "UserQuitLogEvent",
-      "symbol_kind": "source.lang.swift.decl.class",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/andrewhyatt/git/OrangeIRC/OrangeIRC Core/UserQuitLogEvent.swift",
-      "line": 13,
-      "symbol": "UserQuitLogEvent.attributedDescription",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     }
   ],

@@ -8,9 +8,11 @@
 
 import Foundation
 
-open class UserJoinLogEvent : UserLogEvent {
+/// When a user joins a channel
+public class UserJoinLogEvent : UserLogEvent {
     
-    open override var attributedDescription: NSAttributedString {
+    /// Attributed description
+    public override var attributedDescription: NSAttributedString {
         let str = NSMutableAttributedString()
         let nick = sender.coloredName(for: room)
         str.append(nick)

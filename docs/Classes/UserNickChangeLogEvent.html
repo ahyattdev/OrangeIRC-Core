@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RoomType Enumeration Reference</title>
+    <title>UserNickChangeLogEvent Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,18 +10,20 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/RoomType" class="dashAnchor"></a>
-    <a title="RoomType Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Class/UserNickChangeLogEvent" class="dashAnchor"></a>
+    <a title="UserNickChangeLogEvent Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (0% documented)</p>
+        <p><a href="../index.html">OrangeIRCCore Docs</a> (89% documented)</p>
+        <p class="header-right"><a href="https://github.com/ahyattdev/OrangeIRC"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fahyattdev%2Egithub%2Eio%2Fdocsets%2FOrangeIRCCore%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
     <div class="content-wrapper">
       <p id="breadcrumbs">
-        <a href="../index.html"> Reference</a>
+        <a href="../index.html">OrangeIRCCore Reference</a>
         <img id="carat" src="../img/carat.png" />
-        RoomType Enumeration Reference
+        UserNickChangeLogEvent Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -34,13 +36,10 @@
                 <a href="../Classes/Channel.html">Channel</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Classes/KickLogEvent.html">KickLogEvent</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Classes/LogEvent.html">LogEvent</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/Message.html">Message</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Classes/Message/Prefix.html">– Prefix</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/MessageLogEvent.html">MessageLogEvent</a>
@@ -80,6 +79,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/UserLogEvent.html">UserLogEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UserNickChangeLogEvent.html">UserNickChangeLogEvent</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes.html#/c:@M@OrangeIRCCore@objc(cs)UserOfflineLogEvent">UserOfflineLogEvent</a>
@@ -134,19 +136,30 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:13OrangeIRCCore11ChannelDataa">ChannelData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:13OrangeIRCCore11ListChannela">ListChannel</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>RoomType</h1>
+            <h1>UserNickChangeLogEvent</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">RoomType</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UserNickChangeLogEvent</span> <span class="p">:</span> <span class="kt"><a href="../Classes/UserLogEvent.html">UserLogEvent</a></span></code></pre>
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>When a user changes their nickname</p>
 
           </section>
           <section class="section task-group-section">
@@ -155,9 +168,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13OrangeIRCCore8RoomTypeO7ChannelA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/Channel" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore8RoomTypeO7ChannelA2CmF">Channel</a>
+                    <a name="/s:13OrangeIRCCore22UserNickChangeLogEventC03oldD0SSvp"></a>
+                    <a name="//apple_ref/swift/Property/oldNick" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore22UserNickChangeLogEventC03oldD0SSvp">oldNick</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -165,30 +178,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Old nickname</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">Channel</span> <span class="o">=</span> <span class="s">"Channel"</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">oldNick</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13OrangeIRCCore8RoomTypeO14PrivateMessageA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/PrivateMessage" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore8RoomTypeO14PrivateMessageA2CmF">PrivateMessage</a>
+                    <a name="/s:13OrangeIRCCore22UserNickChangeLogEventC03newD0SSvp"></a>
+                    <a name="//apple_ref/swift/Property/newNick" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore22UserNickChangeLogEventC03newD0SSvp">newNick</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -196,30 +205,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>New nickname</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="kt">PrivateMessage</span> <span class="o">=</span> <span class="s">"PrivateMessage"</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">newNick</span><span class="p">:</span> <span class="kt">String</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13OrangeIRCCore8RoomTypeO13localizedNameSSyF"></a>
-                    <a name="//apple_ref/swift/Method/localizedName()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore8RoomTypeO13localizedNameSSyF">localizedName()</a>
+                    <a name="/s:13OrangeIRCCore22UserNickChangeLogEventC21attributedDescriptionSo18NSAttributedStringCvp"></a>
+                    <a name="//apple_ref/swift/Property/attributedDescription" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13OrangeIRCCore22UserNickChangeLogEventC21attributedDescriptionSo18NSAttributedStringCvp">attributedDescription</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -227,14 +232,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Attributed description</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">localizedName</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">override</span> <span class="k">var</span> <span class="nv">attributedDescription</span><span class="p">:</span> <span class="kt">NSAttributedString</span></code></pre>
 
                         </div>
                       </div>
@@ -246,7 +251,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2018-08-22)</p>
+          <p>&copy; 2018 <a class="link" href="https://ahyattdev.github.io" target="_blank" rel="external">Andrew Hyatt</a>. All rights reserved. (Last updated: 2018-08-22)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
