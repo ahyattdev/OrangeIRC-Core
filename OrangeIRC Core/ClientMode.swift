@@ -8,22 +8,27 @@
 
 import Foundation
 
-public struct UserMode {
+/// The mode of the IRC client
+public struct ClientMode {
     
-    public var invisible = false
-    public var receivesNotices = false
-    public var receivesWallops = false
-    public var `operator` = false
+    /// Invisible mode
+    internal(set) public var invisible = false
+    /// Receives notices flag
+    internal(set) public var receivesNotices = false
+    /// Receives wallops flag
+    internal(set) public var receivesWallops = false
+    /// Operator mode
+    internal(set) public var `operator` = false
     
-    public init(_ string: String) {
+    internal init(_ string: String) {
         update(with: string)
     }
     
-    public init() {
+    internal init() {
         self.init("")
     }
     
-    public mutating func update(with string: String) {
+    internal mutating func update(with string: String) {
         if string.utf8.count < 2 {
             return
         }

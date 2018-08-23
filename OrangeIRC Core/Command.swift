@@ -8,9 +8,10 @@
 
 import Foundation
 
-// https://www.alien.net.au/irc/irc2numerics.html
-
-public struct Command {
+/// IRC Commands
+///
+/// https://www.alien.net.au/irc/irc2numerics.html
+internal struct Command {
     
     static let JOIN = "JOIN"
     static let NICK = "NICK"

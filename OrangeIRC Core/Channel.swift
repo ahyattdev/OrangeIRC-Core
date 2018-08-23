@@ -58,8 +58,8 @@ open class Channel : Room {
     /// If the channel has a topic
     internal(set) open var hasTopic = false
     
-    /// Channel join status
     // If this is a private message room, this will be if both us and the recipient are on the server
+    /// Channel join status
     internal(set) open var isJoined = false
     
     /// Is the client allowed to send a message on the channel
@@ -68,12 +68,12 @@ open class Channel : Room {
         return isJoined && server.isRegistered
     }
     
-    /// Join this channel when the server connects
     // Set for the connect and join button
+    /// Join this channel when the server connects
     open var joinOnConnect = false
     
-    /// Is the users list complete yet
     // Don't display the users list while it is still being populated
+    /// Is the users list complete yet
     internal(set) open var hasCompleteUsersList = false
     
     /// The display name of the channel

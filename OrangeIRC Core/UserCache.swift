@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserCache {
+internal class UserCache {
     
     // The server associated with this cache
     weak var server: Server! {

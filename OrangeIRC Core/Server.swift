@@ -148,7 +148,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     
     internal var userCache: UserCache = UserCache()
     
-    internal var mode = UserMode()
+    internal var mode = ClientMode()
     
     // Used for reconnect functionality.
     internal var connectOnDisconnect = false
@@ -424,11 +424,12 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         write(string: "\(Command.PRIVMSG) \(otherNick) :\(message)")
     }
     
-    @discardableResult
+    
     /// Starts a private message session with another user and message.
     ///
     /// - Parameter otherNick: The user to message
     /// - Returns: The resulting Room
+    @discardableResult
     open func startPrivateMessageSession(_ otherNick: String) -> Room {
         // FIXME: Return PrivateMessage instead of Room?
         
@@ -498,7 +499,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
         motd = nil
         socket?.setDelegate(nil, delegateQueue: nil)
         socket = nil
-        mode = UserMode()
+        mode = ClientMode()
         appendedUnderscoreCount = 0
         
         for room in rooms {

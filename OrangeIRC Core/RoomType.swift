@@ -9,12 +9,11 @@
 import Foundation
 
 /// The type of a `Room`
-///
-/// - Channel: IRC channel
-/// - PrivateMessage: Private message session
 public enum RoomType : String {
     
+    /// IRC channel
     case Channel = "Channel"
+    /// Private message session
     case PrivateMessage = "PrivateMessage"
     
     /// Gets a localized name for the room type

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Tag {
+internal struct Tag {
     
     // The standard registration chain of events
     static let Normal = -1

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>UserMode Structure Reference</title>
+    <title>ClientMode Structure Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,11 +10,11 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Struct/UserMode" class="dashAnchor"></a>
-    <a title="UserMode Structure Reference"></a>
+    <a name="//apple_ref/swift/Struct/ClientMode" class="dashAnchor"></a>
+    <a title="ClientMode Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">OrangeIRCCore Docs</a> (89% documented)</p>
+        <p><a href="../index.html">OrangeIRCCore Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/ahyattdev/OrangeIRC"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fahyattdev%2Egithub%2Eio%2Fdocsets%2FOrangeIRCCore%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
@@ -23,7 +23,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">OrangeIRCCore Reference</a>
         <img id="carat" src="../img/carat.png" />
-        UserMode Structure Reference
+        ClientMode Structure Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -120,7 +120,7 @@
             <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Structs.html#/s:13OrangeIRCCore7CommandV">Command</a>
+                <a href="../Structs/ClientMode.html">ClientMode</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/ConsoleEntry.html">ConsoleEntry</a>
@@ -130,9 +130,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Notifications.html">Notifications</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Structs/UserMode.html">UserMode</a>
               </li>
             </ul>
           </li>
@@ -152,14 +149,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>UserMode</h1>
+            <h1>ClientMode</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">UserMode</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">ClientMode</span></code></pre>
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>The mode of the IRC client</p>
 
           </section>
           <section class="section task-group-section">
@@ -168,9 +165,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13OrangeIRCCore8UserModeV9invisibleSbvp"></a>
+                    <a name="/s:13OrangeIRCCore10ClientModeV9invisibleSbvp"></a>
                     <a name="//apple_ref/swift/Property/invisible" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore8UserModeV9invisibleSbvp">invisible</a>
+                    <a class="token" href="#/s:13OrangeIRCCore10ClientModeV9invisibleSbvp">invisible</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -178,14 +175,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Invisible mode</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">invisible</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">invisible</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>
@@ -195,9 +192,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13OrangeIRCCore8UserModeV15receivesNoticesSbvp"></a>
+                    <a name="/s:13OrangeIRCCore10ClientModeV15receivesNoticesSbvp"></a>
                     <a name="//apple_ref/swift/Property/receivesNotices" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore8UserModeV15receivesNoticesSbvp">receivesNotices</a>
+                    <a class="token" href="#/s:13OrangeIRCCore10ClientModeV15receivesNoticesSbvp">receivesNotices</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -205,14 +202,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Receives notices flag</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">receivesNotices</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">receivesNotices</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>
@@ -222,9 +219,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13OrangeIRCCore8UserModeV15receivesWallopsSbvp"></a>
+                    <a name="/s:13OrangeIRCCore10ClientModeV15receivesWallopsSbvp"></a>
                     <a name="//apple_ref/swift/Property/receivesWallops" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore8UserModeV15receivesWallopsSbvp">receivesWallops</a>
+                    <a class="token" href="#/s:13OrangeIRCCore10ClientModeV15receivesWallopsSbvp">receivesWallops</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -232,14 +229,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Receives wallops flag</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">receivesWallops</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">receivesWallops</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>
@@ -249,9 +246,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:13OrangeIRCCore8UserModeV8operatorSbvp"></a>
+                    <a name="/s:13OrangeIRCCore10ClientModeV8operatorSbvp"></a>
                     <a name="//apple_ref/swift/Property/operator" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore8UserModeV8operatorSbvp">operator</a>
+                    <a class="token" href="#/s:13OrangeIRCCore10ClientModeV8operatorSbvp">operator</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -259,95 +256,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Operator mode</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">operator</span><span class="p">`</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore8UserModeVACSScfc"></a>
-                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore8UserModeVACSScfc">init(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore8UserModeVACycfc"></a>
-                    <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore8UserModeVACycfc">init()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:13OrangeIRCCore8UserModeV6updateySS4with_tF"></a>
-                    <a name="//apple_ref/swift/Method/update(with:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:13OrangeIRCCore8UserModeV6updateySS4with_tF">update(with:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">mutating</span> <span class="kd">func</span> <span class="nf">update</span><span class="p">(</span><span class="n">with</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">internal(set)</span> <span class="kd">public</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">operator</span><span class="p">`</span> <span class="o">=</span> <span class="kc">false</span></code></pre>
 
                         </div>
                       </div>
@@ -359,7 +275,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://ahyattdev.github.io" target="_blank" rel="external">Andrew Hyatt</a>. All rights reserved. (Last updated: 2018-08-22)</p>
+          <p>&copy; 2018 <a class="link" href="https://ahyattdev.github.io" target="_blank" rel="external">Andrew Hyatt</a>. All rights reserved. (Last updated: 2018-08-23)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

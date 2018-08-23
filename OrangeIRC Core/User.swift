@@ -26,21 +26,20 @@ open class User: NSObject, NSCoding {
         
     }
     
-    /// The user mode on the server
-    ///
-    /// - Operator: Operator
-    /// - Voice: Voice
-    /// - Invisible: Invisible
-    /// - Deaf: Deaf
-    /// - Zombie: Zombie
-    /// - None: None
+    /// The user mode on the channel
     public enum Mode : String {
         
+        /// Channel operator
         case Operator = "@"
+        /// Channel voice
         case Voice = "+"
+        /// Invisible on channel
         case Invisible = "<"
+        /// Deaf on channel
         case Deaf = "-"
+        /// Zombie
         case Zombie = "!"
+        /// No mode on channel
         case None = ""
         
         /// Valid user mode prefixes
@@ -49,12 +48,11 @@ open class User: NSObject, NSCoding {
     }
     
     /// User class, different than MODE
-    ///
-    /// - Normal: Normal user
-    /// - Operator: Server operator
     public enum Class {
         
+        /// Normal user
         case Normal
+        /// Server operator
         case Operator
         
     }
