@@ -24,29 +24,21 @@ public class LogEvent : NSObject {
     internal override init() { }
 
     // Necessary because of UIFont and NSFont
-    #if os(iOS)
+    #if os(macOS)
+    
+    /// For default log event description text
+    public static var attributes = [NSAttributedStringKey.font : NSFont(name: "Menlo-Regular", size: 16) as Any]
+    
+    /// For italic log event description text
+    public static var italicAttributes = [NSAttributedStringKey.font : NSFont(name: "Menlo-Italic", size: 16) as Any]
+    
+    #else
     
     /// For default log event description text
     public static var attributes = [NSAttributedStringKey.font : UIFont(name: "Menlo-Regular", size: 16) as Any]
     
     /// For italic log event description text
     public static var italicAttributes = [NSAttributedStringKey.font : UIFont(name: "Menlo-Italic", size: 16) as Any]
-    
-    #elseif os(tvOS)
-    
-    /// For default log event description text
-    public static var attributes = [:] as [String : Any]
-    
-    /// For italic log event description text
-    public static var italicAttributes = [:] as [String : Any]
-
-    #else
-    
-    /// For default log event description text
-    public static var attributes = [NSFontAttributeName : NSFont(name: "Menlo-Regular", size: 16) as Any]
-    
-    /// For italic log event description text
-    public static var italicAttributes = [NSFontAttributeName : NSFont(name: "Menlo-Italic", size: 16) as Any]
     
     #endif
     
