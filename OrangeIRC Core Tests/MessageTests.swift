@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import OrangeIRCCore
+@testable import OrangeIRCCore
 
 class MessageTests: XCTestCase {
     
