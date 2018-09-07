@@ -297,8 +297,12 @@ open class User: NSObject, NSCoding {
     /// - Returns: The color the the user
     open func coloredName(for room: Room) -> NSAttributedString {
         // The properly colored attributes
+        #if os(macOS) || os(tvOS)
+        return NSAttributedString(string: "TODO")
+        #else
         let attributes = [NSAttributedStringKey.foregroundColor : color(room: room)]
         return NSAttributedString(string: nick, attributes: attributes)
+        #endif
     }
     
     /// Compares two `User` instances
