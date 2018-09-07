@@ -17,7 +17,7 @@
                BlueprintIdentifier = "66EDD2E01D29621B0013E7CC"
                BuildableName = "OrangeIRCCore.framework"
                BlueprintName = "OrangeIRC Core (iOS)"
-               ReferencedContainer = "container:OrangeIRC.xcodeproj">
+               ReferencedContainer = "container:OrangeIRC Core.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "6A212F821E104C7B006739B4"
                BuildableName = "OrangeIRCCoreTests.xctest"
                BlueprintName = "OrangeIRC Core Tests (iOS)"
-               ReferencedContainer = "container:OrangeIRC.xcodeproj">
+               ReferencedContainer = "container:OrangeIRC Core.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "66EDD2E01D29621B0013E7CC"
             BuildableName = "OrangeIRCCore.framework"
             BlueprintName = "OrangeIRC Core (iOS)"
-            ReferencedContainer = "container:OrangeIRC.xcodeproj">
+            ReferencedContainer = "container:OrangeIRC Core.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -67,7 +67,7 @@
             BlueprintIdentifier = "66EDD2E01D29621B0013E7CC"
             BuildableName = "OrangeIRCCore.framework"
             BlueprintName = "OrangeIRC Core (iOS)"
-            ReferencedContainer = "container:OrangeIRC.xcodeproj">
+            ReferencedContainer = "container:OrangeIRC Core.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -85,7 +85,7 @@
             BlueprintIdentifier = "66EDD2E01D29621B0013E7CC"
             BuildableName = "OrangeIRCCore.framework"
             BlueprintName = "OrangeIRC Core (iOS)"
-            ReferencedContainer = "container:OrangeIRC.xcodeproj">
+            ReferencedContainer = "container:OrangeIRC Core.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

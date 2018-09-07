@@ -17,7 +17,7 @@
                BlueprintIdentifier = "66A75B241D234737001161A3"
                BuildableName = "OrangeIRCCore.framework"
                BlueprintName = "OrangeIRC Core (macOS)"
-               ReferencedContainer = "container:OrangeIRC.xcodeproj">
+               ReferencedContainer = "container:OrangeIRC Core.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "6A2672771E1055750087B331"
                BuildableName = "OrangeIRCCoreTests.xctest"
                BlueprintName = "OrangeIRC Core Tests (macOS)"
-               ReferencedContainer = "container:OrangeIRC.xcodeproj">
+               ReferencedContainer = "container:OrangeIRC Core.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -45,7 +45,7 @@
             BlueprintIdentifier = "66A75B241D234737001161A3"
             BuildableName = "OrangeIRCCore.framework"
             BlueprintName = "OrangeIRC Core (macOS)"
-            ReferencedContainer = "container:OrangeIRC.xcodeproj">
+            ReferencedContainer = "container:OrangeIRC Core.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -67,7 +67,7 @@
             BlueprintIdentifier = "66A75B241D234737001161A3"
             BuildableName = "OrangeIRCCore.framework"
             BlueprintName = "OrangeIRC Core (macOS)"
-            ReferencedContainer = "container:OrangeIRC.xcodeproj">
+            ReferencedContainer = "container:OrangeIRC Core.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -85,7 +85,7 @@
             BlueprintIdentifier = "66A75B241D234737001161A3"
             BuildableName = "OrangeIRCCore.framework"
             BlueprintName = "OrangeIRC Core (macOS)"
-            ReferencedContainer = "container:OrangeIRC.xcodeproj">
+            ReferencedContainer = "container:OrangeIRC Core.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
