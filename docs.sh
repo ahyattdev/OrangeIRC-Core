@@ -10,5 +10,5 @@ jazzy \
 -m "OrangeIRCCore" \
 -a "Andrew Hyatt" \
 -u https://ahyattdev.github.io \
--g https://github.com/ahyattdev/OrangeIRC \
--r https://ahyattdev.github.io/OrangeIRC \
+-g https://github.com/ahyattdev/OrangeIRC-Core \
+-r https://ahyattdev.github.io/OrangeIRC-Core \
