@@ -14,3 +14,9 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+JOINED = "se unió";
+LEFT = "salió";
+QUIT = "abandonó";
+CHANGED_NICKNAME_TO = "cambió su apodo a";
+WAS_KICKED_BY = "fue pateado por";

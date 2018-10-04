@@ -12,5 +12,5 @@
 - Being kicked from server vs kicked from channel
 - Message in console saying we are connecting
 - Download RFCs and put them in repository, also other IRC resources
-- Fix can't connect bug
 - SSL support
+- Make sure all `NSNotifications` are sent regardless of  `ServerManager` being in use.
