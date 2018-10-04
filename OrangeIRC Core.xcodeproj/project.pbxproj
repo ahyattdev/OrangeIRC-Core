@@ -26,6 +26,9 @@
 		66A75B341D23486F001161A3 /* LogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B2E1D23483C001161A3 /* LogEvent.swift */; };
 		66A75B371D234885001161A3 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B351D234885001161A3 /* Server.swift */; };
 		66A75B401D23496C001161A3 /* ServerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A75B3E1D23496C001161A3 /* ServerDelegate.swift */; };
+		66B3BCB32144E2EC00F7B2F3 /* FreenodeConnectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B3BCB22144E2EC00F7B2F3 /* FreenodeConnectTest.swift */; };
+		66B3BCB42144E2EC00F7B2F3 /* FreenodeConnectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B3BCB22144E2EC00F7B2F3 /* FreenodeConnectTest.swift */; };
+		66B3BCB52144E2EC00F7B2F3 /* FreenodeConnectTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B3BCB22144E2EC00F7B2F3 /* FreenodeConnectTest.swift */; };
 		66C8580B1D7B1781009E486F /* UserLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8580A1D7B1781009E486F /* UserLogEvent.swift */; };
 		66C8580C1D7B1781009E486F /* UserLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8580A1D7B1781009E486F /* UserLogEvent.swift */; };
 		66C8580E1D7B17F1009E486F /* UserJoinLogEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C8580D1D7B17F1009E486F /* UserJoinLogEvent.swift */; };
@@ -169,6 +172,7 @@
 		66A75B2E1D23483C001161A3 /* LogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogEvent.swift; sourceTree = "<group>"; };
 		66A75B351D234885001161A3 /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		66A75B3E1D23496C001161A3 /* ServerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerDelegate.swift; sourceTree = "<group>"; };
+		66B3BCB22144E2EC00F7B2F3 /* FreenodeConnectTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreenodeConnectTest.swift; sourceTree = "<group>"; };
 		66C8580A1D7B1781009E486F /* UserLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLogEvent.swift; sourceTree = "<group>"; };
 		66C8580D1D7B17F1009E486F /* UserJoinLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserJoinLogEvent.swift; sourceTree = "<group>"; };
 		66C858101D7B17FA009E486F /* UserPartLogEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPartLogEvent.swift; sourceTree = "<group>"; };
@@ -354,6 +358,7 @@
 			children = (
 				6A212F871E104C7C006739B4 /* Info.plist */,
 				6A212F8E1E104D4E006739B4 /* MessageTests.swift */,
+				66B3BCB22144E2EC00F7B2F3 /* FreenodeConnectTest.swift */,
 			);
 			path = "OrangeIRC Core Tests";
 			sourceTree = "<group>";
@@ -736,6 +741,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B3BCB32144E2EC00F7B2F3 /* FreenodeConnectTest.swift in Sources */,
 				6A212F8F1E104D4E006739B4 /* MessageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -744,6 +750,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B3BCB42144E2EC00F7B2F3 /* FreenodeConnectTest.swift in Sources */,
 				6A2672851E1056430087B331 /* MessageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,6 +800,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B3BCB52144E2EC00F7B2F3 /* FreenodeConnectTest.swift in Sources */,
 				6A2672A81E105CEB0087B331 /* MessageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

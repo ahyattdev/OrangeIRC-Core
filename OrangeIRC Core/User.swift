@@ -315,7 +315,7 @@ open class User: NSObject, NSCoding {
     }
     
     /// Compares two `User` instances
-    open static func ==(lhs: User, rhs: User) -> Bool {
+    public static func ==(lhs: User, rhs: User) -> Bool {
         return lhs.nick == rhs.nick
     }
     

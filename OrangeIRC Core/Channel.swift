@@ -23,7 +23,7 @@ open class Channel : Room {
     /// Valid IRC channel prefixes
     ///
     /// - Note: The source is https://www.alien.net.au/irc/chantypes.html
-    open static let channelPrefixes = NSCharacterSet(charactersIn: "#&!+.~")
+    public static let channelPrefixes = NSCharacterSet(charactersIn: "#&!+.~")
     
     fileprivate struct Coding {
         

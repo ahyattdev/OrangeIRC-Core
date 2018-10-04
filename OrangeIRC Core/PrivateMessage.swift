@@ -29,7 +29,7 @@ open class PrivateMessage : Room {
     }
     
     /// The user that this private message session is with
-    open let otherUser: User
+    public let otherUser: User
     
     /// The display name of the private message room
     open override var displayName: String {

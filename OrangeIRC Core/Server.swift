@@ -45,7 +45,7 @@ open class Server: NSObject, GCDAsyncSocketDelegate, NSCoding {
     // MARK: Constants
     
     /// Timeout value representing no timeout.
-    open let noTimeout = TimeInterval(-1)
+    public let noTimeout = TimeInterval(-1)
     
     internal let crlf = "\r\n"
     

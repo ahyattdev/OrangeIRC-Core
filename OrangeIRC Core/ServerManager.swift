@@ -26,7 +26,7 @@ import Foundation
 open class ServerManager {
     
     /// Shared instance
-    open static let shared = ServerManager()
+    public static let shared = ServerManager()
     
     /// The servers managed by the server manager
     internal(set) open var servers: [Server]!
@@ -100,7 +100,7 @@ open class ServerManager {
             return
         }
         
-        servers = loadedServers as! [Server]
+        servers = loadedServers as? [Server]
         
         for server in servers {
             server.delegate = self.serverDelegate
