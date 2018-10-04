@@ -23,7 +23,7 @@ import Foundation
 ///
 /// It is designed to be a singleton and it loads the server data when it is
 /// initialized.
-open class ServerManager {
+open class ServerManager : ServerDelegate {
     
     /// Shared instance
     public static let shared = ServerManager()
@@ -42,13 +42,7 @@ open class ServerManager {
         in: .userDomainMask)[0].appendingPathComponent("servers.plist")
     
     /// The delegate for every server.
-    open var serverDelegate: ServerDelegate? {
-        didSet {
-            servers.forEach{
-                $0.delegate = self.serverDelegate
-            }
-        }
-    }
+    open var serverDelegate: ServerDelegate?
     
     /// Servers for which the client is currently registered with.
     open var registeredServers: [Server] {
@@ -80,7 +74,7 @@ open class ServerManager {
         }
         
         servers.append(server)
-        server.delegate = self.serverDelegate
+        server.delegate = self
         server.connect()
         saveData()
         
@@ -103,7 +97,7 @@ open class ServerManager {
         servers = loadedServers as? [Server]
         
         for server in servers {
-            server.delegate = self.serverDelegate
+            server.delegate = self
             if server.autoJoin && !server.isConnectingOrRegistering && !server.isConnected {
                 server.connect()
             }
